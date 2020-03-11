@@ -16,7 +16,7 @@ language:
     solution: 'Solução. '
   ui:
     edit: Edit
-    chapter_name: 'Aula. '
+    chapter_name: 'Aula '
     appendix_name: ''
 
 output_dir: "docs"

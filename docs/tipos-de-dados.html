@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Aula 1 Tipos de Dados | Aulas de R</title>
+  <meta name="description" content="Aula 1 Tipos de Dados | Aulas de R" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Aula 1 Tipos de Dados | Aulas de R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Aula 1 Tipos de Dados | Aulas de R" />
+  
+  
+  
+
+<meta name="author" content="Lucas Chagas Lima do Carmo" />
+
+
+<meta name="date" content="2020-03-11" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+
+<script src="assets/header-attrs-2.1/header-attrs.js"></script>
+<script src="assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introdução</a></li>
+<li class="chapter" data-level="1" data-path="tipos-de-dados.html"><a href="tipos-de-dados.html"><i class="fa fa-check"></i><b>1</b> Tipos de Dados</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Aulas de R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="tipos-de-dados" class="section level1" number="1">
+<h1><span class="header-section-number">Aula 1</span> Tipos de Dados</h1>
+<p>Para esta aula iremos apenas usar o <em>console</em>.
+Na configuração padrão do RStudio o console é o painel esquerdo-inferior.
+O console é onde você vai mandar os comandos para o R executar linha a linha.
+Para comandos mais complicados com várias linhas é mais interessante escrever um script.
+Para criar um script use o atalho <code>Ctrl + Shift + N</code> no Windows ou <code>Cmd + Shift + N</code> no MacOs.</p>
+<p>Primeiro iremos discutir o que são objetos e que tipos de objetos podemos criar ou importar para dentro do R.</p>
+<hr />
+<p>No R e em outras linguagens de programação existe o conceito de <em>objeto</em>.
+Um objeto pode ser um vetor ou uma matriz de valores numéricos.
+Pode ser uma tabela com várias linhas e colunas, pode ser uma fórmula também.
+O termo <em>objeto</em> é um termo genérico com as aplicações citadas e muitas outras.</p>
+<p>Para criar um objeto, usamos o operador <code>&lt;-</code>, por exemplo:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="tipos-de-dados.html#cb1-1"></a>objeto &lt;-<span class="st"> </span><span class="dv">1000</span></span></code></pre></div>
+<p>Este objeto contém o valor <code>1000</code> então se você decidir imprimir (<code>print()</code>) este objeto o valor que aparecerá para voce é de 1000.
+Os objetos podem conter outros tipos de valores também, por exemplo frases:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="tipos-de-dados.html#cb2-1"></a>frase &lt;-<span class="st"> &quot;The first soft snow: leaves of the awed jonquil bow low&quot;</span></span></code></pre></div>
+<p>Se você tentar usar <code>print(frase)</code> o resultado vai ser o texto que foi atribuído a este objeto.</p>
+<p>Outro tipo de objeto são vetores (em outras linguagens de programação são chamados <em>arrays</em>),
+Vetores são objetos que contém vários valores numéricos ou de texto.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="tipos-de-dados.html#cb3-1"></a>vetor &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">2</span>)</span>
+<span id="cb3-2"><a href="tipos-de-dados.html#cb3-2"></a></span>
+<span id="cb3-3"><a href="tipos-de-dados.html#cb3-3"></a><span class="kw">print</span>(vetor)</span></code></pre></div>
+<pre><code>## [1] 0 4 3 5 6 4 2</code></pre>
+<p>Até agora foram usadas duas funções: <code>print()</code> e <code>c()</code>.
+Para você descobrir o que estas funções fazem você pode digitar <code>?print()</code> ou <code>?c()</code> no console e ver a definição e os argumentos que elas precisam.
+Iremos discutir funções mais pra frente mas é bom entender desde o início como achar as informações relevantes para que não se perca tempo.
+Boa parte de aprender R é pesquisar e ler a documentação das funções que existem no R nativo e nas outras extensões (<em>libraries</em> ou <em>packages</em>) do R que se pode baixar.</p>
+<p>Em R existem vários tipos de classes de dados mas nesta aula iremos apenas aprender 4 deles:</p>
+<ol style="list-style-type: decimal">
+<li>Caracteres (<em>strings</em>): Podem ser letras individuais ou frases longas, são usados como variáveis categóricas para diferenciar os grupos nos seus dados ou para criar anotações em gráficos.</li>
+<li>Números (<em>integers</em>, <em>numeric</em>, <em>complex</em>): Existem diversas classes de números, podem ser inteiros, decimais ou complexos.</li>
+<li>Fatores categóricos (<em>factors</em>): Fatores podem ser comparados a <em>strings</em> quando aplicados à distinção entre variáveis categóricas porém uma vantagem é que eles são ordenados e podem possuir níveis, o que <em>strings</em> não possuem.</li>
+<li>Lógicos (<code>TRUE, FALSE</code>): Valores lógicos servem para avaliar se alguma expressão é verdadeira ou falsa. Um exemplo simples é verificar de 4 é igual a 5.</li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="tipos-de-dados.html#cb5-1"></a><span class="dv">4</span> <span class="op">==</span><span class="st"> </span><span class="dv">5</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="tipos-de-dados.html#cb7-1"></a><span class="dv">1000</span> <span class="op">&lt;=</span><span class="st"> </span><span class="dv">-23</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="tipos-de-dados.html#cb9-1"></a><span class="st">&quot;abc&quot;</span> <span class="op">==</span><span class="st"> &quot;bca&quot;</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="tipos-de-dados.html#cb11-1"></a><span class="kw">is.numeric</span>(<span class="st">&quot;c&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p>Como imaginado, se tentamos avaliar as expressões acima, o resultado é <code>FALSE</code>, agora se tentamos outra expressão que seja verdadeira como as abaixo temos um retorno <code>TRUE</code></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="tipos-de-dados.html#cb13-1"></a><span class="dv">2</span><span class="op">*</span><span class="dv">10</span> <span class="op">==</span><span class="st"> </span><span class="dv">20</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="tipos-de-dados.html#cb15-1"></a><span class="dv">30</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">12</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="tipos-de-dados.html#cb17-1"></a><span class="st">&quot;string&quot;</span> <span class="op">==</span><span class="st"> &quot;string&quot;</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="tipos-de-dados.html#cb19-1"></a><span class="kw">is.numeric</span>(<span class="dv">99</span>)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>A função <code>ìs.numeric()</code> usada é entendida como a pergunta: “Esse objeto que eu estou te mostrando é numérico?”, se sim, a função retorna <code>TRUE</code> e se não, o retorno é <code>FALSE</code>.</p>
+<hr />
+<p>Para finalizar a primeira aula faremos alguns exercícios</p>
+<ol style="list-style-type: decimal">
+<li>Pesquisem para que servem as funções <code>rep()</code> e <code>seq()</code>;</li>
+<li>Usem essas funções para criar 3 vetores de qualquer tipo: numérico, string, lógico, etc.;</li>
+<li>Pesquisem como criar uma matriz e criem uma matriz com o alfabeto como mostrado abaixo.</li>
+</ol>
+<pre><code>##       [,1] [,2] [,3] [,4]
+##  [1,] &quot;A&quot;  &quot;B&quot;  &quot;C&quot;  &quot;D&quot; 
+##  [2,] &quot;E&quot;  &quot;F&quot;  &quot;G&quot;  &quot;H&quot; 
+##  [3,] &quot;I&quot;  &quot;J&quot;  &quot;K&quot;  &quot;L&quot; 
+##  [4,] &quot;M&quot;  &quot;N&quot;  &quot;O&quot;  &quot;P&quot; 
+##  [5,] &quot;Q&quot;  &quot;R&quot;  &quot;S&quot;  &quot;T&quot; 
+##  [6,] &quot;U&quot;  &quot;V&quot;  &quot;W&quot;  &quot;X&quot; 
+##  [7,] &quot;Y&quot;  &quot;Z&quot;  &quot;a&quot;  &quot;b&quot; 
+##  [8,] &quot;c&quot;  &quot;d&quot;  &quot;e&quot;  &quot;f&quot; 
+##  [9,] &quot;g&quot;  &quot;h&quot;  &quot;i&quot;  &quot;j&quot; 
+## [10,] &quot;k&quot;  &quot;l&quot;  &quot;m&quot;  &quot;n&quot; 
+## [11,] &quot;o&quot;  &quot;p&quot;  &quot;q&quot;  &quot;r&quot; 
+## [12,] &quot;s&quot;  &quot;t&quot;  &quot;u&quot;  &quot;v&quot; 
+## [13,] &quot;w&quot;  &quot;x&quot;  &quot;y&quot;  &quot;z&quot;</code></pre>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"toolbar": {
+"position": "static"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
