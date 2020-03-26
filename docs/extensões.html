@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Aulas de R</title>
-  <meta name="description" content="Aulas de R" />
+  <title>Aula 2 Extensões | Aulas de R</title>
+  <meta name="description" content="Aula 2 Extensões | Aulas de R" />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Aulas de R" />
+  <meta property="og:title" content="Aula 2 Extensões | Aulas de R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Aulas de R" />
+  <meta name="twitter:title" content="Aula 2 Extensões | Aulas de R" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="tipos-de-dados.html"/>
+<link rel="prev" href="tipos-de-dados.html"/>
+<link rel="next" href="tidyverse.html"/>
 <script src="assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -159,24 +159,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Aulas de R</h1>
-<p class="author"><em>Lucas Chagas Lima do Carmo</em></p>
-<p class="date"><em>2020-03-26</em></p>
-</div>
-<div id="introdução" class="section level1 unnumbered">
-<h1>Introdução</h1>
-<p>Para a primeira aula teremos que instalar <code>R</code> através do site <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a> e o programa <code>RStudio</code> que é um ambiente de desenvolvimento integrado (IDA) que facilita a o uso do <code>R</code>, ele pode ser baixado para o sistema operacional que você estiver usando neste link <a href="https://rstudio.com/products/rstudio/download/" class="uri">https://rstudio.com/products/rstudio/download/</a></p>
-<p>Você deve instalar o <code>R</code> antes do <code>RStudio</code>.</p>
-
+<div id="extensões" class="section level1">
+<h1><span class="header-section-number">Aula 2</span> Extensões</h1>
+<p>Uma forma de trabalhar com o <code>R</code> é usando extensões, comumente chamadas de “packages” ou “libraries”.
+Extensões são pacotes de funções escritas por outras pessoas cuja finalidade é facilitar algumas operações específicas por exemplo: eu gostaria de criar uma função que retorna a frase <code>Meu nome é &lt;nome&gt; e tenho &lt;idade&gt; anos de idade&gt;</code> onde seja substituido idade e nome pelos dados corretos.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1"><span class="co"># Criando a função</span></a>
+<a class="sourceLine" id="cb22-2" title="2">nome_idade &lt;-<span class="st"> </span><span class="cf">function</span>(nome, idade) {</a>
+<a class="sourceLine" id="cb22-3" title="3">    <span class="kw">return</span>(<span class="kw">paste</span>(<span class="st">&quot;Meu nome é&quot;</span>, nome, <span class="st">&quot;e tenho&quot;</span>, idade, <span class="st">&quot;anos de idade&quot;</span>))</a>
+<a class="sourceLine" id="cb22-4" title="4">}</a>
+<a class="sourceLine" id="cb22-5" title="5"></a>
+<a class="sourceLine" id="cb22-6" title="6"><span class="co"># Usando a função </span></a>
+<a class="sourceLine" id="cb22-7" title="7"><span class="kw">nome_idade</span>(<span class="st">&quot;Gilson&quot;</span>, <span class="dv">40</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;Meu nome é Gilson e tenho 40 anos de idade&quot;</code></pre>
+<p>Neste caso eu escrevi esta função simples para exemplificar, mas os pacotes podem ter muitas funções muito mais complexas que sejam mais difíceis de escrever.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="tipos-de-dados.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="tipos-de-dados.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="tidyverse.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>
