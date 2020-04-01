@@ -24,7 +24,7 @@
 <meta name="author" content="Lucas Chagas Lima do Carmo" />
 
 
-<meta name="date" content="2020-03-26" />
+<meta name="date" content="2020-04-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -142,6 +142,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1.9" data-path="tidyverse.html"><a href="tidyverse.html#ggplot2"><i class="fa fa-check"></i><b>2.1.9</b> <code>ggplot2</code></a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="3" data-path="operadores.html"><a href="operadores.html"><i class="fa fa-check"></i><b>3</b> Operadores</a><ul>
+<li class="chapter" data-level="3.1" data-path="operadores-aritméticos.html"><a href="operadores-aritméticos.html"><i class="fa fa-check"></i><b>3.1</b> Operadores aritméticos</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="operadores-aritméticos.html"><a href="operadores-aritméticos.html#exemplos"><i class="fa fa-check"></i><b>3.1.1</b> Exemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="operadores-lógicos.html"><a href="operadores-lógicos.html"><i class="fa fa-check"></i><b>3.2</b> Operadores Lógicos</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="operadores-lógicos.html"><a href="operadores-lógicos.html#exemplos-1"><i class="fa fa-check"></i><b>3.2.1</b> Exemplos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ggplot2-1.html"><a href="ggplot2-1.html"><i class="fa fa-check"></i><b>4</b> <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="4.1" data-path="introdução-1.html"><a href="introdução-1.html"><i class="fa fa-check"></i><b>4.1</b> Introdução</a></li>
+<li class="chapter" data-level="4.2" data-path="gramática-de-gráficos.html"><a href="gramática-de-gráficos.html"><i class="fa fa-check"></i><b>4.2</b> Gramática de Gráficos</a></li>
+<li class="chapter" data-level="4.3" data-path="instalação.html"><a href="instalação.html"><i class="fa fa-check"></i><b>4.3</b> Instalação</a></li>
+<li class="chapter" data-level="4.4" data-path="componentes-principais-dos-gráficos.html"><a href="componentes-principais-dos-gráficos.html"><i class="fa fa-check"></i><b>4.4</b> Componentes principais dos gráficos</a></li>
+<li class="chapter" data-level="4.5" data-path="cores-tamanhos-formas-e-outros-atributos-estéticos.html"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html"><i class="fa fa-check"></i><b>4.5</b> Cores, tamanhos, formas e outros atributos estéticos</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="regressões.html"><a href="regressões.html"><i class="fa fa-check"></i><b>5</b> Regressões</a><ul>
+<li class="chapter" data-level="5.1" data-path="regressões-lineares.html"><a href="regressões-lineares.html"><i class="fa fa-check"></i><b>5.1</b> Regressões Lineares</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="regressões-lineares.html"><a href="regressões-lineares.html#método-de-função"><i class="fa fa-check"></i><b>5.1.1</b> Método de função</a></li>
+<li class="chapter" data-level="5.1.2" data-path="regressões-lineares.html"><a href="regressões-lineares.html#método-ggplot2"><i class="fa fa-check"></i><b>5.1.2</b> Método <code>ggplot2</code></a></li>
+<li class="chapter" data-level="5.1.3" data-path="regressões-lineares.html"><a href="regressões-lineares.html#método-ggpmisc"><i class="fa fa-check"></i><b>5.1.3</b> Método <code>ggpmisc</code></a></li>
+<li class="chapter" data-level="5.1.4" data-path="regressões-lineares.html"><a href="regressões-lineares.html#método-ggpubr"><i class="fa fa-check"></i><b>5.1.4</b> Método <code>ggpubr</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
       </nav>
@@ -170,7 +194,7 @@ Extensões são pacotes de funções escritas por outras pessoas cuja finalidade
 <a class="sourceLine" id="cb22-5" title="5"></a>
 <a class="sourceLine" id="cb22-6" title="6"><span class="co"># Usando a função </span></a>
 <a class="sourceLine" id="cb22-7" title="7"><span class="kw">nome_idade</span>(<span class="st">&quot;Gilson&quot;</span>, <span class="dv">40</span>)</a></code></pre></div>
-<pre><code>## [1] &quot;Meu nome é Gilson e tenho 40 anos de idade&quot;</code></pre>
+<pre><code>[1] &quot;Meu nome é Gilson e tenho 40 anos de idade&quot;</code></pre>
 <p>Neste caso eu escrevi esta função simples para exemplificar, mas os pacotes podem ter muitas funções muito mais complexas que sejam mais difíceis de escrever.</p>
 </div>
             </section>
@@ -232,6 +256,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

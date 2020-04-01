@@ -14,6 +14,7 @@ language:
     proof: 'Proof. '
     remark: 'Remark. '
     solution: 'Solução. '
+    references: 'Referências '
   ui:
     edit: Edit
     chapter_name: 'Aula '
