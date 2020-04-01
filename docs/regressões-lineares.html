@@ -151,11 +151,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="ggplot2-1.html"><a href="ggplot2-1.html"><i class="fa fa-check"></i><b>4</b> <code>ggplot2</code></a><ul>
-<li class="chapter" data-level="4.1" data-path="introdução-1.html"><a href="introdução-1.html"><i class="fa fa-check"></i><b>4.1</b> Introdução</a></li>
-<li class="chapter" data-level="4.2" data-path="gramática-de-gráficos.html"><a href="gramática-de-gráficos.html"><i class="fa fa-check"></i><b>4.2</b> Gramática de Gráficos</a></li>
-<li class="chapter" data-level="4.3" data-path="instalação.html"><a href="instalação.html"><i class="fa fa-check"></i><b>4.3</b> Instalação</a></li>
-<li class="chapter" data-level="4.4" data-path="componentes-principais-dos-gráficos.html"><a href="componentes-principais-dos-gráficos.html"><i class="fa fa-check"></i><b>4.4</b> Componentes principais dos gráficos</a></li>
-<li class="chapter" data-level="4.5" data-path="cores-tamanhos-formas-e-outros-atributos-estéticos.html"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html"><i class="fa fa-check"></i><b>4.5</b> Cores, tamanhos, formas e outros atributos estéticos</a></li>
+<li class="chapter" data-level="4.1" data-path="gramática-de-gráficos.html"><a href="gramática-de-gráficos.html"><i class="fa fa-check"></i><b>4.1</b> Gramática de Gráficos</a></li>
+<li class="chapter" data-level="4.2" data-path="instalação.html"><a href="instalação.html"><i class="fa fa-check"></i><b>4.2</b> Instalação</a></li>
+<li class="chapter" data-level="4.3" data-path="componentes-principais-dos-gráficos.html"><a href="componentes-principais-dos-gráficos.html"><i class="fa fa-check"></i><b>4.3</b> Componentes principais dos gráficos</a></li>
+<li class="chapter" data-level="4.4" data-path="cores-tamanhos-formas-e-outros-atributos-estéticos.html"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html"><i class="fa fa-check"></i><b>4.4</b> Cores, tamanhos, formas e outros atributos estéticos</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="regressões.html"><a href="regressões.html"><i class="fa fa-check"></i><b>5</b> Regressões</a><ul>
 <li class="chapter" data-level="5.1" data-path="regressões-lineares.html"><a href="regressões-lineares.html"><i class="fa fa-check"></i><b>5.1</b> Regressões Lineares</a><ul>
@@ -238,28 +237,28 @@ Inclusive podemos visualizar estes dados usando a função <code>plot()</code> d
 <a class="sourceLine" id="cb116-7" title="7">calibracao &lt;-<span class="st"> </span><span class="kw">data.frame</span>(conc, abs)</a>
 <a class="sourceLine" id="cb116-8" title="8"></a>
 <a class="sourceLine" id="cb116-9" title="9">calibracao</a></code></pre></div>
-<pre><code>   conc        abs
-1     0  0.5491947
-2     1  3.7865350
-3     2  5.6399021
-4     3  6.9980071
-5     4  9.7091922
-6     5 11.0148905
-7     6 12.9632781
-8     7 15.2876632
-9     8 16.7226918
-10    9 19.4812093
-11   10 20.7145022
-12   11 23.8321920
-13   12 25.7530396
-14   13 26.7784644
-15   14 29.1225522
-16   15 31.0844944
-17   16 32.7187583
-18   17 34.5444460
-19   18 36.9188760
-20   19 38.7411352
-21   20 41.9888174</code></pre>
+<pre><code>   conc       abs
+1     0  1.296435
+2     1  2.809038
+3     2  5.654105
+4     3  7.503305
+5     4  9.351252
+6     5 11.374147
+7     6 13.169598
+8     7 15.280776
+9     8 17.086114
+10    9 19.832221
+11   10 21.222449
+12   11 23.890571
+13   12 25.654594
+14   13 26.835839
+15   14 28.503854
+16   15 31.122081
+17   16 33.381530
+18   17 35.768779
+19   18 37.865831
+20   19 38.759149
+21   20 41.788943</code></pre>
 <p>Com os dados gerados podemos gerar o modelo linear para os dados de <code>calibracao</code>.</p>
 <div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" title="1">fit_calib &lt;-<span class="st"> </span><span class="kw">lm</span>(abs <span class="op">~</span><span class="st"> </span>conc, <span class="dt">data =</span> calibracao)</a>
 <a class="sourceLine" id="cb118-2" title="2"></a>
@@ -269,32 +268,32 @@ Call:
 lm(formula = abs ~ conc, data = calibracao)
 
 Residuals:
-    Min      1Q  Median      3Q     Max 
--0.7146 -0.3498 -0.1572  0.3970  0.9336 
+     Min       1Q   Median       3Q      Max 
+-0.85819 -0.24362  0.00979  0.35669  0.54468 
 
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)  1.26379    0.19947   6.336 4.43e-06 ***
-conc         1.98957    0.01706 116.603  &lt; 2e-16 ***
+(Intercept)  1.28665    0.17141   7.506 4.26e-07 ***
+conc         2.00539    0.01466 136.773  &lt; 2e-16 ***
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
-Residual standard error: 0.4735 on 19 degrees of freedom
-Multiple R-squared:  0.9986,    Adjusted R-squared:  0.9985 
-F-statistic: 1.36e+04 on 1 and 19 DF,  p-value: &lt; 2.2e-16</code></pre>
-<p>Como esperado, o coeficiente angular é de aproximadamente 2 e o coeficiente linear que deveria ser 0 é de 1.2637879.
+Residual standard error: 0.4069 on 19 degrees of freedom
+Multiple R-squared:  0.999, Adjusted R-squared:  0.9989 
+F-statistic: 1.871e+04 on 1 and 19 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>Como esperado, o coeficiente angular é de aproximadamente 2 e o coeficiente linear que deveria ser 0 é de 1.2866474.
 Como todos os objetos, o objeto da classe <code>lm</code> possui uma estrutura.
 Podemos ver esta estrutura usando a função <code>str()</code>, que retorna a estrutura completa dos objetos, porém de uma forma não muito fácil de entender</p>
 <div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" title="1"><span class="kw">str</span>(fit_calib)</a></code></pre></div>
 <pre><code>List of 12
- $ coefficients : Named num [1:2] 1.26 1.99
+ $ coefficients : Named num [1:2] 1.29 2.01
   ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;(Intercept)&quot; &quot;conc&quot;
- $ residuals    : Named num [1:21] -0.715 0.533 0.397 -0.234 0.487 ...
+ $ residuals    : Named num [1:21] 0.00979 -0.48299 0.35669 0.2005 0.04306 ...
   ..- attr(*, &quot;names&quot;)= chr [1:21] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
- $ effects      : Named num [1:21] -96.965 55.208 0.408 -0.205 0.536 ...
+ $ effects      : Named num [1:21] -97.7945 55.6472 0.441 0.271 0.0997 ...
   ..- attr(*, &quot;names&quot;)= chr [1:21] &quot;(Intercept)&quot; &quot;conc&quot; &quot;&quot; &quot;&quot; ...
  $ rank         : int 2
- $ fitted.values: Named num [1:21] 1.26 3.25 5.24 7.23 9.22 ...
+ $ fitted.values: Named num [1:21] 1.29 3.29 5.3 7.3 9.31 ...
   ..- attr(*, &quot;names&quot;)= chr [1:21] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
  $ assign       : int [1:2] 0 1
  $ qr           :List of 5
@@ -326,7 +325,7 @@ Podemos ver esta estrutura usando a função <code>str()</code>, que retorna a e
   .. ..- attr(*, &quot;dataClasses&quot;)= Named chr [1:2] &quot;numeric&quot; &quot;numeric&quot;
   .. .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;abs&quot; &quot;conc&quot;
  $ model        :&#39;data.frame&#39;:  21 obs. of  2 variables:
-  ..$ abs : num [1:21] 0.549 3.787 5.64 6.998 9.709 ...
+  ..$ abs : num [1:21] 1.3 2.81 5.65 7.5 9.35 ...
   ..$ conc: int [1:21] 0 1 2 3 4 5 6 7 8 9 ...
   ..- attr(*, &quot;terms&quot;)=Classes &#39;terms&#39;, &#39;formula&#39;  language abs ~ conc
   .. .. ..- attr(*, &quot;variables&quot;)= language list(abs, conc)
@@ -347,31 +346,31 @@ Podemos ver esta estrutura usando a função <code>str()</code>, que retorna a e
 <div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" title="1"><span class="co"># coeficientes</span></a>
 <a class="sourceLine" id="cb122-2" title="2">fit_calib<span class="op">$</span>coefficients</a></code></pre></div>
 <pre><code>(Intercept)        conc 
-   1.263788    1.989573 </code></pre>
+   1.286647    2.005386 </code></pre>
 <div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" title="1"><span class="co"># residuais</span></a>
 <a class="sourceLine" id="cb124-2" title="2">fit_calib<span class="op">$</span>residuals</a></code></pre></div>
 <pre><code>           1            2            3            4            5            6            7            8            9           10           11 
--0.714593157  0.533174297  0.396968549 -0.234499291  0.487112924 -0.196761582 -0.237946771  0.096865425 -0.457678797  0.311265861 -0.445014061 
+ 0.009788038 -0.482994797  0.356686497  0.200499873  0.043060984  0.060570910 -0.149364090 -0.043572224 -0.243619797  0.497101998 -0.118056684 
           12           13           14           15           16           17           18           19           20           21 
- 0.683102906  0.614377635 -0.349770418  0.004744582 -0.022886062 -0.378195001 -0.542080145 -0.157222973 -0.324536652  0.933572730 </code></pre>
+ 0.544680006  0.303317103 -0.520823826 -0.858194846 -0.245353142  0.008709890  0.390573261  0.482239130 -0.629828125  0.394579840 </code></pre>
 <p>E para acessar elementos específicos destas listas usamos os operadores <code>[ ]</code></p>
 <div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" title="1"><span class="co"># coeficiente linear (intercept)</span></a>
 <a class="sourceLine" id="cb126-2" title="2">fit_calib<span class="op">$</span>coefficients[<span class="dv">1</span>]</a></code></pre></div>
 <pre><code>(Intercept) 
-   1.263788 </code></pre>
+   1.286647 </code></pre>
 <div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" title="1"><span class="co"># coeficiente angular</span></a>
 <a class="sourceLine" id="cb128-2" title="2">fit_calib<span class="op">$</span>coefficients[<span class="dv">2</span>]</a></code></pre></div>
 <pre><code>    conc 
-1.989573 </code></pre>
+2.005386 </code></pre>
 <div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" title="1"><span class="co"># valor do coeficiente linear (intercept)</span></a>
 <a class="sourceLine" id="cb130-2" title="2">fit_calib<span class="op">$</span>coefficients[[<span class="dv">1</span>]]</a></code></pre></div>
-<pre><code>[1] 1.263788</code></pre>
+<pre><code>[1] 1.286647</code></pre>
 <div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" title="1"><span class="co"># valor do coeficiente angular</span></a>
 <a class="sourceLine" id="cb132-2" title="2">fit_calib<span class="op">$</span>coefficients[[<span class="dv">2</span>]]</a></code></pre></div>
-<pre><code>[1] 1.989573</code></pre>
+<pre><code>[1] 2.005386</code></pre>
 <div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" title="1"><span class="co"># R quadrado</span></a>
 <a class="sourceLine" id="cb134-2" title="2"><span class="kw">summary</span>(fit_calib)<span class="op">$</span>r.squared</a></code></pre></div>
-<pre><code>[1] 0.9986045</code></pre>
+<pre><code>[1] 0.9989854</code></pre>
 <p>Claro que parece muito complicado ter que fazer tudo isso para extrair alguns dados e mesmo assim, existem várias formas de extraí-los o que causa muita confusão, portanto iremos explorar alguns métodos para extraír estes dados do objeto <code>lm()</code>.</p>
 <div id="método-de-função" class="section level3">
 <h3><span class="header-section-number">5.1.1</span> Método de função</h3>
@@ -403,7 +402,7 @@ Otimização de código não é a nossa prioridade agora.</p>
 <a class="sourceLine" id="cb136-22" title="22"><span class="co"># usando função nos dados de calibração</span></a>
 <a class="sourceLine" id="cb136-23" title="23"><span class="kw">extrair</span>(fit_calib)</a></code></pre></div>
 <pre><code>  Coeficiente.Linear Coeficiente.Angular R.quadrado
-1           1.263788            1.989573  0.9986045</code></pre>
+1           1.286647            2.005386  0.9989854</code></pre>
 <div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" title="1"><span class="co"># usando função nos dados de mpg</span></a>
 <a class="sourceLine" id="cb138-2" title="2"><span class="kw">extrair</span>(fit)</a></code></pre></div>
 <pre><code>  Coeficiente.Linear Coeficiente.Angular R.quadrado
@@ -430,7 +429,7 @@ Para criar um gráfico com os pontos e a linha de regressão precisamos apenas d
 <div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" title="1">coefs &lt;-<span class="st"> </span><span class="kw">extrair</span>(<span class="dt">fit =</span> fit_calib)</a>
 <a class="sourceLine" id="cb141-2" title="2">coefs</a></code></pre></div>
 <pre><code>  Coeficiente.Linear Coeficiente.Angular R.quadrado
-1           1.263788            1.989573  0.9986045</code></pre>
+1           1.286647            2.005386  0.9989854</code></pre>
 <div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" title="1"><span class="kw">ggplot</span>(calibracao,</a>
 <a class="sourceLine" id="cb143-2" title="2">             <span class="kw">aes</span>(</a>
 <a class="sourceLine" id="cb143-3" title="3">                <span class="dt">x =</span> conc,</a>
