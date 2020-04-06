@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4.5 Geoms | Aulas de R</title>
+  <meta name="description" content="4.5 Geoms | Aulas de R" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4.5 Geoms | Aulas de R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4.5 Geoms | Aulas de R" />
+  
+  
+  
+
+<meta name="author" content="Lucas Chagas Lima do Carmo" />
+
+
+<meta name="date" content="2020-04-05" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="cores-tamanhos-formas-e-outros-atributos-estéticos.html"/>
+<link rel="next" href="regressões.html"/>
+<script src="assets/header-attrs-2.1/header-attrs.js"></script>
+<script src="assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introdução</a></li>
+<li class="chapter" data-level="1" data-path="tipos-de-dados.html"><a href="tipos-de-dados.html"><i class="fa fa-check"></i><b>1</b> Tipos de Dados</a></li>
+<li class="chapter" data-level="2" data-path="extensões.html"><a href="extensões.html"><i class="fa fa-check"></i><b>2</b> Extensões</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>2.1</b> <code>tidyverse</code></a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="tidyverse.html"><a href="tidyverse.html#dplyr"><i class="fa fa-check"></i><b>2.1.1</b> <code>dplyr</code></a></li>
+<li class="chapter" data-level="2.1.2" data-path="tidyverse.html"><a href="tidyverse.html#tidyr"><i class="fa fa-check"></i><b>2.1.2</b> <code>tidyr</code></a></li>
+<li class="chapter" data-level="2.1.3" data-path="tidyverse.html"><a href="tidyverse.html#readr"><i class="fa fa-check"></i><b>2.1.3</b> <code>readr</code></a></li>
+<li class="chapter" data-level="2.1.4" data-path="tidyverse.html"><a href="tidyverse.html#stringr"><i class="fa fa-check"></i><b>2.1.4</b> <code>stringr</code></a></li>
+<li class="chapter" data-level="2.1.5" data-path="tidyverse.html"><a href="tidyverse.html#tibble"><i class="fa fa-check"></i><b>2.1.5</b> <code>tibble</code></a></li>
+<li class="chapter" data-level="2.1.6" data-path="tidyverse.html"><a href="tidyverse.html#purrr"><i class="fa fa-check"></i><b>2.1.6</b> <code>purrr</code></a></li>
+<li class="chapter" data-level="2.1.7" data-path="tidyverse.html"><a href="tidyverse.html#forcats"><i class="fa fa-check"></i><b>2.1.7</b> <code>forcats</code></a></li>
+<li class="chapter" data-level="2.1.8" data-path="tidyverse.html"><a href="tidyverse.html#magrittr"><i class="fa fa-check"></i><b>2.1.8</b> <code>magrittr</code></a></li>
+<li class="chapter" data-level="2.1.9" data-path="tidyverse.html"><a href="tidyverse.html#ggplot2"><i class="fa fa-check"></i><b>2.1.9</b> <code>ggplot2</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="operadores.html"><a href="operadores.html"><i class="fa fa-check"></i><b>3</b> Operadores</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="operadores-aritméticos.html"><a href="operadores-aritméticos.html"><i class="fa fa-check"></i><b>3.1</b> Operadores aritméticos</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="operadores-aritméticos.html"><a href="operadores-aritméticos.html#exemplos"><i class="fa fa-check"></i><b>3.1.1</b> Exemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="operadores-lógicos.html"><a href="operadores-lógicos.html"><i class="fa fa-check"></i><b>3.2</b> Operadores Lógicos</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="operadores-lógicos.html"><a href="operadores-lógicos.html#exemplos-1"><i class="fa fa-check"></i><b>3.2.1</b> Exemplos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ggplot2-1.html"><a href="ggplot2-1.html"><i class="fa fa-check"></i><b>4</b> <code>ggplot2</code></a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="gramática-de-gráficos.html"><a href="gramática-de-gráficos.html"><i class="fa fa-check"></i><b>4.1</b> Gramática de Gráficos</a></li>
+<li class="chapter" data-level="4.2" data-path="instalação.html"><a href="instalação.html"><i class="fa fa-check"></i><b>4.2</b> Instalação</a></li>
+<li class="chapter" data-level="4.3" data-path="componentes-principais-dos-gráficos.html"><a href="componentes-principais-dos-gráficos.html"><i class="fa fa-check"></i><b>4.3</b> Componentes principais dos gráficos</a></li>
+<li class="chapter" data-level="4.4" data-path="cores-tamanhos-formas-e-outros-atributos-estéticos.html"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html"><i class="fa fa-check"></i><b>4.4</b> Cores, tamanhos, formas e outros atributos estéticos</a></li>
+<li class="chapter" data-level="4.5" data-path="geoms.html"><a href="geoms.html"><i class="fa fa-check"></i><b>4.5</b> Geoms</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="geoms.html"><a href="geoms.html#geoms-individuais"><i class="fa fa-check"></i><b>4.5.1</b> Geoms individuais</a></li>
+<li class="chapter" data-level="4.5.2" data-path="geoms.html"><a href="geoms.html#geoms-coletivos"><i class="fa fa-check"></i><b>4.5.2</b> Geoms coletivos</a></li>
+<li class="chapter" data-level="4.5.3" data-path="geoms.html"><a href="geoms.html#resumos-estatísticos"><i class="fa fa-check"></i><b>4.5.3</b> Resumos estatísticos</a></li>
+<li class="chapter" data-level="4.5.4" data-path="geoms.html"><a href="geoms.html#resolvendo-overplotting"><i class="fa fa-check"></i><b>4.5.4</b> Resolvendo <em>overplotting</em></a></li>
+<li class="chapter" data-level="4.5.5" data-path="geoms.html"><a href="geoms.html#anotações"><i class="fa fa-check"></i><b>4.5.5</b> Anotações</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="regressões.html"><a href="regressões.html"><i class="fa fa-check"></i><b>5</b> Regressões</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="regressões-lineares.html"><a href="regressões-lineares.html"><i class="fa fa-check"></i><b>5.1</b> Regressões Lineares</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="regressões-lineares.html"><a href="regressões-lineares.html#método-de-função"><i class="fa fa-check"></i><b>5.1.1</b> Método de função</a></li>
+<li class="chapter" data-level="5.1.2" data-path="regressões-lineares.html"><a href="regressões-lineares.html#método-ggplot2"><i class="fa fa-check"></i><b>5.1.2</b> Método <code>ggplot2</code></a></li>
+<li class="chapter" data-level="5.1.3" data-path="regressões-lineares.html"><a href="regressões-lineares.html#método-ggpmisc"><i class="fa fa-check"></i><b>5.1.3</b> Método <code>ggpmisc</code></a></li>
+<li class="chapter" data-level="5.1.4" data-path="regressões-lineares.html"><a href="regressões-lineares.html#método-ggpubr"><i class="fa fa-check"></i><b>5.1.4</b> Método <code>ggpubr</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Aulas de R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="geoms" class="section level2" number="4.5">
+<h2><span class="header-section-number">4.5</span> Geoms</h2>
+<div id="geoms-individuais" class="section level3" number="4.5.1">
+<h3><span class="header-section-number">4.5.1</span> Geoms individuais</h3>
+<p>Estes <code>geoms</code> são os fundamentais para a construção de <em>plots</em>, podem ser por sí um gráfico completo ou podem compor gráficos mais complexos.</p>
+<p>Cada um destes <code>geoms</code> são bidimensionais e requerem estéticas de ambos <code>x</code> e <code>y</code>.
+Todos eles entendem <code>color</code> e <code>size</code> como sendo parâmetros de mapeamento estético e os geoms que contém área interna como <code>geom_bar</code> e <code>geom_polygon</code> também entendem o parametro <code>fill</code> como mapeamento.
+Estes geoms estarão listados abaixo:</p>
+<ul>
+<li><code>geom_area()</code>: cria um <em>plot</em> de área que é um gráfico de linha com a área abaixo da linha preenchida. Dados agrupados são dispostos no gráfico sobrepostos.</li>
+<li><code>geom_bar(stat = "identity")</code>: gráfico de barras, é necessário especificar o <code>stat = "identity"</code> porque o padrão do <code>geom_bar</code> é um <em>plot</em> de frequência, tornando-o essencialmente um gráfico unidimensional. Com a estatística definida como <em>identity</em> no eixo x ficam os valores especificados pela estética x e no eixo y os valores especificados pela estética y.</li>
+<li><code>geom_line()</code>: gráfico de linhas que conecta os pontos na direção da esquerda para a direita, <code>geom_path()</code> funciona de forma similar porém conecta os pontos na ordem que estão dispostos os dados. Os mapeamentos estéticos que são aceitos por estes geoms são <code>linetype</code> (ou <code>lty</code> para abreviar), onde diferentes linhas serão geradas para cada grupo e <code>group</code> que é a especificação de dados agrupados sem ter efeito na visualização dentro do gráfico.</li>
+<li><code>geom_point()</code>: gera um gráfico de dispersão, aceita o mapeamento estético <code>shape</code> que gera diferentes formatos de pontos dependendo do grupo.</li>
+<li><code>geom_text()</code>: usado quando em vez de desenhar pontos nas coordenadas, desenhar texto, seja palavras ou letras.</li>
+<li><code>geom_polygon()</code>: gera polígonos preenchidos onde cada vértice é uma linha no dataframe com as coordenadas de x e y em colunas separadas. É util para construção de mapas.</li>
+<li><code>geom_rect()</code>, <code>geom_tile()</code> e <code>geom_raster()</code>: geram retângulos. Os parâmetros necessários para <code>geom_rect()</code> são as coordenadas máximas e mínimas das faces <code>x</code> e <code>y</code> sendo <code>xmin</code>, <code>xmax</code>, <code>ymin</code> e <code>ymax</code>. <code>geom_tile()</code> é exatamente o mesmo porém com <code>x</code> e <code>y</code> sendo as coordenadas do centro do retângulo e os parâmetros <code>width</code> e <code>height</code> como a largura e altura respectivamente. <code>geom_raster()</code> é usado caso o tamanho de todos os retângulos seja o mesmo para aumentar a velocidade da criação do gráfico.</li>
+</ul>
+<p>Cada um destes geoms será demonstrado nas figuras abaixo.
+Observe as semelhanças e diferenças dos eixos <code>x</code> e <code>y</code>, alguns extrapolam os valores estabelecidos pelos dados e podem estender os limítes dos eixos.</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="geoms.html#cb109-1"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span> (</span>
+<span id="cb109-2"><a href="geoms.html#cb109-2"></a>    x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="fl">3.4</span>),</span>
+<span id="cb109-3"><a href="geoms.html#cb109-3"></a>    y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="fl">5.4</span>),</span>
+<span id="cb109-4"><a href="geoms.html#cb109-4"></a>    label &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;a&quot;</span>)</span>
+<span id="cb109-5"><a href="geoms.html#cb109-5"></a>)</span>
+<span id="cb109-6"><a href="geoms.html#cb109-6"></a></span>
+<span id="cb109-7"><a href="geoms.html#cb109-7"></a>p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(</span>
+<span id="cb109-8"><a href="geoms.html#cb109-8"></a>    df, <span class="kw">aes</span>(x, y, <span class="dt">label =</span> label)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb109-9"><a href="geoms.html#cb109-9"></a><span class="st">    </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="ot">NULL</span>, <span class="dt">y =</span> <span class="ot">NULL</span>) <span class="op">+</span><span class="st"> </span><span class="co"># esconde o nome dos eixos</span></span>
+<span id="cb109-10"><a href="geoms.html#cb109-10"></a><span class="st">    </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>)) <span class="co"># diminui tamanho do texto</span></span>
+<span id="cb109-11"><a href="geoms.html#cb109-11"></a>                </span>
+<span id="cb109-12"><a href="geoms.html#cb109-12"></a>p1 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;ponto&quot;</span>)</span>
+<span id="cb109-13"><a href="geoms.html#cb109-13"></a>p2 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_text</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;texto&quot;</span>)</span>
+<span id="cb109-14"><a href="geoms.html#cb109-14"></a>p3 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;barra&quot;</span>)</span>
+<span id="cb109-15"><a href="geoms.html#cb109-15"></a>p4 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_tile</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;raster&quot;</span>)</span>
+<span id="cb109-16"><a href="geoms.html#cb109-16"></a></span>
+<span id="cb109-17"><a href="geoms.html#cb109-17"></a>p1 <span class="op">+</span><span class="st"> </span>p2 <span class="op">+</span><span class="st"> </span>p3 <span class="op">+</span><span class="st"> </span>p4</span></code></pre></div>
+<p><img src="_main_files/figure-html/geoms-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="geoms.html#cb110-1"></a>p5 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;linha&quot;</span>)</span>
+<span id="cb110-2"><a href="geoms.html#cb110-2"></a>p6 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_area</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;área&quot;</span>)</span>
+<span id="cb110-3"><a href="geoms.html#cb110-3"></a>p7 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_path</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;caminho&quot;</span>)</span>
+<span id="cb110-4"><a href="geoms.html#cb110-4"></a>p8 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_polygon</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;polígono&quot;</span>)</span>
+<span id="cb110-5"><a href="geoms.html#cb110-5"></a></span>
+<span id="cb110-6"><a href="geoms.html#cb110-6"></a>p5 <span class="op">+</span><span class="st"> </span>p6 <span class="op">+</span><span class="st"> </span>p7 <span class="op">+</span><span class="st"> </span>p8</span></code></pre></div>
+<p><img src="_main_files/figure-html/geoms2-1.png" width="2100" style="display: block; margin: auto;" /></p>
+</div>
+<div id="geoms-coletivos" class="section level3" number="4.5.2">
+<h3><span class="header-section-number">4.5.2</span> Geoms coletivos</h3>
+<p>Os geoms <strong>individuais</strong> criam objetos gráficos para cada observação ou linha da tabela contendo os dados, por exemplo, cada ponto de <code>geom_point()</code> representa uma linha de dados mas os geoms <strong>coletivos</strong> mostram várias observações, ou linhas, por elemento gráfico gerado.
+Isso pode ser o resultado de um resumo estatístico como um <em>boxplot</em> ou resultado de como os dados devem ser dispostos.
+Linhas e <em>path</em> estão no meio termo entre <strong>individuais</strong> e <strong>coletivos</strong> porque apesar de cada extremidade de uma linha ser apenas uma observação, o segmento é o conjunto de duas observações da tabela, ou seja, dois pontos.
+Para controlar o comportamento devemos usar a estética <code>group</code>.</p>
+<p>Por padrão, a estética <code>group</code> é mapeada para as variáveis discretas (ou categóricas) dos dados fornecidos à função <code>ggplot()</code> e na maioria dos casos o padrão é o suficiente para que os dados fiquem organizados no gráfico, porém quando não há variável discreta usada, é necessário que seja definido explicitamente um mapeamento agrupador dos dados.</p>
+<p>Há três casos comuns onde o padrão não é suficiente.
+Estes serão considerados abaixo.
+Para os exemplos a seguir será usado o <em>dataset</em> <code>Oxboys</code> do pacote <code>nlme</code>, que contém a altura e idade de 26 homens registrado em nove ocasiões diferentes.</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="geoms.html#cb111-1"></a><span class="kw">data</span>(Oxboys, <span class="dt">package =</span> <span class="st">&quot;nlme&quot;</span>)</span>
+<span id="cb111-2"><a href="geoms.html#cb111-2"></a><span class="kw">head</span>(Oxboys)</span></code></pre></div>
+<pre><code>Grouped Data: height ~ age | Subject
+  Subject     age height Occasion
+1       1 -1.0000  140.5        1
+2       1 -0.7479  143.4        2
+3       1 -0.4630  144.8        3
+4       1 -0.1643  147.1        4
+5       1 -0.0027  147.7        5
+6       1  0.2466  150.2        6</code></pre>
+<div id="grupos-múltiplos-uma-estética" class="section level4" number="4.5.2.1">
+<h4><span class="header-section-number">4.5.2.1</span> Grupos múltiplos, uma estética</h4>
+<p>Em várias situações é necessário separar os dados em grupos mas com a mesma estética.
+Em outras palavras: se deseja visualizar sujeitos distintos mas não é necessário identificá-los usando cores ou outros artifícios visuais.
+Isto é comum para estudos onde se quer ver a diferença entre vários sujeitos ao longo do tempo.</p>
+<p>Para exemplificar, abaixo na esquerda um <em>plot</em> com múltiplos grupos e uma estética e à direita múltiplos grupos e múltiplas estéticas:</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="geoms.html#cb113-1"></a>p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(Oxboys, <span class="kw">aes</span>(age, height, <span class="dt">group =</span> Subject)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb113-2"><a href="geoms.html#cb113-2"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb113-3"><a href="geoms.html#cb113-3"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></span>
+<span id="cb113-4"><a href="geoms.html#cb113-4"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Uma estética&quot;</span>)</span>
+<span id="cb113-5"><a href="geoms.html#cb113-5"></a></span>
+<span id="cb113-6"><a href="geoms.html#cb113-6"></a>p2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(Oxboys, <span class="kw">aes</span>(age, height, <span class="dt">color =</span> Subject)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb113-7"><a href="geoms.html#cb113-7"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb113-8"><a href="geoms.html#cb113-8"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb113-9"><a href="geoms.html#cb113-9"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Múltiplas estéticas&quot;</span>)</span>
+<span id="cb113-10"><a href="geoms.html#cb113-10"></a></span>
+<span id="cb113-11"><a href="geoms.html#cb113-11"></a>p1 <span class="op">+</span><span class="st"> </span>p2</span></code></pre></div>
+<p><img src="_main_files/figure-html/oxboys1-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<p>Neste caso o padrão de agrupamento não funciona e se não for definido explicitamente ou se for definido incorretamente o <em>plot</em> terá uma aparência de “lâmina de serra”.</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="geoms.html#cb114-1"></a><span class="kw">ggplot</span>(Oxboys, <span class="kw">aes</span>(age, height)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb114-2"><a href="geoms.html#cb114-2"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb114-3"><a href="geoms.html#cb114-3"></a><span class="st">  </span><span class="kw">geom_line</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/sawtooth-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<p>Se um <code>group</code> não for definido por uma única variável e sim por combinação de várias é possível usar a função <code>interaction()</code> para combiná-las, por exemplo: <code>aes(interaction(identidade_escola, identidade_aluno))</code>.</p>
+</div>
+</div>
+<div id="resumos-estatísticos" class="section level3" number="4.5.3">
+<h3><span class="header-section-number">4.5.3</span> Resumos estatísticos</h3>
+</div>
+<div id="resolvendo-overplotting" class="section level3" number="4.5.4">
+<h3><span class="header-section-number">4.5.4</span> Resolvendo <em>overplotting</em></h3>
+</div>
+<div id="anotações" class="section level3" number="4.5.5">
+<h3><span class="header-section-number">4.5.5</span> Anotações</h3>
+
+</div>
+</div>
+<!-- </div> -->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="regressões.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"toolbar": {
+"position": "static"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
