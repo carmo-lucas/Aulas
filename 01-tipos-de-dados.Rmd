@@ -1,0 +1,91 @@
+# Tipos de Dados
+
+Para esta aula iremos apenas usar o *console*.
+Na configuração padrão do RStudio o console é o painel esquerdo-inferior.
+O console é onde você vai mandar os comandos para o R executar linha a linha.
+Para comandos mais complicados com várias linhas é mais interessante escrever um script.
+Para criar um script use o atalho `Ctrl + Shift + N` no Windows ou `Cmd + Shift + N` no MacOs.
+
+Primeiro iremos discutir o que são objetos e que tipos de objetos podemos criar ou importar para dentro do R.
+
+---
+
+No R e em outras linguagens de programação existe o conceito de *objeto*.
+Um objeto pode ser um vetor ou uma matriz de valores numéricos.
+Pode ser uma tabela com várias linhas e colunas, pode ser uma fórmula também.
+O termo *objeto* é um termo genérico com as aplicações citadas e muitas outras.
+
+Para criar um objeto, usamos o operador `<-`, por exemplo:
+
+```{r}
+objeto <- 1000
+```
+
+Este objeto contém o valor `1000` então se você decidir imprimir (`print()`) este objeto o valor que aparecerá para voce é de 1000.
+Os objetos podem conter outros tipos de valores também, por exemplo frases:
+
+```{r}
+frase <- "The first soft snow: leaves of the awed jonquil bow low"
+```
+
+Se você tentar usar `print(frase)` o resultado vai ser o texto que foi atribuído a este objeto.
+
+Outro tipo de objeto são vetores (em outras linguagens de programação são chamados *arrays*),
+Vetores são objetos que contém vários valores numéricos ou de texto.
+
+```{r vetores}
+
+vetor <- c(0, 4, 3, 5, 6, 4, 2)
+
+print(vetor)
+
+```
+
+Até agora foram usadas duas funções: `print()` e `c()`. 
+Para você descobrir o que estas funções fazem você pode digitar `?print()` ou `?c()` no console e ver a definição e os argumentos que elas precisam.
+Iremos discutir funções mais pra frente mas é bom entender desde o início como achar as informações relevantes para que não se perca tempo.
+Boa parte de aprender R é pesquisar e ler a documentação das funções que existem no R nativo e nas outras extensões (*libraries* ou *packages*) do R que se pode baixar.
+
+Em R existem vários tipos de classes de dados mas nesta aula iremos apenas aprender 4 deles:
+  
+  1. Caracteres (*strings*): Podem ser letras individuais ou frases longas, são usados como variáveis categóricas para diferenciar os grupos nos seus dados ou para criar anotações em gráficos.
+  2. Números (*integers*, *numeric*, *complex*): Existem diversas classes de números, podem ser inteiros, decimais ou complexos.
+  3. Fatores categóricos (*factors*): Fatores podem ser comparados a *strings* quando aplicados à distinção entre variáveis categóricas porém uma vantagem é que eles são ordenados e podem possuir níveis, o que *strings* não possuem.
+  4. Lógicos (`TRUE, FALSE`): Valores lógicos servem para avaliar se alguma expressão é verdadeira ou falsa. Um exemplo simples é verificar de 4 é igual a 5.
+  
+```{r false-expressions}
+4 == 5
+
+1000 <= -23
+
+"abc" == "bca"
+
+is.numeric("c")
+```
+
+Como imaginado, se tentamos avaliar as expressões acima, o resultado é `FALSE`, agora se tentamos outra expressão que seja verdadeira como as abaixo temos um retorno `TRUE`
+
+```{r true-expressions}
+2*10 == 20
+
+30 > 12
+
+"string" == "string"
+
+is.numeric(99)
+```
+
+A função `ìs.numeric()` usada é entendida como a pergunta: "Esse objeto que eu estou te mostrando é numérico?", se sim, a função retorna `TRUE` e se não, o retorno é `FALSE`.
+
+---
+
+Para finalizar a primeira aula faremos alguns exercícios
+
+1. Pesquisem para que servem as funções `rep()` e `seq()`;
+2. Usem essas funções para criar 3 vetores de qualquer tipo: numérico, string, lógico, etc.;
+3. Pesquisem como criar uma matriz e criem uma matriz com o alfabeto como mostrado abaixo.
+	
+```{r matriz-exercicio, echo=FALSE}
+matrix(data = c(LETTERS,letters), nrow = 13, ncol = 4, byrow = TRUE)
+```
+

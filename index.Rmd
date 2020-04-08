@@ -1,0 +1,39 @@
+---
+title: "Aulas de R"
+author: "Lucas Chagas Lima do Carmo"
+date: "`r Sys.Date()`"
+link-citations: yes
+documentclass: book
+site: bookdown::bookdown_site
+output:
+  bookdown::gitbook:
+    config:
+      toolbar:
+        position: static
+    lib_dir: assets
+    split_by: section
+bibliography: ["library.bib","packages.bib"]
+biblio-style: "apalike"
+
+---
+
+# Introdução {.unnumbered}
+
+```{r pacotes-bib, message=FALSE, warning=FALSE, include=FALSE}
+library(knitr)
+library(tidyverse)
+library(patchwork)
+
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'tidyverse', 'ggplot2'
+), 'packages.bib')
+
+knitr::opts_chunk$set(error = FALSE, warning = FALSE, fig.align = "center", tidy = FALSE, comment = "",
+                      dpi = 300, cache = FALSE, fig.show = "hold", fig.height = 3)
+
+
+```
+
+Para a primeira aula teremos que instalar `R` através do site <https://cran.r-project.org/> e o programa `RStudio` que é um ambiente de desenvolvimento integrado (IDE) que facilita a o uso do `R`, ele pode ser baixado para o sistema operacional que você estiver usando neste link <https://rstudio.com/products/rstudio/download/>
+
+Você deve instalar o `R` antes do `RStudio`.

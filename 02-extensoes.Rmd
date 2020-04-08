@@ -1,0 +1,157 @@
+# Extensões 
+
+Uma forma de trabalhar com o `R` é usando extensões, comumente chamadas de "packages" ou "libraries".
+Extensões são pacotes de funções escritas por outras pessoas cuja finalidade é facilitar algumas operações específicas por exemplo: eu gostaria de criar uma função que retorna a frase `Meu nome é <nome> e tenho <idade> anos de idade>` onde seja substituido idade e nome pelos dados corretos.
+
+```{r funcao}
+
+# Criando a função
+nome_idade <- function(nome, idade) {
+	return(paste("Meu nome é", nome, "e tenho", idade, "anos de idade"))
+}
+
+# Usando a função 
+nome_idade("Gilson", 40)
+
+```
+
+Neste caso eu escrevi esta função simples para exemplificar, mas os pacotes podem ter muitas funções muito mais complexas que sejam mais difíceis de escrever.
+
+## `tidyverse`
+
+As extensões portanto são pacotes com funções que servem para ajudar a fazer algo específico.
+Os pacotes que gostaria de focar são os contidos na coleção `tidyverse` que contém os pacotes: 
+`ggplot2`, `dplyr`, `readr`, `tidyr`,`stringr` ,`forcats`, `purrr` e `tibble`. 
+Todos estes pacotes seguem a mesma filosofia de que os dados devem estar organizados de uma forma *tidy* descrita por @wickham2014, ou seja: cada coluna é uma variável e cada linha uma observação.
+
+Cada um desses pacotes tem uma finalidade específica, com seus conjuntos de funções específicos.
+
+### `dplyr`
+
+O`dplyr::` é um pacote que serve para manipular os dados no formato de `dataframes` através de operações de filtragem de linhas (`filter()`), colunas (`select()`), agrupamento dos dados de acordo com as variáveis categóricas (`group_by()`), resumir os dados usando `summarise()` e reordená-los usando `arrange()`.
+Existem *cheat sheets* que são as "colas" com as funções existentes para os pacotes mais usados e exemplos úteis.
+[Cheat sheet dplyr](https://github.com/rstudio/cheatsheets/blob/master/data-transformation.pdf).
+
+### `tidyr` {#tidyr}
+
+O pacote `tidyr::` é muito útil para organizar os dados da forma que o `R` e consequentemente os pacotes to `tidyverse` leiam melhor.
+As funções mais importantes neste pacote são a `pivot_longer()`, que substituiu `gather()` e `pivot_wider()` que substituiu `spread()`. 
+Estas funções servem para transformar os dados de um formato "largo" para "longo" e vice-versa.
+Explicando visualmente é mais fácil de entender, portanto de acordo com o exemplo abaixo:
+
+```{r wide-table, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
+
+wide <- tibble(
+	"Pop." = letters[1:10],
+	`2009` = c(1,3,5,7,3,67,3,7,8,4),
+	`2010` = c(3,5,2,6,3,2,5,2,64,6),
+	`2011` = c(54,3,6,2,4,7,3,5,7,8),
+	`2012` = c(536,63,5,2,3,4,5,6,7,7))
+
+```
+
+```{r echo=FALSE}
+wide
+```
+
+Aqui temos uma tabela no formado "largo", onde tenho uma coluna por ano. 
+Não há nada de errado com essa formatação, mas usando as funções de base do `R` e as funções do conjunto `tidyverse` é mais fácil que transformemos esta tabela para o formato "longo" como no exemplo abaixo.
+
+```{r wide-to-long, echo=TRUE, message=FALSE, warning=FALSE}
+
+long <- wide %>% 
+	tidyr::pivot_longer(
+		cols = "2009":"2012", # Quais colunas quero mudar
+		names_to = "Ano",     # Nome da variável que vai conter o nome das colunas
+		values_to = "Valor")  # Nome da variável que vai conter os valores
+
+
+long
+```
+
+O pacote `tidyr` contém outras funções para separar ou unir valores em colunas.
+Você pode achar mais informações sobre as funçõs no [site](https://tidyr.tidyverse.org/reference/index.html) do pacote. 
+
+### `readr`
+
+O pacote `readr` serve para importar arquivos para dentro do ambiente do `R`.
+Este pacote funciona melhor com formatos de data retangular, ou seja, tabelas.
+
+As funções principais são:
+
+- `read_csv()`: lê arquivos tipo `.csv` ou `.txt` com colunas separados por `,` e decimal como `.`.
+- `read_tsv()`: lê arquivos de texto tipo `.txt` com colunas separadas por tabulação (`\t`).
+- `read_delim()`: com esta função, podem ser lidos arquivos de texto especificando o delimitador usando o argumento `delim = `, onde `delim` pode ser qualquer caractere.
+- `read_table()`: lê arquivos de texto cujas colunas são separadas por espaços em branco.
+	
+Outro pacote interessante para importar dados para o ambiente do `R` é ao pacote [`readxl::`](https://readxl.tidyverse.org/) para importar arquivos `.xlsx` direto do Excel ou o pacote [`googlesheets::`](https://github.com/jennybc/googlesheets) para importar dados armazenados no seu Google Drive.
+
+### `stringr`
+
+Este pacote serve para manipulação, adição, extração, ordenação de `strings`. 
+Strings são classificadas como qualquer conjunto de caracteres, podendo constituir palavras ou frases ou qualquer sequência de caracteres.
+Este pacote é muito útil para extrair palavras específicas de textos ou para verificar se algum termo especificado está presente no texto estudado.
+[Stringr Cheat Sheet](https://github.com/rstudio/cheatsheets/blob/master/strings.pdf)
+
+### `tibble`
+
+`tibbles` são equivalentes a `dataframes`, são tabelas que contém dados.
+A diferença é que alguns `tibbles` respondem de forma diferente à algumas funções, por exemplo, a nossa tabela "longa" da seção \@ref(tidyr) é uma `tibble`, portanto quando imprimimos ela no console apenas vemos as primeiras 10 linhas, porém quando tentamos imprimir como um `data.frame` todas as linhas (até o limite de 1000) são impressas, o que pode ser exagero quando se quer ter noção dos dados.
+
+```{r}
+# Imprimindo como tibble
+
+print(long)
+
+# Imprimindo como dataframe
+
+print(as.data.frame(long)) 
+```
+
+Este pacote também permite que sejam criadas tabelas usando as funções `tibble()`, que funciona como `data.frame()` e `tribble()` que permite criar tabelas usando uma formatação mais intuitiva.
+
+```{r}
+# Função tibble
+
+tibble(x = 1:5, y = 1, z = x ^ 2 + y)
+
+
+# Função tribble
+
+tribble(
+  ~x, ~y,  ~z,
+  "a", 2,  3.6,
+  "b", 1,  8.5
+)
+
+```
+
+### `purrr`
+
+O pacote `purrr` serve programação funcional, ou seja, aplicação de funções criadas tanto pelo usuário quanto pelos desenvolvedores em vários objetos ao mesmo tempo de forma programática.
+Este pacote será explorado mais a frente quando outros conhecimentos já estiverem sido consolidados.
+[purrr Cheat Sheet](https://github.com/rstudio/cheatsheets/blob/master/purrr.pdf)
+
+### `forcats`
+
+Este pacote serve para manipulação e ordenação de dados do tipo `factor`, os fatores, também chamados variáveis categóricas.
+Pode ser muito útil ordenando variáveis para construção de gráficos, porém sua utilidade é bastante limitada.
+suas funções serão explicadas de acordo que se tornem úteis.
+
+### `magrittr`
+
+Este pacote contém alguns operadores que servem para tornar o código mais amigável a humanos. 
+O operador principal é o *pipe* que serve para pegar um objeto ou o *output* de uma função e passá-la à proxima operação, por exemplo: `long %>% filter (Ano == "2010")` onde eu filtro as linhas da `tibble` `long` onde o Ano é igual a 2010.
+
+Em outros termos, na sintaxe mais matemática se eu tenho `g(f(x))` o equivalente com o *pipe* seria `f(x) %>% g()` ou até `x %>% f() %>% g()`.
+É uma forma de colocar a ordem das operações mais legível para quem está escrevendo ou lendo o código.
+
+Além do *pipe* existem outros operadores que o pacote providencia que serão explorados a medida que forem necessários e utilizados.
+
+### `ggplot2`
+
+O `ggplot2`por sí merece seu próprio capítulo e várias aulas, porém aqui irei colocar alguns links interessantes para quem estive interessado em ir aprendendo desde já.
+O capítulo [Data Visualization](https://r4ds.had.co.nz/data-visualisation.html) e o capítulo [Graphics for communication](https://r4ds.had.co.nz/graphics-for-communication.html) do livro [R for Data Science](https://r4ds.had.co.nz/) e o [Cheat Sheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf) um site com vários exemplos de gráficos criados com `ggplot2` e outros pacotes, [STHDA](http://www.sthda.com/english/), outro site com exemplos para gráficos com `R` [Cookbook for R](http://www.cookbook-r.com/Graphs/) e o livro do Hadley Wickham [ggplot2: Elegant Graphics for Data Analysis](https://ggplot2-book.org/).
+
+***
+

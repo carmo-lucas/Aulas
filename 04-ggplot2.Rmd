@@ -1,0 +1,261 @@
+# `ggplot2`
+
+O ggplot2 é um pacote para visualização de dados que serve tanto para análise de dados exploratória quanto para criação de *plots* para publicação em revistas científicas.
+O termo ggplot vem de *Grammar of Graphics*, um conceito introduzido por @chambers1983 que significa __gramática de gráficos__, um modelo de construção de gráficos com componentes independentes que podem ser organizados de diversas formas.
+
+Este pacote facilita a produção de gráficos altamente customizados que podem ser gerados automaticamente usando o ambiente do `R`.
+O ggplot2 em si pode ser extendido com outros pacotes que ampliam suas funcionalidades porém a princípio iremos focar nas funcionalidades de base do ggplot2.
+
+## Gramática de Gráficos
+
+De acordo com os conceitos implementados por @chambers1983 todos os *plots* são compostos dos seguintes elementos:
+
+- __Dados__ que se deseja visualizar e o __mapeamento estético__ das variáveis.
+Por mapeamento estético entende-se como que os dados serão visualizados, seja por tamanho dos elementos gráficos, cor, forma etc.
+- __Camadas__ são compostas de elementos geométricos ou `geom` para abreviar.
+Estas camadas podem conter pontos ou linhas, polígonos ou transformações estatísticas ou `stat`, com o resumo estatístico das variáveis por exemplo, média, mediana, intervalos quartis etc.
+- __Escalas__ que podem ser atribuídas aos eixos do *plot* ou às cores e tamanho dos elementos. 
+Escalas podem ser modificadas para mostrarem valores em distribuição logarítmica ou raiz quadrada e outras transformações.
+- Sistema de __Coordenadas__ usado, seja polar ou carteseano, incluindo as linhas do grid do *plot* ou até coordenadas para se criar um mapa.
+- __Subgrupos__ podem ser usados para dividir os dados de acordo com alguma variável categórica, para fins de comparação. 
+São chamados de `facets`.
+- __Tema__: o tema controla elementos do gráfico que não mudam a visualização dos dados, como paleta de cores, tipografia, cor de fundo, cores das linhas e outros elementos.
+Existem alguns pacotes desenvolvidos para modificar o tema com maior facilidade e alguns com temas prontos como o `ggthemes::`.
+O tema padrão do ggplot2 pode não se adequado para o uso em diversos ambientes acadêmicos portanto é importante aprender a customizar os gráficos especialmente para publicações em revistas científicas.
+
+## Instalação
+
+O ggplot2 é instalado quando se instala o tidyverse, porém se não se deseja instalar todos os pacotes do tidyverse apenas instale o ggplot2 usando:
+
+```{r echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+# install.packages("ggplot2")
+
+```
+
+Para usar o ggplot2 é necessário importar as funções do pacote instalado para o ambiente do `R` através de: 
+
+```{r echo=TRUE}
+# Importar todos os pacotes do tidyverse
+library(tidyverse)
+
+# Importar apenas ggplot2
+library(ggplot2)
+
+```
+
+Apenas assim as fuções do ggplot2 poderão ser usadas no *script* ou no projeto.
+
+## Componentes principais dos gráficos
+
+Cada *plot* tem 3 componentes principais:
+	
+1. dados;
+2. mapeamento estético;
+3. no mínimo uma camada que descreve como mostrar cada observação dos dados. 
+Camadas são criadas através das funções `geom_*` ou `stat_*`.
+
+Um exemplo muito simples usando o dataframe `mpg` do pacote `dplyr`.
+
+```{r plot-basic, warning=FALSE}
+
+ggplot(data = mpg,  # Todo plot começa com a função ggplot()
+			 aes(         # Mapeamentos estéticos devem ficar dentro desta função
+			 	x = displ,  # Variável mapeada no eixo x
+			 	y = hwy)    # Variável mapeada no eixo y
+			) +           # + indica que vou adicionar uma camada
+	geom_point()      # Tipo de geometria usada para mostrar as observações
+
+```
+
+Neste gráfico de dispersão especificamos os dados dos eixos x e y e definimos que queremos ver as observações como pontos usando a função `geom_point()` então suprimos os 3 requerimentos básicos para um *plot*:
+
+1. dados: `mpg`;
+2. mapeamento estético: displa no eixo x e altura no eixo y;
+3. camada: pontos.
+
+As escalas foram criadas automaticamente baseado nos valores máximos e mínimos das variáveis e o nome das variáveis foi colocado exatamente como está no dataframe.
+
+Algumas simplificações podem ser feitas no código, por exemplo: em geral não é necessário deixar implícito a especificação de qual variável vai no eixo x e qual no eixo y.
+Também não é necessário se deixar implícito o argumento `data = ` portanto uma forma simplificada de escrever o mesmo código que resulta no mesmo gráfico é:
+
+```{r eval=FALSE, include=TRUE}
+
+ggplot(mpg, aes(displ, hwy)) + 
+	geom_point()
+
+```
+
+## Cores, tamanhos, formas e outros atributos estéticos
+
+No primeiro gráfico apenas usamos o mapeamentos estéticos `x` e `y` para definir em qual eixo as observações seriam colocadas, porém existem outras estéticas como tamanho (size), forma (shape) e cor (color, fill) que também podem ser mapeadas no gráfico de acordo com os valores das variáveis.
+
+Um exemplo é plotar os valores da variável classe como cores no gráfico:
+
+```{r}
+
+ggplot(mpg, aes(displ, hwy, 
+								color = class)) + 
+	geom_point()
+
+```
+
+Assim começamos a procurar por relacionamentos nas variáveis.
+Podemos também usar o tamanho dos pontos como mapeamentos estéticos.
+
+```{r}
+
+ggplot(mpg, aes(displ, hwy, 
+								color = class, 
+								size = cty)) + 
+	geom_point()
+
+```
+
+Veja que as legendas aparecem automaticamente ao lado direito, junto com as cores.
+Finalmente podemos usar a forma dos pontos para mapear outra variável.
+
+```{r}
+
+ggplot(mpg, aes(displ, hwy, 
+								color = class, 
+								size = cty,
+								shape = drv)) + 
+	geom_point()
+
+```
+
+***
+
+Um erro comum é tentar especificar a cor do `geom` dentro da função `aes()` o que tem resultados completamente indesejados.
+
+```{r cor-errada}
+p1 <- ggplot(mpg, aes(displ, hwy)) + 
+	geom_point(aes(color = "maroon"))
+
+p2 <- ggplot(mpg, aes(displ, hwy)) + 
+	geom_point(color = "maroon")
+
+# Para funcionar você deve usar o pacote patchwork
+p1 + p2
+```
+
+É importante lembrar que quando se inclui algum elemento estético dentro da função `aes()` os valores serão mapeados a uma escala estética portanto colocar um valor único, como um `string` irá produzir uma escala com valor único, não gerando o resultado esperado como mostrado no gráfico acima a esquerda.
+
+## Geoms
+
+### Geoms individuais
+
+Estes `geoms` são os fundamentais para a construção de *plots*, podem ser por sí um gráfico completo ou podem compor gráficos mais complexos.
+
+Cada um destes `geoms` são bidimensionais e requerem estéticas de ambos `x` e `y`.
+Todos eles entendem `color` e `size` como sendo parâmetros de mapeamento estético e os geoms que contém área interna como `geom_bar` e `geom_polygon` também entendem o parametro `fill` como mapeamento.
+Estes geoms estarão listados abaixo:
+
+- `geom_area()`: cria um *plot* de área que é um gráfico de linha com a área abaixo da linha preenchida. Dados agrupados são dispostos no gráfico sobrepostos.
+- `geom_bar(stat = "identity")`: gráfico de barras, é necessário especificar o `stat = "identity"` porque o padrão do `geom_bar` é um *plot* de frequência, tornando-o essencialmente um gráfico unidimensional. Com a estatística definida como *identity* no eixo x ficam os valores especificados pela estética x e no eixo y os valores especificados pela estética y.
+- `geom_line()`: gráfico de linhas que conecta os pontos na direção da esquerda para a direita, `geom_path()` funciona de forma similar porém conecta os pontos na ordem que estão dispostos os dados. Os mapeamentos estéticos que são aceitos por estes geoms são `linetype` (ou `lty` para abreviar), onde diferentes linhas serão geradas para cada grupo e `group` que é a especificação de dados agrupados sem ter efeito na visualização dentro do gráfico.
+- `geom_point()`: gera um gráfico de dispersão, aceita o mapeamento estético `shape` que gera diferentes formatos de pontos dependendo do grupo.
+- `geom_text()`: usado quando em vez de desenhar pontos nas coordenadas, desenhar texto, seja palavras ou letras.
+- `geom_polygon()`: gera polígonos preenchidos onde cada vértice é uma linha no dataframe com as coordenadas de x e y em colunas separadas. É util para construção de mapas.
+- `geom_rect()`, `geom_tile()` e `geom_raster()`: geram retângulos. Os parâmetros necessários para `geom_rect()` são as coordenadas máximas e mínimas das faces `x` e `y` sendo `xmin`, `xmax`, `ymin` e `ymax`. `geom_tile()` é exatamente o mesmo porém com `x` e `y` sendo as coordenadas do centro do retângulo e os parâmetros `width` e `height` como a largura e altura respectivamente. `geom_raster()` é usado caso o tamanho de todos os retângulos seja o mesmo para aumentar a velocidade da criação do gráfico.
+
+Cada um destes geoms será demonstrado nas figuras abaixo. 
+Observe as semelhanças e diferenças dos eixos `x` e `y`, alguns extrapolam os valores estabelecidos pelos dados e podem estender os limítes dos eixos.
+
+```{r geoms, fig.height=4}
+df <- data.frame (
+	x <- c(1, 5, 9, 3.4),
+	y <- c(3, 6, 2, 5.4),
+	label <- c("a", "b", "c", "a")
+)
+
+p <- ggplot(
+	df, aes(x, y, label = label)) + 
+	labs(x = NULL, y = NULL) + # esconde o nome dos eixos
+	theme(plot.title = element_text(size = 12)) # diminui tamanho do texto
+				
+p1 <- p + geom_point() + ggtitle("ponto")
+p2 <- p + geom_text() + ggtitle("texto")
+p3 <- p + geom_bar(stat = "identity") + ggtitle("barra")
+p4 <- p + geom_tile() + ggtitle("raster")
+
+p1 + p2 + p3 + p4
+
+```
+
+```{r geoms2, fig.height=4}
+
+p5 <- p + geom_line() + ggtitle("linha")
+p6 <- p + geom_area() + ggtitle("área")
+p7 <- p + geom_path() + ggtitle("caminho")
+p8 <- p + geom_polygon() + ggtitle("polígono")
+
+p5 + p6 + p7 + p8
+
+```
+
+
+### Geoms coletivos 
+
+Os geoms __individuais__ criam objetos gráficos para cada observação ou linha da tabela contendo os dados, por exemplo, cada ponto de `geom_point()` representa uma linha de dados mas os geoms __coletivos__ mostram várias observações, ou linhas, por elemento gráfico gerado.
+Isso pode ser o resultado de um resumo estatístico como um *boxplot* ou resultado de como os dados devem ser dispostos.
+Linhas e *path* estão no meio termo entre __individuais__ e __coletivos__ porque apesar de cada extremidade de uma linha ser apenas uma observação, o segmento é o conjunto de duas observações da tabela, ou seja, dois pontos.
+Para controlar o comportamento devemos usar a estética `group`.
+
+Por padrão, a estética `group` é mapeada para as variáveis discretas (ou categóricas) dos dados fornecidos à função `ggplot()` e na maioria dos casos o padrão é o suficiente para que os dados fiquem organizados no gráfico, porém quando não há variável discreta usada, é necessário que seja definido explicitamente um mapeamento agrupador dos dados.
+
+Há três casos comuns onde o padrão não é suficiente. 
+Estes serão considerados abaixo.
+Para os exemplos a seguir será usado o *dataset* `Oxboys` do pacote `nlme`, que contém a altura e idade de 26 homens registrado em nove ocasiões diferentes.
+
+```{r}
+data(Oxboys, package = "nlme")
+head(Oxboys)
+
+```
+
+#### Grupos múltiplos, uma estética
+
+Em várias situações é necessário separar os dados em grupos mas com a mesma estética.
+Em outras palavras: se deseja visualizar sujeitos distintos mas não é necessário identificá-los usando cores ou outros artifícios visuais. 
+Isto é comum para estudos onde se quer ver a diferença entre vários sujeitos ao longo do tempo.
+
+Para exemplificar, abaixo na esquerda um *plot* com múltiplos grupos e uma estética e à direita múltiplos grupos e múltiplas estéticas:
+
+```{r oxboys1}
+
+p1 <- ggplot(Oxboys, aes(age, height, group = Subject)) + 
+  geom_point() + 
+  geom_line() +
+	ggtitle("Uma estética")
+
+p2 <- ggplot(Oxboys, aes(age, height, color = Subject)) + 
+  geom_point() + 
+  geom_line() + 
+	ggtitle("Múltiplas estéticas")
+
+p1 + p2
+```
+
+Neste caso o padrão de agrupamento não funciona e se não for definido explicitamente ou se for definido incorretamente o *plot* terá uma aparência de "lâmina de serra".
+
+```{r sawtooth}
+
+ggplot(Oxboys, aes(age, height)) + 
+  geom_point() + 
+  geom_line()
+
+```
+
+Se um `group` não for definido por uma única variável e sim por combinação de várias é possível usar a função `interaction()` para combiná-las, por exemplo: `aes(interaction(identidade_escola, identidade_aluno))`.
+
+### Resumos estatísticos
+
+### Resolvendo *overplotting*
+
+### Anotações
+
+Anotações
+
+
