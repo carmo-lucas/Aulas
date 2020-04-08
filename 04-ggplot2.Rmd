@@ -212,7 +212,6 @@ Para os exemplos a seguir será usado o *dataset* `Oxboys` do pacote `nlme`, que
 ```{r}
 data(Oxboys, package = "nlme")
 head(Oxboys)
-
 ```
 
 #### Grupos múltiplos, uma estética
@@ -249,6 +248,153 @@ ggplot(Oxboys, aes(age, height)) +
 ```
 
 Se um `group` não for definido por uma única variável e sim por combinação de várias é possível usar a função `interaction()` para combiná-las, por exemplo: `aes(interaction(identidade_escola, identidade_aluno))`.
+
+#### Grupos em camadas diferentes
+
+Há vezes em que é necessário mostrar diferentes resumos estatísticos com agrupamentos específicos em camadas diferentes.
+Em uma camada pode mostrar valores não grupados enquanto que outra camada mostra um resumo estatístico agrupado.
+
+Reaproveitando o exemplo acima, deseja-se criar uma linha que demonstre o aumento da altura dos sujeitos ao longo do tempo.
+
+Abaixo na esquerda quando o mapeamento estético de `group` é feito no objeto principal, todas as camadas usam esta especificação para gerar a visualização, porém quando o mapeamento estético é especificado na camada específica, observa-se que apenas naquela camada o grupamento é feito.
+
+```{r}
+
+p1 <- ggplot(Oxboys, aes(age, height, group = Subject)) + 
+  geom_line() +
+  geom_smooth(method = "lm", se = FALSE) +
+	ggtitle("Grupo aplicado em \ntodas as camadas")
+
+p2 <- ggplot(Oxboys, aes(age, height)) + 
+  geom_line(aes(group = Subject)) +
+  geom_smooth(method = "lm", se = FALSE) +
+	ggtitle("Grupo aplicado na \ncamada line")
+
+p1 + p2
+	
+```
+
+No lado direito, como o agrupamento foi feito na camada do `geom_line()` apenas estes dados estão agrupados enquanto que na camada `geom_smooth()` não foi feito nenhum agrupamento portanto a linha de regressão renderizada é em função de todos os dados.
+
+#### Ignorando o grupamento padrão
+
+Alguns gráficos tem uma escala discreta no eixo `x`, porém ainda se deseja criar uma camada que conecte os grupos separados por essa escala discreta.
+Esta estratégia é usada para construção de [*interaction plots*](https://medium.com/@hpsuresh12345/the-significance-of-interaction-plots-in-statistics-6f2d3a6f77a3), *profile plots* e [*parallel coordinates plot*](https://datavizcatalogue.com/methods/parallel_coordinates.html). 
+Um exemplo é quando usamos o dataset `Oxboys` para observar a distribuição da altura entre todos os sujeitos ao longo das ocasiões onde a altura foi medida.
+
+```{r}
+ggplot(Oxboys, aes(Occasion, height)) + 
+  geom_boxplot()
+```
+
+A variável discreta deste gráfico é `Occasion` porém não especificamos ela como sendo uma variável agrupadora e nem precisamos, porque o `ggplot2` entende que variáveis discretas devem ser tratados como grupamentos por padrão.
+Porém quando se deseja adicionar novas camadas com linhas de tendência ou outras visualizações este comportamento do `ggplot2` pode não ser interessante por exemplo: quando tentamos adicionar linhas de tendência de aumento de altura as linhas geradas estão agrupadas pela variável `Occasion` resultando no gráfico abaixo:
+
+```{r}
+ggplot(Oxboys, aes(Occasion, height)) + 
+  geom_boxplot() +
+  geom_line(colour = "#6666FF", alpha = 0.5, size = 1.5)
+```
+
+Para ignorar a variável agrupadora é necessario usar outra variável que agrupe os dados explícitamente como por exemplo abaixo:
+
+```{r}
+ggplot(Oxboys, aes(Occasion, height)) + 
+  geom_boxplot() +
+  geom_line(
+  	aes(group = Subject), # Agrupamento explícito
+  	colour = "#6666FF", alpha = 0.5, size = 1.5)
+```
+
+
+#### Ajustando estética a elementos gráficos
+
+Um importante fator de geoms coletivos é saber como que diferentes estéticas se comportam quando são mapeadas a um geom individual.
+
+No `ggplot2` linhas e caminhos operam sob um princípio de "primeiro valor", onde cada segmento é definido por duas observações e o `ggplot2` aplica o mesmo valor estético (por exemplo: cor) associado à __primeira observação__ que compõe o segmento.
+Isso significa que a estética usada na primeira observação é usada para desenhar o primeiro segmento e a estética da segunda observação será usada para desenhar o segundo segmento e assim em diante.
+
+Abaixo, exemplo visual deste efeito:
+
+```{r}
+df <- data.frame(x = 1:4, y = 1:4, colour = c(1, 3, 5, 7))
+
+p1 <- ggplot(df, aes(x, y, colour = factor(colour))) + 
+  geom_line(aes(group = 1), size = 2) +
+  geom_point(size = 5)
+
+p2 <- ggplot(df, aes(x, y, colour = colour)) + 
+  geom_line(aes(group = 1), size = 2) +
+  geom_point(size = 5)
+
+p1 + p2
+```
+
+Ao lado __esquerdo__, onde a cor é uma variável discreta (`factor`), o primeiro ponto e primeiro segmento são vermelhos, exemplificando o que foi dito anteriormente e ao lado __direito__, ocorre o mesmo mesmo se tendo uma variável contínua.
+Nota-se que não há um efeito de degradê entre as cores mesmo para variáveis contínuas, porém é possível atingir esta transição de cores fazendo a interpolação dos dados manualmente.
+
+```{r}
+# 100 pontos de interpolação
+xgrid <- with(df, seq(min(x), max(x), length = 100))
+
+# dataframe com dados interpolados
+interp <- data.frame(
+  x = xgrid,
+  y = approx(df$x, df$y, xout = xgrid)$y,
+  colour = approx(df$x, df$colour, xout = xgrid)$y  
+)
+
+ggplot(interp, aes(x, y, colour = colour)) + 
+  geom_line(size = 2) +
+  geom_point(data = df, size = 5)
+```
+
+Neste gráfico são criados vários segmentos de reta usando os dados do dataframe `interp` e os pontos usados são os mesmos do dataframe `df` usado nos gráficos anteriores.
+
+Outra limitação do `ggplot2` é que linhas e caminhos devem tipo constante.
+Não é possível renderizar uma linha com tipo de linha variável.
+
+***
+
+Outros geoms, como os coletivos são mais complicatos do que linhas e caminhos, e um elemento gráfico pode ser mapeado a várias observações.
+Nestes casos não é muito óbvio como as observações deveriam ser combinadas.
+Por exemplo: como colorir um polígono que tem pontos com cores diferentes em cada vértice?
+Devido a esse tipo de ambíguidade o `ggplot2` adota uma regra única: "as estéticas de elementos individuais são apenas usadas se são todas iguais".
+Se as estéticas dos elementos individuais são diferentes o `ggplot2` usará um valor padrão.
+
+Estes problemas são mais relevantes quando mapeando estéticas à variáveis contínuas.
+Para variáveis discretas o comportamento padrão do `ggplot2` é tratar a variável como parte da estética do grupo.
+O efeito é que o geom coletivo seja dividido em pedaços menores.
+Isto funciona muito bem para gráficos de barra e de área porque ao empilhar os pedaços individuais o formato fica igual aos dados não agrupados.
+
+```{r}
+p1 <- ggplot(mpg, aes(class)) + 
+  geom_bar() 
+
+
+p2 <- ggplot(mpg, aes(class, fill = drv)) + 
+  geom_bar() +
+	theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+p1 + p2
+```
+
+Se as estética `fill` for mapeada a uma variável contínua, não funciona e o grupamento padrão continua sendo `class` (eixo `x`).
+Para ter múltiplas cores por barra é necessário forçar o ggplot a ignorar o grupamento padrão através da definição explícita do grupamento. 
+Exemplo abaixo:
+
+```{r}
+p1 <- ggplot(mpg, aes(class, fill = hwy)) + 
+  geom_bar()
+
+p2 <- ggplot(mpg, aes(class, fill = hwy, group = hwy)) + 
+  geom_bar() +
+	scale_fill_viridis_c()
+
+p1 + p2
+```
+
+Acima à __direita__ a aparência de transição de cores na verdade é apenas um grande número de pequenos grupos de uma variável discreta que geram esse efeito.
 
 ### Resumos estatísticos
 
