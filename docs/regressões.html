@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Aula 5 Regressões | Aulas de R</title>
-  <meta name="description" content="Aula 5 Regressões | Aulas de R" />
-  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+  <title>6.1 Regressões | Aulas de R</title>
+  <meta name="description" content="6.1 Regressões | Aulas de R" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Aula 5 Regressões | Aulas de R" />
+  <meta property="og:title" content="6.1 Regressões | Aulas de R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Aula 5 Regressões | Aulas de R" />
+  <meta name="twitter:title" content="6.1 Regressões | Aulas de R" />
   
   
   
@@ -24,15 +24,16 @@
 <meta name="author" content="Lucas Chagas Lima do Carmo" />
 
 
-<meta name="date" content="2020-04-08" />
+<meta name="date" content="2020-04-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="geoms.html"/>
-<link rel="next" href="regressões-lineares.html"/>
+<link rel="prev" href="tutoriais.html"/>
+<link rel="next" href="smoothing.html"/>
+<script src="assets/header-attrs-2.1/header-attrs.js"></script>
 <script src="assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -53,25 +54,26 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -80,9 +82,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -129,47 +131,68 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul class="summary">
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introdução</a></li>
 <li class="chapter" data-level="1" data-path="tipos-de-dados.html"><a href="tipos-de-dados.html"><i class="fa fa-check"></i><b>1</b> Tipos de Dados</a></li>
-<li class="chapter" data-level="2" data-path="extensões.html"><a href="extensões.html"><i class="fa fa-check"></i><b>2</b> Extensões</a><ul>
-<li class="chapter" data-level="2.1" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>2.1</b> <code>tidyverse</code></a><ul>
-<li class="chapter" data-level="2.1.1" data-path="tidyverse.html"><a href="tidyverse.html#dplyr"><i class="fa fa-check"></i><b>2.1.1</b> <code>dplyr</code></a></li>
-<li class="chapter" data-level="2.1.2" data-path="tidyverse.html"><a href="tidyverse.html#tidyr"><i class="fa fa-check"></i><b>2.1.2</b> <code>tidyr</code></a></li>
-<li class="chapter" data-level="2.1.3" data-path="tidyverse.html"><a href="tidyverse.html#readr"><i class="fa fa-check"></i><b>2.1.3</b> <code>readr</code></a></li>
-<li class="chapter" data-level="2.1.4" data-path="tidyverse.html"><a href="tidyverse.html#stringr"><i class="fa fa-check"></i><b>2.1.4</b> <code>stringr</code></a></li>
-<li class="chapter" data-level="2.1.5" data-path="tidyverse.html"><a href="tidyverse.html#tibble"><i class="fa fa-check"></i><b>2.1.5</b> <code>tibble</code></a></li>
-<li class="chapter" data-level="2.1.6" data-path="tidyverse.html"><a href="tidyverse.html#purrr"><i class="fa fa-check"></i><b>2.1.6</b> <code>purrr</code></a></li>
-<li class="chapter" data-level="2.1.7" data-path="tidyverse.html"><a href="tidyverse.html#forcats"><i class="fa fa-check"></i><b>2.1.7</b> <code>forcats</code></a></li>
-<li class="chapter" data-level="2.1.8" data-path="tidyverse.html"><a href="tidyverse.html#magrittr"><i class="fa fa-check"></i><b>2.1.8</b> <code>magrittr</code></a></li>
-<li class="chapter" data-level="2.1.9" data-path="tidyverse.html"><a href="tidyverse.html#ggplot2"><i class="fa fa-check"></i><b>2.1.9</b> <code>ggplot2</code></a></li>
+<li class="chapter" data-level="2" data-path="tipos-de-objetos.html"><a href="tipos-de-objetos.html"><i class="fa fa-check"></i><b>2</b> Tipos de objetos</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="vetores.html"><a href="vetores.html"><i class="fa fa-check"></i><b>2.1</b> Vetores</a></li>
+<li class="chapter" data-level="2.2" data-path="matrizes.html"><a href="matrizes.html"><i class="fa fa-check"></i><b>2.2</b> Matrizes</a></li>
+<li class="chapter" data-level="2.3" data-path="índices.html"><a href="índices.html"><i class="fa fa-check"></i><b>2.3</b> Índices</a></li>
+<li class="chapter" data-level="2.4" data-path="dataframes.html"><a href="dataframes.html"><i class="fa fa-check"></i><b>2.4</b> Dataframes</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="dataframes.html"><a href="dataframes.html#índices-de-dataframes"><i class="fa fa-check"></i><b>2.4.1</b> Índices de dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="listas.html"><a href="listas.html"><i class="fa fa-check"></i><b>2.5</b> Listas</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="listas.html"><a href="listas.html#índices-de-listas"><i class="fa fa-check"></i><b>2.5.1</b> Índices de listas</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="operadores.html"><a href="operadores.html"><i class="fa fa-check"></i><b>3</b> Operadores</a><ul>
-<li class="chapter" data-level="3.1" data-path="operadores-aritméticos.html"><a href="operadores-aritméticos.html"><i class="fa fa-check"></i><b>3.1</b> Operadores aritméticos</a><ul>
+<li class="chapter" data-level="3" data-path="operadores.html"><a href="operadores.html"><i class="fa fa-check"></i><b>3</b> Operadores</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="operadores-aritméticos.html"><a href="operadores-aritméticos.html"><i class="fa fa-check"></i><b>3.1</b> Operadores aritméticos</a>
+<ul>
 <li class="chapter" data-level="3.1.1" data-path="operadores-aritméticos.html"><a href="operadores-aritméticos.html#exemplos"><i class="fa fa-check"></i><b>3.1.1</b> Exemplos</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="operadores-lógicos.html"><a href="operadores-lógicos.html"><i class="fa fa-check"></i><b>3.2</b> Operadores Lógicos</a><ul>
+<li class="chapter" data-level="3.2" data-path="operadores-lógicos.html"><a href="operadores-lógicos.html"><i class="fa fa-check"></i><b>3.2</b> Operadores Lógicos</a>
+<ul>
 <li class="chapter" data-level="3.2.1" data-path="operadores-lógicos.html"><a href="operadores-lógicos.html#exemplos-1"><i class="fa fa-check"></i><b>3.2.1</b> Exemplos</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="ggplot2-1.html"><a href="ggplot2-1.html"><i class="fa fa-check"></i><b>4</b> <code>ggplot2</code></a><ul>
-<li class="chapter" data-level="4.1" data-path="gramática-de-gráficos.html"><a href="gramática-de-gráficos.html"><i class="fa fa-check"></i><b>4.1</b> Gramática de Gráficos</a></li>
-<li class="chapter" data-level="4.2" data-path="instalação.html"><a href="instalação.html"><i class="fa fa-check"></i><b>4.2</b> Instalação</a></li>
-<li class="chapter" data-level="4.3" data-path="componentes-principais-dos-gráficos.html"><a href="componentes-principais-dos-gráficos.html"><i class="fa fa-check"></i><b>4.3</b> Componentes principais dos gráficos</a></li>
-<li class="chapter" data-level="4.4" data-path="cores-tamanhos-formas-e-outros-atributos-estéticos.html"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html"><i class="fa fa-check"></i><b>4.4</b> Cores, tamanhos, formas e outros atributos estéticos</a></li>
-<li class="chapter" data-level="4.5" data-path="geoms.html"><a href="geoms.html"><i class="fa fa-check"></i><b>4.5</b> Geoms</a><ul>
-<li class="chapter" data-level="4.5.1" data-path="geoms.html"><a href="geoms.html#geoms-individuais"><i class="fa fa-check"></i><b>4.5.1</b> Geoms individuais</a></li>
-<li class="chapter" data-level="4.5.2" data-path="geoms.html"><a href="geoms.html#geoms-coletivos"><i class="fa fa-check"></i><b>4.5.2</b> Geoms coletivos</a></li>
-<li class="chapter" data-level="4.5.3" data-path="geoms.html"><a href="geoms.html#resumos-estatísticos"><i class="fa fa-check"></i><b>4.5.3</b> Resumos estatísticos</a></li>
-<li class="chapter" data-level="4.5.4" data-path="geoms.html"><a href="geoms.html#resolvendo-overplotting"><i class="fa fa-check"></i><b>4.5.4</b> Resolvendo <em>overplotting</em></a></li>
-<li class="chapter" data-level="4.5.5" data-path="geoms.html"><a href="geoms.html#anotações"><i class="fa fa-check"></i><b>4.5.5</b> Anotações</a></li>
+<li class="chapter" data-level="4" data-path="extensões.html"><a href="extensões.html"><i class="fa fa-check"></i><b>4</b> Extensões</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>4.1</b> <code>tidyverse</code></a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="tidyverse.html"><a href="tidyverse.html#dplyr"><i class="fa fa-check"></i><b>4.1.1</b> <code>dplyr</code></a></li>
+<li class="chapter" data-level="4.1.2" data-path="tidyverse.html"><a href="tidyverse.html#tidyr"><i class="fa fa-check"></i><b>4.1.2</b> <code>tidyr</code></a></li>
+<li class="chapter" data-level="4.1.3" data-path="tidyverse.html"><a href="tidyverse.html#readr"><i class="fa fa-check"></i><b>4.1.3</b> <code>readr</code></a></li>
+<li class="chapter" data-level="4.1.4" data-path="tidyverse.html"><a href="tidyverse.html#stringr"><i class="fa fa-check"></i><b>4.1.4</b> <code>stringr</code></a></li>
+<li class="chapter" data-level="4.1.5" data-path="tidyverse.html"><a href="tidyverse.html#tibble"><i class="fa fa-check"></i><b>4.1.5</b> <code>tibble</code></a></li>
+<li class="chapter" data-level="4.1.6" data-path="tidyverse.html"><a href="tidyverse.html#purrr"><i class="fa fa-check"></i><b>4.1.6</b> <code>purrr</code></a></li>
+<li class="chapter" data-level="4.1.7" data-path="tidyverse.html"><a href="tidyverse.html#forcats"><i class="fa fa-check"></i><b>4.1.7</b> <code>forcats</code></a></li>
+<li class="chapter" data-level="4.1.8" data-path="tidyverse.html"><a href="tidyverse.html#magrittr"><i class="fa fa-check"></i><b>4.1.8</b> <code>magrittr</code></a></li>
+<li class="chapter" data-level="4.1.9" data-path="tidyverse.html"><a href="tidyverse.html#ggplot2"><i class="fa fa-check"></i><b>4.1.9</b> <code>ggplot2</code></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="regressões.html"><a href="regressões.html"><i class="fa fa-check"></i><b>5</b> Regressões</a><ul>
-<li class="chapter" data-level="5.1" data-path="regressões-lineares.html"><a href="regressões-lineares.html"><i class="fa fa-check"></i><b>5.1</b> Regressões Lineares</a><ul>
-<li class="chapter" data-level="5.1.1" data-path="regressões-lineares.html"><a href="regressões-lineares.html#método-de-função"><i class="fa fa-check"></i><b>5.1.1</b> Método de função</a></li>
-<li class="chapter" data-level="5.1.2" data-path="regressões-lineares.html"><a href="regressões-lineares.html#método-ggplot2"><i class="fa fa-check"></i><b>5.1.2</b> Método <code>ggplot2</code></a></li>
-<li class="chapter" data-level="5.1.3" data-path="regressões-lineares.html"><a href="regressões-lineares.html#método-ggpmisc"><i class="fa fa-check"></i><b>5.1.3</b> Método <code>ggpmisc</code></a></li>
-<li class="chapter" data-level="5.1.4" data-path="regressões-lineares.html"><a href="regressões-lineares.html#método-ggpubr"><i class="fa fa-check"></i><b>5.1.4</b> Método <code>ggpubr</code></a></li>
+<li class="chapter" data-level="5" data-path="ggplot2-1.html"><a href="ggplot2-1.html"><i class="fa fa-check"></i><b>5</b> <code>ggplot2</code></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="gramática-de-gráficos.html"><a href="gramática-de-gráficos.html"><i class="fa fa-check"></i><b>5.1</b> Gramática de Gráficos</a></li>
+<li class="chapter" data-level="5.2" data-path="instalação.html"><a href="instalação.html"><i class="fa fa-check"></i><b>5.2</b> Instalação</a></li>
+<li class="chapter" data-level="5.3" data-path="componentes-principais-dos-gráficos.html"><a href="componentes-principais-dos-gráficos.html"><i class="fa fa-check"></i><b>5.3</b> Componentes principais dos gráficos</a></li>
+<li class="chapter" data-level="5.4" data-path="cores-tamanhos-formas-e-outros-atributos-estéticos.html"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html"><i class="fa fa-check"></i><b>5.4</b> Cores, tamanhos, formas e outros atributos estéticos</a></li>
+<li class="chapter" data-level="5.5" data-path="geoms.html"><a href="geoms.html"><i class="fa fa-check"></i><b>5.5</b> Geoms</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="geoms.html"><a href="geoms.html#geoms-individuais"><i class="fa fa-check"></i><b>5.5.1</b> Geoms individuais</a></li>
+<li class="chapter" data-level="5.5.2" data-path="geoms.html"><a href="geoms.html#geoms-coletivos"><i class="fa fa-check"></i><b>5.5.2</b> Geoms coletivos</a></li>
+<li class="chapter" data-level="5.5.3" data-path="geoms.html"><a href="geoms.html#resumos-estatísticos"><i class="fa fa-check"></i><b>5.5.3</b> Resumos estatísticos</a></li>
+<li class="chapter" data-level="5.5.4" data-path="geoms.html"><a href="geoms.html#resolvendo-overplotting"><i class="fa fa-check"></i><b>5.5.4</b> Resolvendo <em>overplotting</em></a></li>
+<li class="chapter" data-level="5.5.5" data-path="geoms.html"><a href="geoms.html#anotações"><i class="fa fa-check"></i><b>5.5.5</b> Anotações</a></li>
 </ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="tutoriais.html"><a href="tutoriais.html"><i class="fa fa-check"></i><b>6</b> Tutoriais</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="regressões.html"><a href="regressões.html"><i class="fa fa-check"></i><b>6.1</b> Regressões</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="regressões.html"><a href="regressões.html#regressões-lineares"><i class="fa fa-check"></i><b>6.1.1</b> Regressões Lineares</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="smoothing.html"><a href="smoothing.html"><i class="fa fa-check"></i><b>6.2</b> Smoothing</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
@@ -189,8 +212,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="regressões" class="section level1">
-<h1><span class="header-section-number">Aula 5</span> Regressões</h1>
+<div id="regressões" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Regressões</h2>
 <p>Para criar modelos de regressão linear ou não linear no <code>R</code> precisamos usar uma tipo de objeto que tem a é da classe <code>formula</code>.
 Esta classe é usada em várias funções de base do <code>R</code> mas também no pacote de criação de gráficos <code>ggplot2::</code>.
 O que é essa classe <code>formula</code>: é um tipo de objeto que captura uma relacionamento simbólico entre variáveis, por exemplo:</p>
@@ -199,14 +222,361 @@ O que é essa classe <code>formula</code>: é um tipo de objeto que captura uma 
 onde o operador <code>~</code> separa as variáveis.</li>
 </ul>
 <p>Para modelos lineares esse é o mínimo que é necessário saber porém para mais informação sobre regressões com mais variáveis e modelos não lineares dê uma olhada neste <a href="https://www.datacamp.com/community/tutorials/r-formula-tutorial#datastructures">link</a>.</p>
+<div id="regressões-lineares" class="section level3" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> Regressões Lineares</h3>
+<p>No <code>R</code> para criar modelos lineares simples é usada a função <code>lm()</code>.
+Os principais argumentos são a <code>formula</code> e os dasos (<code>data</code>), você pode ler os outros argumentos usando rodando <code>?lm()</code> no console.
+Então para montar um modelo de regressão limples é apenas necessário ter um dataframe com uma coluna com os valores de <code>x</code> e uma coluna com os valores de <code>y</code>.
+Iremos usar os dados do dataset <code>mpg</code> para criar exemplos.</p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="regressões.html#cb181-1"></a>fit &lt;-<span class="st"> </span><span class="kw">lm</span>(cty <span class="op">~</span><span class="st"> </span>displ, <span class="dt">data =</span> mpg)</span>
+<span id="cb181-2"><a href="regressões.html#cb181-2"></a></span>
+<span id="cb181-3"><a href="regressões.html#cb181-3"></a><span class="kw">print</span>(fit)</span></code></pre></div>
+<pre><code>
+Call:
+lm(formula = cty ~ displ, data = mpg)
+
+Coefficients:
+(Intercept)        displ  
+      25.99        -2.63  </code></pre>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="regressões.html#cb183-1"></a><span class="kw">class</span>(fit)</span></code></pre></div>
+<pre><code>[1] &quot;lm&quot;</code></pre>
+<p>O resultado obtidos são o coeficientes de <em>Intercept</em> que é o coeficiente linear da reta e o outro coeficiente que tem o nome da variável é o coeficiente angular da reta.
+A função <code>print()</code> mostra apenas estes valores mas podemos acessar mais valores do modelo usando outras funções ou métodos.</p>
+<p>Observamos também que a classe do objeto <code>fit</code> que foi criado é <code>lm</code>, portanto qualquer função que tenha como acessar os dados contidos em objetos de classe <code>lm</code> podem ser usadas, por exemplo <code>summary()</code></p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="regressões.html#cb185-1"></a><span class="kw">summary</span>(fit)</span></code></pre></div>
+<pre><code>
+Call:
+lm(formula = cty ~ displ, data = mpg)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-6.3109 -1.4695 -0.2566  1.1087 14.0064 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  25.9915     0.4821   53.91   &lt;2e-16 ***
+displ        -2.6305     0.1302  -20.20   &lt;2e-16 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 2.567 on 232 degrees of freedom
+Multiple R-squared:  0.6376,    Adjusted R-squared:  0.6361 
+F-statistic: 408.2 on 1 and 232 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>Usando a função <code>summary()</code> obtemos vários valores que podem não ter muito significado quando o interesse é verificar o coeficiente de determinação (<span class="math inline">\(R^2\)</span>) de um modelo, inclusive a função <code>summary()</code> retorna este valor mas também dados sobre a distribuição de residuais, erro dos coeficientes e outros valores estatísticos.
+Inclusive podemos visualizar estes dados usando a função <code>plot()</code> de base que consegue gerar vários gráficos apenas com o objeto de classe <code>lm</code>.</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="regressões.html#cb187-1"></a><span class="kw">plot</span>(fit)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-37-1.png" width="2100" style="display: block; margin: auto;" /><img src="_main_files/figure-html/unnamed-chunk-37-2.png" width="2100" style="display: block; margin: auto;" /><img src="_main_files/figure-html/unnamed-chunk-37-3.png" width="2100" style="display: block; margin: auto;" /><img src="_main_files/figure-html/unnamed-chunk-37-4.png" width="2100" style="display: block; margin: auto;" /></p>
+<p>Porém para o uso em questão isso não é extremamente relevante porque não estamos buscando avaliar a normalidade da distribuição e sim verificar se o modelo é adequado para uma curva de calibração.</p>
+<p>Neste caso iremos gerar dados simulados para calcular um novo modelo:</p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="regressões.html#cb188-1"></a><span class="co"># concentração de 0 a 20</span></span>
+<span id="cb188-2"><a href="regressões.html#cb188-2"></a>conc &lt;-<span class="st"> </span><span class="dv">0</span><span class="op">:</span><span class="dv">20</span> </span>
+<span id="cb188-3"><a href="regressões.html#cb188-3"></a></span>
+<span id="cb188-4"><a href="regressões.html#cb188-4"></a><span class="co"># absorbância é igual a 2x a concentração mais um valor entre 0,5 e 1</span></span>
+<span id="cb188-5"><a href="regressões.html#cb188-5"></a>abs  =<span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>conc <span class="op">+</span><span class="st"> </span><span class="kw">runif</span>(<span class="dt">n =</span> <span class="kw">length</span>(conc), <span class="dt">min =</span> <span class="fl">0.5</span>, <span class="dt">max =</span> <span class="dv">2</span>)</span>
+<span id="cb188-6"><a href="regressões.html#cb188-6"></a></span>
+<span id="cb188-7"><a href="regressões.html#cb188-7"></a>calibracao &lt;-<span class="st"> </span><span class="kw">data.frame</span>(conc, abs)</span>
+<span id="cb188-8"><a href="regressões.html#cb188-8"></a></span>
+<span id="cb188-9"><a href="regressões.html#cb188-9"></a>calibracao</span></code></pre></div>
+<pre><code>   conc       abs
+1     0  1.654487
+2     1  3.918346
+3     2  4.521291
+4     3  7.471494
+5     4  9.196556
+6     5 11.230816
+7     6 13.531041
+8     7 14.552302
+9     8 17.867479
+10    9 19.386540
+11   10 20.545833
+12   11 22.726266
+13   12 25.864934
+14   13 27.931330
+15   14 29.021125
+16   15 31.631967
+17   16 33.163998
+18   17 35.212390
+19   18 37.677856
+20   19 39.412333
+21   20 41.890354</code></pre>
+<p>Com os dados gerados podemos gerar o modelo linear para os dados de <code>calibracao</code>.</p>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="regressões.html#cb190-1"></a>fit_calib &lt;-<span class="st"> </span><span class="kw">lm</span>(abs <span class="op">~</span><span class="st"> </span>conc, <span class="dt">data =</span> calibracao)</span>
+<span id="cb190-2"><a href="regressões.html#cb190-2"></a></span>
+<span id="cb190-3"><a href="regressões.html#cb190-3"></a><span class="kw">summary</span>(fit_calib)</span></code></pre></div>
+<pre><code>
+Call:
+lm(formula = abs ~ conc, data = calibracao)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.80696 -0.25492  0.04476  0.41190  0.66473 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  1.24259    0.20002   6.212 5.74e-06 ***
+conc         2.01102    0.01711 117.535  &lt; 2e-16 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.4748 on 19 degrees of freedom
+Multiple R-squared:  0.9986,    Adjusted R-squared:  0.9986 
+F-statistic: 1.381e+04 on 1 and 19 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>Como esperado, o coeficiente angular é de aproximadamente 2 e o coeficiente linear que deveria ser 0 é de 1.2425918.
+Como todos os objetos, o objeto da classe <code>lm</code> possui uma estrutura.
+Podemos ver esta estrutura usando a função <code>str()</code>, que retorna a estrutura completa dos objetos, porém de uma forma não muito fácil de entender</p>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="regressões.html#cb192-1"></a><span class="kw">str</span>(fit_calib)</span></code></pre></div>
+<pre><code>List of 12
+ $ coefficients : Named num [1:2] 1.24 2.01
+  ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;(Intercept)&quot; &quot;conc&quot;
+ $ residuals    : Named num [1:21] 0.4119 0.6647 -0.7433 0.1958 -0.0901 ...
+  ..- attr(*, &quot;names&quot;)= chr [1:21] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
+ $ effects      : Named num [1:21] -97.851 55.804 -0.922 0.034 -0.235 ...
+  ..- attr(*, &quot;names&quot;)= chr [1:21] &quot;(Intercept)&quot; &quot;conc&quot; &quot;&quot; &quot;&quot; ...
+ $ rank         : int 2
+ $ fitted.values: Named num [1:21] 1.24 3.25 5.26 7.28 9.29 ...
+  ..- attr(*, &quot;names&quot;)= chr [1:21] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
+ $ assign       : int [1:2] 0 1
+ $ qr           :List of 5
+  ..$ qr   : num [1:21, 1:2] -4.583 0.218 0.218 0.218 0.218 ...
+  .. ..- attr(*, &quot;dimnames&quot;)=List of 2
+  .. .. ..$ : chr [1:21] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
+  .. .. ..$ : chr [1:2] &quot;(Intercept)&quot; &quot;conc&quot;
+  .. ..- attr(*, &quot;assign&quot;)= int [1:2] 0 1
+  ..$ qraux: num [1:2] 1.22 1.26
+  ..$ pivot: int [1:2] 1 2
+  ..$ tol  : num 1e-07
+  ..$ rank : int 2
+  ..- attr(*, &quot;class&quot;)= chr &quot;qr&quot;
+ $ df.residual  : int 19
+ $ xlevels      : Named list()
+ $ call         : language lm(formula = abs ~ conc, data = calibracao)
+ $ terms        :Classes &#39;terms&#39;, &#39;formula&#39;  language abs ~ conc
+  .. ..- attr(*, &quot;variables&quot;)= language list(abs, conc)
+  .. ..- attr(*, &quot;factors&quot;)= int [1:2, 1] 0 1
+  .. .. ..- attr(*, &quot;dimnames&quot;)=List of 2
+  .. .. .. ..$ : chr [1:2] &quot;abs&quot; &quot;conc&quot;
+  .. .. .. ..$ : chr &quot;conc&quot;
+  .. ..- attr(*, &quot;term.labels&quot;)= chr &quot;conc&quot;
+  .. ..- attr(*, &quot;order&quot;)= int 1
+  .. ..- attr(*, &quot;intercept&quot;)= int 1
+  .. ..- attr(*, &quot;response&quot;)= int 1
+  .. ..- attr(*, &quot;.Environment&quot;)=&lt;environment: R_GlobalEnv&gt; 
+  .. ..- attr(*, &quot;predvars&quot;)= language list(abs, conc)
+  .. ..- attr(*, &quot;dataClasses&quot;)= Named chr [1:2] &quot;numeric&quot; &quot;numeric&quot;
+  .. .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;abs&quot; &quot;conc&quot;
+ $ model        :&#39;data.frame&#39;:  21 obs. of  2 variables:
+  ..$ abs : num [1:21] 1.65 3.92 4.52 7.47 9.2 ...
+  ..$ conc: int [1:21] 0 1 2 3 4 5 6 7 8 9 ...
+  ..- attr(*, &quot;terms&quot;)=Classes &#39;terms&#39;, &#39;formula&#39;  language abs ~ conc
+  .. .. ..- attr(*, &quot;variables&quot;)= language list(abs, conc)
+  .. .. ..- attr(*, &quot;factors&quot;)= int [1:2, 1] 0 1
+  .. .. .. ..- attr(*, &quot;dimnames&quot;)=List of 2
+  .. .. .. .. ..$ : chr [1:2] &quot;abs&quot; &quot;conc&quot;
+  .. .. .. .. ..$ : chr &quot;conc&quot;
+  .. .. ..- attr(*, &quot;term.labels&quot;)= chr &quot;conc&quot;
+  .. .. ..- attr(*, &quot;order&quot;)= int 1
+  .. .. ..- attr(*, &quot;intercept&quot;)= int 1
+  .. .. ..- attr(*, &quot;response&quot;)= int 1
+  .. .. ..- attr(*, &quot;.Environment&quot;)=&lt;environment: R_GlobalEnv&gt; 
+  .. .. ..- attr(*, &quot;predvars&quot;)= language list(abs, conc)
+  .. .. ..- attr(*, &quot;dataClasses&quot;)= Named chr [1:2] &quot;numeric&quot; &quot;numeric&quot;
+  .. .. .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;abs&quot; &quot;conc&quot;
+ - attr(*, &quot;class&quot;)= chr &quot;lm&quot;</code></pre>
+<p>Mas o que podemos observar é que o objeto é uma lista com 12 elementos então podemos acessar estes elementos através de seus índices ou de seus nomes.</p>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="regressões.html#cb194-1"></a><span class="co"># coeficientes</span></span>
+<span id="cb194-2"><a href="regressões.html#cb194-2"></a>fit_calib<span class="op">$</span>coefficients</span></code></pre></div>
+<pre><code>(Intercept)        conc 
+   1.242592    2.011021 </code></pre>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="regressões.html#cb196-1"></a><span class="co"># residuais</span></span>
+<span id="cb196-2"><a href="regressões.html#cb196-2"></a>fit_calib<span class="op">$</span>residuals</span></code></pre></div>
+<pre><code>          1           2           3           4           5           6           7           8 
+ 0.41189549  0.66473337 -0.74334226  0.19584073 -0.09011758 -0.06687798  0.22232612 -0.76743350 
+          9          10          11          12          13          14          15          16 
+ 0.53672294  0.04476386 -0.80696381 -0.63755213  0.49009564  0.54547112 -0.37575404  0.22406713 
+         17          18          19          20          21 
+-0.25492198 -0.21755070  0.23689457 -0.03964875  0.42735176 </code></pre>
+<p>E para acessar elementos específicos destas listas usamos os operadores <code>[ ]</code></p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="regressões.html#cb198-1"></a><span class="co"># coeficiente linear (intercept)</span></span>
+<span id="cb198-2"><a href="regressões.html#cb198-2"></a>fit_calib<span class="op">$</span>coefficients[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>(Intercept) 
+   1.242592 </code></pre>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="regressões.html#cb200-1"></a><span class="co"># coeficiente angular</span></span>
+<span id="cb200-2"><a href="regressões.html#cb200-2"></a>fit_calib<span class="op">$</span>coefficients[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>    conc 
+2.011021 </code></pre>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="regressões.html#cb202-1"></a><span class="co"># valor do coeficiente linear (intercept)</span></span>
+<span id="cb202-2"><a href="regressões.html#cb202-2"></a>fit_calib<span class="op">$</span>coefficients[[<span class="dv">1</span>]]</span></code></pre></div>
+<pre><code>[1] 1.242592</code></pre>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="regressões.html#cb204-1"></a><span class="co"># valor do coeficiente angular</span></span>
+<span id="cb204-2"><a href="regressões.html#cb204-2"></a>fit_calib<span class="op">$</span>coefficients[[<span class="dv">2</span>]]</span></code></pre></div>
+<pre><code>[1] 2.011021</code></pre>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="regressões.html#cb206-1"></a><span class="co"># R quadrado</span></span>
+<span id="cb206-2"><a href="regressões.html#cb206-2"></a><span class="kw">summary</span>(fit_calib)<span class="op">$</span>r.squared</span></code></pre></div>
+<pre><code>[1] 0.9986265</code></pre>
+<p>Claro que parece muito complicado ter que fazer tudo isso para extrair alguns dados e mesmo assim, existem várias formas de extraí-los o que causa muita confusão, portanto iremos explorar alguns métodos para extraír estes dados do objeto <code>lm()</code>.</p>
+<div id="método-de-função" class="section level4" number="6.1.1.1">
+<h4><span class="header-section-number">6.1.1.1</span> Método de função</h4>
+<p>É fundamental em qualquer linguagem de programação que se saiba escrever funções que facilitem seu trabalho e deixem o código mais simples.
+Neste documento não estão escritas necessariamente as melhores funções que são mais eficientes mas aquelas que funcionam para o que é desejado. Na grande maioria das vezes é melhor escrever uma função rápido do que escrever uma função que funcione rápido.
+Otimização de código não é a nossa prioridade agora.</p>
+<p>Em outro capítulo será explorado a criação de funções melhor mas agora iremos apenas usar lógica para criar uma função que extraia os dados de coeficiente linear, angular, e <span class="math inline">\(R^2\)</span> e coloque-os em um dataframe com os nomes e os valores usando a sintaxe já demonstrada.</p>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="regressões.html#cb208-1"></a>extrair &lt;-<span class="st"> </span><span class="cf">function</span>(fit) { <span class="co">#fit é o argumento desta função</span></span>
+<span id="cb208-2"><a href="regressões.html#cb208-2"></a>    </span>
+<span id="cb208-3"><a href="regressões.html#cb208-3"></a>    <span class="co"># cria variável que contém coeficiente linear</span></span>
+<span id="cb208-4"><a href="regressões.html#cb208-4"></a>    coef_lin &lt;-<span class="st"> </span>fit<span class="op">$</span>coefficients[[<span class="dv">1</span>]]</span>
+<span id="cb208-5"><a href="regressões.html#cb208-5"></a>    <span class="co"># cria variável que contém coeficiente angular</span></span>
+<span id="cb208-6"><a href="regressões.html#cb208-6"></a>    coef_ang &lt;-<span class="st"> </span>fit<span class="op">$</span>coefficients[[<span class="dv">2</span>]]</span>
+<span id="cb208-7"><a href="regressões.html#cb208-7"></a>    <span class="co"># cria variável que contém r quadrado</span></span>
+<span id="cb208-8"><a href="regressões.html#cb208-8"></a>    r_quadrado &lt;-<span class="st"> </span><span class="kw">summary</span>(fit)<span class="op">$</span>r.squared</span>
+<span id="cb208-9"><a href="regressões.html#cb208-9"></a>    </span>
+<span id="cb208-10"><a href="regressões.html#cb208-10"></a>    <span class="co"># cria dataframe com os dados em cada coluna</span></span>
+<span id="cb208-11"><a href="regressões.html#cb208-11"></a>    tabela &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb208-12"><a href="regressões.html#cb208-12"></a>        <span class="st">&quot;Coeficiente Linear&quot;</span> =<span class="st"> </span>coef_lin,</span>
+<span id="cb208-13"><a href="regressões.html#cb208-13"></a>        <span class="st">&quot;Coeficiente Angular&quot;</span> =<span class="st"> </span>coef_ang,</span>
+<span id="cb208-14"><a href="regressões.html#cb208-14"></a>        <span class="st">&quot;R quadrado&quot;</span> =<span class="st"> </span>r_quadrado</span>
+<span id="cb208-15"><a href="regressões.html#cb208-15"></a>        )</span>
+<span id="cb208-16"><a href="regressões.html#cb208-16"></a>    </span>
+<span id="cb208-17"><a href="regressões.html#cb208-17"></a>    <span class="co"># pede para a função retornar o dataframe como output</span></span>
+<span id="cb208-18"><a href="regressões.html#cb208-18"></a>    <span class="kw">return</span>(tabela)</span>
+<span id="cb208-19"><a href="regressões.html#cb208-19"></a>    </span>
+<span id="cb208-20"><a href="regressões.html#cb208-20"></a>}</span>
+<span id="cb208-21"><a href="regressões.html#cb208-21"></a></span>
+<span id="cb208-22"><a href="regressões.html#cb208-22"></a><span class="co"># usando função nos dados de calibração</span></span>
+<span id="cb208-23"><a href="regressões.html#cb208-23"></a><span class="kw">extrair</span>(fit_calib)</span></code></pre></div>
+<pre><code>  Coeficiente.Linear Coeficiente.Angular R.quadrado
+1           1.242592            2.011021  0.9986265</code></pre>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="regressões.html#cb210-1"></a><span class="co"># usando função nos dados de mpg</span></span>
+<span id="cb210-2"><a href="regressões.html#cb210-2"></a><span class="kw">extrair</span>(fit)</span></code></pre></div>
+<pre><code>  Coeficiente.Linear Coeficiente.Angular R.quadrado
+1           25.99147           -2.630482  0.6376405</code></pre>
+<p>Agora esta função pode ser usada sempe que se desejar extrair estes dados de um modelo linear criado com <code>lm()</code>.
+Não é a função mais robusta e alguns erros podem surgir quando tentando combinar ela com outras operações, mas para uma introdução funciona muito bem.</p>
+</div>
+<div id="método-ggplot2" class="section level4" number="6.1.1.2">
+<h4><span class="header-section-number">6.1.1.2</span> Método <code>ggplot2</code></h4>
+<p>Um dos <code>geom</code>s do ggplot2 é o <code>geom_smooth()</code> que pode ser usado para plotar diversos modelos de regressão que não apenas lineares.
+É suplementado pela camada <code>stat_smooth()</code> que tem mais funcionalidade e mais customização.
+Para criar um gráfico com os pontos e a linha de regressão precisamos apenas dos dados de concentração e absorbância:</p>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="regressões.html#cb212-1"></a><span class="kw">ggplot</span>(calibracao,</span>
+<span id="cb212-2"><a href="regressões.html#cb212-2"></a>             <span class="kw">aes</span>(</span>
+<span id="cb212-3"><a href="regressões.html#cb212-3"></a>                <span class="dt">x =</span> conc,</span>
+<span id="cb212-4"><a href="regressões.html#cb212-4"></a>                <span class="dt">y =</span> abs</span>
+<span id="cb212-5"><a href="regressões.html#cb212-5"></a>             )) <span class="op">+</span></span>
+<span id="cb212-6"><a href="regressões.html#cb212-6"></a><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
+<span id="cb212-7"><a href="regressões.html#cb212-7"></a><span class="st">    </span><span class="co"># method = lm indica que quero representar um modelo linear,</span></span>
+<span id="cb212-8"><a href="regressões.html#cb212-8"></a><span class="st">    </span><span class="co"># se = FALSE indica que não quero mostrar o erro padrão calculado</span></span>
+<span id="cb212-9"><a href="regressões.html#cb212-9"></a><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">formula =</span> <span class="st">&quot;y ~ x&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-43-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<p>Porém o <code>ggplot2</code> não inclui nada que nos permita adicionar a equação com os coeficientes e o <span class="math inline">\(R^2\)</span> automaticamente portanto temos que adicionar individualmente usando os dados extraídos com a nossa função <code>extrair()</code>.</p>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="regressões.html#cb213-1"></a>coefs &lt;-<span class="st"> </span><span class="kw">extrair</span>(<span class="dt">fit =</span> fit_calib)</span>
+<span id="cb213-2"><a href="regressões.html#cb213-2"></a>coefs</span></code></pre></div>
+<pre><code>  Coeficiente.Linear Coeficiente.Angular R.quadrado
+1           1.242592            2.011021  0.9986265</code></pre>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="regressões.html#cb215-1"></a><span class="kw">ggplot</span>(calibracao,</span>
+<span id="cb215-2"><a href="regressões.html#cb215-2"></a>             <span class="kw">aes</span>(</span>
+<span id="cb215-3"><a href="regressões.html#cb215-3"></a>                <span class="dt">x =</span> conc,</span>
+<span id="cb215-4"><a href="regressões.html#cb215-4"></a>                <span class="dt">y =</span> abs</span>
+<span id="cb215-5"><a href="regressões.html#cb215-5"></a>             )) <span class="op">+</span></span>
+<span id="cb215-6"><a href="regressões.html#cb215-6"></a><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">formula =</span> <span class="st">&quot;y ~ x&quot;</span>) <span class="op">+</span></span>
+<span id="cb215-7"><a href="regressões.html#cb215-7"></a><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
+<span id="cb215-8"><a href="regressões.html#cb215-8"></a><span class="st">    </span><span class="kw">annotate</span>(<span class="dt">geom =</span> <span class="st">&quot;text&quot;</span>,</span>
+<span id="cb215-9"><a href="regressões.html#cb215-9"></a>                     <span class="dt">x =</span> <span class="dv">5</span>, <span class="co"># posição no eixo x </span></span>
+<span id="cb215-10"><a href="regressões.html#cb215-10"></a>                     <span class="dt">y =</span> <span class="dv">40</span>, <span class="co"># posição no eixo y</span></span>
+<span id="cb215-11"><a href="regressões.html#cb215-11"></a>                     <span class="dt">label =</span> <span class="kw">paste0</span>(<span class="st">&quot;y = &quot;</span>, coefs<span class="op">$</span>Coeficiente.Angular, <span class="st">&quot;x + &quot;</span>, coefs<span class="op">$</span>Coeficiente.Linear)) <span class="op">+</span></span>
+<span id="cb215-12"><a href="regressões.html#cb215-12"></a><span class="st">    </span><span class="kw">annotate</span>(<span class="dt">geom =</span> <span class="st">&quot;text&quot;</span>,</span>
+<span id="cb215-13"><a href="regressões.html#cb215-13"></a>                     <span class="dt">x =</span> <span class="dv">5</span>, <span class="co"># posição no eixo x </span></span>
+<span id="cb215-14"><a href="regressões.html#cb215-14"></a>                     <span class="dt">y =</span> <span class="dv">36</span>, <span class="co"># posição no eixo y</span></span>
+<span id="cb215-15"><a href="regressões.html#cb215-15"></a>                     <span class="dt">label =</span> <span class="kw">paste0</span>(<span class="st">&quot;R quadrado = &quot;</span>, coefs<span class="op">$</span>R.quadrado))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-44-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<p>Claro que agora temos um problema de números significativos em excesso e de formatação da equação e do <span class="math inline">\(R^2\)</span>.
+Para resolver isso temos que usar a função <code>format()</code>para reduzir o número de dígitos significativos ou <code>round()</code> para arredondar e o argumento <code>parse == TRUE</code> para forçar o sobrescrito na camada de anotação.</p>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="regressões.html#cb216-1"></a><span class="kw">ggplot</span>(calibracao,</span>
+<span id="cb216-2"><a href="regressões.html#cb216-2"></a>             <span class="kw">aes</span>(</span>
+<span id="cb216-3"><a href="regressões.html#cb216-3"></a>                <span class="dt">x =</span> conc,</span>
+<span id="cb216-4"><a href="regressões.html#cb216-4"></a>                <span class="dt">y =</span> abs</span>
+<span id="cb216-5"><a href="regressões.html#cb216-5"></a>             )) <span class="op">+</span></span>
+<span id="cb216-6"><a href="regressões.html#cb216-6"></a><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">formula =</span> <span class="st">&quot;y ~ x&quot;</span>) <span class="op">+</span></span>
+<span id="cb216-7"><a href="regressões.html#cb216-7"></a><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
+<span id="cb216-8"><a href="regressões.html#cb216-8"></a><span class="st">    </span><span class="kw">annotate</span>(<span class="dt">geom =</span> <span class="st">&quot;text&quot;</span>,</span>
+<span id="cb216-9"><a href="regressões.html#cb216-9"></a>                     <span class="dt">x =</span> <span class="dv">5</span>, <span class="co"># posição no eixo x </span></span>
+<span id="cb216-10"><a href="regressões.html#cb216-10"></a>                     <span class="dt">y =</span> <span class="dv">40</span>, <span class="co"># posição no eixo y</span></span>
+<span id="cb216-11"><a href="regressões.html#cb216-11"></a>                     <span class="dt">label =</span> <span class="kw">paste0</span>(<span class="st">&quot;y = &quot;</span>, <span class="kw">round</span>(coefs<span class="op">$</span>Coeficiente.Angular, <span class="dt">digits =</span> <span class="dv">3</span>), <span class="st">&quot;x + &quot;</span>, <span class="kw">format</span>(coefs<span class="op">$</span>Coeficiente.Linear, <span class="dt">digits =</span> <span class="dv">2</span>))) <span class="op">+</span></span>
+<span id="cb216-12"><a href="regressões.html#cb216-12"></a><span class="st">    </span><span class="kw">annotate</span>(<span class="dt">geom =</span> <span class="st">&quot;text&quot;</span>,</span>
+<span id="cb216-13"><a href="regressões.html#cb216-13"></a>                     <span class="dt">x =</span> <span class="dv">5</span>, <span class="co"># posição no eixo x </span></span>
+<span id="cb216-14"><a href="regressões.html#cb216-14"></a>                     <span class="dt">y =</span> <span class="dv">36</span>, <span class="co"># posição no eixo y</span></span>
+<span id="cb216-15"><a href="regressões.html#cb216-15"></a>                     <span class="dt">label =</span> <span class="kw">paste0</span>(<span class="st">&quot;R^2 ==&quot;</span>, <span class="kw">round</span>(coefs<span class="op">$</span>R.quadrado, <span class="dt">digits =</span> <span class="dv">4</span>)) ,</span>
+<span id="cb216-16"><a href="regressões.html#cb216-16"></a>                     <span class="dt">parse =</span> <span class="ot">TRUE</span>) <span class="co"># força a renderização do texto como uma expressão matemática</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-45-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<p>Claro que podemos escrever uma função usando as funções do <code>ggplot</code> para simplificar a construção destes gráficos, e esta pode ser uma alternativa viável mas outras pessoas já fizeram isso e publicaram pacotes justamente para atender esta necessidade.</p>
+</div>
+<div id="método-ggpmisc" class="section level4" number="6.1.1.3">
+<h4><span class="header-section-number">6.1.1.3</span> Método <code>ggpmisc</code></h4>
+<p>O pacote <code>ggpmisc</code> é uma extensão do <code>ggplot</code> que adiciona funcionalidades sobre o mesmo.
+Com ele adicionar a equação e os coeficientes se torna muito mais simples.</p>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="regressões.html#cb217-1"></a><span class="kw">library</span>(ggpmisc)</span></code></pre></div>
+<pre><code>News about &#39;ggpmisc&#39; at https://www.r4photobiology.info/</code></pre>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="regressões.html#cb219-1"></a><span class="kw">ggplot</span>(calibracao,</span>
+<span id="cb219-2"><a href="regressões.html#cb219-2"></a>             <span class="kw">aes</span>(</span>
+<span id="cb219-3"><a href="regressões.html#cb219-3"></a>                <span class="dt">x =</span> conc,</span>
+<span id="cb219-4"><a href="regressões.html#cb219-4"></a>                <span class="dt">y =</span> abs</span>
+<span id="cb219-5"><a href="regressões.html#cb219-5"></a>             )) <span class="op">+</span></span>
+<span id="cb219-6"><a href="regressões.html#cb219-6"></a><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">formula =</span> <span class="st">&quot;y ~ x&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb219-7"><a href="regressões.html#cb219-7"></a><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
+<span id="cb219-8"><a href="regressões.html#cb219-8"></a><span class="st">    </span><span class="co"># retirado da página do criador do pacote</span></span>
+<span id="cb219-9"><a href="regressões.html#cb219-9"></a><span class="st">    </span><span class="co"># https://github.com/cran/ggpmisc</span></span>
+<span id="cb219-10"><a href="regressões.html#cb219-10"></a><span class="st">  </span><span class="kw">stat_poly_eq</span>(<span class="kw">aes</span>(<span class="dt">label =</span>  <span class="kw">paste</span>(..eq.label.., ..adj.rr.label.., <span class="dt">sep =</span> <span class="st">&quot;~~~~&quot;</span>)),</span>
+<span id="cb219-11"><a href="regressões.html#cb219-11"></a>               <span class="dt">formula =</span> <span class="st">&quot;y~x&quot;</span>, <span class="dt">parse =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-46-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<p>Admito que não sei usar as funções deste pacote então recomendo que quem estiver lendo estas informaçõs busque outras fontes de conteúdo.
+A <a href="https://github.com/cran/ggpmisc">página</a> do desenvolvedor contém várias informações e exemplos.</p>
+</div>
+<div id="método-ggpubr" class="section level4" number="6.1.1.4">
+<h4><span class="header-section-number">6.1.1.4</span> Método <code>ggpubr</code></h4>
+<p>Provavelmente este é o método mais simples para gerar gráficos de regressão linear para uma curva de calibração.
+O pacote é outra extensão do <code>ggplot2</code> e foi feito para facilitar a construção de <em>plots</em> comuns no meio científico.
+A <a href="https://rpkgs.datanovia.com/ggpubr/index.html">página</a> possui vários exemplos e a documentação necessária para criação dos gráficos.</p>
+<p>O <code>ggpubr</code> é uma ferramenta que facilita bastante o uso do <code>R</code> para construção de gráficos, porém com algumas desvantagens e limitaçòes de customização.
+A sintaxe é um pouco diferente do <code>ggplot</code> mas similar o suficiente para não criar uma barreira para o usuário.</p>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="regressões.html#cb220-1"></a><span class="kw">library</span>(ggpubr)</span>
+<span id="cb220-2"><a href="regressões.html#cb220-2"></a></span>
+<span id="cb220-3"><a href="regressões.html#cb220-3"></a>ggpubr &lt;-<span class="st"> </span><span class="kw">ggscatter</span>(calibracao,</span>
+<span id="cb220-4"><a href="regressões.html#cb220-4"></a>                    <span class="dt">x =</span> <span class="st">&quot;conc&quot;</span>,</span>
+<span id="cb220-5"><a href="regressões.html#cb220-5"></a>                    <span class="dt">y =</span> <span class="st">&quot;abs&quot;</span>,</span>
+<span id="cb220-6"><a href="regressões.html#cb220-6"></a>                    <span class="dt">add =</span> <span class="st">&quot;reg.line&quot;</span>) <span class="op">+</span></span>
+<span id="cb220-7"><a href="regressões.html#cb220-7"></a><span class="st">    </span><span class="kw">stat_cor</span>(<span class="dt">label.x =</span> <span class="dv">5</span>, <span class="dt">label.y =</span> <span class="dv">36</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb220-8"><a href="regressões.html#cb220-8"></a><span class="st">    </span><span class="kw">stat_regline_equation</span>(<span class="dt">label.x =</span> <span class="dv">5</span>, <span class="dt">label.y =</span> <span class="dv">40</span>) <span class="op">+</span></span>
+<span id="cb220-9"><a href="regressões.html#cb220-9"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Criado com ggpubr&quot;</span>)</span>
+<span id="cb220-10"><a href="regressões.html#cb220-10"></a></span>
+<span id="cb220-11"><a href="regressões.html#cb220-11"></a>ggpubr</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-47-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<p>Alternativamente as funções do <code>ggpubr</code> podem ser usadas em <em>plots</em> criados com o <code>ggplot2</code> porque os objetos criados pelos dois tem compatibilidades.</p>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="regressões.html#cb221-1"></a>gg &lt;-<span class="st"> </span><span class="kw">ggplot</span>(calibracao,</span>
+<span id="cb221-2"><a href="regressões.html#cb221-2"></a>             <span class="kw">aes</span>(</span>
+<span id="cb221-3"><a href="regressões.html#cb221-3"></a>                <span class="dt">x =</span> conc,</span>
+<span id="cb221-4"><a href="regressões.html#cb221-4"></a>                <span class="dt">y =</span> abs</span>
+<span id="cb221-5"><a href="regressões.html#cb221-5"></a>             )) <span class="op">+</span></span>
+<span id="cb221-6"><a href="regressões.html#cb221-6"></a><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">formula =</span> <span class="st">&quot;y ~ x&quot;</span>) <span class="op">+</span></span>
+<span id="cb221-7"><a href="regressões.html#cb221-7"></a><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
+<span id="cb221-8"><a href="regressões.html#cb221-8"></a><span class="st">    </span><span class="kw">stat_cor</span>(<span class="dt">label.x =</span> <span class="dv">5</span>, <span class="dt">label.y =</span> <span class="dv">36</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb221-9"><a href="regressões.html#cb221-9"></a><span class="st">    </span><span class="kw">stat_regline_equation</span>(<span class="dt">label.x =</span> <span class="dv">5</span>, <span class="dt">label.y =</span> <span class="dv">40</span>) <span class="op">+</span></span>
+<span id="cb221-10"><a href="regressões.html#cb221-10"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Criado com ggplot2 + ggpubr&quot;</span>)</span>
+<span id="cb221-11"><a href="regressões.html#cb221-11"></a></span>
+<span id="cb221-12"><a href="regressões.html#cb221-12"></a></span>
+<span id="cb221-13"><a href="regressões.html#cb221-13"></a><span class="co"># usando patchwork</span></span>
+<span id="cb221-14"><a href="regressões.html#cb221-14"></a>ggpubr <span class="op">+</span><span class="st"> </span>gg</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-48-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<p>Existe uma infinidade de formas de mostrar estes dados, o importante é achar a forma que melhor atende suas necessidades e que seja o mais fácil criar.</p>
+<hr />
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="geoms.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="regressões-lineares.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="tutoriais.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="smoothing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>
