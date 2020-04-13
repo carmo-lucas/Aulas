@@ -1,0 +1,313 @@
+# Tipos de objetos
+
+Na aula anterior foi discutido alguns tipos de dados que existem no `R` e como criar alguns objetos simples como vetores.
+Dados numéricos, lógicos e de texto podem ser usados para diversos objetivos porém é necessário que estejam devidamente organizados para facilitar operações.
+Agora iremos explorar como que estes dados podem estar organizados dentro dos objetos e quais são os tipos de obetos mais comuns no `R`.
+
+## Vetores
+
+Vetores são os objetos mais comuns no `R`.
+Vetores suportam todos os tipos de dados do `R``sendo eles, decimais, inteiros, lógicos, complexos e texto (caracter).
+Um vetor é um tipo de objeto unidimensional que pode conter apenas um tipo de dado por exemplo:
+
+```{r vetor-tipo}
+
+vetor <- c(1.45, 4, 1L, "a", "99", TRUE, 2i+4)
+
+print(vetor)
+```
+
+Por mais que se especifique números com decimal e números inteiros (representado por `1L`), o vetor deve conter apenas um tipo de dado.
+Neste caso, todos os valores são convertidos para texto (`character`) porque todos os elementos do vetor podem ser convertidos, relativamente sem problema, para este tipo de dado.
+
+Pode-se verificar a classe deste vetor usando a função `class()` e observa-se que o resultado deve ser `character`.
+
+Vetores podem conter apenas um elemento ou podem ter número de elementos tão grande que extrapole a configuração de memória do seu computador.
+
+Pode-se fazer operações aritméticas entre vetores usando os operadores descritos no capítulo \@ref:(operadores) e sua utilidade pode ser variada mas aqui será explicado as regras gerais das operações entre vetores.
+
+```{r}
+# Criando vetores
+
+v1 <- c(0, 407, 1, 5) 
+v2 <- c(9, 12, 23, 2)
+
+# Adição de vetores
+v1 + v2
+
+# Subtração de vetores
+v1 - v2
+
+# Multiplicação de vetores
+v1 * v2
+
+# Divisão de vetores
+v1 / v2
+
+```
+
+Em todos estes exemplos os vetores possuem o mesmo número de elementos, porém quando vetores possuem diferentes números de elementos, para operações aritméticas o vetor com menor número de elementos pode sofrer reciclagem de alguns elementos para que a operação seja completa.
+
+```{r}
+v3 <- c(4, 5.6)
+
+# neste caso v3 age como se fosse c(4, 5.6, 4, 5.6)
+v1 + v3
+
+v1 * v3
+```
+
+Para organizar os elementos de vetores pode ser usado a função `sort()` que rearranja os elementos de um vetor na ordem crescente ou descrescente.
+
+```{r}
+v1
+
+# Crescente
+sort(v1)
+
+# Decrescente
+sort(v1, decreasing = TRUE)
+```
+
+## Matrizes
+
+Matrizes no `R` são equivalmentes a matrizes matemáticas e os mesmos tipos de operações podem aritméticas podem ser usadas nelas.
+São objetos bidimensionais que funcionam de forma parecida aos vetores.
+Porém além de possuírem propriedades de matrizes matemáticas nas matrizes do `R` todos os tipos de dados podem estar contidos, não apenas números.
+
+$$ 
+matriz = 
+\begin{bmatrix}
+0.4 & 9 & 24 \\
+e & \pi & 5^4 \\
+C & 6.023\cdot10^{23} & 0
+\end{bmatrix}
+$$
+
+A matriz acima é equivalente ao objeto abaixo:
+
+```{r}
+matriz <- matrix(
+	c(0.4, 9, 24, "e", pi, 5^4, "C", 6.023*10^23, 0),
+	nrow = 3,
+	byrow = TRUE
+)
+
+matriz
+```
+
+Observa-se que assim como vetores, matrizes não suportam vários tipos de dados diferentes, então, quando elementos são incompatíveis, a priridade será a classe de texto, os caracteres.
+Todos os elementos da matriz serão convertidos para caracter se houver apenas um elemento deste tipo.
+
+Como matrizes são objetos bidimensionais os elementos podem ser específicados através do seu número de coluna e de linha, indicados quando se imprime a matriz usando `print()`.
+
+## Índices
+
+O mesmo é válido para vetores, cada elemento de um vetor tem um número, ou seja um índice. 
+O índice de matrizes e vetores pode ser acessado usando o operador `[]`. 
+Em vetores o primeiro elemento sempre terá índice 1 então para acessar o primeiro elemento do vetor `v1` escreve-se `v1[1]` e o retorno é o valor do primeiro elemento de `v1`, neste caso `r v1[1]`.
+
+Dentro do [ ] podem ser usados vários operadores.
+Outro exemplo simples é querer extrair os 3 primeiros valores do vetor v1.
+Para fazer isso pode se usar `v1[1:3]` ou então excluir o quarto valor usando `v[-4]` que deve ser equivalente.
+Como é possível extrair o último valor do vetor sem saber quantos valores ele tem?
+No caso de vários vetores terem tamanhos diferentes como garantir que uma função sempre irá extrair o último valor?
+Podem ser usadas funções dentro do [ ] para se garantir isso, por exemplo:
+
+```{r}
+
+v1[(length(v1))]
+
+```
+
+A função `length()` retorna o comprimento do vetor, como o último elemento deve ter o mesmo número do comprimento do vetor inteiro, desta forma se garante que o último elemento será extraído, neste caso o valor é de `r v1[(length(v1))]`.
+
+***
+
+Para matrizes os índices funcionam da mesma forma porém como matrizs são bidimensionais, cada elemento contém dois índices, um para a linha e um para a coluna.
+Por exemplo, para extrair o valor da primeira linha e primeira coluna da matriz criada anteriormente, escrevemos `matriz[1, 1]`, dessa forma, tudo que vem antes da vírgula dentro do [ ] é o índice de qual linha e depois da vírgula o índice da coluna, escrevendo em termos gerais: `matriz[row, col]`.
+Portanto para se extrair o valor `r matriz[1,2]` da matriz de exemplo, se escreve: `matriz[1,2]`.
+
+Assim como em vetores, é possível usar funções dentro do `[]` para se retornar índices específicos porém pode ser que o comportamento não seja o esperado para vetores.
+Para extraír o último elemento de vetores usamos a função `length()` porém, em matrizes é neessário especificar qual coluna e qual linha deseja-se extrair o valor e `length()` funciona melhor com uma dimensão.
+Portanto é melhor usar outras funções como `nrow()` e `ncol()`.
+Logo, para escolher o elemento da última linha e última coluna pode-se escrever:
+`matriz[nrow(matriz), ncol(matriz)]` que é igual a `r matriz[nrow(matriz), ncol(matriz)]`.
+
+Em alguns alguns casos é necessário extrair todos os valores de uma linha ou todos os valores de uma coluna de uma matriz.
+Um atalho para se fazer isso é não especificar a coluna ou a linha, logo para selecionar apenas a segunda linha da matriz de exemplo, escreve-se: `matriz[2, ]`.
+Perceba que o espaço depois da vírgula fica vazio, dessa forma `R` entende que nenhuma coluna está sendo selecionada.
+Para selecionar todos os valores de uma coluna deixa-se o espaço em branco antes da vírgula, por exemplo `matriz[ ,1]`.
+Adicionalmente, para escolher a segunda __e__ terceira coluna pode-se escrever `matriz[ ,2:3]`.
+O mesmo vale para escolher linhas.
+
+## Dataframes 
+
+Dataframes são objetos bidimensionais que apesar de se parecerem com matrizes, são bastante diferentes, em primeiro lugar, as colunas de dataframes devem ser nomeadas; em segundo lugar colunas diferentes podem conter tipos de dados diferentes.
+
+Dataframes são mais flexíveis que matrizes principalmente por poderem conter vários tipos de dados em suas colunas.
+Enquanto que matrizes convertem todos os dados para o tipo `character` quando há um elemento deste tipo, em dataframes podemos ter uma coluna com o tipo `character` ou tra com o tipo `logical` e outra com o tipo `numeric` sem problema nenhum.
+
+Para criar dataframes usa-se a função `data.frame()` que contém diversos vetores dentro, por exemplo:
+
+```{r}
+# df é abreviação para dataframe
+
+df <- data.frame(
+	Idade = c(round(runif(n = 10, min = 20, max = 30))), # aleatorio entre 20 e 30
+	Nome = c("Luc","Jon","Jean","Brie","Mary","Dave","Lee","Nat","Dani","Rob"), # nomes
+	Sexo = c(F,F,T,T,T,F,F,T,T,F) # vetor contendo valores lógicos que indicam sexo
+)
+
+df
+
+# classe
+class(df)
+
+# Estrutura
+str(df)
+```
+
+A limitação de dataframes é que todas as colunas devem conter o mesmo número de linhas mas em geral funcionam como tabelas.
+Este tipo de objeto que contém dados em um quadro é denominado de retângular.
+Dados no formato retângular são usados para construção de gráficos usando várias extensões do `R` e é o formato de dados que a maioria das pessoas está acostumado a trabalhar por causa do que já aprendeu em programas como o Excell.
+
+É possível adicionar novas colunas e linhas a dataframes apesar de adicionar colunas ser mais direto.
+
+Os índices de um dataframe funcionam exatamente como funcionam em matrizes porém como em dataframes todas as colunas são nomeadas, podemos usar seus nomes invés de seus números, então para escolher os dados da coluna usa-se o operador `$`, por exemplo: `df$Idade` retorna os valores da coluna Idade no formato de um vetor, portanto para adicionar uma coluna, é possível atribuir ao dataframe uma nova coluna da seguinte forma:
+
+```{r}
+# cria a variável Peso e adiciona ao objeto df
+df$Peso <- c(runif(n = 10, min = 55, max = 100))
+
+df
+
+# cria variável altura
+df$Altura <- c(runif(n = 10, min = 159, max = 210))
+
+df
+```
+
+Agora que temos as variáveis `Altura` e `Peso` (geradas aleatoriamente pela função `ruinf()`) podemos calcular o IMC de cada indivíduo com uma nova coluna chamada `IMC`:
+
+```{r}
+# cria coluna IMC usando valores de outras colunas
+df$IMC <- df$Peso / (df$Altura/100)^2 # altura deve estar em metros
+
+df
+```
+
+Para adicionar linhas é necessário ter outro dataframe com colunas com os mesmos nomes que o dataframe original e usar a função `rbind()`.
+Abaixo o exemplo:
+
+```{r}
+df2 <- data.frame(
+	Idade = c(34, 99),
+	Nome = c("Huey","Zé"),
+	Sexo = c(FALSE, FALSE),
+	Peso = c(NA, 100.49993),
+	Altura = c(187, 176),
+	IMC = c(NA, NA)
+)
+
+df2
+
+df_nova <- rbind(df, df2)
+
+df_nova
+```
+
+### Índices de dataframes
+
+Assim como matrizes os índices funcionam da mesma forma para dataframes com a diferença de que como as colunas possuem nomes, é possível usá-los para selecionar colunas então `df[ ,"Idade"]` é a mesma coisa que `df[ ,1]`.
+
+Outros operadores para seleção de linhas e colunas que não foi explorado anteriormente é o operador `-`.
+Por exemplo quando se quer selecionar todas as colunas __exceto__ a coluna 2, é possível escrever `df[ ,c(1,3,4,5,6)]` ou muito mais fácil e rápido e simples `df[ ,-2]`.
+O mesmo vale para linhas de um dataframe e de uma matriz.
+O operador `-` indica subtração logo neste caso estou subtraindo a coluna 2 da minha seleção.
+
+Como nos casos anteriores, podem ser usadas funções para selecionar colunas e linhas específicas e um exercício para o leitor é descobrir como selecionar as linhas com número ímpar.
+
+***
+
+Solução: 
+
+`df[c(TRUE,FALSE), ]`
+
+Agora explique como isso funciona.
+
+## Listas
+
+Listas são o tipo de objeto genéricos do `R`.
+Listas podem ter elementos que são vetores, matrizes e dataframes e não possuem formato retangular.
+Para explicar listas é mais fácil criar uma e deixar o leitor contemplar sua estrutura:
+
+```{r warning=FALSE}
+lista <- list(
+	vetor_A = c(1, 4, 5.6, 8, 3, 1, 4.45), # vetor com números
+	vetor_B = c("Frases com várias palavras", "texto"), # vetor com caracteres
+	matriz_A = matrix(
+			c(0,2,5,10), # valores da matriz
+			ncol = 2, # número de colunas
+			byrow = FALSE # preencher valores por linha? FALSE
+		),
+	matriz_B = matrix(
+		c(letters), # valores da matriz
+		ncol = 3, # número de colunas
+		byrow = TRUE # preencher por linha? TRUE
+	),
+	dataframe_A = data.frame(
+		Nome = c("Jack", "Natalie", "Margot"), # coluna com nomes
+		Sobrenome = c("Black", "Portmann", "Robbie"), # coluna com sobrenome
+		Nascimento = as.Date(c("1969-08-28","1981-06-09","1990-07-02")) # data de nascimento
+	)
+)
+
+lista
+
+# estrutura da lista
+str(lista)
+```
+
+Nesta lista temos então, vetores com números, vetores com texto, matrix com números e matrix com texto e um dataframe com 3 variáveis.
+Bastante complexo.
+
+### Índices de listas
+
+Listas tem estrutura com vários níveis, inclusive é possível criar uma lista dentro de outra lista com vários outros vetores matrizes, dataframes etc porém será focado em listas com apenas um nível.
+Como usar os índices?
+
+Fácil, usa-se os mesmos operadores que os de dataframe.
+Por exemplo:
+
+```{r}
+# selecionando o vetor_A
+lista$vetor_A
+
+# selecionando matriz_A
+lista$matriz_A
+
+# selecionando dataframe_A
+lista$dataframe_A
+```
+
+Mas como selecionar os elementos individuais do vetor_B, matriz_B e dataframe_A?
+Fácil, da mesma forma que se selecionada quando não estavam dentro da lista.
+
+```{r}
+# elemento 3 do vetor_B
+lista$vetor_A[3]
+
+# elemento na linha 6 e coluna 2 da matriz_B
+lista$matriz_B[6,2]
+
+# Nascimento da Margot Robbie
+lista$dataframe_A$Nascimento[3]
+# ou
+lista$dataframe_A[3,3]
+```
+
+Assim se encerra a aula de tipos de objetos e índices.
+Esses exemplos são muito simples mas podem ajudar a enfrentar tarefas de extração de objetos muito mais complexos criados pelas funções do `R`.
+
+***

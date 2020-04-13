@@ -1,4 +1,6 @@
-# Regressões
+# Tutoriais
+
+## Regressões
 
 Para criar modelos de regressão linear ou não linear no `R` precisamos usar uma tipo de objeto que tem a é da classe `formula`.
 Esta classe é usada em várias funções de base do `R` mas também no pacote de criação de gráficos `ggplot2::`.
@@ -9,7 +11,7 @@ onde o operador `~` separa as variáveis.
 
 Para modelos lineares esse é o mínimo que é necessário saber porém para mais informação sobre regressões com mais variáveis e modelos não lineares dê uma olhada neste [link](https://www.datacamp.com/community/tutorials/r-formula-tutorial#datastructures).
 
-## Regressões Lineares
+### Regressões Lineares
 
 No `R` para criar modelos lineares simples é usada a função `lm()`.
 Os principais argumentos são a `formula` e os dasos (`data`), você pode ler os outros argumentos usando rodando `?lm()` no console.
@@ -118,7 +120,7 @@ summary(fit_calib)$r.squared
 
 Claro que parece muito complicado ter que fazer tudo isso para extrair alguns dados e mesmo assim, existem várias formas de extraí-los o que causa muita confusão, portanto iremos explorar alguns métodos para extraír estes dados do objeto `lm()`.
 
-### Método de função
+#### Método de função
 
 É fundamental em qualquer linguagem de programação que se saiba escrever funções que facilitem seu trabalho e deixem o código mais simples.
 Neste documento não estão escritas necessariamente as melhores funções que são mais eficientes mas aquelas que funcionam para o que é desejado. Na grande maioria das vezes é melhor escrever uma função rápido do que escrever uma função que funcione rápido.
@@ -159,7 +161,7 @@ extrair(fit)
 Agora esta função pode ser usada sempe que se desejar extrair estes dados de um modelo linear criado com `lm()`.
 Não é a função mais robusta e alguns erros podem surgir quando tentando combinar ela com outras operações, mas para uma introdução funciona muito bem.
 
-### Método `ggplot2`
+#### Método `ggplot2`
 
 Um dos `geom`s do ggplot2 é o `geom_smooth()` que pode ser usado para plotar diversos modelos de regressão que não apenas lineares.
 É suplementado pela camada `stat_smooth()` que tem mais funcionalidade e mais customização.
@@ -228,7 +230,7 @@ ggplot(calibracao,
 
 Claro que podemos escrever uma função usando as funções do `ggplot` para simplificar a construção destes gráficos, e esta pode ser uma alternativa viável mas outras pessoas já fizeram isso e publicaram pacotes justamente para atender esta necessidade.
 
-### Método `ggpmisc`
+#### Método `ggpmisc`
 
 O pacote `ggpmisc` é uma extensão do `ggplot` que adiciona funcionalidades sobre o mesmo.
 Com ele adicionar a equação e os coeficientes se torna muito mais simples.
@@ -253,7 +255,7 @@ ggplot(calibracao,
 Admito que não sei usar as funções deste pacote então recomendo que quem estiver lendo estas informaçõs busque outras fontes de conteúdo.
 A [página](https://github.com/cran/ggpmisc) do desenvolvedor contém várias informações e exemplos.
 
-### Método `ggpubr`
+#### Método `ggpubr`
 
 Provavelmente este é o método mais simples para gerar gráficos de regressão linear para uma curva de calibração.
 O pacote é outra extensão do `ggplot2` e foi feito para facilitar a construção de *plots* comuns no meio científico.
@@ -300,3 +302,6 @@ ggpubr + gg
 Existe uma infinidade de formas de mostrar estes dados, o importante é achar a forma que melhor atende suas necessidades e que seja o mais fácil criar.
 
 ***
+
+## Smoothing
+
