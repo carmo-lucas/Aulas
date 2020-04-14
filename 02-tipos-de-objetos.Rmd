@@ -7,7 +7,7 @@ Agora iremos explorar como que estes dados podem estar organizados dentro dos ob
 ## Vetores
 
 Vetores são os objetos mais comuns no `R`.
-Vetores suportam todos os tipos de dados do `R``sendo eles, decimais, inteiros, lógicos, complexos e texto (caracter).
+Vetores suportam todos os tipos de dados do `R` sendo eles, decimais, inteiros, lógicos, complexos e texto (caracter).
 Um vetor é um tipo de objeto unidimensional que pode conter apenas um tipo de dado por exemplo:
 
 ```{r vetor-tipo}
@@ -24,7 +24,7 @@ Pode-se verificar a classe deste vetor usando a função `class()` e observa-se 
 
 Vetores podem conter apenas um elemento ou podem ter número de elementos tão grande que extrapole a configuração de memória do seu computador.
 
-Pode-se fazer operações aritméticas entre vetores usando os operadores descritos no capítulo \@ref:(operadores) e sua utilidade pode ser variada mas aqui será explicado as regras gerais das operações entre vetores.
+Pode-se fazer operações aritméticas entre vetores usando os operadores descritos no capítulo \@ref(operadores) e sua utilidade pode ser variada mas aqui será explicado as regras gerais das operações entre vetores.
 
 ```{r}
 # Criando vetores
@@ -306,6 +306,38 @@ lista$dataframe_A$Nascimento[3]
 # ou
 lista$dataframe_A[3,3]
 ```
+
+Listas são tipos de objetos muito úteis para o __armazenamento__ de dados de forma legível tanto para computadores quanto para humanos.
+Este tipo de estrutura de dados é similar aos usados em bancos de dados não-tabulares.
+Essa estrutura é similar a arquivos [`JSON`](https://www.json.org/json-en.html) e [`dictionaries`](https://www.w3schools.com/python/python_dictionaries.asp) da linguagem python.
+
+É bastante útil para se armazenar vários dados de natureza diferente para amostras, por exemplo:
+
+```{r}
+Polimero_A <- list(
+	Nome = "Polímero A",
+	Fabricacao = as.Date("2019-09-24"),
+	Validade = "3 meses",
+	Curva_calibracao_HPLC = data.frame(
+		Conc_Padrao = c(0.01, 0.05, 0.1, 0.5, 0.9, 1.0, 2, 3, 5, 10, 30, 100, 500),
+		Abs = c(0, 0, 0, 0.1, 0.3, 0.9, 2, 4, 6, 29, 39, 50, 100)
+	),
+	Descricao = list(Visual = "pó amarelado", 
+									 Odor = "sem odor",
+									 Outros = "higroscópico"),
+	Tratamento = c("Secagem por liofilização", "Filtração com filtro n. 2"),
+	Estabilidade = data.frame(
+		Dia = c(1:10),
+		Separacao_fase = c(F, F, F, F, F, F, F, T, T, T),
+		FaseO_por_FaseA = c(0, 0, 0, 0, 0, 0, 0, 0.4, 0.6, 0.9)
+	)
+)
+
+Polimero_A
+```
+
+Este objeto contém todas as informações sobre a amostra desejadas e para acessar essas informações é apenas necessário usar os índices corretos.
+Para criar objetos `JSON` a partir de objetos em `R` a forma mais prática é usando o pacote [`jsonlite`](https://github.com/jeroen/jsonlite).
 
 Assim se encerra a aula de tipos de objetos e índices.
 Esses exemplos são muito simples mas podem ajudar a enfrentar tarefas de extração de objetos muito mais complexos criados pelas funções do `R`.

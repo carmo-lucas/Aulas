@@ -24,7 +24,7 @@
 <meta name="author" content="Lucas Chagas Lima do Carmo" />
 
 
-<meta name="date" content="2020-04-13" />
+<meta name="date" content="2020-04-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -216,35 +216,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.4</span> Cores, tamanhos, formas e outros atributos estéticos</h2>
 <p>No primeiro gráfico apenas usamos o mapeamentos estéticos <code>x</code> e <code>y</code> para definir em qual eixo as observações seriam colocadas, porém existem outras estéticas como tamanho (size), forma (shape) e cor (color, fill) que também podem ser mapeadas no gráfico de acordo com os valores das variáveis.</p>
 <p>Um exemplo é plotar os valores da variável classe como cores no gráfico:</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb163-1"></a><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy, </span>
-<span id="cb163-2"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb163-2"></a>                                <span class="dt">color =</span> class)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb163-3"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb163-3"></a><span class="st">    </span><span class="kw">geom_point</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-23-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb165-1"></a><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy, </span>
+<span id="cb165-2"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb165-2"></a>                                <span class="dt">color =</span> class)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb165-3"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb165-3"></a><span class="st">    </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-24-1.png" width="2100" style="display: block; margin: auto;" /></p>
 <p>Assim começamos a procurar por relacionamentos nas variáveis.
 Podemos também usar o tamanho dos pontos como mapeamentos estéticos.</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb164-1"></a><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy, </span>
-<span id="cb164-2"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb164-2"></a>                                <span class="dt">color =</span> class, </span>
-<span id="cb164-3"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb164-3"></a>                                <span class="dt">size =</span> cty)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb164-4"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb164-4"></a><span class="st">    </span><span class="kw">geom_point</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-24-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb166-1"></a><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy, </span>
+<span id="cb166-2"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb166-2"></a>                                <span class="dt">color =</span> class, </span>
+<span id="cb166-3"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb166-3"></a>                                <span class="dt">size =</span> cty)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb166-4"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb166-4"></a><span class="st">    </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-25-1.png" width="2100" style="display: block; margin: auto;" /></p>
 <p>Veja que as legendas aparecem automaticamente ao lado direito, junto com as cores.
 Finalmente podemos usar a forma dos pontos para mapear outra variável.</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb165-1"></a><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy, </span>
-<span id="cb165-2"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb165-2"></a>                                <span class="dt">color =</span> class, </span>
-<span id="cb165-3"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb165-3"></a>                                <span class="dt">size =</span> cty,</span>
-<span id="cb165-4"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb165-4"></a>                                <span class="dt">shape =</span> drv)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb165-5"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb165-5"></a><span class="st">    </span><span class="kw">geom_point</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-25-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb167-1"></a><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy, </span>
+<span id="cb167-2"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb167-2"></a>                                <span class="dt">color =</span> class, </span>
+<span id="cb167-3"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb167-3"></a>                                <span class="dt">size =</span> cty,</span>
+<span id="cb167-4"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb167-4"></a>                                <span class="dt">shape =</span> drv)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb167-5"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb167-5"></a><span class="st">    </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-26-1.png" width="2100" style="display: block; margin: auto;" /></p>
 <hr />
 <p>Um erro comum é tentar especificar a cor do <code>geom</code> dentro da função <code>aes()</code> o que tem resultados completamente indesejados.</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb166-1"></a>p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb166-2"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb166-2"></a><span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> <span class="st">&quot;maroon&quot;</span>))</span>
-<span id="cb166-3"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb166-3"></a></span>
-<span id="cb166-4"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb166-4"></a>p2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb166-5"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb166-5"></a><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">color =</span> <span class="st">&quot;maroon&quot;</span>)</span>
-<span id="cb166-6"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb166-6"></a></span>
-<span id="cb166-7"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb166-7"></a><span class="co"># Para funcionar você deve usar o pacote patchwork</span></span>
-<span id="cb166-8"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb166-8"></a>p1 <span class="op">+</span><span class="st"> </span>p2</span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb168-1"></a>p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb168-2"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb168-2"></a><span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> <span class="st">&quot;maroon&quot;</span>))</span>
+<span id="cb168-3"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb168-3"></a></span>
+<span id="cb168-4"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb168-4"></a>p2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb168-5"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb168-5"></a><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">color =</span> <span class="st">&quot;maroon&quot;</span>)</span>
+<span id="cb168-6"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb168-6"></a></span>
+<span id="cb168-7"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb168-7"></a><span class="co"># Para funcionar você deve usar o pacote patchwork</span></span>
+<span id="cb168-8"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html#cb168-8"></a>p1 <span class="op">+</span><span class="st"> </span>p2</span></code></pre></div>
 <p><img src="_main_files/figure-html/cor-errada-1.png" width="2100" style="display: block; margin: auto;" /></p>
 <p>É importante lembrar que quando se inclui algum elemento estético dentro da função <code>aes()</code> os valores serão mapeados a uma escala estética portanto colocar um valor único, como um <code>string</code> irá produzir uma escala com valor único, não gerando o resultado esperado como mostrado no gráfico acima a esquerda.</p>
 </div>
