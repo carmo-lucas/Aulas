@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>6.2 Smoothing | Aulas de R</title>
   <meta name="description" content="6.2 Smoothing | Aulas de R" />
-  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="6.2 Smoothing | Aulas de R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Lucas Chagas Lima do Carmo" />
 
 
-<meta name="date" content="2020-04-14" />
+<meta name="date" content="2020-04-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="regressões.html"/>
-<link rel="next" href="references.html"/>
+<link rel="next" href="gráficos-deslocados-no-eixo-y.html"/>
 <script src="assets/header-attrs-2.1/header-attrs.js"></script>
 <script src="assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -193,6 +193,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1.1" data-path="regressões.html"><a href="regressões.html#regressões-lineares"><i class="fa fa-check"></i><b>6.1.1</b> Regressões Lineares</a></li>
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="smoothing.html"><a href="smoothing.html"><i class="fa fa-check"></i><b>6.2</b> Smoothing</a></li>
+<li class="chapter" data-level="6.3" data-path="gráficos-deslocados-no-eixo-y.html"><a href="gráficos-deslocados-no-eixo-y.html"><i class="fa fa-check"></i><b>6.3</b> Gráficos deslocados no eixo <code>y</code></a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="gráficos-deslocados-no-eixo-y.html"><a href="gráficos-deslocados-no-eixo-y.html#exemplos-de-gráficos"><i class="fa fa-check"></i><b>6.3.1</b> Exemplos de gráficos</a></li>
+<li class="chapter" data-level="6.3.2" data-path="gráficos-deslocados-no-eixo-y.html"><a href="gráficos-deslocados-no-eixo-y.html#transformação-de-dados"><i class="fa fa-check"></i><b>6.3.2</b> Transformação de dados</a></li>
+<li class="chapter" data-level="6.3.3" data-path="gráficos-deslocados-no-eixo-y.html"><a href="gráficos-deslocados-no-eixo-y.html#wide-vs.-long"><i class="fa fa-check"></i><b>6.3.3</b> <code>wide</code> vs. <code>long</code></a></li>
+<li class="chapter" data-level="6.3.4" data-path="gráficos-deslocados-no-eixo-y.html"><a href="gráficos-deslocados-no-eixo-y.html#construindo-o-gráfico"><i class="fa fa-check"></i><b>6.3.4</b> Construindo o gráfico</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
@@ -218,12 +225,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Em geral para suavizar os dados é usado o método de <em>moving average</em>, também chamado de <em>rolling average</em> onde é calculada a média de pontos adjacentes para que o ruído dos dados fique menos proeminente.</p>
 <p>No <code>R</code>, através das funções do <code>ggplot2</code> pode ser usado o <code>geom_smooth()</code> para se obter curvas com perfil “suavizado”, ou smoothed.
 Vamos usar o exemplo de uma análise de difração de raios x.</p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="smoothing.html#cb224-1"></a><span class="co"># lê os dados no arquivo DRX.txt na pasta dados</span></span>
-<span id="cb224-2"><a href="smoothing.html#cb224-2"></a>df &lt;-<span class="st"> </span><span class="kw">read_table</span>(<span class="st">&quot;dados/DRX.txt&quot;</span>, </span>
-<span id="cb224-3"><a href="smoothing.html#cb224-3"></a><span class="co"># pula as 30 primeiras linhas do arquivo que contém informações não necessárias</span></span>
-<span id="cb224-4"><a href="smoothing.html#cb224-4"></a>                                 <span class="dt">skip =</span> <span class="dv">30</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb224-5"><a href="smoothing.html#cb224-5"></a><span class="co"># seleciona colunas &lt;2Theta&gt; e &lt;I&gt; e as renomeia</span></span>
-<span id="cb224-6"><a href="smoothing.html#cb224-6"></a><span class="st">    </span><span class="kw">select</span>(<span class="st">&quot;theta_2&quot;</span> =<span class="st"> `</span><span class="dt">&lt;2Theta&gt;</span><span class="st">`</span>, <span class="st">&quot;I&quot;</span> =<span class="st"> `</span><span class="dt">I   &gt;</span><span class="st">`</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="smoothing.html#cb222-1"></a><span class="co"># lê os dados no arquivo DRX.txt na pasta dados</span></span>
+<span id="cb222-2"><a href="smoothing.html#cb222-2"></a>df &lt;-<span class="st"> </span><span class="kw">read_table</span>(<span class="st">&quot;dados/DRX.txt&quot;</span>, </span>
+<span id="cb222-3"><a href="smoothing.html#cb222-3"></a><span class="co"># pula as 30 primeiras linhas do arquivo que contém informações não necessárias</span></span>
+<span id="cb222-4"><a href="smoothing.html#cb222-4"></a>                                 <span class="dt">skip =</span> <span class="dv">30</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb222-5"><a href="smoothing.html#cb222-5"></a><span class="co"># seleciona colunas &lt;2Theta&gt; e &lt;I&gt; e as renomeia</span></span>
+<span id="cb222-6"><a href="smoothing.html#cb222-6"></a><span class="st">    </span><span class="kw">select</span>(<span class="st">&quot;theta_2&quot;</span> =<span class="st"> `</span><span class="dt">&lt;2Theta&gt;</span><span class="st">`</span>, <span class="st">&quot;I&quot;</span> =<span class="st"> `</span><span class="dt">I   &gt;</span><span class="st">`</span>)</span></code></pre></div>
 <pre><code>Parsed with column specification:
 cols(
   `&lt;2Theta&gt;` = col_double(),
@@ -239,30 +246,30 @@ cols(
 <p>obs. No arquivo de texto original as colunas estão separadas por espaços em branco e por isso se usa a função <code>read_table()</code> porém para a coluna de intensidade (<code>&lt;I&gt;</code>) há espaçoes desnecessários entre o <code>&lt;</code> e <code>I</code>, o que causa a má interpretação do texto portanto foi necessário especificar o nome da coluna exatamente como foi lido pela função <code>read_table()</code>.</p>
 </blockquote>
 <p>Agora para fazer o gráfico usamos o <code>ggplot2</code>:</p>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="smoothing.html#cb226-1"></a>p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(df,</span>
-<span id="cb226-2"><a href="smoothing.html#cb226-2"></a>             <span class="kw">aes</span>(</span>
-<span id="cb226-3"><a href="smoothing.html#cb226-3"></a>                <span class="dt">x =</span> theta_<span class="dv">2</span>,</span>
-<span id="cb226-4"><a href="smoothing.html#cb226-4"></a>                <span class="dt">y =</span> I</span>
-<span id="cb226-5"><a href="smoothing.html#cb226-5"></a>             )</span>
-<span id="cb226-6"><a href="smoothing.html#cb226-6"></a>            ) <span class="op">+</span></span>
-<span id="cb226-7"><a href="smoothing.html#cb226-7"></a><span class="st">    </span><span class="kw">geom_line</span>() <span class="op">+</span></span>
-<span id="cb226-8"><a href="smoothing.html#cb226-8"></a><span class="st">    </span><span class="kw">theme_bw</span>() </span>
-<span id="cb226-9"><a href="smoothing.html#cb226-9"></a>    </span>
-<span id="cb226-10"><a href="smoothing.html#cb226-10"></a></span>
-<span id="cb226-11"><a href="smoothing.html#cb226-11"></a>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>, <span class="dt">span =</span> <span class="fl">0.01</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="smoothing.html#cb224-1"></a>p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(df,</span>
+<span id="cb224-2"><a href="smoothing.html#cb224-2"></a>             <span class="kw">aes</span>(</span>
+<span id="cb224-3"><a href="smoothing.html#cb224-3"></a>                <span class="dt">x =</span> theta_<span class="dv">2</span>,</span>
+<span id="cb224-4"><a href="smoothing.html#cb224-4"></a>                <span class="dt">y =</span> I</span>
+<span id="cb224-5"><a href="smoothing.html#cb224-5"></a>             )</span>
+<span id="cb224-6"><a href="smoothing.html#cb224-6"></a>            ) <span class="op">+</span></span>
+<span id="cb224-7"><a href="smoothing.html#cb224-7"></a><span class="st">    </span><span class="kw">geom_line</span>() <span class="op">+</span></span>
+<span id="cb224-8"><a href="smoothing.html#cb224-8"></a><span class="st">    </span><span class="kw">theme_bw</span>() </span>
+<span id="cb224-9"><a href="smoothing.html#cb224-9"></a>    </span>
+<span id="cb224-10"><a href="smoothing.html#cb224-10"></a></span>
+<span id="cb224-11"><a href="smoothing.html#cb224-11"></a>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>, <span class="dt">span =</span> <span class="fl">0.01</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>) </span></code></pre></div>
 <p><img src="_main_files/figure-html/drx-ggplot-1.png" width="2100" style="display: block; margin: auto;" /></p>
 <p>O método <code>loess</code> significa que o calculo feito é uma regressão local entre a fração de pontos especificada pelo argumento <code>span</code>.
 Quanto menor o <code>span</code> maior será a “resolução” da curva suavizada.
 Abaixo a comparação:</p>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="smoothing.html#cb227-1"></a>span1 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>, <span class="dt">span =</span> <span class="dv">1</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="op">+</span></span>
-<span id="cb227-2"><a href="smoothing.html#cb227-2"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Span = 1&quot;</span>)</span>
-<span id="cb227-3"><a href="smoothing.html#cb227-3"></a>span05 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>, <span class="dt">span =</span> <span class="fl">0.5</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="op">+</span></span>
-<span id="cb227-4"><a href="smoothing.html#cb227-4"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Span = 0.5&quot;</span>)</span>
-<span id="cb227-5"><a href="smoothing.html#cb227-5"></a>span01 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>, <span class="dt">span =</span> <span class="fl">0.1</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="op">+</span></span>
-<span id="cb227-6"><a href="smoothing.html#cb227-6"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Span = 0.1&quot;</span>)</span>
-<span id="cb227-7"><a href="smoothing.html#cb227-7"></a></span>
-<span id="cb227-8"><a href="smoothing.html#cb227-8"></a></span>
-<span id="cb227-9"><a href="smoothing.html#cb227-9"></a>span1 <span class="op">+</span><span class="st"> </span>span05 <span class="op">+</span><span class="st"> </span>span01</span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="smoothing.html#cb225-1"></a>span1 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>, <span class="dt">span =</span> <span class="dv">1</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="op">+</span></span>
+<span id="cb225-2"><a href="smoothing.html#cb225-2"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Span = 1&quot;</span>)</span>
+<span id="cb225-3"><a href="smoothing.html#cb225-3"></a>span05 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>, <span class="dt">span =</span> <span class="fl">0.5</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="op">+</span></span>
+<span id="cb225-4"><a href="smoothing.html#cb225-4"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Span = 0.5&quot;</span>)</span>
+<span id="cb225-5"><a href="smoothing.html#cb225-5"></a>span01 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>, <span class="dt">span =</span> <span class="fl">0.1</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="op">+</span></span>
+<span id="cb225-6"><a href="smoothing.html#cb225-6"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Span = 0.1&quot;</span>)</span>
+<span id="cb225-7"><a href="smoothing.html#cb225-7"></a></span>
+<span id="cb225-8"><a href="smoothing.html#cb225-8"></a></span>
+<span id="cb225-9"><a href="smoothing.html#cb225-9"></a>span1 <span class="op">+</span><span class="st"> </span>span05 <span class="op">+</span><span class="st"> </span>span01</span></code></pre></div>
 <p><img src="_main_files/figure-html/span-span1-1.png" width="2100" style="display: block; margin: auto;" /></p>
 <p>Mesmo assim com esse <code>span</code> pequeno perde-se muito a resolução dos dados então a melhor solução é usar o pacote <code>tidyquant</code> que tem um geom específico para criar gráficos com <em>moving average</em>.</p>
 <p>O geom que o pacote <code>tidyquant</code> providencia é um geom que gera os dados do <em>moving average</em> direto no gráfico, sem necessidade de modificar os dados originais.
@@ -270,28 +277,26 @@ O principal argumento que o <code>geom_ma()</code> usa neste caso é o <code>n</
 <code>n</code> é o número de pontos adjacentes que serão usados para calcular a média, logo quanto maior o <code>n</code> mais suave será a curva.
 O efeito colateral esperado é que os picos percam um pouco de definição porém o resultado é muito melhor do que o que o <code>geom_smooth()</code> gera.
 Abaixo a comparação:</p>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="smoothing.html#cb228-1"></a><span class="kw">library</span>(tidyquant)</span>
-<span id="cb228-2"><a href="smoothing.html#cb228-2"></a></span>
-<span id="cb228-3"><a href="smoothing.html#cb228-3"></a>span001 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>, <span class="dt">span =</span> <span class="fl">0.01</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="op">+</span></span>
-<span id="cb228-4"><a href="smoothing.html#cb228-4"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Span = 0.01&quot;</span>)</span>
-<span id="cb228-5"><a href="smoothing.html#cb228-5"></a>n5 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_ma</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">linetype =</span> <span class="st">&quot;solid&quot;</span>, <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></span>
-<span id="cb228-6"><a href="smoothing.html#cb228-6"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;n = 5&quot;</span>)</span>
-<span id="cb228-7"><a href="smoothing.html#cb228-7"></a>n10 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_ma</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">linetype =</span> <span class="st">&quot;solid&quot;</span>, <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></span>
-<span id="cb228-8"><a href="smoothing.html#cb228-8"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;n = 10&quot;</span>)</span>
-<span id="cb228-9"><a href="smoothing.html#cb228-9"></a></span>
-<span id="cb228-10"><a href="smoothing.html#cb228-10"></a>span001 <span class="op">+</span><span class="st"> </span>n5 <span class="op">+</span><span class="st"> </span>n10</span></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="smoothing.html#cb226-1"></a><span class="kw">library</span>(tidyquant)</span>
+<span id="cb226-2"><a href="smoothing.html#cb226-2"></a></span>
+<span id="cb226-3"><a href="smoothing.html#cb226-3"></a>span001 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>, <span class="dt">span =</span> <span class="fl">0.01</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="op">+</span></span>
+<span id="cb226-4"><a href="smoothing.html#cb226-4"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Span = 0.01&quot;</span>)</span>
+<span id="cb226-5"><a href="smoothing.html#cb226-5"></a>n5 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_ma</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">linetype =</span> <span class="st">&quot;solid&quot;</span>, <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb226-6"><a href="smoothing.html#cb226-6"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;n = 5&quot;</span>)</span>
+<span id="cb226-7"><a href="smoothing.html#cb226-7"></a>n10 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_ma</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">linetype =</span> <span class="st">&quot;solid&quot;</span>, <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb226-8"><a href="smoothing.html#cb226-8"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;n = 10&quot;</span>)</span>
+<span id="cb226-9"><a href="smoothing.html#cb226-9"></a></span>
+<span id="cb226-10"><a href="smoothing.html#cb226-10"></a>span001 <span class="op">+</span><span class="st"> </span>n5 <span class="op">+</span><span class="st"> </span>n10</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-50-1.png" width="2100" style="display: block; margin: auto;" /></p>
 <p>Outra forma de fazer o mesmo seria criar um novo dataframe com os dados da <em>mobing average</em> e plotá-los usando os geoms do <code>ggplot</code> depende do usuário definir qual a melhor forma de tratar os dados.</p>
-
 </div>
-<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
 <a href="regressões.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="gráficos-deslocados-no-eixo-y.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>

@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6.3 Gráficos deslocados no eixo y | Aulas de R</title>
+  <meta name="description" content="6.3 Gráficos deslocados no eixo y | Aulas de R" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6.3 Gráficos deslocados no eixo y | Aulas de R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6.3 Gráficos deslocados no eixo y | Aulas de R" />
+  
+  
+  
+
+<meta name="author" content="Lucas Chagas Lima do Carmo" />
+
+
+<meta name="date" content="2020-04-21" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="smoothing.html"/>
+<link rel="next" href="references.html"/>
+<script src="assets/header-attrs-2.1/header-attrs.js"></script>
+<script src="assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introdução</a></li>
+<li class="chapter" data-level="1" data-path="tipos-de-dados.html"><a href="tipos-de-dados.html"><i class="fa fa-check"></i><b>1</b> Tipos de Dados</a></li>
+<li class="chapter" data-level="2" data-path="tipos-de-objetos.html"><a href="tipos-de-objetos.html"><i class="fa fa-check"></i><b>2</b> Tipos de objetos</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="vetores.html"><a href="vetores.html"><i class="fa fa-check"></i><b>2.1</b> Vetores</a></li>
+<li class="chapter" data-level="2.2" data-path="matrizes.html"><a href="matrizes.html"><i class="fa fa-check"></i><b>2.2</b> Matrizes</a></li>
+<li class="chapter" data-level="2.3" data-path="índices.html"><a href="índices.html"><i class="fa fa-check"></i><b>2.3</b> Índices</a></li>
+<li class="chapter" data-level="2.4" data-path="dataframes.html"><a href="dataframes.html"><i class="fa fa-check"></i><b>2.4</b> Dataframes</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="dataframes.html"><a href="dataframes.html#índices-de-dataframes"><i class="fa fa-check"></i><b>2.4.1</b> Índices de dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="listas.html"><a href="listas.html"><i class="fa fa-check"></i><b>2.5</b> Listas</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="listas.html"><a href="listas.html#índices-de-listas"><i class="fa fa-check"></i><b>2.5.1</b> Índices de listas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="operadores.html"><a href="operadores.html"><i class="fa fa-check"></i><b>3</b> Operadores</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="operadores-aritméticos.html"><a href="operadores-aritméticos.html"><i class="fa fa-check"></i><b>3.1</b> Operadores aritméticos</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="operadores-aritméticos.html"><a href="operadores-aritméticos.html#exemplos"><i class="fa fa-check"></i><b>3.1.1</b> Exemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="operadores-lógicos.html"><a href="operadores-lógicos.html"><i class="fa fa-check"></i><b>3.2</b> Operadores Lógicos</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="operadores-lógicos.html"><a href="operadores-lógicos.html#exemplos-1"><i class="fa fa-check"></i><b>3.2.1</b> Exemplos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="extensões.html"><a href="extensões.html"><i class="fa fa-check"></i><b>4</b> Extensões</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>4.1</b> <code>tidyverse</code></a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="tidyverse.html"><a href="tidyverse.html#dplyr"><i class="fa fa-check"></i><b>4.1.1</b> <code>dplyr</code></a></li>
+<li class="chapter" data-level="4.1.2" data-path="tidyverse.html"><a href="tidyverse.html#tidyr"><i class="fa fa-check"></i><b>4.1.2</b> <code>tidyr</code></a></li>
+<li class="chapter" data-level="4.1.3" data-path="tidyverse.html"><a href="tidyverse.html#readr"><i class="fa fa-check"></i><b>4.1.3</b> <code>readr</code></a></li>
+<li class="chapter" data-level="4.1.4" data-path="tidyverse.html"><a href="tidyverse.html#stringr"><i class="fa fa-check"></i><b>4.1.4</b> <code>stringr</code></a></li>
+<li class="chapter" data-level="4.1.5" data-path="tidyverse.html"><a href="tidyverse.html#tibble"><i class="fa fa-check"></i><b>4.1.5</b> <code>tibble</code></a></li>
+<li class="chapter" data-level="4.1.6" data-path="tidyverse.html"><a href="tidyverse.html#purrr"><i class="fa fa-check"></i><b>4.1.6</b> <code>purrr</code></a></li>
+<li class="chapter" data-level="4.1.7" data-path="tidyverse.html"><a href="tidyverse.html#forcats"><i class="fa fa-check"></i><b>4.1.7</b> <code>forcats</code></a></li>
+<li class="chapter" data-level="4.1.8" data-path="tidyverse.html"><a href="tidyverse.html#magrittr"><i class="fa fa-check"></i><b>4.1.8</b> <code>magrittr</code></a></li>
+<li class="chapter" data-level="4.1.9" data-path="tidyverse.html"><a href="tidyverse.html#ggplot2"><i class="fa fa-check"></i><b>4.1.9</b> <code>ggplot2</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="ggplot2-1.html"><a href="ggplot2-1.html"><i class="fa fa-check"></i><b>5</b> <code>ggplot2</code></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="gramática-de-gráficos.html"><a href="gramática-de-gráficos.html"><i class="fa fa-check"></i><b>5.1</b> Gramática de Gráficos</a></li>
+<li class="chapter" data-level="5.2" data-path="instalação.html"><a href="instalação.html"><i class="fa fa-check"></i><b>5.2</b> Instalação</a></li>
+<li class="chapter" data-level="5.3" data-path="componentes-principais-dos-gráficos.html"><a href="componentes-principais-dos-gráficos.html"><i class="fa fa-check"></i><b>5.3</b> Componentes principais dos gráficos</a></li>
+<li class="chapter" data-level="5.4" data-path="cores-tamanhos-formas-e-outros-atributos-estéticos.html"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html"><i class="fa fa-check"></i><b>5.4</b> Cores, tamanhos, formas e outros atributos estéticos</a></li>
+<li class="chapter" data-level="5.5" data-path="geoms.html"><a href="geoms.html"><i class="fa fa-check"></i><b>5.5</b> Geoms</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="geoms.html"><a href="geoms.html#geoms-individuais"><i class="fa fa-check"></i><b>5.5.1</b> Geoms individuais</a></li>
+<li class="chapter" data-level="5.5.2" data-path="geoms.html"><a href="geoms.html#geoms-coletivos"><i class="fa fa-check"></i><b>5.5.2</b> Geoms coletivos</a></li>
+<li class="chapter" data-level="5.5.3" data-path="geoms.html"><a href="geoms.html#resumos-estatísticos"><i class="fa fa-check"></i><b>5.5.3</b> Resumos estatísticos</a></li>
+<li class="chapter" data-level="5.5.4" data-path="geoms.html"><a href="geoms.html#resolvendo-overplotting"><i class="fa fa-check"></i><b>5.5.4</b> Resolvendo <em>overplotting</em></a></li>
+<li class="chapter" data-level="5.5.5" data-path="geoms.html"><a href="geoms.html#anotações"><i class="fa fa-check"></i><b>5.5.5</b> Anotações</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="tutoriais.html"><a href="tutoriais.html"><i class="fa fa-check"></i><b>6</b> Tutoriais</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="regressões.html"><a href="regressões.html"><i class="fa fa-check"></i><b>6.1</b> Regressões</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="regressões.html"><a href="regressões.html#regressões-lineares"><i class="fa fa-check"></i><b>6.1.1</b> Regressões Lineares</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="smoothing.html"><a href="smoothing.html"><i class="fa fa-check"></i><b>6.2</b> Smoothing</a></li>
+<li class="chapter" data-level="6.3" data-path="gráficos-deslocados-no-eixo-y.html"><a href="gráficos-deslocados-no-eixo-y.html"><i class="fa fa-check"></i><b>6.3</b> Gráficos deslocados no eixo <code>y</code></a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="gráficos-deslocados-no-eixo-y.html"><a href="gráficos-deslocados-no-eixo-y.html#exemplos-de-gráficos"><i class="fa fa-check"></i><b>6.3.1</b> Exemplos de gráficos</a></li>
+<li class="chapter" data-level="6.3.2" data-path="gráficos-deslocados-no-eixo-y.html"><a href="gráficos-deslocados-no-eixo-y.html#transformação-de-dados"><i class="fa fa-check"></i><b>6.3.2</b> Transformação de dados</a></li>
+<li class="chapter" data-level="6.3.3" data-path="gráficos-deslocados-no-eixo-y.html"><a href="gráficos-deslocados-no-eixo-y.html#wide-vs.-long"><i class="fa fa-check"></i><b>6.3.3</b> <code>wide</code> vs. <code>long</code></a></li>
+<li class="chapter" data-level="6.3.4" data-path="gráficos-deslocados-no-eixo-y.html"><a href="gráficos-deslocados-no-eixo-y.html#construindo-o-gráfico"><i class="fa fa-check"></i><b>6.3.4</b> Construindo o gráfico</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Aulas de R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="gráficos-deslocados-no-eixo-y" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> Gráficos deslocados no eixo <code>y</code></h2>
+<div id="exemplos-de-gráficos" class="section level3" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> Exemplos de gráficos</h3>
+<p>Há casos onde a unidade do eixo <code>y</code> é irrelevante e deseja-se fazer uma comparação entre o perfil de curva de várias amostras.
+Este tipo de gráfico é muito utilizado em experimentos de difração de raio-x e cromatografia para se identificar similaridades ou diferenças nos picos de intensidade entre amostras com propriedades diferentes.</p>
+<p>Um exemplo é na figura abaixo onde é feita a comparação entre várias amostras distintas usando a técnica de Difração de Raio-X.</p>
+<p><img src="https://www.researchgate.net/profile/Tatsuki_Oda/publication/298805599/figure/fig5/AS:347659182329860@1459899816352/Comparison-of-x-ray-diffraction-XRD-patterns-a-The-XRD-patterns-at-123-GPa-are_W640.jpg" /></p>
+<p>Para reproduzirmos isso no <code>R</code> obviamente iremos usar o pacote <code>ggplot2</code> mas antes vamos aprender algumas técnicas de transformação de dados.</p>
+</div>
+<div id="transformação-de-dados" class="section level3" number="6.3.2">
+<h3><span class="header-section-number">6.3.2</span> Transformação de dados</h3>
+<p>É comum que pessoas acostumadas com o modelo de planilha de Excel tenham a tendência de escrever os dados na seguinte forma:</p>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="gráficos-deslocados-no-eixo-y.html#cb227-1"></a>wide &lt;-<span class="st"> </span><span class="kw">tibble</span>(</span>
+<span id="cb227-2"><a href="gráficos-deslocados-no-eixo-y.html#cb227-2"></a>    <span class="st">&quot;Comprimento de onda&quot;</span> =<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,</span>
+<span id="cb227-3"><a href="gráficos-deslocados-no-eixo-y.html#cb227-3"></a>    <span class="st">&quot;Amostra NA01&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="kw">rpois</span>(<span class="dv">10</span>, <span class="dv">11</span>)),</span>
+<span id="cb227-4"><a href="gráficos-deslocados-no-eixo-y.html#cb227-4"></a>    <span class="st">&quot;Amostra NOI1&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="kw">rpois</span>(<span class="dv">10</span>, <span class="dv">11</span>)),</span>
+<span id="cb227-5"><a href="gráficos-deslocados-no-eixo-y.html#cb227-5"></a>    <span class="st">&quot;Amostra N034&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="kw">rpois</span>(<span class="dv">10</span>, <span class="dv">11</span>))</span>
+<span id="cb227-6"><a href="gráficos-deslocados-no-eixo-y.html#cb227-6"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="gráficos-deslocados-no-eixo-y.html#cb228-1"></a>knitr<span class="op">::</span><span class="kw">kable</span>(wide, <span class="dt">caption =</span> <span class="st">&quot;Tabela no formato largo&quot;</span>)</span></code></pre></div>
+<table>
+<caption><span id="tab:tabWide">Tabela 6.1: </span>Tabela no formato largo</caption>
+<thead>
+<tr class="header">
+<th align="right">Comprimento de onda</th>
+<th align="right">Amostra NA01</th>
+<th align="right">Amostra NOI1</th>
+<th align="right">Amostra N034</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">16</td>
+<td align="right">12</td>
+<td align="right">19</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">11</td>
+<td align="right">6</td>
+<td align="right">12</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">15</td>
+<td align="right">16</td>
+<td align="right">19</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">9</td>
+<td align="right">11</td>
+<td align="right">11</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">15</td>
+<td align="right">6</td>
+<td align="right">15</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">9</td>
+<td align="right">14</td>
+<td align="right">8</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">12</td>
+<td align="right">5</td>
+<td align="right">13</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">10</td>
+<td align="right">10</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="right">9</td>
+<td align="right">7</td>
+<td align="right">13</td>
+<td align="right">11</td>
+</tr>
+<tr class="even">
+<td align="right">10</td>
+<td align="right">11</td>
+<td align="right">11</td>
+<td align="right">8</td>
+</tr>
+</tbody>
+</table>
+<p>Não há nada de errado com a forma que estes dados estão dispostos, são fáceis de ler, compreender e neste caso estão dispostos de forma organizada, porém este formato não segue os princípios de <code>tidy data</code>, onde cada linha da tabela deve ser uma observação e cada coluna uma variável.
+Neste caso temos 3 variáveis, <strong>Comprimento de onda</strong>, <strong>Amostra</strong> e <strong>Intensidade</strong> do sinal, logo deveríamos ter 3 colunas, mas inves disso há 4 colunas sendo 3 delas para a mesma variável <strong>Intensidade</strong> do sinal para as Amostras.</p>
+<p>Há um nome para a forma que os dados estão dispostos na tabela <a href="gráficos-deslocados-no-eixo-y.html#tab:tabWide">6.1</a>.
+Este nome é <em>wide data</em>, ou seja, dados largos e largos indica que há um número maior de colunas do que é necessário.
+A forma de dados que o <code>R</code> e por consequência os pacotes de <code>R</code> funcionam é no formato longo ou seja <em>long data</em> onde cada coluna é uma variável, cada linha uma observação e cada célula contém apenas um valor.
+Um exemplo dos mesmos dados é feito na tabela <a href="gráficos-deslocados-no-eixo-y.html#tab:tabLong">6.2</a>:</p>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="gráficos-deslocados-no-eixo-y.html#cb229-1"></a>long &lt;-<span class="st"> </span>wide <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb229-2"><a href="gráficos-deslocados-no-eixo-y.html#cb229-2"></a><span class="st">    </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">starts_with</span>(<span class="st">&quot;Amostra&quot;</span>),</span>
+<span id="cb229-3"><a href="gráficos-deslocados-no-eixo-y.html#cb229-3"></a>                             <span class="dt">names_to =</span> <span class="st">&quot;Amostra&quot;</span>, </span>
+<span id="cb229-4"><a href="gráficos-deslocados-no-eixo-y.html#cb229-4"></a>                             <span class="dt">values_to =</span> <span class="st">&quot;Intensidade&quot;</span>,</span>
+<span id="cb229-5"><a href="gráficos-deslocados-no-eixo-y.html#cb229-5"></a>                             <span class="dt">names_prefix =</span> <span class="st">&quot;Amostra &quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb229-6"><a href="gráficos-deslocados-no-eixo-y.html#cb229-6"></a><span class="st">    </span><span class="kw">arrange</span>(Amostra) </span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="gráficos-deslocados-no-eixo-y.html#cb230-1"></a>knitr<span class="op">::</span><span class="kw">kable</span>(long, <span class="dt">caption =</span> <span class="st">&quot;Tabela no formato longo&quot;</span>)</span></code></pre></div>
+<table>
+<caption><span id="tab:tabLong">Tabela 6.2: </span>Tabela no formato longo</caption>
+<thead>
+<tr class="header">
+<th align="right">Comprimento de onda</th>
+<th align="left">Amostra</th>
+<th align="right">Intensidade</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">N034</td>
+<td align="right">19</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">N034</td>
+<td align="right">12</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="left">N034</td>
+<td align="right">19</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="left">N034</td>
+<td align="right">11</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="left">N034</td>
+<td align="right">15</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="left">N034</td>
+<td align="right">8</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="left">N034</td>
+<td align="right">13</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="left">N034</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="right">9</td>
+<td align="left">N034</td>
+<td align="right">11</td>
+</tr>
+<tr class="even">
+<td align="right">10</td>
+<td align="left">N034</td>
+<td align="right">8</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">NA01</td>
+<td align="right">16</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">NA01</td>
+<td align="right">11</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="left">NA01</td>
+<td align="right">15</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="left">NA01</td>
+<td align="right">9</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="left">NA01</td>
+<td align="right">15</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="left">NA01</td>
+<td align="right">9</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="left">NA01</td>
+<td align="right">12</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="left">NA01</td>
+<td align="right">10</td>
+</tr>
+<tr class="odd">
+<td align="right">9</td>
+<td align="left">NA01</td>
+<td align="right">7</td>
+</tr>
+<tr class="even">
+<td align="right">10</td>
+<td align="left">NA01</td>
+<td align="right">11</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">NOI1</td>
+<td align="right">12</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">NOI1</td>
+<td align="right">6</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="left">NOI1</td>
+<td align="right">16</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="left">NOI1</td>
+<td align="right">11</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="left">NOI1</td>
+<td align="right">6</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="left">NOI1</td>
+<td align="right">14</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="left">NOI1</td>
+<td align="right">5</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="left">NOI1</td>
+<td align="right">10</td>
+</tr>
+<tr class="odd">
+<td align="right">9</td>
+<td align="left">NOI1</td>
+<td align="right">13</td>
+</tr>
+<tr class="even">
+<td align="right">10</td>
+<td align="left">NOI1</td>
+<td align="right">11</td>
+</tr>
+</tbody>
+</table>
+<p>Porém agora segue-se o princípio do <code>tidy data</code> onde cada coluna é uma variável (neste caso <strong>Comprimento de onda</strong>, <strong>Amostra</strong> e <strong>Intensidade</strong>) e cada linha contém informações necessárias sobre a observação feita.</p>
+<p>Leia sobre a função <code>pivot_longer()</code> para entender como que é possível transformar dataframes do formato <code>wide</code> para <code>long</code> com apenas poucas linhas de código neste <a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">link</a></p>
+</div>
+<div id="wide-vs.-long" class="section level3" number="6.3.3">
+<h3><span class="header-section-number">6.3.3</span> <code>wide</code> vs. <code>long</code></h3>
+<p>Para fazer o gráfico que se deseja obter vamos usar o <code>ggplot2</code> e ambos os dataframes <code>wide</code> e <code>long</code> para chegar ao resultado esperado.
+Primeiramente vamos utilizar o dataframe <code>wide</code> e ver as vantagens e desvantagens que ele apresenta.</p>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="gráficos-deslocados-no-eixo-y.html#cb231-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> wide,</span>
+<span id="cb231-2"><a href="gráficos-deslocados-no-eixo-y.html#cb231-2"></a>             <span class="kw">aes</span>(</span>
+<span id="cb231-3"><a href="gráficos-deslocados-no-eixo-y.html#cb231-3"></a>                <span class="dt">x =</span> <span class="st">`</span><span class="dt">Comprimento de onda</span><span class="st">`</span></span>
+<span id="cb231-4"><a href="gráficos-deslocados-no-eixo-y.html#cb231-4"></a>             )</span>
+<span id="cb231-5"><a href="gráficos-deslocados-no-eixo-y.html#cb231-5"></a>            ) <span class="op">+</span></span>
+<span id="cb231-6"><a href="gráficos-deslocados-no-eixo-y.html#cb231-6"></a><span class="st">    </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> <span class="st">`</span><span class="dt">Amostra NA01</span><span class="st">`</span>), <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span></span>
+<span id="cb231-7"><a href="gráficos-deslocados-no-eixo-y.html#cb231-7"></a><span class="st">    </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> <span class="st">`</span><span class="dt">Amostra NOI1</span><span class="st">`</span>), <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb231-8"><a href="gráficos-deslocados-no-eixo-y.html#cb231-8"></a><span class="st">    </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> <span class="st">`</span><span class="dt">Amostra N034</span><span class="st">`</span>), <span class="dt">color =</span> <span class="st">&quot;green&quot;</span>) <span class="op">+</span></span>
+<span id="cb231-9"><a href="gráficos-deslocados-no-eixo-y.html#cb231-9"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Gráfico criado com dados wide&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-53-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<p>Primeiro as desvantagens:</p>
+<ul>
+<li>É necessário escrever <code>geom_line(aes(y = &lt;amostra&gt;))</code> várias vezes (uma vez para cada coluna) para se obter as 3 linhas das 3 amostras, caso existissem mais amostras seria necessário escrever mais vezes ainda;</li>
+<li>As cores <strong>devem</strong> ser especificadas manualmente;</li>
+<li>Legendas não são inseridas.</li>
+</ul>
+<p>Vantagens:</p>
+<ul>
+<li>As cores <strong>podem</strong> ser especificadas manualmente mais facilmente.</li>
+</ul>
+<p>Agora usando o dataframe no formato <code>long</code>.</p>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="gráficos-deslocados-no-eixo-y.html#cb232-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> long,</span>
+<span id="cb232-2"><a href="gráficos-deslocados-no-eixo-y.html#cb232-2"></a>             <span class="kw">aes</span>(</span>
+<span id="cb232-3"><a href="gráficos-deslocados-no-eixo-y.html#cb232-3"></a>                <span class="dt">x =</span> <span class="st">`</span><span class="dt">Comprimento de onda</span><span class="st">`</span>,</span>
+<span id="cb232-4"><a href="gráficos-deslocados-no-eixo-y.html#cb232-4"></a>                <span class="dt">y =</span> Intensidade,</span>
+<span id="cb232-5"><a href="gráficos-deslocados-no-eixo-y.html#cb232-5"></a>                <span class="dt">col =</span> Amostra</span>
+<span id="cb232-6"><a href="gráficos-deslocados-no-eixo-y.html#cb232-6"></a>             )</span>
+<span id="cb232-7"><a href="gráficos-deslocados-no-eixo-y.html#cb232-7"></a>            ) <span class="op">+</span></span>
+<span id="cb232-8"><a href="gráficos-deslocados-no-eixo-y.html#cb232-8"></a><span class="st">    </span><span class="kw">geom_line</span>() <span class="op">+</span></span>
+<span id="cb232-9"><a href="gráficos-deslocados-no-eixo-y.html#cb232-9"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Gráfico criado com dados long&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-54-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<p>Desvantagens:</p>
+<ul>
+<li>Cores não podem ser especificadas facilmente em comparação</li>
+</ul>
+<p>Vantagens:</p>
+<ul>
+<li>Legendas criadas automaticamente;</li>
+<li>Código mais curto;</li>
+<li>Código mais fácil de ajustar</li>
+</ul>
+<p>É claro que com estes dados não é possível observar o efeito do gráfico que deseja-se criar porque números aleatórios não representam o perfil de picos que experimentos de cromatografia e difração de raio-x apresentam mas tentaremos reproduzir com o aumento do número de pontos que iremos gerar nos próximos dataframes.</p>
+</div>
+<div id="construindo-o-gráfico" class="section level3" number="6.3.4">
+<h3><span class="header-section-number">6.3.4</span> Construindo o gráfico</h3>
+<p>Criando os dados:</p>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="gráficos-deslocados-no-eixo-y.html#cb233-1"></a>wide1 &lt;-<span class="st"> </span><span class="kw">tibble</span>(</span>
+<span id="cb233-2"><a href="gráficos-deslocados-no-eixo-y.html#cb233-2"></a>    <span class="dt">C_onda =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>),</span>
+<span id="cb233-3"><a href="gráficos-deslocados-no-eixo-y.html#cb233-3"></a>    <span class="dt">A =</span> <span class="kw">rpois</span>(<span class="dv">1000</span>, <span class="dv">11</span>),</span>
+<span id="cb233-4"><a href="gráficos-deslocados-no-eixo-y.html#cb233-4"></a>    <span class="dt">B =</span> <span class="kw">rpois</span>(<span class="dv">1000</span>, <span class="dv">11</span>),</span>
+<span id="cb233-5"><a href="gráficos-deslocados-no-eixo-y.html#cb233-5"></a>    <span class="dt">C =</span> <span class="kw">rpois</span>(<span class="dv">1000</span>, <span class="dv">11</span>),</span>
+<span id="cb233-6"><a href="gráficos-deslocados-no-eixo-y.html#cb233-6"></a>    <span class="dt">D =</span> <span class="kw">rpois</span>(<span class="dv">1000</span>, <span class="dv">11</span>),</span>
+<span id="cb233-7"><a href="gráficos-deslocados-no-eixo-y.html#cb233-7"></a>    <span class="dt">E =</span> <span class="kw">rpois</span>(<span class="dv">1000</span>, <span class="dv">11</span>)</span>
+<span id="cb233-8"><a href="gráficos-deslocados-no-eixo-y.html#cb233-8"></a>)</span>
+<span id="cb233-9"><a href="gráficos-deslocados-no-eixo-y.html#cb233-9"></a></span>
+<span id="cb233-10"><a href="gráficos-deslocados-no-eixo-y.html#cb233-10"></a>long1 &lt;-<span class="st"> </span>wide1 <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb233-11"><a href="gráficos-deslocados-no-eixo-y.html#cb233-11"></a><span class="st">    </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span><span class="op">:</span><span class="st">&quot;E&quot;</span>),</span>
+<span id="cb233-12"><a href="gráficos-deslocados-no-eixo-y.html#cb233-12"></a>                             <span class="dt">names_to =</span> <span class="st">&quot;Amostra&quot;</span>,</span>
+<span id="cb233-13"><a href="gráficos-deslocados-no-eixo-y.html#cb233-13"></a>                             <span class="dt">values_to =</span> <span class="st">&quot;I&quot;</span>)</span></code></pre></div>
+<p>Criando gráfico:</p>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="gráficos-deslocados-no-eixo-y.html#cb234-1"></a><span class="kw">ggplot</span>(long1,</span>
+<span id="cb234-2"><a href="gráficos-deslocados-no-eixo-y.html#cb234-2"></a>             <span class="kw">aes</span>(</span>
+<span id="cb234-3"><a href="gráficos-deslocados-no-eixo-y.html#cb234-3"></a>                <span class="dt">x =</span> C_onda,</span>
+<span id="cb234-4"><a href="gráficos-deslocados-no-eixo-y.html#cb234-4"></a>                <span class="dt">y =</span> I<span class="op">/</span><span class="dv">10</span>,</span>
+<span id="cb234-5"><a href="gráficos-deslocados-no-eixo-y.html#cb234-5"></a>                <span class="dt">col =</span> Amostra</span>
+<span id="cb234-6"><a href="gráficos-deslocados-no-eixo-y.html#cb234-6"></a>             )) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb234-7"><a href="gráficos-deslocados-no-eixo-y.html#cb234-7"></a><span class="st">    </span><span class="kw">geom_line</span>() <span class="op">+</span></span>
+<span id="cb234-8"><a href="gráficos-deslocados-no-eixo-y.html#cb234-8"></a><span class="st">    </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-56-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<p>Este gráfico com bastante ruído e poucos picos terá que ser o suficiente para o exemplo.
+Observa-se que que se for plotado todos os dados, eles se sobrepõem sendo impossível verificar diferenças claras entre as amostras, portanto é necessário adicionar um fator de deslocamento no eixo <code>y</code> para que as linhas não fiquem sobrepostas.</p>
+<p>O pacote <code>ggridges</code> (<a href="https://wilkelab.org/ggridges/">link</a>) possui o geom ideal para isto, o <code>geom_ridgeline</code> onde o argumento <code>height</code> deve ser usado para indicar a altura da curva e o argumento <code>y</code> deve ser usado como identificador das amostras.
+Ver abaixo:</p>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="gráficos-deslocados-no-eixo-y.html#cb235-1"></a><span class="kw">library</span>(ggridges)</span>
+<span id="cb235-2"><a href="gráficos-deslocados-no-eixo-y.html#cb235-2"></a></span>
+<span id="cb235-3"><a href="gráficos-deslocados-no-eixo-y.html#cb235-3"></a><span class="kw">ggplot</span>(long1,</span>
+<span id="cb235-4"><a href="gráficos-deslocados-no-eixo-y.html#cb235-4"></a>             <span class="kw">aes</span>(</span>
+<span id="cb235-5"><a href="gráficos-deslocados-no-eixo-y.html#cb235-5"></a>                <span class="dt">x =</span> C_onda,</span>
+<span id="cb235-6"><a href="gráficos-deslocados-no-eixo-y.html#cb235-6"></a>                <span class="dt">y =</span> Amostra,</span>
+<span id="cb235-7"><a href="gráficos-deslocados-no-eixo-y.html#cb235-7"></a>                <span class="dt">col =</span> Amostra</span>
+<span id="cb235-8"><a href="gráficos-deslocados-no-eixo-y.html#cb235-8"></a>             )) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb235-9"><a href="gráficos-deslocados-no-eixo-y.html#cb235-9"></a><span class="st">    </span><span class="kw">geom_ridgeline</span>(<span class="kw">aes</span>(<span class="dt">height =</span> I<span class="op">/</span><span class="dv">50</span>), </span>
+<span id="cb235-10"><a href="gráficos-deslocados-no-eixo-y.html#cb235-10"></a>                                 <span class="dt">alpha =</span> <span class="dv">0</span>) <span class="op">+</span></span>
+<span id="cb235-11"><a href="gráficos-deslocados-no-eixo-y.html#cb235-11"></a><span class="st">    </span><span class="kw">theme_bw</span>() <span class="op">+</span></span>
+<span id="cb235-12"><a href="gráficos-deslocados-no-eixo-y.html#cb235-12"></a><span class="st">    </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="kw">expression</span>(lambda),</span>
+<span id="cb235-13"><a href="gráficos-deslocados-no-eixo-y.html#cb235-13"></a>             <span class="dt">y =</span> <span class="st">&quot;Intensidade Relativa /</span><span class="ch">\n</span><span class="st">Amostra&quot;</span>) </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-57-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<p>Claro que por causa da natureza dos dados, alguns ajustes tiveram que ser feitos para a melhor visualização porém está é a melhor forma de construir um gráfico parecido com o de referência.</p>
+
+</div>
+</div>
+<!-- </div> -->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="smoothing.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"toolbar": {
+"position": "static"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
