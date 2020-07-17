@@ -24,7 +24,7 @@
 <meta name="author" content="Lucas Chagas Lima do Carmo" />
 
 
-<meta name="date" content="2020-07-16" />
+<meta name="date" content="2020-07-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -191,21 +191,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.9" data-path="temas.html"><a href="temas.html"><i class="fa fa-check"></i><b>5.9</b> Temas</a></li>
 <li class="chapter" data-level="5.10" data-path="organizando-os-plots.html"><a href="organizando-os-plots.html"><i class="fa fa-check"></i><b>5.10</b> Organizando os <em>plots</em></a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="tutoriais.html"><a href="tutoriais.html"><i class="fa fa-check"></i><b>6</b> Tutoriais</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="regressões.html"><a href="regressões.html"><i class="fa fa-check"></i><b>6.1</b> Regressões</a>
-<ul>
-<li class="chapter" data-level="6.1.1" data-path="regressões.html"><a href="regressões.html#regressões-lineares"><i class="fa fa-check"></i><b>6.1.1</b> Regressões Lineares</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="smoothing.html"><a href="smoothing.html"><i class="fa fa-check"></i><b>6.2</b> Smoothing</a></li>
-<li class="chapter" data-level="6.3" data-path="gráficos-deslocados-no-eixo-y.html"><a href="gráficos-deslocados-no-eixo-y.html"><i class="fa fa-check"></i><b>6.3</b> Gráficos deslocados no eixo <code>y</code></a>
-<ul>
-<li class="chapter" data-level="6.3.1" data-path="gráficos-deslocados-no-eixo-y.html"><a href="gráficos-deslocados-no-eixo-y.html#exemplos-de-gráficos"><i class="fa fa-check"></i><b>6.3.1</b> Exemplos de gráficos</a></li>
-<li class="chapter" data-level="6.3.2" data-path="gráficos-deslocados-no-eixo-y.html"><a href="gráficos-deslocados-no-eixo-y.html#transformação-de-dados"><i class="fa fa-check"></i><b>6.3.2</b> Transformação de dados</a></li>
-<li class="chapter" data-level="6.3.3" data-path="gráficos-deslocados-no-eixo-y.html"><a href="gráficos-deslocados-no-eixo-y.html#wide-vs.-long"><i class="fa fa-check"></i><b>6.3.3</b> <code>wide</code> vs. <code>long</code></a></li>
-<li class="chapter" data-level="6.3.4" data-path="gráficos-deslocados-no-eixo-y.html"><a href="gráficos-deslocados-no-eixo-y.html#construindo-o-gráfico"><i class="fa fa-check"></i><b>6.3.4</b> Construindo o gráfico</a></li>
-</ul></li>
-</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
@@ -240,23 +225,23 @@ Enquanto que matrizes convertem todos os dados para o tipo <code>character</code
 <span id="cb34-8"><a href="dataframes.html#cb34-8"></a></span>
 <span id="cb34-9"><a href="dataframes.html#cb34-9"></a>df</span></code></pre></div>
 <pre><code>   Idade Nome  Sexo
-1     21  Luc FALSE
-2     24  Jon FALSE
-3     27 Jean  TRUE
-4     24 Brie  TRUE
-5     29 Mary  TRUE
-6     24 Dave FALSE
-7     20  Lee FALSE
-8     23  Nat  TRUE
+1     27  Luc FALSE
+2     27  Jon FALSE
+3     25 Jean  TRUE
+4     28 Brie  TRUE
+5     21 Mary  TRUE
+6     25 Dave FALSE
+7     30  Lee FALSE
+8     26  Nat  TRUE
 9     25 Dani  TRUE
-10    27  Rob FALSE</code></pre>
+10    29  Rob FALSE</code></pre>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="dataframes.html#cb36-1"></a><span class="co"># classe</span></span>
 <span id="cb36-2"><a href="dataframes.html#cb36-2"></a><span class="kw">class</span>(df)</span></code></pre></div>
 <pre><code>[1] &quot;data.frame&quot;</code></pre>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="dataframes.html#cb38-1"></a><span class="co"># Estrutura</span></span>
 <span id="cb38-2"><a href="dataframes.html#cb38-2"></a><span class="kw">str</span>(df)</span></code></pre></div>
 <pre><code>&#39;data.frame&#39;:   10 obs. of  3 variables:
- $ Idade: num  21 24 27 24 29 24 20 23 25 27
+ $ Idade: num  27 27 25 28 21 25 30 26 25 29
  $ Nome : Factor w/ 10 levels &quot;Brie&quot;,&quot;Dani&quot;,..: 7 5 4 1 8 3 6 9 2 10
  $ Sexo : logi  FALSE FALSE TRUE TRUE TRUE FALSE ...</code></pre>
 <p>A limitação de dataframes é que todas as colunas devem conter o mesmo número de linhas mas em geral funcionam como tabelas.
@@ -269,47 +254,47 @@ Dados no formato retângular são usados para construção de gráficos usando v
 <span id="cb40-3"><a href="dataframes.html#cb40-3"></a></span>
 <span id="cb40-4"><a href="dataframes.html#cb40-4"></a>df</span></code></pre></div>
 <pre><code>   Idade Nome  Sexo     Peso
-1     21  Luc FALSE 74.28713
-2     24  Jon FALSE 78.00628
-3     27 Jean  TRUE 99.21567
-4     24 Brie  TRUE 90.80768
-5     29 Mary  TRUE 56.59132
-6     24 Dave FALSE 79.88744
-7     20  Lee FALSE 99.35571
-8     23  Nat  TRUE 62.12010
-9     25 Dani  TRUE 73.05115
-10    27  Rob FALSE 81.32281</code></pre>
+1     27  Luc FALSE 56.49486
+2     27  Jon FALSE 89.42237
+3     25 Jean  TRUE 64.08926
+4     28 Brie  TRUE 58.17044
+5     21 Mary  TRUE 57.19305
+6     25 Dave FALSE 83.95599
+7     30  Lee FALSE 80.36882
+8     26  Nat  TRUE 86.48678
+9     25 Dani  TRUE 85.22912
+10    29  Rob FALSE 82.57483</code></pre>
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="dataframes.html#cb42-1"></a><span class="co"># cria variável altura</span></span>
 <span id="cb42-2"><a href="dataframes.html#cb42-2"></a>df<span class="op">$</span>Altura &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">runif</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">min =</span> <span class="dv">159</span>, <span class="dt">max =</span> <span class="dv">210</span>))</span>
 <span id="cb42-3"><a href="dataframes.html#cb42-3"></a></span>
 <span id="cb42-4"><a href="dataframes.html#cb42-4"></a>df</span></code></pre></div>
 <pre><code>   Idade Nome  Sexo     Peso   Altura
-1     21  Luc FALSE 74.28713 168.8911
-2     24  Jon FALSE 78.00628 203.4897
-3     27 Jean  TRUE 99.21567 172.5744
-4     24 Brie  TRUE 90.80768 161.6392
-5     29 Mary  TRUE 56.59132 173.5721
-6     24 Dave FALSE 79.88744 176.9294
-7     20  Lee FALSE 99.35571 192.0284
-8     23  Nat  TRUE 62.12010 179.8701
-9     25 Dani  TRUE 73.05115 186.1878
-10    27  Rob FALSE 81.32281 181.6989</code></pre>
+1     27  Luc FALSE 56.49486 197.8812
+2     27  Jon FALSE 89.42237 191.1579
+3     25 Jean  TRUE 64.08926 185.0172
+4     28 Brie  TRUE 58.17044 189.7143
+5     21 Mary  TRUE 57.19305 186.5218
+6     25 Dave FALSE 83.95599 197.0258
+7     30  Lee FALSE 80.36882 168.7401
+8     26  Nat  TRUE 86.48678 177.5219
+9     25 Dani  TRUE 85.22912 173.9389
+10    29  Rob FALSE 82.57483 161.6802</code></pre>
 <p>Agora que temos as variáveis <code>Altura</code> e <code>Peso</code> (geradas aleatoriamente pela função <code>ruinf()</code>) podemos calcular o IMC de cada indivíduo com uma nova coluna chamada <code>IMC</code>:</p>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="dataframes.html#cb44-1"></a><span class="co"># cria coluna IMC usando valores de outras colunas</span></span>
 <span id="cb44-2"><a href="dataframes.html#cb44-2"></a>df<span class="op">$</span>IMC &lt;-<span class="st"> </span>df<span class="op">$</span>Peso <span class="op">/</span><span class="st"> </span>(df<span class="op">$</span>Altura<span class="op">/</span><span class="dv">100</span>)<span class="op">^</span><span class="dv">2</span> <span class="co"># altura deve estar em metros</span></span>
 <span id="cb44-3"><a href="dataframes.html#cb44-3"></a></span>
 <span id="cb44-4"><a href="dataframes.html#cb44-4"></a>df</span></code></pre></div>
 <pre><code>   Idade Nome  Sexo     Peso   Altura      IMC
-1     21  Luc FALSE 74.28713 168.8911 26.04356
-2     24  Jon FALSE 78.00628 203.4897 18.83842
-3     27 Jean  TRUE 99.21567 172.5744 33.31405
-4     24 Brie  TRUE 90.80768 161.6392 34.75596
-5     29 Mary  TRUE 56.59132 173.5721 18.78409
-6     24 Dave FALSE 79.88744 176.9294 25.51988
-7     20  Lee FALSE 99.35571 192.0284 26.94399
-8     23  Nat  TRUE 62.12010 179.8701 19.20058
-9     25 Dani  TRUE 73.05115 186.1878 21.07291
-10    27  Rob FALSE 81.32281 181.6989 24.63246</code></pre>
+1     27  Luc FALSE 56.49486 197.8812 14.42780
+2     27  Jon FALSE 89.42237 191.1579 24.47156
+3     25 Jean  TRUE 64.08926 185.0172 18.72238
+4     28 Brie  TRUE 58.17044 189.7143 16.16226
+5     21 Mary  TRUE 57.19305 186.5218 16.43932
+6     25 Dave FALSE 83.95599 197.0258 21.62745
+7     30  Lee FALSE 80.36882 168.7401 28.22610
+8     26  Nat  TRUE 86.48678 177.5219 27.44391
+9     25 Dani  TRUE 85.22912 173.9389 28.17049
+10    29  Rob FALSE 82.57483 161.6802 31.58885</code></pre>
 <p>Para adicionar linhas é necessário ter outro dataframe com colunas com os mesmos nomes que o dataframe original e usar a função <code>rbind()</code>.
 Abaixo o exemplo:</p>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="dataframes.html#cb46-1"></a>df2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
@@ -329,16 +314,16 @@ Abaixo o exemplo:</p>
 <span id="cb48-2"><a href="dataframes.html#cb48-2"></a></span>
 <span id="cb48-3"><a href="dataframes.html#cb48-3"></a>df_nova</span></code></pre></div>
 <pre><code>   Idade Nome  Sexo      Peso   Altura      IMC
-1     21  Luc FALSE  74.28713 168.8911 26.04356
-2     24  Jon FALSE  78.00628 203.4897 18.83842
-3     27 Jean  TRUE  99.21567 172.5744 33.31405
-4     24 Brie  TRUE  90.80768 161.6392 34.75596
-5     29 Mary  TRUE  56.59132 173.5721 18.78409
-6     24 Dave FALSE  79.88744 176.9294 25.51988
-7     20  Lee FALSE  99.35571 192.0284 26.94399
-8     23  Nat  TRUE  62.12010 179.8701 19.20058
-9     25 Dani  TRUE  73.05115 186.1878 21.07291
-10    27  Rob FALSE  81.32281 181.6989 24.63246
+1     27  Luc FALSE  56.49486 197.8812 14.42780
+2     27  Jon FALSE  89.42237 191.1579 24.47156
+3     25 Jean  TRUE  64.08926 185.0172 18.72238
+4     28 Brie  TRUE  58.17044 189.7143 16.16226
+5     21 Mary  TRUE  57.19305 186.5218 16.43932
+6     25 Dave FALSE  83.95599 197.0258 21.62745
+7     30  Lee FALSE  80.36882 168.7401 28.22610
+8     26  Nat  TRUE  86.48678 177.5219 27.44391
+9     25 Dani  TRUE  85.22912 173.9389 28.17049
+10    29  Rob FALSE  82.57483 161.6802 31.58885
 11    34 Huey FALSE        NA 187.0000       NA
 12    99   Zé FALSE 100.49993 176.0000       NA</code></pre>
 <div id="índices-de-dataframes" class="section level3" number="2.4.1">
