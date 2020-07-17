@@ -27,9 +27,9 @@ O tema padrão do ggplot2 pode não se adequado para o uso em diversos ambientes
 
 O ggplot2 é instalado quando se instala o tidyverse, porém se não se deseja instalar todos os pacotes do tidyverse apenas instale o ggplot2 usando:
 
-```{r echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE}
+```{r echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE, eval=FALSE}
 
-# install.packages("ggplot2")
+install.packages("ggplot2")
 
 ```
 
@@ -161,13 +161,13 @@ Estes geoms estarão listados abaixo:
 - `geom_rect()`, `geom_tile()` e `geom_raster()`: geram retângulos. Os parâmetros necessários para `geom_rect()` são as coordenadas máximas e mínimas das faces `x` e `y` sendo `xmin`, `xmax`, `ymin` e `ymax`. `geom_tile()` é exatamente o mesmo porém com `x` e `y` sendo as coordenadas do centro do retângulo e os parâmetros `width` e `height` como a largura e altura respectivamente. `geom_raster()` é usado caso o tamanho de todos os retângulos seja o mesmo para aumentar a velocidade da criação do gráfico.
 
 Cada um destes geoms será demonstrado nas figuras abaixo. 
-Observe as semelhanças e diferenças dos eixos `x` e `y`, alguns extrapolam os valores estabelecidos pelos dados e podem estender os limítes dos eixos.
+Observe as semelhanças e diferenças dos eixos `x` e `y`, alguns extrapolam os valores estabelecidos pelos dados e podem estender os limites dos eixos.
 
 ```{r geoms, fig.height=4}
-df <- data.frame (
-	x <- c(1, 5, 9, 3.4),
-	y <- c(3, 6, 2, 5.4),
-	label <- c("a", "b", "c", "a")
+df <- data.frame(
+	x = c(1, 5, 9, 3.4),
+	y = c(3, 6, 2, 5.4),
+	label = c("a", "b", "c", "a")
 )
 
 p <- ggplot(
@@ -210,8 +210,8 @@ Estes serão considerados abaixo.
 Para os exemplos a seguir será usado o *dataset* `Oxboys` do pacote `nlme`, que contém a altura e idade de 26 homens registrado em nove ocasiões diferentes.
 
 ```{r}
-data(Oxboys, package = "nlme")
-head(Oxboys)
+data(Oxboys, package = "nlme") # carrega dados Oxboys do pacote nlme
+head(Oxboys) # mostra as 6 primeiras linhas de Oxboys
 ```
 
 #### Grupos múltiplos, uma estética
@@ -398,9 +398,231 @@ Acima à __direita__ a aparência de transição de cores na verdade é apenas u
 
 ### Resumos estatísticos
 
-### Resolvendo *overplotting*
+Em vários casos é necessário mostrar incerteza estatística, seja uma distribuição de dados ou erro padrão de medidas replicadas.
+Existem 4 básicos tipos de geoms para se fazer isso dependendo se os dados são contínuos ou discretos e se deseja-se mostrar resumos estatísticos, intervalo e limites da distribuição dos dados.
+Os geoms comuns são:
+
+- Eixo x discreto, limites: `geom_errorbar()`, `geom_linerange()`;
+- Eixo x limites e valor central: `geom_crossbar()`, `geom_pointrange()`;
+- Eixo x contínuo, limites: `geom_ribbon()`;
+- Eixo x contínuo, limites e valor central: `geom_smooth(stat = "identity")`.
+
+Estes geoms presumem que se deseja visualizar a distribuição dos valoes de y em função de x mas o oposto pode ser alcançado de outras formas.
+Abaixo exemplos destes geoms:
+
+```{r}
+df <- data.frame(
+	x  = 1:4,
+	y  = c(18,8,14,5),
+	sd = c(0.3,1.4,2.1,0.9) # desvio padrão
+)
+
+plot <- ggplot(df, aes(x = x, y = y,
+											 ymin = y - sd, # valor de y menos sd (desvio padrão)
+											 ymax = y + sd))# valor de y mais sd 
+
+p1 <- plot + geom_crossbar() + ggtitle("geom_crossbar()")
+p2 <- plot + geom_pointrange() + ggtitle("geom_pointrange()")
+p3 <- plot + geom_smooth(stat = "identity") + ggtitle("geom_smooth()")
+
+p1 + p2 + p3
+```
+
+
+```{r}
+p1 <- plot + geom_errorbar() + ggtitle("geom_errorbar()")
+p2 <- plot + geom_linerange() + ggtitle("geom_linerange()")
+p3 <- plot + geom_ribbon() + ggtitle("geom_ribbon()")
+
+p1 + p2 + p3
+```
+
+Há várias formas de calcular erro padrão, desvio padrão e outras métricas de erro por isso o `ggplot2` não fornece formas simples de calculá-lose isso deve ser feito manualmente.
+O livro ["R for Data Science"](https://r4ds.had.co.nz/) fornece conselhos sobre formas de como fazer isso.
+
+### Plotando distribuições
+
+A forma mais comum de demonstrar distribuições de dados é na forma de histogramas.
+O dataset `diamonds` contém informações sobre aproximadamente 50 mil diamantes e será usado para demonstrar como criar histogramas.
+Para distribuição em uma dimensão o geom mais importante é o `geom_histogram()`
+
+```{r}
+
+p1 <- ggplot(diamonds,aes(depth)) +
+	geom_histogram()
+
+	
+
+p2 <-	ggplot(diamonds,aes(depth)) +
+	geom_histogram(binwidth = 0.1) + # definindo largura das barras
+	xlim(c(55,70)) # definindo limites no eixo x
+
+p1 + p2
+```
+
+Histograma é uma vizualização que mostra a frequência de valores dentro de um intervalo especificado na forma de retângulo.
+A base do retângulo representa o intervalo dos dados (por exemplo 5--10 anos) e a altura é o número de indivíduos que se adequam a esta faixa de idade.
+Para se ajustar a largura do retângulo podem ser usados os argumentos `bins = ` e `binwidth = ` que são respectivamente o número de retângulos e a largura dos retângulos. 
+Logo para maior resolução pode ser usado um valor de `binwidth` baixo ou valor de `bins` alto como mostrado na imagem acima.
+
+O dataset `diamonds` contém informações sobre as dimensões e o tipo de corte, claridade e cor dos diamantes portanto podemos usar estes dados para modificar a visualização.
+Neste caso para visualizar diferenças entre os tipos de corte podem ser usadas 3 técnicas:
+
+a. Mostrar vários múltiplos do histograma com `facet_wrap()`;
+b. Classificá-los usando cores;
+c. Usar outra estatística de histograma.
+
+```{r multi-hist, fig.height=6}
+p1 <- ggplot(diamonds, aes(depth)) + 
+  geom_histogram(binwidth = 0.1) +
+  xlim(58, 68) + 
+  theme(legend.position = "none") +
+	facet_wrap(~cut) +
+	ggtitle("a. facet_wrap()")
+
+p2 <- ggplot(diamonds, aes(depth)) + 
+  geom_freqpoly(aes(colour = cut), binwidth = 0.1, na.rm = TRUE) +
+  xlim(58, 68) + 
+	ggtitle("b. geom_freqpoly()") +
+	theme(legend.position = "none")
+
+p3 <- ggplot(diamonds, aes(depth)) + 
+  geom_histogram(aes(fill = cut), binwidth = 0.1, position = "fill",
+    na.rm = TRUE) +
+  xlim(58, 68) + 
+	ggtitle("c. position = fill")
+
+p1 / (p2 + p3) +
+	plot_layout(guides = "collect") # coloca as legendas em um mesmo lugar
+```
+
+Na figura \@ref(fig:multi-hist)a é mostrada a função `facet_wrap()` que tem a função de criar vários *subplots* baseado na variável categórica escolhida. 
+O uso de *facets* será explicado melhor na seção \@ref(facets).
+Em \@ref(fig:multi-hist)b é usado o `geom_freqpoly()` que cria um polígono cujos picos correspondem a altura das barras nos histogramas e por fim em \@ref(fig:multi-hist)c em vez de ser reportado a frequência de valores em cada um dos intervalos, é reportado a proporção entre as classes (*cut*) para aquele intervalo de valores, o que facilita na visualização comparativa entre classes.
+
+A alternativa para histogramas é o uso de *density plots*, que podem ser interpretados como histogramas "suavizados".
+*Density plots* estimam os valores entre os intervalos e suavizam os dados usando a distribuição normal.
+Usando as mesmas variáveis dos gráficos acima podemos criar *density plots* usando a função `geom_density()`
+
+```{r density}
+p1 <- ggplot(diamonds, aes(depth)) +
+  geom_density(na.rm = TRUE) + 
+  xlim(58, 68) + 
+  theme(legend.position = "none")
+
+p2 <- ggplot(diamonds, aes(depth, fill = cut, colour = cut)) +
+  geom_density(alpha = 0.2, na.rm = TRUE) + 
+  xlim(58, 68) + 
+  theme(legend.position = "none")
+
+p1 + p2
+```
+
+Nota-se que a área de cada uma destas estimativas é padronizada para 1 para que não se perca a informação do tamanho relativo entre os grupos.
+
+Histogramas, a estimativa da densidade e o polígono de frequência são uteis para se visualizar detalhadamente distribuições porém não são extremamente úteis quando se busca compará-las.
+Portanto é necessário se ter alternativas que sacrifiquem qualidade para se ter maior quantidade, e as principais são:
+
+- `geom_boxplot()`: também chamado de *box-and-whisker*, mostra 5 dados estatísticos da distribuição assim como os *outliers* (valores que extrapolam os mínimos e máximos da distribuição). São menos detalhados que histogramas mas também ocupam menos espaço. Os 5 dados estatísticos são:
+	- mediana;
+	- primeiro quartil (25%);
+	- terceiro quartil (75%);
+	- limite inferior;
+	- limite superior.
+- `geom_violin()`: versão compacta do *density plot*. Os cálculos são feitos da mesma forma porém os resultados são demonstrados de forma similar aos *boxplots*;
+- `geom_dotplot()`: renderiza um ponto para cada observação, ajustado no espaço para que não se sobreponham, útil para datasets menores.
+
+Os geoms boxplot e violin citados exigem duas dimensões para serem criados, ao contrário dos citados anteriormente.
+Abaixo exemplos dos 3:
+
+```{r}
+plot <- ggplot(diamonds, aes(x = cut, y = depth))
+
+p1 <- plot + geom_boxplot() +
+	ggtitle("geom_boxplot()")
+
+p2 <- plot + geom_violin() +
+	ggtitle("geom_violin()")
+	
+p3 <- ggplot(mpg, aes(x = hwy)) +
+  geom_dotplot() +
+	ggtitle("geom_dotplot()")
+
+p1 + p2 + p3
+```
+
 
 ### Anotações
+
+#### Elementos textuais
+
+Em praticamente todos os casos em que se deseja construir um gráfico é necessário adicionar um título, subtítulo, legenda, nomes para os eixos e até números ou letras que identifiquem subfiguras.
+O `ggplot2` possui uma função justamente para isso, a função `labs()`.
+Dentro dela podem ser especificados todos estes elementos.
+Abaixo, um exemplo:
+
+```{r}
+
+ggplot(mpg,
+			 aes(
+			 	x = hwy,
+			 	y = cty,
+			 	col = class
+			 )) +
+	geom_point() +
+	labs(title = "Gráfico sobre carros", # título
+			 subtitle = "Diferenças entre classes de carros", # sub-título
+			 x = "Consumo em rodovias [km/l]", # nome do eixo x
+			 y = "Consumo na cidade [km/l]", # nome do eixo y
+			 caption = "Fonte: Dados do dataset mpg", # legenda alinhada abaixo à direita
+			 tag = "(a)") # identificador de subfigura
+
+
+
+```
+
+Além destes elementos externos à área onde os dados estão plotados pode ser usado as funções `ggtitle()`, `xlab()` e `ylab()`, que são atalhos para especificar título, legenda do eixo x e y respectivamente.
+Para modificar a fonte, posição e outras propriedades destas legendas visite a seção \@ref(legendas) e \@ref(temas).
+
+***
+
+Outros elementos textuais que podem ser adicionados a um gráfico são aqueles relacionados aos dados contidos na tabela que se está analisando.
+O uso do `geom_text()` foi brevemente explorado e é útil para se adicionar um rótulo nas coordenadas `x` e `y` específicas.
+Existem várias estéticas do `geom_text()` porque texto possui muitas propriedades, como: fonte, formatação, cor, etc.
+O `geom_label()` funciona da mesma forma que `geom_text()` porém com um retângulo por trás do texto.
+Abaixo exemplos:
+
+```{r text-label}
+dados <- crossing( # cria combinação entre todos os tipos de fonte
+	face = c("plain", "bold", "italic"),
+	family = c("sans", "serif", "mono")
+	)
+
+p <- ggplot(dados,
+			 aes(
+			 	x = face,
+			 	y = family,
+			 	label = paste0(family,"\n",face), # rótulo do texto
+				fontface = face, # formatação da fonte (bold, italic, plain)
+				family = family # família da fonte (italic, sans, mono)
+			 )) 
+
+p1 <- p + geom_text()
+
+p2 <- p + geom_label()
+
+p1 + p2
+```
+
+
+
+#### Elementos gráficos
+
+## Legendas {#legendas}
+## Escalas
+## Facets {#facets}
+## Temas {#temas}
+## Organizando os *plots*
 
 Anotações
 

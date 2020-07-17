@@ -53,7 +53,7 @@ Em R existem vários tipos de classes de dados mas nesta aula iremos apenas apre
   3. Fatores categóricos (*factors*): Fatores podem ser comparados a *strings* quando aplicados à distinção entre variáveis categóricas porém uma vantagem é que eles são ordenados e podem possuir níveis, o que *strings* não possuem.
   4. Lógicos (`TRUE, FALSE`): Valores lógicos servem para avaliar se alguma expressão é verdadeira ou falsa. Um exemplo simples é verificar de 4 é igual a 5.
   
-```{r false-expressions}
+```{r false-expressions, results='hold'}
 4 == 5
 
 1000 <= -23
@@ -65,7 +65,7 @@ is.numeric("c")
 
 Como imaginado, se tentamos avaliar as expressões acima, o resultado é `FALSE`, agora se tentamos outra expressão que seja verdadeira como as abaixo temos um retorno `TRUE`
 
-```{r true-expressions}
+```{r true-expressions, results='hold'}
 2*10 == 20
 
 30 > 12
