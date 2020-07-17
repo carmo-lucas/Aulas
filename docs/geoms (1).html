@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.5 Geoms | Aulas de R</title>
-  <meta name="description" content="4.5 Geoms | Aulas de R" />
+  <title>5.5 Geoms | Aulas de R</title>
+  <meta name="description" content="5.5 Geoms | Aulas de R" />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.5 Geoms | Aulas de R" />
+  <meta property="og:title" content="5.5 Geoms | Aulas de R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.5 Geoms | Aulas de R" />
+  <meta name="twitter:title" content="5.5 Geoms | Aulas de R" />
   
   
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Lucas Chagas Lima do Carmo" />
 
 
-<meta name="date" content="2020-04-08" />
+<meta name="date" content="2020-04-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,8 @@
   
   
 <link rel="prev" href="cores-tamanhos-formas-e-outros-atributos-estéticos.html"/>
-<link rel="next" href="regressões.html"/>
+<link rel="next" href="tutoriais.html"/>
+<script src="assets/header-attrs-2.1/header-attrs.js"></script>
 <script src="assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -53,25 +54,26 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -80,9 +82,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -129,46 +131,74 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul class="summary">
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introdução</a></li>
 <li class="chapter" data-level="1" data-path="tipos-de-dados.html"><a href="tipos-de-dados.html"><i class="fa fa-check"></i><b>1</b> Tipos de Dados</a></li>
-<li class="chapter" data-level="2" data-path="extensões.html"><a href="extensões.html"><i class="fa fa-check"></i><b>2</b> Extensões</a><ul>
-<li class="chapter" data-level="2.1" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>2.1</b> <code>tidyverse</code></a><ul>
-<li class="chapter" data-level="2.1.1" data-path="tidyverse.html"><a href="tidyverse.html#dplyr"><i class="fa fa-check"></i><b>2.1.1</b> <code>dplyr</code></a></li>
-<li class="chapter" data-level="2.1.2" data-path="tidyverse.html"><a href="tidyverse.html#tidyr"><i class="fa fa-check"></i><b>2.1.2</b> <code>tidyr</code></a></li>
-<li class="chapter" data-level="2.1.3" data-path="tidyverse.html"><a href="tidyverse.html#readr"><i class="fa fa-check"></i><b>2.1.3</b> <code>readr</code></a></li>
-<li class="chapter" data-level="2.1.4" data-path="tidyverse.html"><a href="tidyverse.html#stringr"><i class="fa fa-check"></i><b>2.1.4</b> <code>stringr</code></a></li>
-<li class="chapter" data-level="2.1.5" data-path="tidyverse.html"><a href="tidyverse.html#tibble"><i class="fa fa-check"></i><b>2.1.5</b> <code>tibble</code></a></li>
-<li class="chapter" data-level="2.1.6" data-path="tidyverse.html"><a href="tidyverse.html#purrr"><i class="fa fa-check"></i><b>2.1.6</b> <code>purrr</code></a></li>
-<li class="chapter" data-level="2.1.7" data-path="tidyverse.html"><a href="tidyverse.html#forcats"><i class="fa fa-check"></i><b>2.1.7</b> <code>forcats</code></a></li>
-<li class="chapter" data-level="2.1.8" data-path="tidyverse.html"><a href="tidyverse.html#magrittr"><i class="fa fa-check"></i><b>2.1.8</b> <code>magrittr</code></a></li>
-<li class="chapter" data-level="2.1.9" data-path="tidyverse.html"><a href="tidyverse.html#ggplot2"><i class="fa fa-check"></i><b>2.1.9</b> <code>ggplot2</code></a></li>
+<li class="chapter" data-level="2" data-path="tipos-de-objetos.html"><a href="tipos-de-objetos.html"><i class="fa fa-check"></i><b>2</b> Tipos de objetos</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="vetores.html"><a href="vetores.html"><i class="fa fa-check"></i><b>2.1</b> Vetores</a></li>
+<li class="chapter" data-level="2.2" data-path="matrizes.html"><a href="matrizes.html"><i class="fa fa-check"></i><b>2.2</b> Matrizes</a></li>
+<li class="chapter" data-level="2.3" data-path="índices.html"><a href="índices.html"><i class="fa fa-check"></i><b>2.3</b> Índices</a></li>
+<li class="chapter" data-level="2.4" data-path="dataframes.html"><a href="dataframes.html"><i class="fa fa-check"></i><b>2.4</b> Dataframes</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="dataframes.html"><a href="dataframes.html#índices-de-dataframes"><i class="fa fa-check"></i><b>2.4.1</b> Índices de dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="listas.html"><a href="listas.html"><i class="fa fa-check"></i><b>2.5</b> Listas</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="listas.html"><a href="listas.html#índices-de-listas"><i class="fa fa-check"></i><b>2.5.1</b> Índices de listas</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="operadores.html"><a href="operadores.html"><i class="fa fa-check"></i><b>3</b> Operadores</a><ul>
-<li class="chapter" data-level="3.1" data-path="operadores-aritméticos.html"><a href="operadores-aritméticos.html"><i class="fa fa-check"></i><b>3.1</b> Operadores aritméticos</a><ul>
+<li class="chapter" data-level="3" data-path="operadores.html"><a href="operadores.html"><i class="fa fa-check"></i><b>3</b> Operadores</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="operadores-aritméticos.html"><a href="operadores-aritméticos.html"><i class="fa fa-check"></i><b>3.1</b> Operadores aritméticos</a>
+<ul>
 <li class="chapter" data-level="3.1.1" data-path="operadores-aritméticos.html"><a href="operadores-aritméticos.html#exemplos"><i class="fa fa-check"></i><b>3.1.1</b> Exemplos</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="operadores-lógicos.html"><a href="operadores-lógicos.html"><i class="fa fa-check"></i><b>3.2</b> Operadores Lógicos</a><ul>
+<li class="chapter" data-level="3.2" data-path="operadores-lógicos.html"><a href="operadores-lógicos.html"><i class="fa fa-check"></i><b>3.2</b> Operadores Lógicos</a>
+<ul>
 <li class="chapter" data-level="3.2.1" data-path="operadores-lógicos.html"><a href="operadores-lógicos.html#exemplos-1"><i class="fa fa-check"></i><b>3.2.1</b> Exemplos</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="ggplot2-1.html"><a href="ggplot2-1.html"><i class="fa fa-check"></i><b>4</b> <code>ggplot2</code></a><ul>
-<li class="chapter" data-level="4.1" data-path="gramática-de-gráficos.html"><a href="gramática-de-gráficos.html"><i class="fa fa-check"></i><b>4.1</b> Gramática de Gráficos</a></li>
-<li class="chapter" data-level="4.2" data-path="instalação.html"><a href="instalação.html"><i class="fa fa-check"></i><b>4.2</b> Instalação</a></li>
-<li class="chapter" data-level="4.3" data-path="componentes-principais-dos-gráficos.html"><a href="componentes-principais-dos-gráficos.html"><i class="fa fa-check"></i><b>4.3</b> Componentes principais dos gráficos</a></li>
-<li class="chapter" data-level="4.4" data-path="cores-tamanhos-formas-e-outros-atributos-estéticos.html"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html"><i class="fa fa-check"></i><b>4.4</b> Cores, tamanhos, formas e outros atributos estéticos</a></li>
-<li class="chapter" data-level="4.5" data-path="geoms.html"><a href="geoms.html"><i class="fa fa-check"></i><b>4.5</b> Geoms</a><ul>
-<li class="chapter" data-level="4.5.1" data-path="geoms.html"><a href="geoms.html#geoms-individuais"><i class="fa fa-check"></i><b>4.5.1</b> Geoms individuais</a></li>
-<li class="chapter" data-level="4.5.2" data-path="geoms.html"><a href="geoms.html#geoms-coletivos"><i class="fa fa-check"></i><b>4.5.2</b> Geoms coletivos</a></li>
-<li class="chapter" data-level="4.5.3" data-path="geoms.html"><a href="geoms.html#resumos-estatísticos"><i class="fa fa-check"></i><b>4.5.3</b> Resumos estatísticos</a></li>
-<li class="chapter" data-level="4.5.4" data-path="geoms.html"><a href="geoms.html#resolvendo-overplotting"><i class="fa fa-check"></i><b>4.5.4</b> Resolvendo <em>overplotting</em></a></li>
-<li class="chapter" data-level="4.5.5" data-path="geoms.html"><a href="geoms.html#anotações"><i class="fa fa-check"></i><b>4.5.5</b> Anotações</a></li>
+<li class="chapter" data-level="4" data-path="extensões.html"><a href="extensões.html"><i class="fa fa-check"></i><b>4</b> Extensões</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>4.1</b> <code>tidyverse</code></a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="tidyverse.html"><a href="tidyverse.html#dplyr"><i class="fa fa-check"></i><b>4.1.1</b> <code>dplyr</code></a></li>
+<li class="chapter" data-level="4.1.2" data-path="tidyverse.html"><a href="tidyverse.html#tidyr"><i class="fa fa-check"></i><b>4.1.2</b> <code>tidyr</code></a></li>
+<li class="chapter" data-level="4.1.3" data-path="tidyverse.html"><a href="tidyverse.html#readr"><i class="fa fa-check"></i><b>4.1.3</b> <code>readr</code></a></li>
+<li class="chapter" data-level="4.1.4" data-path="tidyverse.html"><a href="tidyverse.html#stringr"><i class="fa fa-check"></i><b>4.1.4</b> <code>stringr</code></a></li>
+<li class="chapter" data-level="4.1.5" data-path="tidyverse.html"><a href="tidyverse.html#tibble"><i class="fa fa-check"></i><b>4.1.5</b> <code>tibble</code></a></li>
+<li class="chapter" data-level="4.1.6" data-path="tidyverse.html"><a href="tidyverse.html#purrr"><i class="fa fa-check"></i><b>4.1.6</b> <code>purrr</code></a></li>
+<li class="chapter" data-level="4.1.7" data-path="tidyverse.html"><a href="tidyverse.html#forcats"><i class="fa fa-check"></i><b>4.1.7</b> <code>forcats</code></a></li>
+<li class="chapter" data-level="4.1.8" data-path="tidyverse.html"><a href="tidyverse.html#magrittr"><i class="fa fa-check"></i><b>4.1.8</b> <code>magrittr</code></a></li>
+<li class="chapter" data-level="4.1.9" data-path="tidyverse.html"><a href="tidyverse.html#ggplot2"><i class="fa fa-check"></i><b>4.1.9</b> <code>ggplot2</code></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="regressões.html"><a href="regressões.html"><i class="fa fa-check"></i><b>5</b> Regressões</a><ul>
-<li class="chapter" data-level="5.1" data-path="regressões-lineares.html"><a href="regressões-lineares.html"><i class="fa fa-check"></i><b>5.1</b> Regressões Lineares</a><ul>
-<li class="chapter" data-level="5.1.1" data-path="regressões-lineares.html"><a href="regressões-lineares.html#método-de-função"><i class="fa fa-check"></i><b>5.1.1</b> Método de função</a></li>
-<li class="chapter" data-level="5.1.2" data-path="regressões-lineares.html"><a href="regressões-lineares.html#método-ggplot2"><i class="fa fa-check"></i><b>5.1.2</b> Método <code>ggplot2</code></a></li>
-<li class="chapter" data-level="5.1.3" data-path="regressões-lineares.html"><a href="regressões-lineares.html#método-ggpmisc"><i class="fa fa-check"></i><b>5.1.3</b> Método <code>ggpmisc</code></a></li>
-<li class="chapter" data-level="5.1.4" data-path="regressões-lineares.html"><a href="regressões-lineares.html#método-ggpubr"><i class="fa fa-check"></i><b>5.1.4</b> Método <code>ggpubr</code></a></li>
+<li class="chapter" data-level="5" data-path="ggplot2-1.html"><a href="ggplot2-1.html"><i class="fa fa-check"></i><b>5</b> <code>ggplot2</code></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="gramática-de-gráficos.html"><a href="gramática-de-gráficos.html"><i class="fa fa-check"></i><b>5.1</b> Gramática de Gráficos</a></li>
+<li class="chapter" data-level="5.2" data-path="instalação.html"><a href="instalação.html"><i class="fa fa-check"></i><b>5.2</b> Instalação</a></li>
+<li class="chapter" data-level="5.3" data-path="componentes-principais-dos-gráficos.html"><a href="componentes-principais-dos-gráficos.html"><i class="fa fa-check"></i><b>5.3</b> Componentes principais dos gráficos</a></li>
+<li class="chapter" data-level="5.4" data-path="cores-tamanhos-formas-e-outros-atributos-estéticos.html"><a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html"><i class="fa fa-check"></i><b>5.4</b> Cores, tamanhos, formas e outros atributos estéticos</a></li>
+<li class="chapter" data-level="5.5" data-path="geoms.html"><a href="geoms.html"><i class="fa fa-check"></i><b>5.5</b> Geoms</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="geoms.html"><a href="geoms.html#geoms-individuais"><i class="fa fa-check"></i><b>5.5.1</b> Geoms individuais</a></li>
+<li class="chapter" data-level="5.5.2" data-path="geoms.html"><a href="geoms.html#geoms-coletivos"><i class="fa fa-check"></i><b>5.5.2</b> Geoms coletivos</a></li>
+<li class="chapter" data-level="5.5.3" data-path="geoms.html"><a href="geoms.html#resumos-estatísticos"><i class="fa fa-check"></i><b>5.5.3</b> Resumos estatísticos</a></li>
+<li class="chapter" data-level="5.5.4" data-path="geoms.html"><a href="geoms.html#resolvendo-overplotting"><i class="fa fa-check"></i><b>5.5.4</b> Resolvendo <em>overplotting</em></a></li>
+<li class="chapter" data-level="5.5.5" data-path="geoms.html"><a href="geoms.html#anotações"><i class="fa fa-check"></i><b>5.5.5</b> Anotações</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="tutoriais.html"><a href="tutoriais.html"><i class="fa fa-check"></i><b>6</b> Tutoriais</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="regressões.html"><a href="regressões.html"><i class="fa fa-check"></i><b>6.1</b> Regressões</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="regressões.html"><a href="regressões.html#regressões-lineares"><i class="fa fa-check"></i><b>6.1.1</b> Regressões Lineares</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="smoothing.html"><a href="smoothing.html"><i class="fa fa-check"></i><b>6.2</b> Smoothing</a></li>
+<li class="chapter" data-level="6.3" data-path="gráficos-deslocados-no-eixo-y.html"><a href="gráficos-deslocados-no-eixo-y.html"><i class="fa fa-check"></i><b>6.3</b> Gráficos deslocados no eixo <code>y</code></a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="gráficos-deslocados-no-eixo-y.html"><a href="gráficos-deslocados-no-eixo-y.html#exemplos-de-gráficos"><i class="fa fa-check"></i><b>6.3.1</b> Exemplos de gráficos</a></li>
+<li class="chapter" data-level="6.3.2" data-path="gráficos-deslocados-no-eixo-y.html"><a href="gráficos-deslocados-no-eixo-y.html#transformação-de-dados"><i class="fa fa-check"></i><b>6.3.2</b> Transformação de dados</a></li>
+<li class="chapter" data-level="6.3.3" data-path="gráficos-deslocados-no-eixo-y.html"><a href="gráficos-deslocados-no-eixo-y.html#wide-vs.-long"><i class="fa fa-check"></i><b>6.3.3</b> <code>wide</code> vs. <code>long</code></a></li>
+<li class="chapter" data-level="6.3.4" data-path="gráficos-deslocados-no-eixo-y.html"><a href="gráficos-deslocados-no-eixo-y.html#construindo-o-gráfico"><i class="fa fa-check"></i><b>6.3.4</b> Construindo o gráfico</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -189,10 +219,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="geoms" class="section level2">
-<h2><span class="header-section-number">4.5</span> Geoms</h2>
-<div id="geoms-individuais" class="section level3">
-<h3><span class="header-section-number">4.5.1</span> Geoms individuais</h3>
+<div id="geoms" class="section level2" number="5.5">
+<h2><span class="header-section-number">5.5</span> Geoms</h2>
+<div id="geoms-individuais" class="section level3" number="5.5.1">
+<h3><span class="header-section-number">5.5.1</span> Geoms individuais</h3>
 <p>Estes <code>geoms</code> são os fundamentais para a construção de <em>plots</em>, podem ser por sí um gráfico completo ou podem compor gráficos mais complexos.</p>
 <p>Cada um destes <code>geoms</code> são bidimensionais e requerem estéticas de ambos <code>x</code> e <code>y</code>.
 Todos eles entendem <code>color</code> e <code>size</code> como sendo parâmetros de mapeamento estético e os geoms que contém área interna como <code>geom_bar</code> e <code>geom_polygon</code> também entendem o parametro <code>fill</code> como mapeamento.
@@ -208,34 +238,34 @@ Estes geoms estarão listados abaixo:</p>
 </ul>
 <p>Cada um destes geoms será demonstrado nas figuras abaixo.
 Observe as semelhanças e diferenças dos eixos <code>x</code> e <code>y</code>, alguns extrapolam os valores estabelecidos pelos dados e podem estender os limítes dos eixos.</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" title="1">df &lt;-<span class="st"> </span><span class="kw">data.frame</span> (</a>
-<a class="sourceLine" id="cb109-2" title="2">    x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="fl">3.4</span>),</a>
-<a class="sourceLine" id="cb109-3" title="3">    y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="fl">5.4</span>),</a>
-<a class="sourceLine" id="cb109-4" title="4">    label &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;a&quot;</span>)</a>
-<a class="sourceLine" id="cb109-5" title="5">)</a>
-<a class="sourceLine" id="cb109-6" title="6"></a>
-<a class="sourceLine" id="cb109-7" title="7">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(</a>
-<a class="sourceLine" id="cb109-8" title="8">    df, <span class="kw">aes</span>(x, y, <span class="dt">label =</span> label)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb109-9" title="9"><span class="st">    </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="ot">NULL</span>, <span class="dt">y =</span> <span class="ot">NULL</span>) <span class="op">+</span><span class="st"> </span><span class="co"># esconde o nome dos eixos</span></a>
-<a class="sourceLine" id="cb109-10" title="10"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>)) <span class="co"># diminui tamanho do texto</span></a>
-<a class="sourceLine" id="cb109-11" title="11">                </a>
-<a class="sourceLine" id="cb109-12" title="12">p1 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;ponto&quot;</span>)</a>
-<a class="sourceLine" id="cb109-13" title="13">p2 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_text</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;texto&quot;</span>)</a>
-<a class="sourceLine" id="cb109-14" title="14">p3 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;barra&quot;</span>)</a>
-<a class="sourceLine" id="cb109-15" title="15">p4 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_tile</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;raster&quot;</span>)</a>
-<a class="sourceLine" id="cb109-16" title="16"></a>
-<a class="sourceLine" id="cb109-17" title="17">p1 <span class="op">+</span><span class="st"> </span>p2 <span class="op">+</span><span class="st"> </span>p3 <span class="op">+</span><span class="st"> </span>p4</a></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="geoms.html#cb169-1"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span> (</span>
+<span id="cb169-2"><a href="geoms.html#cb169-2"></a>    x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="fl">3.4</span>),</span>
+<span id="cb169-3"><a href="geoms.html#cb169-3"></a>    y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="fl">5.4</span>),</span>
+<span id="cb169-4"><a href="geoms.html#cb169-4"></a>    label &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;a&quot;</span>)</span>
+<span id="cb169-5"><a href="geoms.html#cb169-5"></a>)</span>
+<span id="cb169-6"><a href="geoms.html#cb169-6"></a></span>
+<span id="cb169-7"><a href="geoms.html#cb169-7"></a>p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(</span>
+<span id="cb169-8"><a href="geoms.html#cb169-8"></a>    df, <span class="kw">aes</span>(x, y, <span class="dt">label =</span> label)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb169-9"><a href="geoms.html#cb169-9"></a><span class="st">    </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="ot">NULL</span>, <span class="dt">y =</span> <span class="ot">NULL</span>) <span class="op">+</span><span class="st"> </span><span class="co"># esconde o nome dos eixos</span></span>
+<span id="cb169-10"><a href="geoms.html#cb169-10"></a><span class="st">    </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>)) <span class="co"># diminui tamanho do texto</span></span>
+<span id="cb169-11"><a href="geoms.html#cb169-11"></a>                </span>
+<span id="cb169-12"><a href="geoms.html#cb169-12"></a>p1 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;ponto&quot;</span>)</span>
+<span id="cb169-13"><a href="geoms.html#cb169-13"></a>p2 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_text</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;texto&quot;</span>)</span>
+<span id="cb169-14"><a href="geoms.html#cb169-14"></a>p3 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;barra&quot;</span>)</span>
+<span id="cb169-15"><a href="geoms.html#cb169-15"></a>p4 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_tile</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;raster&quot;</span>)</span>
+<span id="cb169-16"><a href="geoms.html#cb169-16"></a></span>
+<span id="cb169-17"><a href="geoms.html#cb169-17"></a>p1 <span class="op">+</span><span class="st"> </span>p2 <span class="op">+</span><span class="st"> </span>p3 <span class="op">+</span><span class="st"> </span>p4</span></code></pre></div>
 <p><img src="_main_files/figure-html/geoms-1.png" width="2100" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" title="1">p5 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;linha&quot;</span>)</a>
-<a class="sourceLine" id="cb110-2" title="2">p6 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_area</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;área&quot;</span>)</a>
-<a class="sourceLine" id="cb110-3" title="3">p7 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_path</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;caminho&quot;</span>)</a>
-<a class="sourceLine" id="cb110-4" title="4">p8 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_polygon</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;polígono&quot;</span>)</a>
-<a class="sourceLine" id="cb110-5" title="5"></a>
-<a class="sourceLine" id="cb110-6" title="6">p5 <span class="op">+</span><span class="st"> </span>p6 <span class="op">+</span><span class="st"> </span>p7 <span class="op">+</span><span class="st"> </span>p8</a></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="geoms.html#cb170-1"></a>p5 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;linha&quot;</span>)</span>
+<span id="cb170-2"><a href="geoms.html#cb170-2"></a>p6 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_area</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;área&quot;</span>)</span>
+<span id="cb170-3"><a href="geoms.html#cb170-3"></a>p7 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_path</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;caminho&quot;</span>)</span>
+<span id="cb170-4"><a href="geoms.html#cb170-4"></a>p8 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_polygon</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;polígono&quot;</span>)</span>
+<span id="cb170-5"><a href="geoms.html#cb170-5"></a></span>
+<span id="cb170-6"><a href="geoms.html#cb170-6"></a>p5 <span class="op">+</span><span class="st"> </span>p6 <span class="op">+</span><span class="st"> </span>p7 <span class="op">+</span><span class="st"> </span>p8</span></code></pre></div>
 <p><img src="_main_files/figure-html/geoms2-1.png" width="2100" style="display: block; margin: auto;" /></p>
 </div>
-<div id="geoms-coletivos" class="section level3">
-<h3><span class="header-section-number">4.5.2</span> Geoms coletivos</h3>
+<div id="geoms-coletivos" class="section level3" number="5.5.2">
+<h3><span class="header-section-number">5.5.2</span> Geoms coletivos</h3>
 <p>Os geoms <strong>individuais</strong> criam objetos gráficos para cada observação ou linha da tabela contendo os dados, por exemplo, cada ponto de <code>geom_point()</code> representa uma linha de dados mas os geoms <strong>coletivos</strong> mostram várias observações, ou linhas, por elemento gráfico gerado.
 Isso pode ser o resultado de um resumo estatístico como um <em>boxplot</em> ou resultado de como os dados devem ser dispostos.
 Linhas e <em>path</em> estão no meio termo entre <strong>individuais</strong> e <strong>coletivos</strong> porque apesar de cada extremidade de uma linha ser apenas uma observação, o segmento é o conjunto de duas observações da tabela, ou seja, dois pontos.
@@ -244,8 +274,8 @@ Para controlar o comportamento devemos usar a estética <code>group</code>.</p>
 <p>Há três casos comuns onde o padrão não é suficiente.
 Estes serão considerados abaixo.
 Para os exemplos a seguir será usado o <em>dataset</em> <code>Oxboys</code> do pacote <code>nlme</code>, que contém a altura e idade de 26 homens registrado em nove ocasiões diferentes.</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" title="1"><span class="kw">data</span>(Oxboys, <span class="dt">package =</span> <span class="st">&quot;nlme&quot;</span>)</a>
-<a class="sourceLine" id="cb111-2" title="2"><span class="kw">head</span>(Oxboys)</a></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="geoms.html#cb171-1"></a><span class="kw">data</span>(Oxboys, <span class="dt">package =</span> <span class="st">&quot;nlme&quot;</span>)</span>
+<span id="cb171-2"><a href="geoms.html#cb171-2"></a><span class="kw">head</span>(Oxboys)</span></code></pre></div>
 <pre><code>Grouped Data: height ~ age | Subject
   Subject     age height Occasion
 1       1 -1.0000  140.5        1
@@ -254,109 +284,107 @@ Para os exemplos a seguir será usado o <em>dataset</em> <code>Oxboys</code> do 
 4       1 -0.1643  147.1        4
 5       1 -0.0027  147.7        5
 6       1  0.2466  150.2        6</code></pre>
-<div id="grupos-múltiplos-uma-estética" class="section level4">
-<h4><span class="header-section-number">4.5.2.1</span> Grupos múltiplos, uma estética</h4>
+<div id="grupos-múltiplos-uma-estética" class="section level4" number="5.5.2.1">
+<h4><span class="header-section-number">5.5.2.1</span> Grupos múltiplos, uma estética</h4>
 <p>Em várias situações é necessário separar os dados em grupos mas com a mesma estética.
 Em outras palavras: se deseja visualizar sujeitos distintos mas não é necessário identificá-los usando cores ou outros artifícios visuais.
 Isto é comum para estudos onde se quer ver a diferença entre vários sujeitos ao longo do tempo.</p>
 <p>Para exemplificar, abaixo na esquerda um <em>plot</em> com múltiplos grupos e uma estética e à direita múltiplos grupos e múltiplas estéticas:</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" title="1">p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(Oxboys, <span class="kw">aes</span>(age, height, <span class="dt">group =</span> Subject)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb113-2" title="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb113-3" title="3"><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb113-4" title="4"><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Uma estética&quot;</span>)</a>
-<a class="sourceLine" id="cb113-5" title="5"></a>
-<a class="sourceLine" id="cb113-6" title="6">p2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(Oxboys, <span class="kw">aes</span>(age, height, <span class="dt">color =</span> Subject)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb113-7" title="7"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb113-8" title="8"><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb113-9" title="9"><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Múltiplas estéticas&quot;</span>)</a>
-<a class="sourceLine" id="cb113-10" title="10"></a>
-<a class="sourceLine" id="cb113-11" title="11">p1 <span class="op">+</span><span class="st"> </span>p2</a></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="geoms.html#cb173-1"></a>p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(Oxboys, <span class="kw">aes</span>(age, height, <span class="dt">group =</span> Subject)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb173-2"><a href="geoms.html#cb173-2"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb173-3"><a href="geoms.html#cb173-3"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></span>
+<span id="cb173-4"><a href="geoms.html#cb173-4"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Uma estética&quot;</span>)</span>
+<span id="cb173-5"><a href="geoms.html#cb173-5"></a></span>
+<span id="cb173-6"><a href="geoms.html#cb173-6"></a>p2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(Oxboys, <span class="kw">aes</span>(age, height, <span class="dt">color =</span> Subject)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb173-7"><a href="geoms.html#cb173-7"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb173-8"><a href="geoms.html#cb173-8"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb173-9"><a href="geoms.html#cb173-9"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Múltiplas estéticas&quot;</span>)</span>
+<span id="cb173-10"><a href="geoms.html#cb173-10"></a></span>
+<span id="cb173-11"><a href="geoms.html#cb173-11"></a>p1 <span class="op">+</span><span class="st"> </span>p2</span></code></pre></div>
 <p><img src="_main_files/figure-html/oxboys1-1.png" width="2100" style="display: block; margin: auto;" /></p>
 <p>Neste caso o padrão de agrupamento não funciona e se não for definido explicitamente ou se for definido incorretamente o <em>plot</em> terá uma aparência de “lâmina de serra”.</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" title="1"><span class="kw">ggplot</span>(Oxboys, <span class="kw">aes</span>(age, height)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb114-2" title="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb114-3" title="3"><span class="st">  </span><span class="kw">geom_line</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="geoms.html#cb174-1"></a><span class="kw">ggplot</span>(Oxboys, <span class="kw">aes</span>(age, height)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb174-2"><a href="geoms.html#cb174-2"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb174-3"><a href="geoms.html#cb174-3"></a><span class="st">  </span><span class="kw">geom_line</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/sawtooth-1.png" width="2100" style="display: block; margin: auto;" /></p>
 <p>Se um <code>group</code> não for definido por uma única variável e sim por combinação de várias é possível usar a função <code>interaction()</code> para combiná-las, por exemplo: <code>aes(interaction(identidade_escola, identidade_aluno))</code>.</p>
 </div>
-<div id="grupos-em-camadas-diferentes" class="section level4">
-<h4><span class="header-section-number">4.5.2.2</span> Grupos em camadas diferentes</h4>
+<div id="grupos-em-camadas-diferentes" class="section level4" number="5.5.2.2">
+<h4><span class="header-section-number">5.5.2.2</span> Grupos em camadas diferentes</h4>
 <p>Há vezes em que é necessário mostrar diferentes resumos estatísticos com agrupamentos específicos em camadas diferentes.
 Em uma camada pode mostrar valores não grupados enquanto que outra camada mostra um resumo estatístico agrupado.</p>
 <p>Reaproveitando o exemplo acima, deseja-se criar uma linha que demonstre o aumento da altura dos sujeitos ao longo do tempo.</p>
 <p>Abaixo na esquerda quando o mapeamento estético de <code>group</code> é feito no objeto principal, todas as camadas usam esta especificação para gerar a visualização, porém quando o mapeamento estético é especificado na camada específica, observa-se que apenas naquela camada o grupamento é feito.</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" title="1">p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(Oxboys, <span class="kw">aes</span>(age, height, <span class="dt">group =</span> Subject)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb115-2" title="2"><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb115-3" title="3"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb115-4" title="4"><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Grupo aplicado em </span><span class="ch">\n</span><span class="st">todas as camadas&quot;</span>)</a>
-<a class="sourceLine" id="cb115-5" title="5"></a>
-<a class="sourceLine" id="cb115-6" title="6">p2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(Oxboys, <span class="kw">aes</span>(age, height)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb115-7" title="7"><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group =</span> Subject)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb115-8" title="8"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb115-9" title="9"><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Grupo aplicado na </span><span class="ch">\n</span><span class="st">camada line&quot;</span>)</a>
-<a class="sourceLine" id="cb115-10" title="10"></a>
-<a class="sourceLine" id="cb115-11" title="11">p1 <span class="op">+</span><span class="st"> </span>p2</a></code></pre></div>
-<pre><code>`geom_smooth()` using formula &#39;y ~ x&#39;
-`geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-15-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="geoms.html#cb175-1"></a>p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(Oxboys, <span class="kw">aes</span>(age, height, <span class="dt">group =</span> Subject)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb175-2"><a href="geoms.html#cb175-2"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></span>
+<span id="cb175-3"><a href="geoms.html#cb175-3"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="op">+</span></span>
+<span id="cb175-4"><a href="geoms.html#cb175-4"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Grupo aplicado em </span><span class="ch">\n</span><span class="st">todas as camadas&quot;</span>)</span>
+<span id="cb175-5"><a href="geoms.html#cb175-5"></a></span>
+<span id="cb175-6"><a href="geoms.html#cb175-6"></a>p2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(Oxboys, <span class="kw">aes</span>(age, height)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb175-7"><a href="geoms.html#cb175-7"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group =</span> Subject)) <span class="op">+</span></span>
+<span id="cb175-8"><a href="geoms.html#cb175-8"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="op">+</span></span>
+<span id="cb175-9"><a href="geoms.html#cb175-9"></a><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Grupo aplicado na </span><span class="ch">\n</span><span class="st">camada line&quot;</span>)</span>
+<span id="cb175-10"><a href="geoms.html#cb175-10"></a></span>
+<span id="cb175-11"><a href="geoms.html#cb175-11"></a>p1 <span class="op">+</span><span class="st"> </span>p2</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-28-1.png" width="2100" style="display: block; margin: auto;" /></p>
 <p>No lado direito, como o agrupamento foi feito na camada do <code>geom_line()</code> apenas estes dados estão agrupados enquanto que na camada <code>geom_smooth()</code> não foi feito nenhum agrupamento portanto a linha de regressão renderizada é em função de todos os dados.</p>
 </div>
-<div id="ignorando-o-grupamento-padrão" class="section level4">
-<h4><span class="header-section-number">4.5.2.3</span> Ignorando o grupamento padrão</h4>
+<div id="ignorando-o-grupamento-padrão" class="section level4" number="5.5.2.3">
+<h4><span class="header-section-number">5.5.2.3</span> Ignorando o grupamento padrão</h4>
 <p>Alguns gráficos tem uma escala discreta no eixo <code>x</code>, porém ainda se deseja criar uma camada que conecte os grupos separados por essa escala discreta.
 Esta estratégia é usada para construção de <a href="https://medium.com/@hpsuresh12345/the-significance-of-interaction-plots-in-statistics-6f2d3a6f77a3"><em>interaction plots</em></a>, <em>profile plots</em> e <a href="https://datavizcatalogue.com/methods/parallel_coordinates.html"><em>parallel coordinates plot</em></a>.
 Um exemplo é quando usamos o dataset <code>Oxboys</code> para observar a distribuição da altura entre todos os sujeitos ao longo das ocasiões onde a altura foi medida.</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" title="1"><span class="kw">ggplot</span>(Oxboys, <span class="kw">aes</span>(Occasion, height)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb117-2" title="2"><span class="st">  </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-16-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="geoms.html#cb176-1"></a><span class="kw">ggplot</span>(Oxboys, <span class="kw">aes</span>(Occasion, height)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb176-2"><a href="geoms.html#cb176-2"></a><span class="st">  </span><span class="kw">geom_boxplot</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-29-1.png" width="2100" style="display: block; margin: auto;" /></p>
 <p>A variável discreta deste gráfico é <code>Occasion</code> porém não especificamos ela como sendo uma variável agrupadora e nem precisamos, porque o <code>ggplot2</code> entende que variáveis discretas devem ser tratados como grupamentos por padrão.
 Porém quando se deseja adicionar novas camadas com linhas de tendência ou outras visualizações este comportamento do <code>ggplot2</code> pode não ser interessante por exemplo: quando tentamos adicionar linhas de tendência de aumento de altura as linhas geradas estão agrupadas pela variável <code>Occasion</code> resultando no gráfico abaixo:</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" title="1"><span class="kw">ggplot</span>(Oxboys, <span class="kw">aes</span>(Occasion, height)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb118-2" title="2"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb118-3" title="3"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">colour =</span> <span class="st">&quot;#6666FF&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">size =</span> <span class="fl">1.5</span>)</a></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-17-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="geoms.html#cb177-1"></a><span class="kw">ggplot</span>(Oxboys, <span class="kw">aes</span>(Occasion, height)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb177-2"><a href="geoms.html#cb177-2"></a><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></span>
+<span id="cb177-3"><a href="geoms.html#cb177-3"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">colour =</span> <span class="st">&quot;#6666FF&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">size =</span> <span class="fl">1.5</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-30-1.png" width="2100" style="display: block; margin: auto;" /></p>
 <p>Para ignorar a variável agrupadora é necessario usar outra variável que agrupe os dados explícitamente como por exemplo abaixo:</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" title="1"><span class="kw">ggplot</span>(Oxboys, <span class="kw">aes</span>(Occasion, height)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb119-2" title="2"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb119-3" title="3"><span class="st">  </span><span class="kw">geom_line</span>(</a>
-<a class="sourceLine" id="cb119-4" title="4">    <span class="kw">aes</span>(<span class="dt">group =</span> Subject), <span class="co"># Agrupamento explícito</span></a>
-<a class="sourceLine" id="cb119-5" title="5">    <span class="dt">colour =</span> <span class="st">&quot;#6666FF&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">size =</span> <span class="fl">1.5</span>)</a></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-18-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="geoms.html#cb178-1"></a><span class="kw">ggplot</span>(Oxboys, <span class="kw">aes</span>(Occasion, height)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb178-2"><a href="geoms.html#cb178-2"></a><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></span>
+<span id="cb178-3"><a href="geoms.html#cb178-3"></a><span class="st">  </span><span class="kw">geom_line</span>(</span>
+<span id="cb178-4"><a href="geoms.html#cb178-4"></a>    <span class="kw">aes</span>(<span class="dt">group =</span> Subject), <span class="co"># Agrupamento explícito</span></span>
+<span id="cb178-5"><a href="geoms.html#cb178-5"></a>    <span class="dt">colour =</span> <span class="st">&quot;#6666FF&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">size =</span> <span class="fl">1.5</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-31-1.png" width="2100" style="display: block; margin: auto;" /></p>
 </div>
-<div id="ajustando-estética-a-elementos-gráficos" class="section level4">
-<h4><span class="header-section-number">4.5.2.4</span> Ajustando estética a elementos gráficos</h4>
+<div id="ajustando-estética-a-elementos-gráficos" class="section level4" number="5.5.2.4">
+<h4><span class="header-section-number">5.5.2.4</span> Ajustando estética a elementos gráficos</h4>
 <p>Um importante fator de geoms coletivos é saber como que diferentes estéticas se comportam quando são mapeadas a um geom individual.</p>
 <p>No <code>ggplot2</code> linhas e caminhos operam sob um princípio de “primeiro valor”, onde cada segmento é definido por duas observações e o <code>ggplot2</code> aplica o mesmo valor estético (por exemplo: cor) associado à <strong>primeira observação</strong> que compõe o segmento.
 Isso significa que a estética usada na primeira observação é usada para desenhar o primeiro segmento e a estética da segunda observação será usada para desenhar o segundo segmento e assim em diante.</p>
 <p>Abaixo, exemplo visual deste efeito:</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" title="1">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">y =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">colour =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>))</a>
-<a class="sourceLine" id="cb120-2" title="2"></a>
-<a class="sourceLine" id="cb120-3" title="3">p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(x, y, <span class="dt">colour =</span> <span class="kw">factor</span>(colour))) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb120-4" title="4"><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group =</span> <span class="dv">1</span>), <span class="dt">size =</span> <span class="dv">2</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb120-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb120-6" title="6"></a>
-<a class="sourceLine" id="cb120-7" title="7">p2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(x, y, <span class="dt">colour =</span> colour)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb120-8" title="8"><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group =</span> <span class="dv">1</span>), <span class="dt">size =</span> <span class="dv">2</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb120-9" title="9"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb120-10" title="10"></a>
-<a class="sourceLine" id="cb120-11" title="11">p1 <span class="op">+</span><span class="st"> </span>p2</a></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-19-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="geoms.html#cb179-1"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">y =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">colour =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>))</span>
+<span id="cb179-2"><a href="geoms.html#cb179-2"></a></span>
+<span id="cb179-3"><a href="geoms.html#cb179-3"></a>p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(x, y, <span class="dt">colour =</span> <span class="kw">factor</span>(colour))) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb179-4"><a href="geoms.html#cb179-4"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group =</span> <span class="dv">1</span>), <span class="dt">size =</span> <span class="dv">2</span>) <span class="op">+</span></span>
+<span id="cb179-5"><a href="geoms.html#cb179-5"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">5</span>)</span>
+<span id="cb179-6"><a href="geoms.html#cb179-6"></a></span>
+<span id="cb179-7"><a href="geoms.html#cb179-7"></a>p2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(x, y, <span class="dt">colour =</span> colour)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb179-8"><a href="geoms.html#cb179-8"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group =</span> <span class="dv">1</span>), <span class="dt">size =</span> <span class="dv">2</span>) <span class="op">+</span></span>
+<span id="cb179-9"><a href="geoms.html#cb179-9"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">5</span>)</span>
+<span id="cb179-10"><a href="geoms.html#cb179-10"></a></span>
+<span id="cb179-11"><a href="geoms.html#cb179-11"></a>p1 <span class="op">+</span><span class="st"> </span>p2</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-32-1.png" width="2100" style="display: block; margin: auto;" /></p>
 <p>Ao lado <strong>esquerdo</strong>, onde a cor é uma variável discreta (<code>factor</code>), o primeiro ponto e primeiro segmento são vermelhos, exemplificando o que foi dito anteriormente e ao lado <strong>direito</strong>, ocorre o mesmo mesmo se tendo uma variável contínua.
 Nota-se que não há um efeito de degradê entre as cores mesmo para variáveis contínuas, porém é possível atingir esta transição de cores fazendo a interpolação dos dados manualmente.</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" title="1"><span class="co"># 100 pontos de interpolação</span></a>
-<a class="sourceLine" id="cb121-2" title="2">xgrid &lt;-<span class="st"> </span><span class="kw">with</span>(df, <span class="kw">seq</span>(<span class="kw">min</span>(x), <span class="kw">max</span>(x), <span class="dt">length =</span> <span class="dv">100</span>))</a>
-<a class="sourceLine" id="cb121-3" title="3"></a>
-<a class="sourceLine" id="cb121-4" title="4"><span class="co"># dataframe com dados interpolados</span></a>
-<a class="sourceLine" id="cb121-5" title="5">interp &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
-<a class="sourceLine" id="cb121-6" title="6">  <span class="dt">x =</span> xgrid,</a>
-<a class="sourceLine" id="cb121-7" title="7">  <span class="dt">y =</span> <span class="kw">approx</span>(df<span class="op">$</span>x, df<span class="op">$</span>y, <span class="dt">xout =</span> xgrid)<span class="op">$</span>y,</a>
-<a class="sourceLine" id="cb121-8" title="8">  <span class="dt">colour =</span> <span class="kw">approx</span>(df<span class="op">$</span>x, df<span class="op">$</span>colour, <span class="dt">xout =</span> xgrid)<span class="op">$</span>y  </a>
-<a class="sourceLine" id="cb121-9" title="9">)</a>
-<a class="sourceLine" id="cb121-10" title="10"></a>
-<a class="sourceLine" id="cb121-11" title="11"><span class="kw">ggplot</span>(interp, <span class="kw">aes</span>(x, y, <span class="dt">colour =</span> colour)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb121-12" title="12"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size =</span> <span class="dv">2</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb121-13" title="13"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> df, <span class="dt">size =</span> <span class="dv">5</span>)</a></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-20-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="geoms.html#cb180-1"></a><span class="co"># 100 pontos de interpolação</span></span>
+<span id="cb180-2"><a href="geoms.html#cb180-2"></a>xgrid &lt;-<span class="st"> </span><span class="kw">with</span>(df, <span class="kw">seq</span>(<span class="kw">min</span>(x), <span class="kw">max</span>(x), <span class="dt">length =</span> <span class="dv">100</span>))</span>
+<span id="cb180-3"><a href="geoms.html#cb180-3"></a></span>
+<span id="cb180-4"><a href="geoms.html#cb180-4"></a><span class="co"># dataframe com dados interpolados</span></span>
+<span id="cb180-5"><a href="geoms.html#cb180-5"></a>interp &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb180-6"><a href="geoms.html#cb180-6"></a>  <span class="dt">x =</span> xgrid,</span>
+<span id="cb180-7"><a href="geoms.html#cb180-7"></a>  <span class="dt">y =</span> <span class="kw">approx</span>(df<span class="op">$</span>x, df<span class="op">$</span>y, <span class="dt">xout =</span> xgrid)<span class="op">$</span>y,</span>
+<span id="cb180-8"><a href="geoms.html#cb180-8"></a>  <span class="dt">colour =</span> <span class="kw">approx</span>(df<span class="op">$</span>x, df<span class="op">$</span>colour, <span class="dt">xout =</span> xgrid)<span class="op">$</span>y  </span>
+<span id="cb180-9"><a href="geoms.html#cb180-9"></a>)</span>
+<span id="cb180-10"><a href="geoms.html#cb180-10"></a></span>
+<span id="cb180-11"><a href="geoms.html#cb180-11"></a><span class="kw">ggplot</span>(interp, <span class="kw">aes</span>(x, y, <span class="dt">colour =</span> colour)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb180-12"><a href="geoms.html#cb180-12"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size =</span> <span class="dv">2</span>) <span class="op">+</span></span>
+<span id="cb180-13"><a href="geoms.html#cb180-13"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> df, <span class="dt">size =</span> <span class="dv">5</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-33-1.png" width="2100" style="display: block; margin: auto;" /></p>
 <p>Neste gráfico são criados vários segmentos de reta usando os dados do dataframe <code>interp</code> e os pontos usados são os mesmos do dataframe <code>df</code> usado nos gráficos anteriores.</p>
 <p>Outra limitação do <code>ggplot2</code> é que linhas e caminhos devem tipo constante.
 Não é possível renderizar uma linha com tipo de linha variável.</p>
@@ -370,39 +398,39 @@ Se as estéticas dos elementos individuais são diferentes o <code>ggplot2</code
 Para variáveis discretas o comportamento padrão do <code>ggplot2</code> é tratar a variável como parte da estética do grupo.
 O efeito é que o geom coletivo seja dividido em pedaços menores.
 Isto funciona muito bem para gráficos de barra e de área porque ao empilhar os pedaços individuais o formato fica igual aos dados não agrupados.</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" title="1">p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(class)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb122-2" title="2"><span class="st">  </span><span class="kw">geom_bar</span>() </a>
-<a class="sourceLine" id="cb122-3" title="3"></a>
-<a class="sourceLine" id="cb122-4" title="4"></a>
-<a class="sourceLine" id="cb122-5" title="5">p2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(class, <span class="dt">fill =</span> drv)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb122-6" title="6"><span class="st">  </span><span class="kw">geom_bar</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb122-7" title="7"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>))</a>
-<a class="sourceLine" id="cb122-8" title="8"></a>
-<a class="sourceLine" id="cb122-9" title="9">p1 <span class="op">+</span><span class="st"> </span>p2</a></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-21-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="geoms.html#cb181-1"></a>p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(class)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb181-2"><a href="geoms.html#cb181-2"></a><span class="st">  </span><span class="kw">geom_bar</span>() </span>
+<span id="cb181-3"><a href="geoms.html#cb181-3"></a></span>
+<span id="cb181-4"><a href="geoms.html#cb181-4"></a></span>
+<span id="cb181-5"><a href="geoms.html#cb181-5"></a>p2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(class, <span class="dt">fill =</span> drv)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb181-6"><a href="geoms.html#cb181-6"></a><span class="st">  </span><span class="kw">geom_bar</span>() <span class="op">+</span></span>
+<span id="cb181-7"><a href="geoms.html#cb181-7"></a><span class="st">    </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>))</span>
+<span id="cb181-8"><a href="geoms.html#cb181-8"></a></span>
+<span id="cb181-9"><a href="geoms.html#cb181-9"></a>p1 <span class="op">+</span><span class="st"> </span>p2</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-34-1.png" width="2100" style="display: block; margin: auto;" /></p>
 <p>Se as estética <code>fill</code> for mapeada a uma variável contínua, não funciona e o grupamento padrão continua sendo <code>class</code> (eixo <code>x</code>).
 Para ter múltiplas cores por barra é necessário forçar o ggplot a ignorar o grupamento padrão através da definição explícita do grupamento.
 Exemplo abaixo:</p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" title="1">p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(class, <span class="dt">fill =</span> hwy)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb123-2" title="2"><span class="st">  </span><span class="kw">geom_bar</span>()</a>
-<a class="sourceLine" id="cb123-3" title="3"></a>
-<a class="sourceLine" id="cb123-4" title="4">p2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(class, <span class="dt">fill =</span> hwy, <span class="dt">group =</span> hwy)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb123-5" title="5"><span class="st">  </span><span class="kw">geom_bar</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb123-6" title="6"><span class="st">    </span><span class="kw">scale_fill_viridis_c</span>()</a>
-<a class="sourceLine" id="cb123-7" title="7"></a>
-<a class="sourceLine" id="cb123-8" title="8">p1 <span class="op">+</span><span class="st"> </span>p2</a></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-22-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="geoms.html#cb182-1"></a>p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(class, <span class="dt">fill =</span> hwy)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb182-2"><a href="geoms.html#cb182-2"></a><span class="st">  </span><span class="kw">geom_bar</span>()</span>
+<span id="cb182-3"><a href="geoms.html#cb182-3"></a></span>
+<span id="cb182-4"><a href="geoms.html#cb182-4"></a>p2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(class, <span class="dt">fill =</span> hwy, <span class="dt">group =</span> hwy)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb182-5"><a href="geoms.html#cb182-5"></a><span class="st">  </span><span class="kw">geom_bar</span>() <span class="op">+</span></span>
+<span id="cb182-6"><a href="geoms.html#cb182-6"></a><span class="st">    </span><span class="kw">scale_fill_viridis_c</span>()</span>
+<span id="cb182-7"><a href="geoms.html#cb182-7"></a></span>
+<span id="cb182-8"><a href="geoms.html#cb182-8"></a>p1 <span class="op">+</span><span class="st"> </span>p2</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-35-1.png" width="2100" style="display: block; margin: auto;" /></p>
 <p>Acima à <strong>direita</strong> a aparência de transição de cores na verdade é apenas um grande número de pequenos grupos de uma variável discreta que geram esse efeito.</p>
 </div>
 </div>
-<div id="resumos-estatísticos" class="section level3">
-<h3><span class="header-section-number">4.5.3</span> Resumos estatísticos</h3>
+<div id="resumos-estatísticos" class="section level3" number="5.5.3">
+<h3><span class="header-section-number">5.5.3</span> Resumos estatísticos</h3>
 </div>
-<div id="resolvendo-overplotting" class="section level3">
-<h3><span class="header-section-number">4.5.4</span> Resolvendo <em>overplotting</em></h3>
+<div id="resolvendo-overplotting" class="section level3" number="5.5.4">
+<h3><span class="header-section-number">5.5.4</span> Resolvendo <em>overplotting</em></h3>
 </div>
-<div id="anotações" class="section level3">
-<h3><span class="header-section-number">4.5.5</span> Anotações</h3>
+<div id="anotações" class="section level3" number="5.5.5">
+<h3><span class="header-section-number">5.5.5</span> Anotações</h3>
 <p>Anotações</p>
 
 </div>
@@ -414,7 +442,7 @@ Exemplo abaixo:</p>
         </div>
       </div>
 <a href="cores-tamanhos-formas-e-outros-atributos-estéticos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="regressões.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="tutoriais.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>
