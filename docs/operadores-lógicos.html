@@ -24,7 +24,7 @@
 <meta name="author" content="Lucas Chagas Lima do Carmo" />
 
 
-<meta name="date" content="2020-04-21" />
+<meta name="date" content="2020-07-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -182,9 +182,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5.1" data-path="geoms.html"><a href="geoms.html#geoms-individuais"><i class="fa fa-check"></i><b>5.5.1</b> Geoms individuais</a></li>
 <li class="chapter" data-level="5.5.2" data-path="geoms.html"><a href="geoms.html#geoms-coletivos"><i class="fa fa-check"></i><b>5.5.2</b> Geoms coletivos</a></li>
 <li class="chapter" data-level="5.5.3" data-path="geoms.html"><a href="geoms.html#resumos-estatísticos"><i class="fa fa-check"></i><b>5.5.3</b> Resumos estatísticos</a></li>
-<li class="chapter" data-level="5.5.4" data-path="geoms.html"><a href="geoms.html#resolvendo-overplotting"><i class="fa fa-check"></i><b>5.5.4</b> Resolvendo <em>overplotting</em></a></li>
+<li class="chapter" data-level="5.5.4" data-path="geoms.html"><a href="geoms.html#plotando-distribuições"><i class="fa fa-check"></i><b>5.5.4</b> Plotando distribuições</a></li>
 <li class="chapter" data-level="5.5.5" data-path="geoms.html"><a href="geoms.html#anotações"><i class="fa fa-check"></i><b>5.5.5</b> Anotações</a></li>
 </ul></li>
+<li class="chapter" data-level="5.6" data-path="legendas.html"><a href="legendas.html"><i class="fa fa-check"></i><b>5.6</b> Legendas</a></li>
+<li class="chapter" data-level="5.7" data-path="escalas.html"><a href="escalas.html"><i class="fa fa-check"></i><b>5.7</b> Escalas</a></li>
+<li class="chapter" data-level="5.8" data-path="facets.html"><a href="facets.html"><i class="fa fa-check"></i><b>5.8</b> Facets</a></li>
+<li class="chapter" data-level="5.9" data-path="temas.html"><a href="temas.html"><i class="fa fa-check"></i><b>5.9</b> Temas</a></li>
+<li class="chapter" data-level="5.10" data-path="organizando-os-plots.html"><a href="organizando-os-plots.html"><i class="fa fa-check"></i><b>5.10</b> Organizando os <em>plots</em></a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="tutoriais.html"><a href="tutoriais.html"><i class="fa fa-check"></i><b>6</b> Tutoriais</a>
 <ul>
@@ -274,47 +279,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Estes operadores irão sempre retornar valores lógicos do tipo <code>TRUE</code> ou <code>FALSE</code>.</p>
 <div id="exemplos-1" class="section level3" number="3.2.1">
 <h3><span class="header-section-number">3.2.1</span> Exemplos</h3>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="operadores-lógicos.html#cb114-1"></a><span class="co"># &gt; maior que </span></span>
-<span id="cb114-2"><a href="operadores-lógicos.html#cb114-2"></a><span class="dv">4</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span></span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="operadores-lógicos.html#cb102-1"></a><span class="co"># &gt; maior que </span></span>
+<span id="cb102-2"><a href="operadores-lógicos.html#cb102-2"></a><span class="dv">4</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span></span></code></pre></div>
 <pre><code>[1] FALSE</code></pre>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="operadores-lógicos.html#cb116-1"></a><span class="dv">4</span> <span class="op">&gt;=</span><span class="st"> </span><span class="dv">5</span></span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="operadores-lógicos.html#cb104-1"></a><span class="dv">4</span> <span class="op">&gt;=</span><span class="st"> </span><span class="dv">5</span></span></code></pre></div>
 <pre><code>[1] FALSE</code></pre>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="operadores-lógicos.html#cb118-1"></a>x <span class="op">&gt;</span><span class="st"> </span><span class="dv">4</span></span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="operadores-lógicos.html#cb106-1"></a>x <span class="op">&gt;</span><span class="st"> </span><span class="dv">4</span></span></code></pre></div>
 <pre><code> [1] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="operadores-lógicos.html#cb120-1"></a><span class="co"># &lt; menor que </span></span>
-<span id="cb120-2"><a href="operadores-lógicos.html#cb120-2"></a><span class="dv">4</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">5</span></span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="operadores-lógicos.html#cb108-1"></a><span class="co"># &lt; menor que </span></span>
+<span id="cb108-2"><a href="operadores-lógicos.html#cb108-2"></a><span class="dv">4</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">5</span></span></code></pre></div>
 <pre><code>[1] TRUE</code></pre>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="operadores-lógicos.html#cb122-1"></a><span class="dv">4</span> <span class="op">&lt;=</span><span class="st"> </span><span class="dv">5</span></span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="operadores-lógicos.html#cb110-1"></a><span class="dv">4</span> <span class="op">&lt;=</span><span class="st"> </span><span class="dv">5</span></span></code></pre></div>
 <pre><code>[1] TRUE</code></pre>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="operadores-lógicos.html#cb124-1"></a>x <span class="op">&lt;</span><span class="st"> </span><span class="dv">4</span> </span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="operadores-lógicos.html#cb112-1"></a>x <span class="op">&lt;</span><span class="st"> </span><span class="dv">4</span> </span></code></pre></div>
 <pre><code> [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="operadores-lógicos.html#cb126-1"></a><span class="co"># == exatamente igual</span></span>
-<span id="cb126-2"><a href="operadores-lógicos.html#cb126-2"></a><span class="dv">4</span> <span class="op">==</span><span class="st"> </span><span class="dv">5</span></span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="operadores-lógicos.html#cb114-1"></a><span class="co"># == exatamente igual</span></span>
+<span id="cb114-2"><a href="operadores-lógicos.html#cb114-2"></a><span class="dv">4</span> <span class="op">==</span><span class="st"> </span><span class="dv">5</span></span></code></pre></div>
 <pre><code>[1] FALSE</code></pre>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="operadores-lógicos.html#cb128-1"></a>x <span class="op">==</span><span class="st"> </span><span class="dv">4</span> </span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="operadores-lógicos.html#cb116-1"></a>x <span class="op">==</span><span class="st"> </span><span class="dv">4</span> </span></code></pre></div>
 <pre><code> [1] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="operadores-lógicos.html#cb130-1"></a><span class="co"># != não igual</span></span>
-<span id="cb130-2"><a href="operadores-lógicos.html#cb130-2"></a><span class="dv">4</span> <span class="op">!=</span><span class="st"> </span><span class="dv">5</span></span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="operadores-lógicos.html#cb118-1"></a><span class="co"># != não igual</span></span>
+<span id="cb118-2"><a href="operadores-lógicos.html#cb118-2"></a><span class="dv">4</span> <span class="op">!=</span><span class="st"> </span><span class="dv">5</span></span></code></pre></div>
 <pre><code>[1] TRUE</code></pre>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="operadores-lógicos.html#cb132-1"></a>x <span class="op">!=</span><span class="st"> </span><span class="dv">4</span></span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="operadores-lógicos.html#cb120-1"></a>x <span class="op">!=</span><span class="st"> </span><span class="dv">4</span></span></code></pre></div>
 <pre><code> [1]  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="operadores-lógicos.html#cb134-1"></a><span class="co"># ! negação</span></span>
-<span id="cb134-2"><a href="operadores-lógicos.html#cb134-2"></a><span class="dv">3</span> <span class="op">==</span><span class="st"> </span><span class="op">!</span>x</span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="operadores-lógicos.html#cb122-1"></a><span class="co"># ! negação</span></span>
+<span id="cb122-2"><a href="operadores-lógicos.html#cb122-2"></a><span class="dv">3</span> <span class="op">==</span><span class="st"> </span><span class="op">!</span>x</span></code></pre></div>
 <pre><code> [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="operadores-lógicos.html#cb136-1"></a><span class="op">!</span><span class="dv">3</span> <span class="op">==</span><span class="st"> </span>x</span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="operadores-lógicos.html#cb124-1"></a><span class="op">!</span><span class="dv">3</span> <span class="op">==</span><span class="st"> </span>x</span></code></pre></div>
 <pre><code> [1]  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="operadores-lógicos.html#cb138-1"></a><span class="co"># | OU</span></span>
-<span id="cb138-2"><a href="operadores-lógicos.html#cb138-2"></a>x <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span> <span class="op">|</span><span class="st"> </span>x <span class="op">&gt;</span><span class="st"> </span><span class="dv">8</span></span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="operadores-lógicos.html#cb126-1"></a><span class="co"># | OU</span></span>
+<span id="cb126-2"><a href="operadores-lógicos.html#cb126-2"></a>x <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span> <span class="op">|</span><span class="st"> </span>x <span class="op">&gt;</span><span class="st"> </span><span class="dv">8</span></span></code></pre></div>
 <pre><code> [1] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="operadores-lógicos.html#cb140-1"></a><span class="co"># &amp; E</span></span>
-<span id="cb140-2"><a href="operadores-lógicos.html#cb140-2"></a>x <span class="op">&lt;=</span><span class="st"> </span><span class="dv">8</span> <span class="op">&amp;</span><span class="st"> </span>x <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span> </span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="operadores-lógicos.html#cb128-1"></a><span class="co"># &amp; E</span></span>
+<span id="cb128-2"><a href="operadores-lógicos.html#cb128-2"></a>x <span class="op">&lt;=</span><span class="st"> </span><span class="dv">8</span> <span class="op">&amp;</span><span class="st"> </span>x <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span> </span></code></pre></div>
 <pre><code> [1] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE</code></pre>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="operadores-lógicos.html#cb142-1"></a><span class="co"># isTRUE()</span></span>
-<span id="cb142-2"><a href="operadores-lógicos.html#cb142-2"></a><span class="kw">isTRUE</span>(x <span class="op">&lt;=</span><span class="st"> </span><span class="dv">8</span> <span class="op">&amp;</span><span class="st"> </span>x <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="operadores-lógicos.html#cb130-1"></a><span class="co"># isTRUE()</span></span>
+<span id="cb130-2"><a href="operadores-lógicos.html#cb130-2"></a><span class="kw">isTRUE</span>(x <span class="op">&lt;=</span><span class="st"> </span><span class="dv">8</span> <span class="op">&amp;</span><span class="st"> </span>x <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span>)</span></code></pre></div>
 <pre><code>[1] FALSE</code></pre>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="operadores-lógicos.html#cb144-1"></a><span class="kw">isTRUE</span>(<span class="dv">4</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="operadores-lógicos.html#cb132-1"></a><span class="kw">isTRUE</span>(<span class="dv">4</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span>)</span></code></pre></div>
 <pre><code>[1] FALSE</code></pre>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="operadores-lógicos.html#cb146-1"></a><span class="kw">isTRUE</span>(<span class="dv">4</span> <span class="op">==</span><span class="st"> </span><span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="operadores-lógicos.html#cb134-1"></a><span class="kw">isTRUE</span>(<span class="dv">4</span> <span class="op">==</span><span class="st"> </span><span class="dv">4</span>)</span></code></pre></div>
 <pre><code>[1] TRUE</code></pre>
 <hr />
 

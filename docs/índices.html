@@ -24,7 +24,7 @@
 <meta name="author" content="Lucas Chagas Lima do Carmo" />
 
 
-<meta name="date" content="2020-04-21" />
+<meta name="date" content="2020-07-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -182,9 +182,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5.1" data-path="geoms.html"><a href="geoms.html#geoms-individuais"><i class="fa fa-check"></i><b>5.5.1</b> Geoms individuais</a></li>
 <li class="chapter" data-level="5.5.2" data-path="geoms.html"><a href="geoms.html#geoms-coletivos"><i class="fa fa-check"></i><b>5.5.2</b> Geoms coletivos</a></li>
 <li class="chapter" data-level="5.5.3" data-path="geoms.html"><a href="geoms.html#resumos-estatísticos"><i class="fa fa-check"></i><b>5.5.3</b> Resumos estatísticos</a></li>
-<li class="chapter" data-level="5.5.4" data-path="geoms.html"><a href="geoms.html#resolvendo-overplotting"><i class="fa fa-check"></i><b>5.5.4</b> Resolvendo <em>overplotting</em></a></li>
+<li class="chapter" data-level="5.5.4" data-path="geoms.html"><a href="geoms.html#plotando-distribuições"><i class="fa fa-check"></i><b>5.5.4</b> Plotando distribuições</a></li>
 <li class="chapter" data-level="5.5.5" data-path="geoms.html"><a href="geoms.html#anotações"><i class="fa fa-check"></i><b>5.5.5</b> Anotações</a></li>
 </ul></li>
+<li class="chapter" data-level="5.6" data-path="legendas.html"><a href="legendas.html"><i class="fa fa-check"></i><b>5.6</b> Legendas</a></li>
+<li class="chapter" data-level="5.7" data-path="escalas.html"><a href="escalas.html"><i class="fa fa-check"></i><b>5.7</b> Escalas</a></li>
+<li class="chapter" data-level="5.8" data-path="facets.html"><a href="facets.html"><i class="fa fa-check"></i><b>5.8</b> Facets</a></li>
+<li class="chapter" data-level="5.9" data-path="temas.html"><a href="temas.html"><i class="fa fa-check"></i><b>5.9</b> Temas</a></li>
+<li class="chapter" data-level="5.10" data-path="organizando-os-plots.html"><a href="organizando-os-plots.html"><i class="fa fa-check"></i><b>5.10</b> Organizando os <em>plots</em></a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="tutoriais.html"><a href="tutoriais.html"><i class="fa fa-check"></i><b>6</b> Tutoriais</a>
 <ul>
@@ -230,7 +235,7 @@ Para fazer isso pode se usar <code>v1[1:3]</code> ou então excluir o quarto val
 Como é possível extrair o último valor do vetor sem saber quantos valores ele tem?
 No caso de vários vetores terem tamanhos diferentes como garantir que uma função sempre irá extrair o último valor?
 Podem ser usadas funções dentro do [ ] para se garantir isso, por exemplo:</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="índices.html#cb44-1"></a>v1[(<span class="kw">length</span>(v1))]</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="índices.html#cb32-1"></a>v1[(<span class="kw">length</span>(v1))]</span></code></pre></div>
 <pre><code>[1] 5</code></pre>
 <p>A função <code>length()</code> retorna o comprimento do vetor, como o último elemento deve ter o mesmo número do comprimento do vetor inteiro, desta forma se garante que o último elemento será extraído, neste caso o valor é de 5.</p>
 <hr />

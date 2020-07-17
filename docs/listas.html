@@ -24,7 +24,7 @@
 <meta name="author" content="Lucas Chagas Lima do Carmo" />
 
 
-<meta name="date" content="2020-04-21" />
+<meta name="date" content="2020-07-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -182,9 +182,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5.1" data-path="geoms.html"><a href="geoms.html#geoms-individuais"><i class="fa fa-check"></i><b>5.5.1</b> Geoms individuais</a></li>
 <li class="chapter" data-level="5.5.2" data-path="geoms.html"><a href="geoms.html#geoms-coletivos"><i class="fa fa-check"></i><b>5.5.2</b> Geoms coletivos</a></li>
 <li class="chapter" data-level="5.5.3" data-path="geoms.html"><a href="geoms.html#resumos-estatísticos"><i class="fa fa-check"></i><b>5.5.3</b> Resumos estatísticos</a></li>
-<li class="chapter" data-level="5.5.4" data-path="geoms.html"><a href="geoms.html#resolvendo-overplotting"><i class="fa fa-check"></i><b>5.5.4</b> Resolvendo <em>overplotting</em></a></li>
+<li class="chapter" data-level="5.5.4" data-path="geoms.html"><a href="geoms.html#plotando-distribuições"><i class="fa fa-check"></i><b>5.5.4</b> Plotando distribuições</a></li>
 <li class="chapter" data-level="5.5.5" data-path="geoms.html"><a href="geoms.html#anotações"><i class="fa fa-check"></i><b>5.5.5</b> Anotações</a></li>
 </ul></li>
+<li class="chapter" data-level="5.6" data-path="legendas.html"><a href="legendas.html"><i class="fa fa-check"></i><b>5.6</b> Legendas</a></li>
+<li class="chapter" data-level="5.7" data-path="escalas.html"><a href="escalas.html"><i class="fa fa-check"></i><b>5.7</b> Escalas</a></li>
+<li class="chapter" data-level="5.8" data-path="facets.html"><a href="facets.html"><i class="fa fa-check"></i><b>5.8</b> Facets</a></li>
+<li class="chapter" data-level="5.9" data-path="temas.html"><a href="temas.html"><i class="fa fa-check"></i><b>5.9</b> Temas</a></li>
+<li class="chapter" data-level="5.10" data-path="organizando-os-plots.html"><a href="organizando-os-plots.html"><i class="fa fa-check"></i><b>5.10</b> Organizando os <em>plots</em></a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="tutoriais.html"><a href="tutoriais.html"><i class="fa fa-check"></i><b>6</b> Tutoriais</a>
 <ul>
@@ -224,27 +229,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Listas são o tipo de objeto genéricos do <code>R</code>.
 Listas podem ter elementos que são vetores, matrizes e dataframes e não possuem formato retangular.
 Para explicar listas é mais fácil criar uma e deixar o leitor contemplar sua estrutura:</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="listas.html#cb62-1"></a>lista &lt;-<span class="st"> </span><span class="kw">list</span>(</span>
-<span id="cb62-2"><a href="listas.html#cb62-2"></a>    <span class="dt">vetor_A =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="fl">5.6</span>, <span class="dv">8</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="fl">4.45</span>), <span class="co"># vetor com números</span></span>
-<span id="cb62-3"><a href="listas.html#cb62-3"></a>    <span class="dt">vetor_B =</span> <span class="kw">c</span>(<span class="st">&quot;Frases com várias palavras&quot;</span>, <span class="st">&quot;texto&quot;</span>), <span class="co"># vetor com caracteres</span></span>
-<span id="cb62-4"><a href="listas.html#cb62-4"></a>    <span class="dt">matriz_A =</span> <span class="kw">matrix</span>(</span>
-<span id="cb62-5"><a href="listas.html#cb62-5"></a>            <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">10</span>), <span class="co"># valores da matriz</span></span>
-<span id="cb62-6"><a href="listas.html#cb62-6"></a>            <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="co"># número de colunas</span></span>
-<span id="cb62-7"><a href="listas.html#cb62-7"></a>            <span class="dt">byrow =</span> <span class="ot">FALSE</span> <span class="co"># preencher valores por linha? FALSE</span></span>
-<span id="cb62-8"><a href="listas.html#cb62-8"></a>        ),</span>
-<span id="cb62-9"><a href="listas.html#cb62-9"></a>    <span class="dt">matriz_B =</span> <span class="kw">matrix</span>(</span>
-<span id="cb62-10"><a href="listas.html#cb62-10"></a>        <span class="kw">c</span>(letters), <span class="co"># valores da matriz</span></span>
-<span id="cb62-11"><a href="listas.html#cb62-11"></a>        <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="co"># número de colunas</span></span>
-<span id="cb62-12"><a href="listas.html#cb62-12"></a>        <span class="dt">byrow =</span> <span class="ot">TRUE</span> <span class="co"># preencher por linha? TRUE</span></span>
-<span id="cb62-13"><a href="listas.html#cb62-13"></a>    ),</span>
-<span id="cb62-14"><a href="listas.html#cb62-14"></a>    <span class="dt">dataframe_A =</span> <span class="kw">data.frame</span>(</span>
-<span id="cb62-15"><a href="listas.html#cb62-15"></a>        <span class="dt">Nome =</span> <span class="kw">c</span>(<span class="st">&quot;Jack&quot;</span>, <span class="st">&quot;Natalie&quot;</span>, <span class="st">&quot;Margot&quot;</span>), <span class="co"># coluna com nomes</span></span>
-<span id="cb62-16"><a href="listas.html#cb62-16"></a>        <span class="dt">Sobrenome =</span> <span class="kw">c</span>(<span class="st">&quot;Black&quot;</span>, <span class="st">&quot;Portmann&quot;</span>, <span class="st">&quot;Robbie&quot;</span>), <span class="co"># coluna com sobrenome</span></span>
-<span id="cb62-17"><a href="listas.html#cb62-17"></a>        <span class="dt">Nascimento =</span> <span class="kw">as.Date</span>(<span class="kw">c</span>(<span class="st">&quot;1969-08-28&quot;</span>,<span class="st">&quot;1981-06-09&quot;</span>,<span class="st">&quot;1990-07-02&quot;</span>)) <span class="co"># data de nascimento</span></span>
-<span id="cb62-18"><a href="listas.html#cb62-18"></a>    )</span>
-<span id="cb62-19"><a href="listas.html#cb62-19"></a>)</span>
-<span id="cb62-20"><a href="listas.html#cb62-20"></a></span>
-<span id="cb62-21"><a href="listas.html#cb62-21"></a>lista</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="listas.html#cb50-1"></a>lista &lt;-<span class="st"> </span><span class="kw">list</span>(</span>
+<span id="cb50-2"><a href="listas.html#cb50-2"></a>    <span class="dt">vetor_A =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="fl">5.6</span>, <span class="dv">8</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="fl">4.45</span>), <span class="co"># vetor com números</span></span>
+<span id="cb50-3"><a href="listas.html#cb50-3"></a>    <span class="dt">vetor_B =</span> <span class="kw">c</span>(<span class="st">&quot;Frases com várias palavras&quot;</span>, <span class="st">&quot;texto&quot;</span>), <span class="co"># vetor com caracteres</span></span>
+<span id="cb50-4"><a href="listas.html#cb50-4"></a>    <span class="dt">matriz_A =</span> <span class="kw">matrix</span>(</span>
+<span id="cb50-5"><a href="listas.html#cb50-5"></a>            <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">10</span>), <span class="co"># valores da matriz</span></span>
+<span id="cb50-6"><a href="listas.html#cb50-6"></a>            <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="co"># número de colunas</span></span>
+<span id="cb50-7"><a href="listas.html#cb50-7"></a>            <span class="dt">byrow =</span> <span class="ot">FALSE</span> <span class="co"># preencher valores por linha? FALSE</span></span>
+<span id="cb50-8"><a href="listas.html#cb50-8"></a>        ),</span>
+<span id="cb50-9"><a href="listas.html#cb50-9"></a>    <span class="dt">matriz_B =</span> <span class="kw">matrix</span>(</span>
+<span id="cb50-10"><a href="listas.html#cb50-10"></a>        <span class="kw">c</span>(letters), <span class="co"># valores da matriz</span></span>
+<span id="cb50-11"><a href="listas.html#cb50-11"></a>        <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="co"># número de colunas</span></span>
+<span id="cb50-12"><a href="listas.html#cb50-12"></a>        <span class="dt">byrow =</span> <span class="ot">TRUE</span> <span class="co"># preencher por linha? TRUE</span></span>
+<span id="cb50-13"><a href="listas.html#cb50-13"></a>    ),</span>
+<span id="cb50-14"><a href="listas.html#cb50-14"></a>    <span class="dt">dataframe_A =</span> <span class="kw">data.frame</span>(</span>
+<span id="cb50-15"><a href="listas.html#cb50-15"></a>        <span class="dt">Nome =</span> <span class="kw">c</span>(<span class="st">&quot;Jack&quot;</span>, <span class="st">&quot;Natalie&quot;</span>, <span class="st">&quot;Margot&quot;</span>), <span class="co"># coluna com nomes</span></span>
+<span id="cb50-16"><a href="listas.html#cb50-16"></a>        <span class="dt">Sobrenome =</span> <span class="kw">c</span>(<span class="st">&quot;Black&quot;</span>, <span class="st">&quot;Portmann&quot;</span>, <span class="st">&quot;Robbie&quot;</span>), <span class="co"># coluna com sobrenome</span></span>
+<span id="cb50-17"><a href="listas.html#cb50-17"></a>        <span class="dt">Nascimento =</span> <span class="kw">as.Date</span>(<span class="kw">c</span>(<span class="st">&quot;1969-08-28&quot;</span>,<span class="st">&quot;1981-06-09&quot;</span>,<span class="st">&quot;1990-07-02&quot;</span>)) <span class="co"># data de nascimento</span></span>
+<span id="cb50-18"><a href="listas.html#cb50-18"></a>    )</span>
+<span id="cb50-19"><a href="listas.html#cb50-19"></a>)</span>
+<span id="cb50-20"><a href="listas.html#cb50-20"></a></span>
+<span id="cb50-21"><a href="listas.html#cb50-21"></a>lista</span></code></pre></div>
 <pre><code>$vetor_A
 [1] 1.00 4.00 5.60 8.00 3.00 1.00 4.45
 
@@ -273,8 +278,8 @@ $dataframe_A
 1    Jack     Black 1969-08-28
 2 Natalie  Portmann 1981-06-09
 3  Margot    Robbie 1990-07-02</code></pre>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="listas.html#cb64-1"></a><span class="co"># estrutura da lista</span></span>
-<span id="cb64-2"><a href="listas.html#cb64-2"></a><span class="kw">str</span>(lista)</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="listas.html#cb52-1"></a><span class="co"># estrutura da lista</span></span>
+<span id="cb52-2"><a href="listas.html#cb52-2"></a><span class="kw">str</span>(lista)</span></code></pre></div>
 <pre><code>List of 5
  $ vetor_A    : num [1:7] 1 4 5.6 8 3 1 4.45
  $ vetor_B    : chr [1:2] &quot;Frases com várias palavras&quot; &quot;texto&quot;
@@ -292,58 +297,58 @@ Bastante complexo.</p>
 Como usar os índices?</p>
 <p>Fácil, usa-se os mesmos operadores que os de dataframe.
 Por exemplo:</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="listas.html#cb66-1"></a><span class="co"># selecionando o vetor_A</span></span>
-<span id="cb66-2"><a href="listas.html#cb66-2"></a>lista<span class="op">$</span>vetor_A</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="listas.html#cb54-1"></a><span class="co"># selecionando o vetor_A</span></span>
+<span id="cb54-2"><a href="listas.html#cb54-2"></a>lista<span class="op">$</span>vetor_A</span></code></pre></div>
 <pre><code>[1] 1.00 4.00 5.60 8.00 3.00 1.00 4.45</code></pre>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="listas.html#cb68-1"></a><span class="co"># selecionando matriz_A</span></span>
-<span id="cb68-2"><a href="listas.html#cb68-2"></a>lista<span class="op">$</span>matriz_A</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="listas.html#cb56-1"></a><span class="co"># selecionando matriz_A</span></span>
+<span id="cb56-2"><a href="listas.html#cb56-2"></a>lista<span class="op">$</span>matriz_A</span></code></pre></div>
 <pre><code>     [,1] [,2]
 [1,]    0    5
 [2,]    2   10</code></pre>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="listas.html#cb70-1"></a><span class="co"># selecionando dataframe_A</span></span>
-<span id="cb70-2"><a href="listas.html#cb70-2"></a>lista<span class="op">$</span>dataframe_A</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="listas.html#cb58-1"></a><span class="co"># selecionando dataframe_A</span></span>
+<span id="cb58-2"><a href="listas.html#cb58-2"></a>lista<span class="op">$</span>dataframe_A</span></code></pre></div>
 <pre><code>     Nome Sobrenome Nascimento
 1    Jack     Black 1969-08-28
 2 Natalie  Portmann 1981-06-09
 3  Margot    Robbie 1990-07-02</code></pre>
 <p>Mas como selecionar os elementos individuais do vetor_B, matriz_B e dataframe_A?
 Fácil, da mesma forma que se selecionada quando não estavam dentro da lista.</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="listas.html#cb72-1"></a><span class="co"># elemento 3 do vetor_B</span></span>
-<span id="cb72-2"><a href="listas.html#cb72-2"></a>lista<span class="op">$</span>vetor_A[<span class="dv">3</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="listas.html#cb60-1"></a><span class="co"># elemento 3 do vetor_B</span></span>
+<span id="cb60-2"><a href="listas.html#cb60-2"></a>lista<span class="op">$</span>vetor_A[<span class="dv">3</span>]</span></code></pre></div>
 <pre><code>[1] 5.6</code></pre>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="listas.html#cb74-1"></a><span class="co"># elemento na linha 6 e coluna 2 da matriz_B</span></span>
-<span id="cb74-2"><a href="listas.html#cb74-2"></a>lista<span class="op">$</span>matriz_B[<span class="dv">6</span>,<span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="listas.html#cb62-1"></a><span class="co"># elemento na linha 6 e coluna 2 da matriz_B</span></span>
+<span id="cb62-2"><a href="listas.html#cb62-2"></a>lista<span class="op">$</span>matriz_B[<span class="dv">6</span>,<span class="dv">2</span>]</span></code></pre></div>
 <pre><code>[1] &quot;q&quot;</code></pre>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="listas.html#cb76-1"></a><span class="co"># Nascimento da Margot Robbie</span></span>
-<span id="cb76-2"><a href="listas.html#cb76-2"></a>lista<span class="op">$</span>dataframe_A<span class="op">$</span>Nascimento[<span class="dv">3</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="listas.html#cb64-1"></a><span class="co"># Nascimento da Margot Robbie</span></span>
+<span id="cb64-2"><a href="listas.html#cb64-2"></a>lista<span class="op">$</span>dataframe_A<span class="op">$</span>Nascimento[<span class="dv">3</span>]</span></code></pre></div>
 <pre><code>[1] &quot;1990-07-02&quot;</code></pre>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="listas.html#cb78-1"></a><span class="co"># ou</span></span>
-<span id="cb78-2"><a href="listas.html#cb78-2"></a>lista<span class="op">$</span>dataframe_A[<span class="dv">3</span>,<span class="dv">3</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="listas.html#cb66-1"></a><span class="co"># ou</span></span>
+<span id="cb66-2"><a href="listas.html#cb66-2"></a>lista<span class="op">$</span>dataframe_A[<span class="dv">3</span>,<span class="dv">3</span>]</span></code></pre></div>
 <pre><code>[1] &quot;1990-07-02&quot;</code></pre>
 <p>Listas são tipos de objetos muito úteis para o <strong>armazenamento</strong> de dados de forma legível tanto para computadores quanto para humanos.
 Este tipo de estrutura de dados é similar aos usados em bancos de dados não-tabulares.
 Essa estrutura é similar a arquivos <a href="https://www.json.org/json-en.html"><code>JSON</code></a> e <a href="https://www.w3schools.com/python/python_dictionaries.asp"><code>dictionaries</code></a> da linguagem python.</p>
 <p>É bastante útil para se armazenar vários dados de natureza diferente para amostras, por exemplo:</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="listas.html#cb80-1"></a>Polimero_A &lt;-<span class="st"> </span><span class="kw">list</span>(</span>
-<span id="cb80-2"><a href="listas.html#cb80-2"></a>    <span class="dt">Nome =</span> <span class="st">&quot;Polímero A&quot;</span>,</span>
-<span id="cb80-3"><a href="listas.html#cb80-3"></a>    <span class="dt">Fabricacao =</span> <span class="kw">as.Date</span>(<span class="st">&quot;2019-09-24&quot;</span>),</span>
-<span id="cb80-4"><a href="listas.html#cb80-4"></a>    <span class="dt">Validade =</span> <span class="st">&quot;3 meses&quot;</span>,</span>
-<span id="cb80-5"><a href="listas.html#cb80-5"></a>    <span class="dt">Curva_calibracao_HPLC =</span> <span class="kw">data.frame</span>(</span>
-<span id="cb80-6"><a href="listas.html#cb80-6"></a>        <span class="dt">Conc_Padrao =</span> <span class="kw">c</span>(<span class="fl">0.01</span>, <span class="fl">0.05</span>, <span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="fl">0.9</span>, <span class="fl">1.0</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">30</span>, <span class="dv">100</span>, <span class="dv">500</span>),</span>
-<span id="cb80-7"><a href="listas.html#cb80-7"></a>        <span class="dt">Abs =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.1</span>, <span class="fl">0.3</span>, <span class="fl">0.9</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">29</span>, <span class="dv">39</span>, <span class="dv">50</span>, <span class="dv">100</span>)</span>
-<span id="cb80-8"><a href="listas.html#cb80-8"></a>    ),</span>
-<span id="cb80-9"><a href="listas.html#cb80-9"></a>    <span class="dt">Descricao =</span> <span class="kw">list</span>(<span class="dt">Visual =</span> <span class="st">&quot;pó amarelado&quot;</span>, </span>
-<span id="cb80-10"><a href="listas.html#cb80-10"></a>                                     <span class="dt">Odor =</span> <span class="st">&quot;sem odor&quot;</span>,</span>
-<span id="cb80-11"><a href="listas.html#cb80-11"></a>                                     <span class="dt">Outros =</span> <span class="st">&quot;higroscópico&quot;</span>),</span>
-<span id="cb80-12"><a href="listas.html#cb80-12"></a>    <span class="dt">Tratamento =</span> <span class="kw">c</span>(<span class="st">&quot;Secagem por liofilização&quot;</span>, <span class="st">&quot;Filtração com filtro n. 2&quot;</span>),</span>
-<span id="cb80-13"><a href="listas.html#cb80-13"></a>    <span class="dt">Estabilidade =</span> <span class="kw">data.frame</span>(</span>
-<span id="cb80-14"><a href="listas.html#cb80-14"></a>        <span class="dt">Dia =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>),</span>
-<span id="cb80-15"><a href="listas.html#cb80-15"></a>        <span class="dt">Separacao_fase =</span> <span class="kw">c</span>(F, F, F, F, F, F, F, T, T, T),</span>
-<span id="cb80-16"><a href="listas.html#cb80-16"></a>        <span class="dt">FaseO_por_FaseA =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>, <span class="fl">0.9</span>)</span>
-<span id="cb80-17"><a href="listas.html#cb80-17"></a>    )</span>
-<span id="cb80-18"><a href="listas.html#cb80-18"></a>)</span>
-<span id="cb80-19"><a href="listas.html#cb80-19"></a></span>
-<span id="cb80-20"><a href="listas.html#cb80-20"></a>Polimero_A</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="listas.html#cb68-1"></a>Polimero_A &lt;-<span class="st"> </span><span class="kw">list</span>(</span>
+<span id="cb68-2"><a href="listas.html#cb68-2"></a>    <span class="dt">Nome =</span> <span class="st">&quot;Polímero A&quot;</span>,</span>
+<span id="cb68-3"><a href="listas.html#cb68-3"></a>    <span class="dt">Fabricacao =</span> <span class="kw">as.Date</span>(<span class="st">&quot;2019-09-24&quot;</span>),</span>
+<span id="cb68-4"><a href="listas.html#cb68-4"></a>    <span class="dt">Validade =</span> <span class="st">&quot;3 meses&quot;</span>,</span>
+<span id="cb68-5"><a href="listas.html#cb68-5"></a>    <span class="dt">Curva_calibracao_HPLC =</span> <span class="kw">data.frame</span>(</span>
+<span id="cb68-6"><a href="listas.html#cb68-6"></a>        <span class="dt">Conc_Padrao =</span> <span class="kw">c</span>(<span class="fl">0.01</span>, <span class="fl">0.05</span>, <span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="fl">0.9</span>, <span class="fl">1.0</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">30</span>, <span class="dv">100</span>, <span class="dv">500</span>),</span>
+<span id="cb68-7"><a href="listas.html#cb68-7"></a>        <span class="dt">Abs =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.1</span>, <span class="fl">0.3</span>, <span class="fl">0.9</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">29</span>, <span class="dv">39</span>, <span class="dv">50</span>, <span class="dv">100</span>)</span>
+<span id="cb68-8"><a href="listas.html#cb68-8"></a>    ),</span>
+<span id="cb68-9"><a href="listas.html#cb68-9"></a>    <span class="dt">Descricao =</span> <span class="kw">list</span>(<span class="dt">Visual =</span> <span class="st">&quot;pó amarelado&quot;</span>, </span>
+<span id="cb68-10"><a href="listas.html#cb68-10"></a>                                     <span class="dt">Odor =</span> <span class="st">&quot;sem odor&quot;</span>,</span>
+<span id="cb68-11"><a href="listas.html#cb68-11"></a>                                     <span class="dt">Outros =</span> <span class="st">&quot;higroscópico&quot;</span>),</span>
+<span id="cb68-12"><a href="listas.html#cb68-12"></a>    <span class="dt">Tratamento =</span> <span class="kw">c</span>(<span class="st">&quot;Secagem por liofilização&quot;</span>, <span class="st">&quot;Filtração com filtro n. 2&quot;</span>),</span>
+<span id="cb68-13"><a href="listas.html#cb68-13"></a>    <span class="dt">Estabilidade =</span> <span class="kw">data.frame</span>(</span>
+<span id="cb68-14"><a href="listas.html#cb68-14"></a>        <span class="dt">Dia =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>),</span>
+<span id="cb68-15"><a href="listas.html#cb68-15"></a>        <span class="dt">Separacao_fase =</span> <span class="kw">c</span>(F, F, F, F, F, F, F, T, T, T),</span>
+<span id="cb68-16"><a href="listas.html#cb68-16"></a>        <span class="dt">FaseO_por_FaseA =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>, <span class="fl">0.9</span>)</span>
+<span id="cb68-17"><a href="listas.html#cb68-17"></a>    )</span>
+<span id="cb68-18"><a href="listas.html#cb68-18"></a>)</span>
+<span id="cb68-19"><a href="listas.html#cb68-19"></a></span>
+<span id="cb68-20"><a href="listas.html#cb68-20"></a>Polimero_A</span></code></pre></div>
 <pre><code>$Nome
 [1] &quot;Polímero A&quot;
 

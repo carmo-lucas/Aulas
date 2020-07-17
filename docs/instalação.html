@@ -24,7 +24,7 @@
 <meta name="author" content="Lucas Chagas Lima do Carmo" />
 
 
-<meta name="date" content="2020-04-21" />
+<meta name="date" content="2020-07-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -182,9 +182,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5.1" data-path="geoms.html"><a href="geoms.html#geoms-individuais"><i class="fa fa-check"></i><b>5.5.1</b> Geoms individuais</a></li>
 <li class="chapter" data-level="5.5.2" data-path="geoms.html"><a href="geoms.html#geoms-coletivos"><i class="fa fa-check"></i><b>5.5.2</b> Geoms coletivos</a></li>
 <li class="chapter" data-level="5.5.3" data-path="geoms.html"><a href="geoms.html#resumos-estatísticos"><i class="fa fa-check"></i><b>5.5.3</b> Resumos estatísticos</a></li>
-<li class="chapter" data-level="5.5.4" data-path="geoms.html"><a href="geoms.html#resolvendo-overplotting"><i class="fa fa-check"></i><b>5.5.4</b> Resolvendo <em>overplotting</em></a></li>
+<li class="chapter" data-level="5.5.4" data-path="geoms.html"><a href="geoms.html#plotando-distribuições"><i class="fa fa-check"></i><b>5.5.4</b> Plotando distribuições</a></li>
 <li class="chapter" data-level="5.5.5" data-path="geoms.html"><a href="geoms.html#anotações"><i class="fa fa-check"></i><b>5.5.5</b> Anotações</a></li>
 </ul></li>
+<li class="chapter" data-level="5.6" data-path="legendas.html"><a href="legendas.html"><i class="fa fa-check"></i><b>5.6</b> Legendas</a></li>
+<li class="chapter" data-level="5.7" data-path="escalas.html"><a href="escalas.html"><i class="fa fa-check"></i><b>5.7</b> Escalas</a></li>
+<li class="chapter" data-level="5.8" data-path="facets.html"><a href="facets.html"><i class="fa fa-check"></i><b>5.8</b> Facets</a></li>
+<li class="chapter" data-level="5.9" data-path="temas.html"><a href="temas.html"><i class="fa fa-check"></i><b>5.9</b> Temas</a></li>
+<li class="chapter" data-level="5.10" data-path="organizando-os-plots.html"><a href="organizando-os-plots.html"><i class="fa fa-check"></i><b>5.10</b> Organizando os <em>plots</em></a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="tutoriais.html"><a href="tutoriais.html"><i class="fa fa-check"></i><b>6</b> Tutoriais</a>
 <ul>
@@ -222,13 +227,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="instalação" class="section level2" number="5.2">
 <h2><span class="header-section-number">5.2</span> Instalação</h2>
 <p>O ggplot2 é instalado quando se instala o tidyverse, porém se não se deseja instalar todos os pacotes do tidyverse apenas instale o ggplot2 usando:</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="instalação.html#cb161-1"></a><span class="co"># install.packages(&quot;ggplot2&quot;)</span></span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="instalação.html#cb149-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)</span></code></pre></div>
 <p>Para usar o ggplot2 é necessário importar as funções do pacote instalado para o ambiente do <code>R</code> através de:</p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="instalação.html#cb162-1"></a><span class="co"># Importar todos os pacotes do tidyverse</span></span>
-<span id="cb162-2"><a href="instalação.html#cb162-2"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb162-3"><a href="instalação.html#cb162-3"></a></span>
-<span id="cb162-4"><a href="instalação.html#cb162-4"></a><span class="co"># Importar apenas ggplot2</span></span>
-<span id="cb162-5"><a href="instalação.html#cb162-5"></a><span class="kw">library</span>(ggplot2)</span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="instalação.html#cb150-1"></a><span class="co"># Importar todos os pacotes do tidyverse</span></span>
+<span id="cb150-2"><a href="instalação.html#cb150-2"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb150-3"><a href="instalação.html#cb150-3"></a></span>
+<span id="cb150-4"><a href="instalação.html#cb150-4"></a><span class="co"># Importar apenas ggplot2</span></span>
+<span id="cb150-5"><a href="instalação.html#cb150-5"></a><span class="kw">library</span>(ggplot2)</span></code></pre></div>
 <p>Apenas assim as fuções do ggplot2 poderão ser usadas no <em>script</em> ou no projeto.</p>
 </div>
             </section>

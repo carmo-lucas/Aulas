@@ -24,7 +24,7 @@
 <meta name="author" content="Lucas Chagas Lima do Carmo" />
 
 
-<meta name="date" content="2020-04-21" />
+<meta name="date" content="2020-07-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -182,9 +182,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5.1" data-path="geoms.html"><a href="geoms.html#geoms-individuais"><i class="fa fa-check"></i><b>5.5.1</b> Geoms individuais</a></li>
 <li class="chapter" data-level="5.5.2" data-path="geoms.html"><a href="geoms.html#geoms-coletivos"><i class="fa fa-check"></i><b>5.5.2</b> Geoms coletivos</a></li>
 <li class="chapter" data-level="5.5.3" data-path="geoms.html"><a href="geoms.html#resumos-estatísticos"><i class="fa fa-check"></i><b>5.5.3</b> Resumos estatísticos</a></li>
-<li class="chapter" data-level="5.5.4" data-path="geoms.html"><a href="geoms.html#resolvendo-overplotting"><i class="fa fa-check"></i><b>5.5.4</b> Resolvendo <em>overplotting</em></a></li>
+<li class="chapter" data-level="5.5.4" data-path="geoms.html"><a href="geoms.html#plotando-distribuições"><i class="fa fa-check"></i><b>5.5.4</b> Plotando distribuições</a></li>
 <li class="chapter" data-level="5.5.5" data-path="geoms.html"><a href="geoms.html#anotações"><i class="fa fa-check"></i><b>5.5.5</b> Anotações</a></li>
 </ul></li>
+<li class="chapter" data-level="5.6" data-path="legendas.html"><a href="legendas.html"><i class="fa fa-check"></i><b>5.6</b> Legendas</a></li>
+<li class="chapter" data-level="5.7" data-path="escalas.html"><a href="escalas.html"><i class="fa fa-check"></i><b>5.7</b> Escalas</a></li>
+<li class="chapter" data-level="5.8" data-path="facets.html"><a href="facets.html"><i class="fa fa-check"></i><b>5.8</b> Facets</a></li>
+<li class="chapter" data-level="5.9" data-path="temas.html"><a href="temas.html"><i class="fa fa-check"></i><b>5.9</b> Temas</a></li>
+<li class="chapter" data-level="5.10" data-path="organizando-os-plots.html"><a href="organizando-os-plots.html"><i class="fa fa-check"></i><b>5.10</b> Organizando os <em>plots</em></a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="tutoriais.html"><a href="tutoriais.html"><i class="fa fa-check"></i><b>6</b> Tutoriais</a>
 <ul>
@@ -225,33 +230,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Dataframes são mais flexíveis que matrizes principalmente por poderem conter vários tipos de dados em suas colunas.
 Enquanto que matrizes convertem todos os dados para o tipo <code>character</code> quando há um elemento deste tipo, em dataframes podemos ter uma coluna com o tipo <code>character</code> ou tra com o tipo <code>logical</code> e outra com o tipo <code>numeric</code> sem problema nenhum.</p>
 <p>Para criar dataframes usa-se a função <code>data.frame()</code> que contém diversos vetores dentro, por exemplo:</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="dataframes.html#cb46-1"></a><span class="co"># df é abreviação para dataframe</span></span>
-<span id="cb46-2"><a href="dataframes.html#cb46-2"></a></span>
-<span id="cb46-3"><a href="dataframes.html#cb46-3"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
-<span id="cb46-4"><a href="dataframes.html#cb46-4"></a>    <span class="dt">Idade =</span> <span class="kw">c</span>(<span class="kw">round</span>(<span class="kw">runif</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">min =</span> <span class="dv">20</span>, <span class="dt">max =</span> <span class="dv">30</span>))), <span class="co"># aleatorio entre 20 e 30</span></span>
-<span id="cb46-5"><a href="dataframes.html#cb46-5"></a>    <span class="dt">Nome =</span> <span class="kw">c</span>(<span class="st">&quot;Luc&quot;</span>,<span class="st">&quot;Jon&quot;</span>,<span class="st">&quot;Jean&quot;</span>,<span class="st">&quot;Brie&quot;</span>,<span class="st">&quot;Mary&quot;</span>,<span class="st">&quot;Dave&quot;</span>,<span class="st">&quot;Lee&quot;</span>,<span class="st">&quot;Nat&quot;</span>,<span class="st">&quot;Dani&quot;</span>,<span class="st">&quot;Rob&quot;</span>), <span class="co"># nomes</span></span>
-<span id="cb46-6"><a href="dataframes.html#cb46-6"></a>    <span class="dt">Sexo =</span> <span class="kw">c</span>(F,F,T,T,T,F,F,T,T,F) <span class="co"># vetor contendo valores lógicos que indicam sexo</span></span>
-<span id="cb46-7"><a href="dataframes.html#cb46-7"></a>)</span>
-<span id="cb46-8"><a href="dataframes.html#cb46-8"></a></span>
-<span id="cb46-9"><a href="dataframes.html#cb46-9"></a>df</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="dataframes.html#cb34-1"></a><span class="co"># df é abreviação para dataframe</span></span>
+<span id="cb34-2"><a href="dataframes.html#cb34-2"></a></span>
+<span id="cb34-3"><a href="dataframes.html#cb34-3"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb34-4"><a href="dataframes.html#cb34-4"></a>    <span class="dt">Idade =</span> <span class="kw">c</span>(<span class="kw">round</span>(<span class="kw">runif</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">min =</span> <span class="dv">20</span>, <span class="dt">max =</span> <span class="dv">30</span>))), <span class="co"># aleatorio entre 20 e 30</span></span>
+<span id="cb34-5"><a href="dataframes.html#cb34-5"></a>    <span class="dt">Nome =</span> <span class="kw">c</span>(<span class="st">&quot;Luc&quot;</span>,<span class="st">&quot;Jon&quot;</span>,<span class="st">&quot;Jean&quot;</span>,<span class="st">&quot;Brie&quot;</span>,<span class="st">&quot;Mary&quot;</span>,<span class="st">&quot;Dave&quot;</span>,<span class="st">&quot;Lee&quot;</span>,<span class="st">&quot;Nat&quot;</span>,<span class="st">&quot;Dani&quot;</span>,<span class="st">&quot;Rob&quot;</span>), <span class="co"># nomes</span></span>
+<span id="cb34-6"><a href="dataframes.html#cb34-6"></a>    <span class="dt">Sexo =</span> <span class="kw">c</span>(F,F,T,T,T,F,F,T,T,F) <span class="co"># vetor contendo valores lógicos que indicam sexo</span></span>
+<span id="cb34-7"><a href="dataframes.html#cb34-7"></a>)</span>
+<span id="cb34-8"><a href="dataframes.html#cb34-8"></a></span>
+<span id="cb34-9"><a href="dataframes.html#cb34-9"></a>df</span></code></pre></div>
 <pre><code>   Idade Nome  Sexo
-1     29  Luc FALSE
-2     29  Jon FALSE
-3     26 Jean  TRUE
-4     27 Brie  TRUE
-5     23 Mary  TRUE
+1     21  Luc FALSE
+2     24  Jon FALSE
+3     27 Jean  TRUE
+4     24 Brie  TRUE
+5     29 Mary  TRUE
 6     24 Dave FALSE
-7     23  Lee FALSE
-8     26  Nat  TRUE
-9     29 Dani  TRUE
-10    25  Rob FALSE</code></pre>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="dataframes.html#cb48-1"></a><span class="co"># classe</span></span>
-<span id="cb48-2"><a href="dataframes.html#cb48-2"></a><span class="kw">class</span>(df)</span></code></pre></div>
+7     20  Lee FALSE
+8     23  Nat  TRUE
+9     25 Dani  TRUE
+10    27  Rob FALSE</code></pre>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="dataframes.html#cb36-1"></a><span class="co"># classe</span></span>
+<span id="cb36-2"><a href="dataframes.html#cb36-2"></a><span class="kw">class</span>(df)</span></code></pre></div>
 <pre><code>[1] &quot;data.frame&quot;</code></pre>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="dataframes.html#cb50-1"></a><span class="co"># Estrutura</span></span>
-<span id="cb50-2"><a href="dataframes.html#cb50-2"></a><span class="kw">str</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="dataframes.html#cb38-1"></a><span class="co"># Estrutura</span></span>
+<span id="cb38-2"><a href="dataframes.html#cb38-2"></a><span class="kw">str</span>(df)</span></code></pre></div>
 <pre><code>&#39;data.frame&#39;:   10 obs. of  3 variables:
- $ Idade: num  29 29 26 27 23 24 23 26 29 25
+ $ Idade: num  21 24 27 24 29 24 20 23 25 27
  $ Nome : Factor w/ 10 levels &quot;Brie&quot;,&quot;Dani&quot;,..: 7 5 4 1 8 3 6 9 2 10
  $ Sexo : logi  FALSE FALSE TRUE TRUE TRUE FALSE ...</code></pre>
 <p>A limitação de dataframes é que todas as colunas devem conter o mesmo número de linhas mas em geral funcionam como tabelas.
@@ -259,81 +264,81 @@ Este tipo de objeto que contém dados em um quadro é denominado de retângular.
 Dados no formato retângular são usados para construção de gráficos usando várias extensões do <code>R</code> e é o formato de dados que a maioria das pessoas está acostumado a trabalhar por causa do que já aprendeu em programas como o Excell.</p>
 <p>É possível adicionar novas colunas e linhas a dataframes apesar de adicionar colunas ser mais direto.</p>
 <p>Os índices de um dataframe funcionam exatamente como funcionam em matrizes porém como em dataframes todas as colunas são nomeadas, podemos usar seus nomes invés de seus números, então para escolher os dados da coluna usa-se o operador <code>$</code>, por exemplo: <code>df$Idade</code> retorna os valores da coluna Idade no formato de um vetor, portanto para adicionar uma coluna, é possível atribuir ao dataframe uma nova coluna da seguinte forma:</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="dataframes.html#cb52-1"></a><span class="co"># cria a variável Peso e adiciona ao objeto df</span></span>
-<span id="cb52-2"><a href="dataframes.html#cb52-2"></a>df<span class="op">$</span>Peso &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">runif</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">min =</span> <span class="dv">55</span>, <span class="dt">max =</span> <span class="dv">100</span>))</span>
-<span id="cb52-3"><a href="dataframes.html#cb52-3"></a></span>
-<span id="cb52-4"><a href="dataframes.html#cb52-4"></a>df</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="dataframes.html#cb40-1"></a><span class="co"># cria a variável Peso e adiciona ao objeto df</span></span>
+<span id="cb40-2"><a href="dataframes.html#cb40-2"></a>df<span class="op">$</span>Peso &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">runif</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">min =</span> <span class="dv">55</span>, <span class="dt">max =</span> <span class="dv">100</span>))</span>
+<span id="cb40-3"><a href="dataframes.html#cb40-3"></a></span>
+<span id="cb40-4"><a href="dataframes.html#cb40-4"></a>df</span></code></pre></div>
 <pre><code>   Idade Nome  Sexo     Peso
-1     29  Luc FALSE 97.43206
-2     29  Jon FALSE 81.99041
-3     26 Jean  TRUE 80.37629
-4     27 Brie  TRUE 55.42890
-5     23 Mary  TRUE 60.20309
-6     24 Dave FALSE 67.15467
-7     23  Lee FALSE 79.26894
-8     26  Nat  TRUE 91.99095
-9     29 Dani  TRUE 74.19934
-10    25  Rob FALSE 61.80625</code></pre>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="dataframes.html#cb54-1"></a><span class="co"># cria variável altura</span></span>
-<span id="cb54-2"><a href="dataframes.html#cb54-2"></a>df<span class="op">$</span>Altura &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">runif</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">min =</span> <span class="dv">159</span>, <span class="dt">max =</span> <span class="dv">210</span>))</span>
-<span id="cb54-3"><a href="dataframes.html#cb54-3"></a></span>
-<span id="cb54-4"><a href="dataframes.html#cb54-4"></a>df</span></code></pre></div>
+1     21  Luc FALSE 74.28713
+2     24  Jon FALSE 78.00628
+3     27 Jean  TRUE 99.21567
+4     24 Brie  TRUE 90.80768
+5     29 Mary  TRUE 56.59132
+6     24 Dave FALSE 79.88744
+7     20  Lee FALSE 99.35571
+8     23  Nat  TRUE 62.12010
+9     25 Dani  TRUE 73.05115
+10    27  Rob FALSE 81.32281</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="dataframes.html#cb42-1"></a><span class="co"># cria variável altura</span></span>
+<span id="cb42-2"><a href="dataframes.html#cb42-2"></a>df<span class="op">$</span>Altura &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">runif</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">min =</span> <span class="dv">159</span>, <span class="dt">max =</span> <span class="dv">210</span>))</span>
+<span id="cb42-3"><a href="dataframes.html#cb42-3"></a></span>
+<span id="cb42-4"><a href="dataframes.html#cb42-4"></a>df</span></code></pre></div>
 <pre><code>   Idade Nome  Sexo     Peso   Altura
-1     29  Luc FALSE 97.43206 171.7407
-2     29  Jon FALSE 81.99041 165.3770
-3     26 Jean  TRUE 80.37629 167.4732
-4     27 Brie  TRUE 55.42890 175.2856
-5     23 Mary  TRUE 60.20309 189.2729
-6     24 Dave FALSE 67.15467 196.0597
-7     23  Lee FALSE 79.26894 201.5800
-8     26  Nat  TRUE 91.99095 192.7645
-9     29 Dani  TRUE 74.19934 200.7557
-10    25  Rob FALSE 61.80625 204.1592</code></pre>
+1     21  Luc FALSE 74.28713 168.8911
+2     24  Jon FALSE 78.00628 203.4897
+3     27 Jean  TRUE 99.21567 172.5744
+4     24 Brie  TRUE 90.80768 161.6392
+5     29 Mary  TRUE 56.59132 173.5721
+6     24 Dave FALSE 79.88744 176.9294
+7     20  Lee FALSE 99.35571 192.0284
+8     23  Nat  TRUE 62.12010 179.8701
+9     25 Dani  TRUE 73.05115 186.1878
+10    27  Rob FALSE 81.32281 181.6989</code></pre>
 <p>Agora que temos as variáveis <code>Altura</code> e <code>Peso</code> (geradas aleatoriamente pela função <code>ruinf()</code>) podemos calcular o IMC de cada indivíduo com uma nova coluna chamada <code>IMC</code>:</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="dataframes.html#cb56-1"></a><span class="co"># cria coluna IMC usando valores de outras colunas</span></span>
-<span id="cb56-2"><a href="dataframes.html#cb56-2"></a>df<span class="op">$</span>IMC &lt;-<span class="st"> </span>df<span class="op">$</span>Peso <span class="op">/</span><span class="st"> </span>(df<span class="op">$</span>Altura<span class="op">/</span><span class="dv">100</span>)<span class="op">^</span><span class="dv">2</span> <span class="co"># altura deve estar em metros</span></span>
-<span id="cb56-3"><a href="dataframes.html#cb56-3"></a></span>
-<span id="cb56-4"><a href="dataframes.html#cb56-4"></a>df</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="dataframes.html#cb44-1"></a><span class="co"># cria coluna IMC usando valores de outras colunas</span></span>
+<span id="cb44-2"><a href="dataframes.html#cb44-2"></a>df<span class="op">$</span>IMC &lt;-<span class="st"> </span>df<span class="op">$</span>Peso <span class="op">/</span><span class="st"> </span>(df<span class="op">$</span>Altura<span class="op">/</span><span class="dv">100</span>)<span class="op">^</span><span class="dv">2</span> <span class="co"># altura deve estar em metros</span></span>
+<span id="cb44-3"><a href="dataframes.html#cb44-3"></a></span>
+<span id="cb44-4"><a href="dataframes.html#cb44-4"></a>df</span></code></pre></div>
 <pre><code>   Idade Nome  Sexo     Peso   Altura      IMC
-1     29  Luc FALSE 97.43206 171.7407 33.03356
-2     29  Jon FALSE 81.99041 165.3770 29.97872
-3     26 Jean  TRUE 80.37629 167.4732 28.65745
-4     27 Brie  TRUE 55.42890 175.2856 18.04029
-5     23 Mary  TRUE 60.20309 189.2729 16.80514
-6     24 Dave FALSE 67.15467 196.0597 17.47027
-7     23  Lee FALSE 79.26894 201.5800 19.50779
-8     26  Nat  TRUE 91.99095 192.7645 24.75660
-9     29 Dani  TRUE 74.19934 200.7557 18.41044
-10    25  Rob FALSE 61.80625 204.1592 14.82840</code></pre>
+1     21  Luc FALSE 74.28713 168.8911 26.04356
+2     24  Jon FALSE 78.00628 203.4897 18.83842
+3     27 Jean  TRUE 99.21567 172.5744 33.31405
+4     24 Brie  TRUE 90.80768 161.6392 34.75596
+5     29 Mary  TRUE 56.59132 173.5721 18.78409
+6     24 Dave FALSE 79.88744 176.9294 25.51988
+7     20  Lee FALSE 99.35571 192.0284 26.94399
+8     23  Nat  TRUE 62.12010 179.8701 19.20058
+9     25 Dani  TRUE 73.05115 186.1878 21.07291
+10    27  Rob FALSE 81.32281 181.6989 24.63246</code></pre>
 <p>Para adicionar linhas é necessário ter outro dataframe com colunas com os mesmos nomes que o dataframe original e usar a função <code>rbind()</code>.
 Abaixo o exemplo:</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="dataframes.html#cb58-1"></a>df2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
-<span id="cb58-2"><a href="dataframes.html#cb58-2"></a>    <span class="dt">Idade =</span> <span class="kw">c</span>(<span class="dv">34</span>, <span class="dv">99</span>),</span>
-<span id="cb58-3"><a href="dataframes.html#cb58-3"></a>    <span class="dt">Nome =</span> <span class="kw">c</span>(<span class="st">&quot;Huey&quot;</span>,<span class="st">&quot;Zé&quot;</span>),</span>
-<span id="cb58-4"><a href="dataframes.html#cb58-4"></a>    <span class="dt">Sexo =</span> <span class="kw">c</span>(<span class="ot">FALSE</span>, <span class="ot">FALSE</span>),</span>
-<span id="cb58-5"><a href="dataframes.html#cb58-5"></a>    <span class="dt">Peso =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="fl">100.49993</span>),</span>
-<span id="cb58-6"><a href="dataframes.html#cb58-6"></a>    <span class="dt">Altura =</span> <span class="kw">c</span>(<span class="dv">187</span>, <span class="dv">176</span>),</span>
-<span id="cb58-7"><a href="dataframes.html#cb58-7"></a>    <span class="dt">IMC =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="ot">NA</span>)</span>
-<span id="cb58-8"><a href="dataframes.html#cb58-8"></a>)</span>
-<span id="cb58-9"><a href="dataframes.html#cb58-9"></a></span>
-<span id="cb58-10"><a href="dataframes.html#cb58-10"></a>df2</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="dataframes.html#cb46-1"></a>df2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb46-2"><a href="dataframes.html#cb46-2"></a>    <span class="dt">Idade =</span> <span class="kw">c</span>(<span class="dv">34</span>, <span class="dv">99</span>),</span>
+<span id="cb46-3"><a href="dataframes.html#cb46-3"></a>    <span class="dt">Nome =</span> <span class="kw">c</span>(<span class="st">&quot;Huey&quot;</span>,<span class="st">&quot;Zé&quot;</span>),</span>
+<span id="cb46-4"><a href="dataframes.html#cb46-4"></a>    <span class="dt">Sexo =</span> <span class="kw">c</span>(<span class="ot">FALSE</span>, <span class="ot">FALSE</span>),</span>
+<span id="cb46-5"><a href="dataframes.html#cb46-5"></a>    <span class="dt">Peso =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="fl">100.49993</span>),</span>
+<span id="cb46-6"><a href="dataframes.html#cb46-6"></a>    <span class="dt">Altura =</span> <span class="kw">c</span>(<span class="dv">187</span>, <span class="dv">176</span>),</span>
+<span id="cb46-7"><a href="dataframes.html#cb46-7"></a>    <span class="dt">IMC =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="ot">NA</span>)</span>
+<span id="cb46-8"><a href="dataframes.html#cb46-8"></a>)</span>
+<span id="cb46-9"><a href="dataframes.html#cb46-9"></a></span>
+<span id="cb46-10"><a href="dataframes.html#cb46-10"></a>df2</span></code></pre></div>
 <pre><code>  Idade Nome  Sexo     Peso Altura IMC
 1    34 Huey FALSE       NA    187  NA
 2    99   Zé FALSE 100.4999    176  NA</code></pre>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="dataframes.html#cb60-1"></a>df_nova &lt;-<span class="st"> </span><span class="kw">rbind</span>(df, df2)</span>
-<span id="cb60-2"><a href="dataframes.html#cb60-2"></a></span>
-<span id="cb60-3"><a href="dataframes.html#cb60-3"></a>df_nova</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="dataframes.html#cb48-1"></a>df_nova &lt;-<span class="st"> </span><span class="kw">rbind</span>(df, df2)</span>
+<span id="cb48-2"><a href="dataframes.html#cb48-2"></a></span>
+<span id="cb48-3"><a href="dataframes.html#cb48-3"></a>df_nova</span></code></pre></div>
 <pre><code>   Idade Nome  Sexo      Peso   Altura      IMC
-1     29  Luc FALSE  97.43206 171.7407 33.03356
-2     29  Jon FALSE  81.99041 165.3770 29.97872
-3     26 Jean  TRUE  80.37629 167.4732 28.65745
-4     27 Brie  TRUE  55.42890 175.2856 18.04029
-5     23 Mary  TRUE  60.20309 189.2729 16.80514
-6     24 Dave FALSE  67.15467 196.0597 17.47027
-7     23  Lee FALSE  79.26894 201.5800 19.50779
-8     26  Nat  TRUE  91.99095 192.7645 24.75660
-9     29 Dani  TRUE  74.19934 200.7557 18.41044
-10    25  Rob FALSE  61.80625 204.1592 14.82840
+1     21  Luc FALSE  74.28713 168.8911 26.04356
+2     24  Jon FALSE  78.00628 203.4897 18.83842
+3     27 Jean  TRUE  99.21567 172.5744 33.31405
+4     24 Brie  TRUE  90.80768 161.6392 34.75596
+5     29 Mary  TRUE  56.59132 173.5721 18.78409
+6     24 Dave FALSE  79.88744 176.9294 25.51988
+7     20  Lee FALSE  99.35571 192.0284 26.94399
+8     23  Nat  TRUE  62.12010 179.8701 19.20058
+9     25 Dani  TRUE  73.05115 186.1878 21.07291
+10    27  Rob FALSE  81.32281 181.6989 24.63246
 11    34 Huey FALSE        NA 187.0000       NA
 12    99   Zé FALSE 100.49993 176.0000       NA</code></pre>
 <div id="índices-de-dataframes" class="section level3" number="2.4.1">

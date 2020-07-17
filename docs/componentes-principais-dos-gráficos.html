@@ -24,7 +24,7 @@
 <meta name="author" content="Lucas Chagas Lima do Carmo" />
 
 
-<meta name="date" content="2020-04-21" />
+<meta name="date" content="2020-07-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -182,9 +182,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5.1" data-path="geoms.html"><a href="geoms.html#geoms-individuais"><i class="fa fa-check"></i><b>5.5.1</b> Geoms individuais</a></li>
 <li class="chapter" data-level="5.5.2" data-path="geoms.html"><a href="geoms.html#geoms-coletivos"><i class="fa fa-check"></i><b>5.5.2</b> Geoms coletivos</a></li>
 <li class="chapter" data-level="5.5.3" data-path="geoms.html"><a href="geoms.html#resumos-estatísticos"><i class="fa fa-check"></i><b>5.5.3</b> Resumos estatísticos</a></li>
-<li class="chapter" data-level="5.5.4" data-path="geoms.html"><a href="geoms.html#resolvendo-overplotting"><i class="fa fa-check"></i><b>5.5.4</b> Resolvendo <em>overplotting</em></a></li>
+<li class="chapter" data-level="5.5.4" data-path="geoms.html"><a href="geoms.html#plotando-distribuições"><i class="fa fa-check"></i><b>5.5.4</b> Plotando distribuições</a></li>
 <li class="chapter" data-level="5.5.5" data-path="geoms.html"><a href="geoms.html#anotações"><i class="fa fa-check"></i><b>5.5.5</b> Anotações</a></li>
 </ul></li>
+<li class="chapter" data-level="5.6" data-path="legendas.html"><a href="legendas.html"><i class="fa fa-check"></i><b>5.6</b> Legendas</a></li>
+<li class="chapter" data-level="5.7" data-path="escalas.html"><a href="escalas.html"><i class="fa fa-check"></i><b>5.7</b> Escalas</a></li>
+<li class="chapter" data-level="5.8" data-path="facets.html"><a href="facets.html"><i class="fa fa-check"></i><b>5.8</b> Facets</a></li>
+<li class="chapter" data-level="5.9" data-path="temas.html"><a href="temas.html"><i class="fa fa-check"></i><b>5.9</b> Temas</a></li>
+<li class="chapter" data-level="5.10" data-path="organizando-os-plots.html"><a href="organizando-os-plots.html"><i class="fa fa-check"></i><b>5.10</b> Organizando os <em>plots</em></a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="tutoriais.html"><a href="tutoriais.html"><i class="fa fa-check"></i><b>6</b> Tutoriais</a>
 <ul>
@@ -229,12 +234,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Camadas são criadas através das funções <code>geom_*</code> ou <code>stat_*</code>.</li>
 </ol>
 <p>Um exemplo muito simples usando o dataframe <code>mpg</code> do pacote <code>dplyr</code>.</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="componentes-principais-dos-gráficos.html#cb163-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg,  <span class="co"># Todo plot começa com a função ggplot()</span></span>
-<span id="cb163-2"><a href="componentes-principais-dos-gráficos.html#cb163-2"></a>             <span class="kw">aes</span>(         <span class="co"># Mapeamentos estéticos devem ficar dentro desta função</span></span>
-<span id="cb163-3"><a href="componentes-principais-dos-gráficos.html#cb163-3"></a>                <span class="dt">x =</span> displ,  <span class="co"># Variável mapeada no eixo x</span></span>
-<span id="cb163-4"><a href="componentes-principais-dos-gráficos.html#cb163-4"></a>                <span class="dt">y =</span> hwy)    <span class="co"># Variável mapeada no eixo y</span></span>
-<span id="cb163-5"><a href="componentes-principais-dos-gráficos.html#cb163-5"></a>            ) <span class="op">+</span><span class="st">           </span><span class="co"># + indica que vou adicionar uma camada</span></span>
-<span id="cb163-6"><a href="componentes-principais-dos-gráficos.html#cb163-6"></a><span class="st">    </span><span class="kw">geom_point</span>()      <span class="co"># Tipo de geometria usada para mostrar as observações</span></span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="componentes-principais-dos-gráficos.html#cb151-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg,  <span class="co"># Todo plot começa com a função ggplot()</span></span>
+<span id="cb151-2"><a href="componentes-principais-dos-gráficos.html#cb151-2"></a>             <span class="kw">aes</span>(         <span class="co"># Mapeamentos estéticos devem ficar dentro desta função</span></span>
+<span id="cb151-3"><a href="componentes-principais-dos-gráficos.html#cb151-3"></a>                <span class="dt">x =</span> displ,  <span class="co"># Variável mapeada no eixo x</span></span>
+<span id="cb151-4"><a href="componentes-principais-dos-gráficos.html#cb151-4"></a>                <span class="dt">y =</span> hwy)    <span class="co"># Variável mapeada no eixo y</span></span>
+<span id="cb151-5"><a href="componentes-principais-dos-gráficos.html#cb151-5"></a>            ) <span class="op">+</span><span class="st">           </span><span class="co"># + indica que vou adicionar uma camada</span></span>
+<span id="cb151-6"><a href="componentes-principais-dos-gráficos.html#cb151-6"></a><span class="st">    </span><span class="kw">geom_point</span>()      <span class="co"># Tipo de geometria usada para mostrar as observações</span></span></code></pre></div>
 <p><img src="_main_files/figure-html/plot-basic-1.png" width="2100" style="display: block; margin: auto;" /></p>
 <p>Neste gráfico de dispersão especificamos os dados dos eixos x e y e definimos que queremos ver as observações como pontos usando a função <code>geom_point()</code> então suprimos os 3 requerimentos básicos para um <em>plot</em>:</p>
 <ol style="list-style-type: decimal">
@@ -245,8 +250,8 @@ Camadas são criadas através das funções <code>geom_*</code> ou <code>stat_*<
 <p>As escalas foram criadas automaticamente baseado nos valores máximos e mínimos das variáveis e o nome das variáveis foi colocado exatamente como está no dataframe.</p>
 <p>Algumas simplificações podem ser feitas no código, por exemplo: em geral não é necessário deixar implícito a especificação de qual variável vai no eixo x e qual no eixo y.
 Também não é necessário se deixar implícito o argumento <code>data =</code> portanto uma forma simplificada de escrever o mesmo código que resulta no mesmo gráfico é:</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="componentes-principais-dos-gráficos.html#cb164-1"></a><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb164-2"><a href="componentes-principais-dos-gráficos.html#cb164-2"></a><span class="st">    </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="componentes-principais-dos-gráficos.html#cb152-1"></a><span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb152-2"><a href="componentes-principais-dos-gráficos.html#cb152-2"></a><span class="st">    </span><span class="kw">geom_point</span>()</span></code></pre></div>
 </div>
             </section>
 
