@@ -210,7 +210,7 @@ Um vetor é um tipo de objeto unidimensional que pode conter apenas um tipo de d
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">vetor &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">1.45</span>, <span class="dv">4</span>, 1L, <span class="st">&quot;a&quot;</span>, <span class="st">&quot;99&quot;</span>, <span class="ot">TRUE</span>, 2i<span class="op">+</span><span class="dv">4</span>)</a>
 <a class="sourceLine" id="cb10-2" title="2"></a>
 <a class="sourceLine" id="cb10-3" title="3"><span class="kw">print</span>(vetor)</a></code></pre></div>
-<pre><code>[1] &quot;1.45&quot; &quot;4&quot;    &quot;1&quot;    &quot;a&quot;    &quot;99&quot;   &quot;TRUE&quot; &quot;4+2i&quot;</code></pre>
+<pre><code>R&gt; [1] &quot;1.45&quot; &quot;4&quot;    &quot;1&quot;    &quot;a&quot;    &quot;99&quot;   &quot;TRUE&quot; &quot;4+2i&quot;</code></pre>
 <p>Por mais que se especifique números com decimal e números inteiros (representado por <code>1L</code>), o vetor deve conter apenas um tipo de dado.
 Neste caso, todos os valores são convertidos para texto (<code>character</code>) porque todos os elementos do vetor podem ser convertidos, relativamente sem problema, para este tipo de dado.</p>
 <p>Pode-se verificar a classe deste vetor usando a função <code>class()</code> e observa-se que o resultado deve ser <code>character</code>.</p>
@@ -223,33 +223,33 @@ Neste caso, todos os valores são convertidos para texto (<code>character</code>
 <a class="sourceLine" id="cb12-5" title="5"></a>
 <a class="sourceLine" id="cb12-6" title="6"><span class="co"># Adição de vetores</span></a>
 <a class="sourceLine" id="cb12-7" title="7">v1 <span class="op">+</span><span class="st"> </span>v2</a></code></pre></div>
-<pre><code>[1]   9 419  24   7</code></pre>
+<pre><code>R&gt; [1]   9 419  24   7</code></pre>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="co"># Subtração de vetores</span></a>
 <a class="sourceLine" id="cb14-2" title="2">v1 <span class="op">-</span><span class="st"> </span>v2</a></code></pre></div>
-<pre><code>[1]  -9 395 -22   3</code></pre>
+<pre><code>R&gt; [1]  -9 395 -22   3</code></pre>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="co"># Multiplicação de vetores</span></a>
 <a class="sourceLine" id="cb16-2" title="2">v1 <span class="op">*</span><span class="st"> </span>v2</a></code></pre></div>
-<pre><code>[1]    0 4884   23   10</code></pre>
+<pre><code>R&gt; [1]    0 4884   23   10</code></pre>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="co"># Divisão de vetores</span></a>
 <a class="sourceLine" id="cb18-2" title="2">v1 <span class="op">/</span><span class="st"> </span>v2</a></code></pre></div>
-<pre><code>[1]  0.00000000 33.91666667  0.04347826  2.50000000</code></pre>
+<pre><code>R&gt; [1]  0.00000000 33.91666667  0.04347826  2.50000000</code></pre>
 <p>Em todos estes exemplos os vetores possuem o mesmo número de elementos, porém quando vetores possuem diferentes números de elementos, para operações aritméticas o vetor com menor número de elementos pode sofrer reciclagem de alguns elementos para que a operação seja completa.</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1">v3 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="fl">5.6</span>)</a>
 <a class="sourceLine" id="cb20-2" title="2"></a>
 <a class="sourceLine" id="cb20-3" title="3"><span class="co"># neste caso v3 age como se fosse c(4, 5.6, 4, 5.6)</span></a>
 <a class="sourceLine" id="cb20-4" title="4">v1 <span class="op">+</span><span class="st"> </span>v3</a></code></pre></div>
-<pre><code>[1]   4.0 412.6   5.0  10.6</code></pre>
+<pre><code>R&gt; [1]   4.0 412.6   5.0  10.6</code></pre>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">v1 <span class="op">*</span><span class="st"> </span>v3</a></code></pre></div>
-<pre><code>[1]    0.0 2279.2    4.0   28.0</code></pre>
+<pre><code>R&gt; [1]    0.0 2279.2    4.0   28.0</code></pre>
 <p>Para organizar os elementos de vetores pode ser usado a função <code>sort()</code> que rearranja os elementos de um vetor na ordem crescente ou descrescente.</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1">v1</a></code></pre></div>
-<pre><code>[1]   0 407   1   5</code></pre>
+<pre><code>R&gt; [1]   0 407   1   5</code></pre>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1"><span class="co"># Crescente</span></a>
 <a class="sourceLine" id="cb26-2" title="2"><span class="kw">sort</span>(v1)</a></code></pre></div>
-<pre><code>[1]   0   1   5 407</code></pre>
+<pre><code>R&gt; [1]   0   1   5 407</code></pre>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1"><span class="co"># Decrescente</span></a>
 <a class="sourceLine" id="cb28-2" title="2"><span class="kw">sort</span>(v1, <span class="dt">decreasing =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<pre><code>[1] 407   5   1   0</code></pre>
+<pre><code>R&gt; [1] 407   5   1   0</code></pre>
 </div>
 <div id="matrizes" class="section level2">
 <h2><span class="header-section-number">2.2</span> Matrizes</h2>
@@ -272,10 +272,10 @@ C &amp; 6.023\cdot10^{23} &amp; 0
 <a class="sourceLine" id="cb30-5" title="5">)</a>
 <a class="sourceLine" id="cb30-6" title="6"></a>
 <a class="sourceLine" id="cb30-7" title="7">matriz</a></code></pre></div>
-<pre><code>     [,1]  [,2]               [,3] 
-[1,] &quot;0.4&quot; &quot;9&quot;                &quot;24&quot; 
-[2,] &quot;e&quot;   &quot;3.14159265358979&quot; &quot;625&quot;
-[3,] &quot;C&quot;   &quot;6.023e+23&quot;        &quot;0&quot;  </code></pre>
+<pre><code>R&gt;      [,1]  [,2]               [,3] 
+R&gt; [1,] &quot;0.4&quot; &quot;9&quot;                &quot;24&quot; 
+R&gt; [2,] &quot;e&quot;   &quot;3.14159265358979&quot; &quot;625&quot;
+R&gt; [3,] &quot;C&quot;   &quot;6.023e+23&quot;        &quot;0&quot;</code></pre>
 <p>Observa-se que assim como vetores, matrizes não suportam vários tipos de dados diferentes, então, quando elementos são incompatíveis, a priridade será a classe de texto, os caracteres.
 Todos os elementos da matriz serão convertidos para caracter se houver apenas um elemento deste tipo.</p>
 <p>Como matrizes são objetos bidimensionais os elementos podem ser específicados através do seu número de coluna e de linha, indicados quando se imprime a matriz usando <code>print()</code>.</p>
@@ -292,7 +292,7 @@ Como é possível extrair o último valor do vetor sem saber quantos valores ele
 No caso de vários vetores terem tamanhos diferentes como garantir que uma função sempre irá extrair o último valor?
 Podem ser usadas funções dentro do [ ] para se garantir isso, por exemplo:</p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1">v1[(<span class="kw">length</span>(v1))]</a></code></pre></div>
-<pre><code>[1] 5</code></pre>
+<pre><code>R&gt; [1] 5</code></pre>
 <p>A função <code>length()</code> retorna o comprimento do vetor, como o último elemento deve ter o mesmo número do comprimento do vetor inteiro, desta forma se garante que o último elemento será extraído, neste caso o valor é de 5.</p>
 <hr />
 <p>Para matrizes os índices funcionam da mesma forma porém como matrizs são bidimensionais, cada elemento contém dois índices, um para a linha e um para a coluna.
@@ -325,26 +325,26 @@ Enquanto que matrizes convertem todos os dados para o tipo <code>character</code
 <a class="sourceLine" id="cb34-7" title="7">)</a>
 <a class="sourceLine" id="cb34-8" title="8"></a>
 <a class="sourceLine" id="cb34-9" title="9">df</a></code></pre></div>
-<pre><code>   Idade Nome  Sexo
-1     28  Luc FALSE
-2     26  Jon FALSE
-3     25 Jean  TRUE
-4     27 Brie  TRUE
-5     23 Mary  TRUE
-6     29 Dave FALSE
-7     27  Lee FALSE
-8     23  Nat  TRUE
-9     22 Dani  TRUE
-10    23  Rob FALSE</code></pre>
+<pre><code>R&gt;    Idade Nome  Sexo
+R&gt; 1     28  Luc FALSE
+R&gt; 2     26  Jon FALSE
+R&gt; 3     24 Jean  TRUE
+R&gt; 4     20 Brie  TRUE
+R&gt; 5     23 Mary  TRUE
+R&gt; 6     21 Dave FALSE
+R&gt; 7     27  Lee FALSE
+R&gt; 8     28  Nat  TRUE
+R&gt; 9     25 Dani  TRUE
+R&gt; 10    23  Rob FALSE</code></pre>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1"><span class="co"># classe</span></a>
 <a class="sourceLine" id="cb36-2" title="2"><span class="kw">class</span>(df)</a></code></pre></div>
-<pre><code>[1] &quot;data.frame&quot;</code></pre>
+<pre><code>R&gt; [1] &quot;data.frame&quot;</code></pre>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1"><span class="co"># Estrutura</span></a>
 <a class="sourceLine" id="cb38-2" title="2"><span class="kw">str</span>(df)</a></code></pre></div>
-<pre><code>&#39;data.frame&#39;:   10 obs. of  3 variables:
- $ Idade: num  28 26 25 27 23 29 27 23 22 23
- $ Nome : Factor w/ 10 levels &quot;Brie&quot;,&quot;Dani&quot;,..: 7 5 4 1 8 3 6 9 2 10
- $ Sexo : logi  FALSE FALSE TRUE TRUE TRUE FALSE ...</code></pre>
+<pre><code>R&gt; &#39;data.frame&#39;:    10 obs. of  3 variables:
+R&gt;  $ Idade: num  28 26 24 20 23 21 27 28 25 23
+R&gt;  $ Nome : Factor w/ 10 levels &quot;Brie&quot;,&quot;Dani&quot;,..: 7 5 4 1 8 3 6 9 2 10
+R&gt;  $ Sexo : logi  FALSE FALSE TRUE TRUE TRUE FALSE ...</code></pre>
 <p>A limitação de dataframes é que todas as colunas devem conter o mesmo número de linhas mas em geral funcionam como tabelas.
 Este tipo de objeto que contém dados em um quadro é denominado de retângular.
 Dados no formato retângular são usados para construção de gráficos usando várias extensões do <code>R</code> e é o formato de dados que a maioria das pessoas está acostumado a trabalhar por causa do que já aprendeu em programas como o Excell.</p>
@@ -354,48 +354,48 @@ Dados no formato retângular são usados para construção de gráficos usando v
 <a class="sourceLine" id="cb40-2" title="2">df<span class="op">$</span>Peso &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">runif</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">min =</span> <span class="dv">55</span>, <span class="dt">max =</span> <span class="dv">100</span>))</a>
 <a class="sourceLine" id="cb40-3" title="3"></a>
 <a class="sourceLine" id="cb40-4" title="4">df</a></code></pre></div>
-<pre><code>   Idade Nome  Sexo     Peso
-1     28  Luc FALSE 76.84227
-2     26  Jon FALSE 81.15088
-3     25 Jean  TRUE 86.13529
-4     27 Brie  TRUE 77.35799
-5     23 Mary  TRUE 56.91704
-6     29 Dave FALSE 98.91925
-7     27  Lee FALSE 56.64458
-8     23  Nat  TRUE 85.23860
-9     22 Dani  TRUE 87.80380
-10    23  Rob FALSE 83.61137</code></pre>
+<pre><code>R&gt;    Idade Nome  Sexo     Peso
+R&gt; 1     28  Luc FALSE 59.71348
+R&gt; 2     26  Jon FALSE 84.17067
+R&gt; 3     24 Jean  TRUE 77.14851
+R&gt; 4     20 Brie  TRUE 71.46390
+R&gt; 5     23 Mary  TRUE 66.34630
+R&gt; 6     21 Dave FALSE 71.62747
+R&gt; 7     27  Lee FALSE 69.09290
+R&gt; 8     28  Nat  TRUE 84.38016
+R&gt; 9     25 Dani  TRUE 80.96595
+R&gt; 10    23  Rob FALSE 78.20946</code></pre>
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1"><span class="co"># cria variável altura</span></a>
 <a class="sourceLine" id="cb42-2" title="2">df<span class="op">$</span>Altura &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">runif</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">min =</span> <span class="dv">159</span>, <span class="dt">max =</span> <span class="dv">210</span>))</a>
 <a class="sourceLine" id="cb42-3" title="3"></a>
 <a class="sourceLine" id="cb42-4" title="4">df</a></code></pre></div>
-<pre><code>   Idade Nome  Sexo     Peso   Altura
-1     28  Luc FALSE 76.84227 193.7245
-2     26  Jon FALSE 81.15088 207.5649
-3     25 Jean  TRUE 86.13529 201.9661
-4     27 Brie  TRUE 77.35799 181.8499
-5     23 Mary  TRUE 56.91704 171.8034
-6     29 Dave FALSE 98.91925 202.2315
-7     27  Lee FALSE 56.64458 163.2273
-8     23  Nat  TRUE 85.23860 191.4949
-9     22 Dani  TRUE 87.80380 165.6812
-10    23  Rob FALSE 83.61137 179.7086</code></pre>
+<pre><code>R&gt;    Idade Nome  Sexo     Peso   Altura
+R&gt; 1     28  Luc FALSE 59.71348 167.0400
+R&gt; 2     26  Jon FALSE 84.17067 206.6004
+R&gt; 3     24 Jean  TRUE 77.14851 194.7465
+R&gt; 4     20 Brie  TRUE 71.46390 193.2164
+R&gt; 5     23 Mary  TRUE 66.34630 185.5033
+R&gt; 6     21 Dave FALSE 71.62747 180.5777
+R&gt; 7     27  Lee FALSE 69.09290 161.5062
+R&gt; 8     28  Nat  TRUE 84.38016 193.1603
+R&gt; 9     25 Dani  TRUE 80.96595 175.3843
+R&gt; 10    23  Rob FALSE 78.20946 178.4976</code></pre>
 <p>Agora que temos as variáveis <code>Altura</code> e <code>Peso</code> (geradas aleatoriamente pela função <code>ruinf()</code>) podemos calcular o IMC de cada indivíduo com uma nova coluna chamada <code>IMC</code>:</p>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1"><span class="co"># cria coluna IMC usando valores de outras colunas</span></a>
 <a class="sourceLine" id="cb44-2" title="2">df<span class="op">$</span>IMC &lt;-<span class="st"> </span>df<span class="op">$</span>Peso <span class="op">/</span><span class="st"> </span>(df<span class="op">$</span>Altura<span class="op">/</span><span class="dv">100</span>)<span class="op">^</span><span class="dv">2</span> <span class="co"># altura deve estar em metros</span></a>
 <a class="sourceLine" id="cb44-3" title="3"></a>
 <a class="sourceLine" id="cb44-4" title="4">df</a></code></pre></div>
-<pre><code>   Idade Nome  Sexo     Peso   Altura      IMC
-1     28  Luc FALSE 76.84227 193.7245 20.47534
-2     26  Jon FALSE 81.15088 207.5649 18.83587
-3     25 Jean  TRUE 86.13529 201.9661 21.11660
-4     27 Brie  TRUE 77.35799 181.8499 23.39263
-5     23 Mary  TRUE 56.91704 171.8034 19.28317
-6     29 Dave FALSE 98.91925 202.2315 24.18706
-7     27  Lee FALSE 56.64458 163.2273 21.26046
-8     23  Nat  TRUE 85.23860 191.4949 23.24458
-9     22 Dani  TRUE 87.80380 165.6812 31.98652
-10    23  Rob FALSE 83.61137 179.7086 25.88973</code></pre>
+<pre><code>R&gt;    Idade Nome  Sexo     Peso   Altura      IMC
+R&gt; 1     28  Luc FALSE 59.71348 167.0400 21.40086
+R&gt; 2     26  Jon FALSE 84.17067 206.6004 19.71961
+R&gt; 3     24 Jean  TRUE 77.14851 194.7465 20.34175
+R&gt; 4     20 Brie  TRUE 71.46390 193.2164 19.14250
+R&gt; 5     23 Mary  TRUE 66.34630 185.5033 19.28029
+R&gt; 6     21 Dave FALSE 71.62747 180.5777 21.96602
+R&gt; 7     27  Lee FALSE 69.09290 161.5062 26.48835
+R&gt; 8     28  Nat  TRUE 84.38016 193.1603 22.61542
+R&gt; 9     25 Dani  TRUE 80.96595 175.3843 26.32212
+R&gt; 10    23  Rob FALSE 78.20946 178.4976 24.54679</code></pre>
 <p>Para adicionar linhas é necessário ter outro dataframe com colunas com os mesmos nomes que o dataframe original e usar a função <code>rbind()</code>.
 Abaixo o exemplo:</p>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1">df2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
@@ -408,25 +408,25 @@ Abaixo o exemplo:</p>
 <a class="sourceLine" id="cb46-8" title="8">)</a>
 <a class="sourceLine" id="cb46-9" title="9"></a>
 <a class="sourceLine" id="cb46-10" title="10">df2</a></code></pre></div>
-<pre><code>  Idade Nome  Sexo     Peso Altura IMC
-1    34 Huey FALSE       NA    187  NA
-2    99   Zé FALSE 100.4999    176  NA</code></pre>
+<pre><code>R&gt;   Idade Nome  Sexo     Peso Altura IMC
+R&gt; 1    34 Huey FALSE       NA    187  NA
+R&gt; 2    99   Zé FALSE 100.4999    176  NA</code></pre>
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1">df_nova &lt;-<span class="st"> </span><span class="kw">rbind</span>(df, df2)</a>
 <a class="sourceLine" id="cb48-2" title="2"></a>
 <a class="sourceLine" id="cb48-3" title="3">df_nova</a></code></pre></div>
-<pre><code>   Idade Nome  Sexo      Peso   Altura      IMC
-1     28  Luc FALSE  76.84227 193.7245 20.47534
-2     26  Jon FALSE  81.15088 207.5649 18.83587
-3     25 Jean  TRUE  86.13529 201.9661 21.11660
-4     27 Brie  TRUE  77.35799 181.8499 23.39263
-5     23 Mary  TRUE  56.91704 171.8034 19.28317
-6     29 Dave FALSE  98.91925 202.2315 24.18706
-7     27  Lee FALSE  56.64458 163.2273 21.26046
-8     23  Nat  TRUE  85.23860 191.4949 23.24458
-9     22 Dani  TRUE  87.80380 165.6812 31.98652
-10    23  Rob FALSE  83.61137 179.7086 25.88973
-11    34 Huey FALSE        NA 187.0000       NA
-12    99   Zé FALSE 100.49993 176.0000       NA</code></pre>
+<pre><code>R&gt;    Idade Nome  Sexo      Peso   Altura      IMC
+R&gt; 1     28  Luc FALSE  59.71348 167.0400 21.40086
+R&gt; 2     26  Jon FALSE  84.17067 206.6004 19.71961
+R&gt; 3     24 Jean  TRUE  77.14851 194.7465 20.34175
+R&gt; 4     20 Brie  TRUE  71.46390 193.2164 19.14250
+R&gt; 5     23 Mary  TRUE  66.34630 185.5033 19.28029
+R&gt; 6     21 Dave FALSE  71.62747 180.5777 21.96602
+R&gt; 7     27  Lee FALSE  69.09290 161.5062 26.48835
+R&gt; 8     28  Nat  TRUE  84.38016 193.1603 22.61542
+R&gt; 9     25 Dani  TRUE  80.96595 175.3843 26.32212
+R&gt; 10    23  Rob FALSE  78.20946 178.4976 24.54679
+R&gt; 11    34 Huey FALSE        NA 187.0000       NA
+R&gt; 12    99   Zé FALSE 100.49993 176.0000       NA</code></pre>
 <div id="índices-de-dataframes" class="section level3">
 <h3><span class="header-section-number">2.4.1</span> Índices de dataframes</h3>
 <p>Assim como matrizes os índices funcionam da mesma forma para dataframes com a diferença de que como as colunas possuem nomes, é possível usá-los para selecionar colunas então <code>df[ ,"Idade"]</code> é a mesma coisa que <code>df[ ,1]</code>.</p>
@@ -467,45 +467,45 @@ Para explicar listas é mais fácil criar uma e deixar o leitor contemplar sua e
 <a class="sourceLine" id="cb50-19" title="19">)</a>
 <a class="sourceLine" id="cb50-20" title="20"></a>
 <a class="sourceLine" id="cb50-21" title="21">lista</a></code></pre></div>
-<pre><code>$vetor_A
-[1] 1.00 4.00 5.60 8.00 3.00 1.00 4.45
-
-$vetor_B
-[1] &quot;Frases com várias palavras&quot; &quot;texto&quot;                     
-
-$matriz_A
-     [,1] [,2]
-[1,]    0    5
-[2,]    2   10
-
-$matriz_B
-      [,1] [,2] [,3]
- [1,] &quot;a&quot;  &quot;b&quot;  &quot;c&quot; 
- [2,] &quot;d&quot;  &quot;e&quot;  &quot;f&quot; 
- [3,] &quot;g&quot;  &quot;h&quot;  &quot;i&quot; 
- [4,] &quot;j&quot;  &quot;k&quot;  &quot;l&quot; 
- [5,] &quot;m&quot;  &quot;n&quot;  &quot;o&quot; 
- [6,] &quot;p&quot;  &quot;q&quot;  &quot;r&quot; 
- [7,] &quot;s&quot;  &quot;t&quot;  &quot;u&quot; 
- [8,] &quot;v&quot;  &quot;w&quot;  &quot;x&quot; 
- [9,] &quot;y&quot;  &quot;z&quot;  &quot;a&quot; 
-
-$dataframe_A
-     Nome Sobrenome Nascimento
-1    Jack     Black 1969-08-28
-2 Natalie  Portmann 1981-06-09
-3  Margot    Robbie 1990-07-02</code></pre>
+<pre><code>R&gt; $vetor_A
+R&gt; [1] 1.00 4.00 5.60 8.00 3.00 1.00 4.45
+R&gt; 
+R&gt; $vetor_B
+R&gt; [1] &quot;Frases com várias palavras&quot; &quot;texto&quot;                     
+R&gt; 
+R&gt; $matriz_A
+R&gt;      [,1] [,2]
+R&gt; [1,]    0    5
+R&gt; [2,]    2   10
+R&gt; 
+R&gt; $matriz_B
+R&gt;       [,1] [,2] [,3]
+R&gt;  [1,] &quot;a&quot;  &quot;b&quot;  &quot;c&quot; 
+R&gt;  [2,] &quot;d&quot;  &quot;e&quot;  &quot;f&quot; 
+R&gt;  [3,] &quot;g&quot;  &quot;h&quot;  &quot;i&quot; 
+R&gt;  [4,] &quot;j&quot;  &quot;k&quot;  &quot;l&quot; 
+R&gt;  [5,] &quot;m&quot;  &quot;n&quot;  &quot;o&quot; 
+R&gt;  [6,] &quot;p&quot;  &quot;q&quot;  &quot;r&quot; 
+R&gt;  [7,] &quot;s&quot;  &quot;t&quot;  &quot;u&quot; 
+R&gt;  [8,] &quot;v&quot;  &quot;w&quot;  &quot;x&quot; 
+R&gt;  [9,] &quot;y&quot;  &quot;z&quot;  &quot;a&quot; 
+R&gt; 
+R&gt; $dataframe_A
+R&gt;      Nome Sobrenome Nascimento
+R&gt; 1    Jack     Black 1969-08-28
+R&gt; 2 Natalie  Portmann 1981-06-09
+R&gt; 3  Margot    Robbie 1990-07-02</code></pre>
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" title="1"><span class="co"># estrutura da lista</span></a>
 <a class="sourceLine" id="cb52-2" title="2"><span class="kw">str</span>(lista)</a></code></pre></div>
-<pre><code>List of 5
- $ vetor_A    : num [1:7] 1 4 5.6 8 3 1 4.45
- $ vetor_B    : chr [1:2] &quot;Frases com várias palavras&quot; &quot;texto&quot;
- $ matriz_A   : num [1:2, 1:2] 0 2 5 10
- $ matriz_B   : chr [1:9, 1:3] &quot;a&quot; &quot;d&quot; &quot;g&quot; &quot;j&quot; ...
- $ dataframe_A:&#39;data.frame&#39;:    3 obs. of  3 variables:
-  ..$ Nome      : Factor w/ 3 levels &quot;Jack&quot;,&quot;Margot&quot;,..: 1 3 2
-  ..$ Sobrenome : Factor w/ 3 levels &quot;Black&quot;,&quot;Portmann&quot;,..: 1 2 3
-  ..$ Nascimento: Date[1:3], format: &quot;1969-08-28&quot; &quot;1981-06-09&quot; &quot;1990-07-02&quot;</code></pre>
+<pre><code>R&gt; List of 5
+R&gt;  $ vetor_A    : num [1:7] 1 4 5.6 8 3 1 4.45
+R&gt;  $ vetor_B    : chr [1:2] &quot;Frases com várias palavras&quot; &quot;texto&quot;
+R&gt;  $ matriz_A   : num [1:2, 1:2] 0 2 5 10
+R&gt;  $ matriz_B   : chr [1:9, 1:3] &quot;a&quot; &quot;d&quot; &quot;g&quot; &quot;j&quot; ...
+R&gt;  $ dataframe_A:&#39;data.frame&#39;: 3 obs. of  3 variables:
+R&gt;   ..$ Nome      : Factor w/ 3 levels &quot;Jack&quot;,&quot;Margot&quot;,..: 1 3 2
+R&gt;   ..$ Sobrenome : Factor w/ 3 levels &quot;Black&quot;,&quot;Portmann&quot;,..: 1 2 3
+R&gt;   ..$ Nascimento: Date[1:3], format: &quot;1969-08-28&quot; &quot;1981-06-09&quot; &quot;1990-07-02&quot;</code></pre>
 <p>Nesta lista temos então, vetores com números, vetores com texto, matrix com números e matrix com texto e um dataframe com 3 variáveis.
 Bastante complexo.</p>
 <div id="índices-de-listas" class="section level3">
@@ -516,32 +516,32 @@ Como usar os índices?</p>
 Por exemplo:</p>
 <div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" title="1"><span class="co"># selecionando o vetor_A</span></a>
 <a class="sourceLine" id="cb54-2" title="2">lista<span class="op">$</span>vetor_A</a></code></pre></div>
-<pre><code>[1] 1.00 4.00 5.60 8.00 3.00 1.00 4.45</code></pre>
+<pre><code>R&gt; [1] 1.00 4.00 5.60 8.00 3.00 1.00 4.45</code></pre>
 <div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" title="1"><span class="co"># selecionando matriz_A</span></a>
 <a class="sourceLine" id="cb56-2" title="2">lista<span class="op">$</span>matriz_A</a></code></pre></div>
-<pre><code>     [,1] [,2]
-[1,]    0    5
-[2,]    2   10</code></pre>
+<pre><code>R&gt;      [,1] [,2]
+R&gt; [1,]    0    5
+R&gt; [2,]    2   10</code></pre>
 <div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" title="1"><span class="co"># selecionando dataframe_A</span></a>
 <a class="sourceLine" id="cb58-2" title="2">lista<span class="op">$</span>dataframe_A</a></code></pre></div>
-<pre><code>     Nome Sobrenome Nascimento
-1    Jack     Black 1969-08-28
-2 Natalie  Portmann 1981-06-09
-3  Margot    Robbie 1990-07-02</code></pre>
+<pre><code>R&gt;      Nome Sobrenome Nascimento
+R&gt; 1    Jack     Black 1969-08-28
+R&gt; 2 Natalie  Portmann 1981-06-09
+R&gt; 3  Margot    Robbie 1990-07-02</code></pre>
 <p>Mas como selecionar os elementos individuais do vetor_B, matriz_B e dataframe_A?
 Fácil, da mesma forma que se selecionada quando não estavam dentro da lista.</p>
 <div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" title="1"><span class="co"># elemento 3 do vetor_B</span></a>
 <a class="sourceLine" id="cb60-2" title="2">lista<span class="op">$</span>vetor_A[<span class="dv">3</span>]</a></code></pre></div>
-<pre><code>[1] 5.6</code></pre>
+<pre><code>R&gt; [1] 5.6</code></pre>
 <div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" title="1"><span class="co"># elemento na linha 6 e coluna 2 da matriz_B</span></a>
 <a class="sourceLine" id="cb62-2" title="2">lista<span class="op">$</span>matriz_B[<span class="dv">6</span>,<span class="dv">2</span>]</a></code></pre></div>
-<pre><code>[1] &quot;q&quot;</code></pre>
+<pre><code>R&gt; [1] &quot;q&quot;</code></pre>
 <div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1"><span class="co"># Nascimento da Margot Robbie</span></a>
 <a class="sourceLine" id="cb64-2" title="2">lista<span class="op">$</span>dataframe_A<span class="op">$</span>Nascimento[<span class="dv">3</span>]</a></code></pre></div>
-<pre><code>[1] &quot;1990-07-02&quot;</code></pre>
+<pre><code>R&gt; [1] &quot;1990-07-02&quot;</code></pre>
 <div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1"><span class="co"># ou</span></a>
 <a class="sourceLine" id="cb66-2" title="2">lista<span class="op">$</span>dataframe_A[<span class="dv">3</span>,<span class="dv">3</span>]</a></code></pre></div>
-<pre><code>[1] &quot;1990-07-02&quot;</code></pre>
+<pre><code>R&gt; [1] &quot;1990-07-02&quot;</code></pre>
 <p>Listas são tipos de objetos muito úteis para o <strong>armazenamento</strong> de dados de forma legível tanto para computadores quanto para humanos.
 Este tipo de estrutura de dados é similar aos usados em bancos de dados não-tabulares.
 Essa estrutura é similar a arquivos <a href="https://www.json.org/json-en.html"><code>JSON</code></a> e <a href="https://www.w3schools.com/python/python_dictionaries.asp"><code>dictionaries</code></a> da linguagem python.</p>
@@ -566,57 +566,57 @@ Essa estrutura é similar a arquivos <a href="https://www.json.org/json-en.html"
 <a class="sourceLine" id="cb68-18" title="18"><span class="st">)</span></a>
 <a class="sourceLine" id="cb68-19" title="19"></a>
 <a class="sourceLine" id="cb68-20" title="20"><span class="st">Polimero_A</span></a></code></pre></div>
-<pre><code>$Nome
-[1] &quot;Polímero A&quot;
-
-$Fabricacao
-[1] &quot;2019-09-24&quot;
-
-$Validade
-[1] &quot;3 meses&quot;
-
-$Curva_calibracao_HPLC
-   Conc_Padrao   Abs
-1        1e-02   0.0
-2        5e-02   0.0
-3        1e-01   0.0
-4        5e-01   0.1
-5        9e-01   0.3
-6        1e+00   0.9
-7        2e+00   2.0
-8        3e+00   4.0
-9        5e+00   6.0
-10       1e+01  29.0
-11       3e+01  39.0
-12       1e+02  50.0
-13       5e+02 100.0
-
-$Descricao
-$Descricao$Visual
-[1] &quot;pó amarelado&quot;
-
-$Descricao$Odor
-[1] &quot;sem odor&quot;
-
-$Descricao$Outros
-[1] &quot;higroscópico&quot;
-
-
-$Tratamento
-[1] &quot;Secagem por liofilização&quot;  &quot;Filtração com filtro n. 2&quot;
-
-$Estabilidade
-   Dia Separacao_fase FaseO_por_FaseA
-1    1          FALSE             0.0
-2    2          FALSE             0.0
-3    3          FALSE             0.0
-4    4          FALSE             0.0
-5    5          FALSE             0.0
-6    6          FALSE             0.0
-7    7          FALSE             0.0
-8    8           TRUE             0.4
-9    9           TRUE             0.6
-10  10           TRUE             0.9</code></pre>
+<pre><code>R&gt; $Nome
+R&gt; [1] &quot;Polímero A&quot;
+R&gt; 
+R&gt; $Fabricacao
+R&gt; [1] &quot;2019-09-24&quot;
+R&gt; 
+R&gt; $Validade
+R&gt; [1] &quot;3 meses&quot;
+R&gt; 
+R&gt; $Curva_calibracao_HPLC
+R&gt;    Conc_Padrao   Abs
+R&gt; 1        1e-02   0.0
+R&gt; 2        5e-02   0.0
+R&gt; 3        1e-01   0.0
+R&gt; 4        5e-01   0.1
+R&gt; 5        9e-01   0.3
+R&gt; 6        1e+00   0.9
+R&gt; 7        2e+00   2.0
+R&gt; 8        3e+00   4.0
+R&gt; 9        5e+00   6.0
+R&gt; 10       1e+01  29.0
+R&gt; 11       3e+01  39.0
+R&gt; 12       1e+02  50.0
+R&gt; 13       5e+02 100.0
+R&gt; 
+R&gt; $Descricao
+R&gt; $Descricao$Visual
+R&gt; [1] &quot;pó amarelado&quot;
+R&gt; 
+R&gt; $Descricao$Odor
+R&gt; [1] &quot;sem odor&quot;
+R&gt; 
+R&gt; $Descricao$Outros
+R&gt; [1] &quot;higroscópico&quot;
+R&gt; 
+R&gt; 
+R&gt; $Tratamento
+R&gt; [1] &quot;Secagem por liofilização&quot;  &quot;Filtração com filtro n. 2&quot;
+R&gt; 
+R&gt; $Estabilidade
+R&gt;    Dia Separacao_fase FaseO_por_FaseA
+R&gt; 1    1          FALSE             0.0
+R&gt; 2    2          FALSE             0.0
+R&gt; 3    3          FALSE             0.0
+R&gt; 4    4          FALSE             0.0
+R&gt; 5    5          FALSE             0.0
+R&gt; 6    6          FALSE             0.0
+R&gt; 7    7          FALSE             0.0
+R&gt; 8    8           TRUE             0.4
+R&gt; 9    9           TRUE             0.6
+R&gt; 10  10           TRUE             0.9</code></pre>
 <p>Este objeto contém todas as informações sobre a amostra desejadas e para acessar essas informações é apenas necessário usar os índices corretos.
 Para criar objetos <code>JSON</code> a partir de objetos em <code>R</code> a forma mais prática é usando o pacote <a href="https://github.com/jeroen/jsonlite"><code>jsonlite</code></a>.</p>
 <p>Assim se encerra a aula de tipos de objetos e índices.

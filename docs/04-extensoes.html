@@ -208,7 +208,7 @@ Extensões são pacotes de funções escritas por outras pessoas cuja finalidade
 <a class="sourceLine" id="cb136-5" title="5"></a>
 <a class="sourceLine" id="cb136-6" title="6"><span class="co"># Usando a função </span></a>
 <a class="sourceLine" id="cb136-7" title="7"><span class="kw">nome_idade</span>(<span class="st">&quot;Gilson&quot;</span>, <span class="dv">40</span>)</a></code></pre></div>
-<pre><code>[1] &quot;Meu nome é Gilson e tenho 40 anos de idade&quot;</code></pre>
+<pre><code>R&gt; [1] &quot;Meu nome é Gilson e tenho 40 anos de idade&quot;</code></pre>
 <p>Neste caso eu escrevi esta função simples para exemplificar, mas os pacotes podem ter muitas funções muito mais complexas que sejam mais difíceis de escrever.</p>
 <div id="tidyverse" class="section level2">
 <h2><span class="header-section-number">4.1</span> <code>tidyverse</code></h2>
@@ -229,19 +229,19 @@ Existem <em>cheat sheets</em> que são as “colas” com as funções existente
 As funções mais importantes neste pacote são a <code>pivot_longer()</code>, que substituiu <code>gather()</code> e <code>pivot_wider()</code> que substituiu <code>spread()</code>.
 Estas funções servem para transformar os dados de um formato “largo” para “longo” e vice-versa.
 Explicando visualmente é mais fácil de entender, portanto de acordo com o exemplo abaixo:</p>
-<pre><code># A tibble: 10 x 5
-   Pop.  `2009` `2010` `2011` `2012`
-   &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
- 1 a          1      3     54    536
- 2 b          3      5      3     63
- 3 c          5      2      6      5
- 4 d          7      6      2      2
- 5 e          3      3      4      3
- 6 f         67      2      7      4
- 7 g          3      5      3      5
- 8 h          7      2      5      6
- 9 i          8     64      7      7
-10 j          4      6      8      7</code></pre>
+<pre><code>R&gt; # A tibble: 10 x 5
+R&gt;    Pop.  `2009` `2010` `2011` `2012`
+R&gt;    &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+R&gt;  1 a          1      3     54    536
+R&gt;  2 b          3      5      3     63
+R&gt;  3 c          5      2      6      5
+R&gt;  4 d          7      6      2      2
+R&gt;  5 e          3      3      4      3
+R&gt;  6 f         67      2      7      4
+R&gt;  7 g          3      5      3      5
+R&gt;  8 h          7      2      5      6
+R&gt;  9 i          8     64      7      7
+R&gt; 10 j          4      6      8      7</code></pre>
 <p>Aqui temos uma tabela no formado “largo”, onde tenho uma coluna por ano.
 Não há nada de errado com essa formatação, mas usando as funções de base do <code>R</code> e as funções do conjunto <code>tidyverse</code> é mais fácil que transformemos esta tabela para o formato “longo” como no exemplo abaixo.</p>
 <div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" title="1">long &lt;-<span class="st"> </span>wide <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -252,20 +252,20 @@ Não há nada de errado com essa formatação, mas usando as funções de base d
 <a class="sourceLine" id="cb139-6" title="6"></a>
 <a class="sourceLine" id="cb139-7" title="7"></a>
 <a class="sourceLine" id="cb139-8" title="8">long</a></code></pre></div>
-<pre><code># A tibble: 40 x 3
-   Pop.  Ano   Valor
-   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;
- 1 a     2009      1
- 2 a     2010      3
- 3 a     2011     54
- 4 a     2012    536
- 5 b     2009      3
- 6 b     2010      5
- 7 b     2011      3
- 8 b     2012     63
- 9 c     2009      5
-10 c     2010      2
-# ... with 30 more rows</code></pre>
+<pre><code>R&gt; # A tibble: 40 x 3
+R&gt;    Pop.  Ano   Valor
+R&gt;    &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;
+R&gt;  1 a     2009      1
+R&gt;  2 a     2010      3
+R&gt;  3 a     2011     54
+R&gt;  4 a     2012    536
+R&gt;  5 b     2009      3
+R&gt;  6 b     2010      5
+R&gt;  7 b     2011      3
+R&gt;  8 b     2012     63
+R&gt;  9 c     2009      5
+R&gt; 10 c     2010      2
+R&gt; # ... with 30 more rows</code></pre>
 <p>O pacote <code>tidyr</code> contém outras funções para separar ou unir valores em colunas.
 Você pode achar mais informações sobre as funçõs no <a href="https://tidyr.tidyverse.org/reference/index.html">site</a> do pacote.</p>
 </div>
@@ -296,76 +296,76 @@ A diferença é que alguns <code>tibbles</code> respondem de forma diferente à 
 <div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" title="1"><span class="co"># Imprimindo como tibble</span></a>
 <a class="sourceLine" id="cb141-2" title="2"></a>
 <a class="sourceLine" id="cb141-3" title="3"><span class="kw">print</span>(long)</a></code></pre></div>
-<pre><code># A tibble: 40 x 3
-   Pop.  Ano   Valor
-   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;
- 1 a     2009      1
- 2 a     2010      3
- 3 a     2011     54
- 4 a     2012    536
- 5 b     2009      3
- 6 b     2010      5
- 7 b     2011      3
- 8 b     2012     63
- 9 c     2009      5
-10 c     2010      2
-# ... with 30 more rows</code></pre>
+<pre><code>R&gt; # A tibble: 40 x 3
+R&gt;    Pop.  Ano   Valor
+R&gt;    &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;
+R&gt;  1 a     2009      1
+R&gt;  2 a     2010      3
+R&gt;  3 a     2011     54
+R&gt;  4 a     2012    536
+R&gt;  5 b     2009      3
+R&gt;  6 b     2010      5
+R&gt;  7 b     2011      3
+R&gt;  8 b     2012     63
+R&gt;  9 c     2009      5
+R&gt; 10 c     2010      2
+R&gt; # ... with 30 more rows</code></pre>
 <div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" title="1"><span class="co"># Imprimindo como dataframe</span></a>
 <a class="sourceLine" id="cb143-2" title="2"></a>
 <a class="sourceLine" id="cb143-3" title="3"><span class="kw">print</span>(<span class="kw">as.data.frame</span>(long)) </a></code></pre></div>
-<pre><code>   Pop.  Ano Valor
-1     a 2009     1
-2     a 2010     3
-3     a 2011    54
-4     a 2012   536
-5     b 2009     3
-6     b 2010     5
-7     b 2011     3
-8     b 2012    63
-9     c 2009     5
-10    c 2010     2
-11    c 2011     6
-12    c 2012     5
-13    d 2009     7
-14    d 2010     6
-15    d 2011     2
-16    d 2012     2
-17    e 2009     3
-18    e 2010     3
-19    e 2011     4
-20    e 2012     3
-21    f 2009    67
-22    f 2010     2
-23    f 2011     7
-24    f 2012     4
-25    g 2009     3
-26    g 2010     5
-27    g 2011     3
-28    g 2012     5
-29    h 2009     7
-30    h 2010     2
-31    h 2011     5
-32    h 2012     6
-33    i 2009     8
-34    i 2010    64
-35    i 2011     7
-36    i 2012     7
-37    j 2009     4
-38    j 2010     6
-39    j 2011     8
-40    j 2012     7</code></pre>
+<pre><code>R&gt;    Pop.  Ano Valor
+R&gt; 1     a 2009     1
+R&gt; 2     a 2010     3
+R&gt; 3     a 2011    54
+R&gt; 4     a 2012   536
+R&gt; 5     b 2009     3
+R&gt; 6     b 2010     5
+R&gt; 7     b 2011     3
+R&gt; 8     b 2012    63
+R&gt; 9     c 2009     5
+R&gt; 10    c 2010     2
+R&gt; 11    c 2011     6
+R&gt; 12    c 2012     5
+R&gt; 13    d 2009     7
+R&gt; 14    d 2010     6
+R&gt; 15    d 2011     2
+R&gt; 16    d 2012     2
+R&gt; 17    e 2009     3
+R&gt; 18    e 2010     3
+R&gt; 19    e 2011     4
+R&gt; 20    e 2012     3
+R&gt; 21    f 2009    67
+R&gt; 22    f 2010     2
+R&gt; 23    f 2011     7
+R&gt; 24    f 2012     4
+R&gt; 25    g 2009     3
+R&gt; 26    g 2010     5
+R&gt; 27    g 2011     3
+R&gt; 28    g 2012     5
+R&gt; 29    h 2009     7
+R&gt; 30    h 2010     2
+R&gt; 31    h 2011     5
+R&gt; 32    h 2012     6
+R&gt; 33    i 2009     8
+R&gt; 34    i 2010    64
+R&gt; 35    i 2011     7
+R&gt; 36    i 2012     7
+R&gt; 37    j 2009     4
+R&gt; 38    j 2010     6
+R&gt; 39    j 2011     8
+R&gt; 40    j 2012     7</code></pre>
 <p>Este pacote também permite que sejam criadas tabelas usando as funções <code>tibble()</code>, que funciona como <code>data.frame()</code> e <code>tribble()</code> que permite criar tabelas usando uma formatação mais intuitiva.</p>
 <div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" title="1"><span class="co"># Função tibble</span></a>
 <a class="sourceLine" id="cb145-2" title="2"></a>
 <a class="sourceLine" id="cb145-3" title="3"><span class="kw">tibble</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">y =</span> <span class="dv">1</span>, <span class="dt">z =</span> x <span class="op">^</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>y)</a></code></pre></div>
-<pre><code># A tibble: 5 x 3
-      x     y     z
-  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
-1     1     1     2
-2     2     1     5
-3     3     1    10
-4     4     1    17
-5     5     1    26</code></pre>
+<pre><code>R&gt; # A tibble: 5 x 3
+R&gt;       x     y     z
+R&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
+R&gt; 1     1     1     2
+R&gt; 2     2     1     5
+R&gt; 3     3     1    10
+R&gt; 4     4     1    17
+R&gt; 5     5     1    26</code></pre>
 <div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" title="1"><span class="co"># Função tribble</span></a>
 <a class="sourceLine" id="cb147-2" title="2"></a>
 <a class="sourceLine" id="cb147-3" title="3"><span class="kw">tribble</span>(</a>
@@ -373,11 +373,11 @@ A diferença é que alguns <code>tibbles</code> respondem de forma diferente à 
 <a class="sourceLine" id="cb147-5" title="5">  <span class="st">&quot;a&quot;</span>, <span class="dv">2</span>,  <span class="fl">3.6</span>,</a>
 <a class="sourceLine" id="cb147-6" title="6">  <span class="st">&quot;b&quot;</span>, <span class="dv">1</span>,  <span class="fl">8.5</span></a>
 <a class="sourceLine" id="cb147-7" title="7">)</a></code></pre></div>
-<pre><code># A tibble: 2 x 3
-  x         y     z
-  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
-1 a         2   3.6
-2 b         1   8.5</code></pre>
+<pre><code>R&gt; # A tibble: 2 x 3
+R&gt;   x         y     z
+R&gt;   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
+R&gt; 1 a         2   3.6
+R&gt; 2 b         1   8.5</code></pre>
 </div>
 <div id="purrr" class="section level3">
 <h3><span class="header-section-number">4.1.6</span> <code>purrr</code></h3>

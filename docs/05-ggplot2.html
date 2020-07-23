@@ -352,14 +352,14 @@ Estes serão considerados abaixo.
 Para os exemplos a seguir será usado o <em>dataset</em> <code>Oxboys</code> do pacote <code>nlme</code>, que contém a altura e idade de 26 homens registrado em nove ocasiões diferentes.</p>
 <div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb159-1" title="1"><span class="kw">data</span>(Oxboys, <span class="dt">package =</span> <span class="st">&quot;nlme&quot;</span>) <span class="co"># carrega dados Oxboys do pacote nlme</span></a>
 <a class="sourceLine" id="cb159-2" title="2"><span class="kw">head</span>(Oxboys) <span class="co"># mostra as 6 primeiras linhas de Oxboys</span></a></code></pre></div>
-<pre><code>Grouped Data: height ~ age | Subject
-  Subject     age height Occasion
-1       1 -1.0000  140.5        1
-2       1 -0.7479  143.4        2
-3       1 -0.4630  144.8        3
-4       1 -0.1643  147.1        4
-5       1 -0.0027  147.7        5
-6       1  0.2466  150.2        6</code></pre>
+<pre><code>R&gt; Grouped Data: height ~ age | Subject
+R&gt;   Subject     age height Occasion
+R&gt; 1       1 -1.0000  140.5        1
+R&gt; 2       1 -0.7479  143.4        2
+R&gt; 3       1 -0.4630  144.8        3
+R&gt; 4       1 -0.1643  147.1        4
+R&gt; 5       1 -0.0027  147.7        5
+R&gt; 6       1  0.2466  150.2        6</code></pre>
 <div id="grupos-múltiplos-uma-estética" class="section level4">
 <h4><span class="header-section-number">5.5.2.1</span> Grupos múltiplos, uma estética</h4>
 <p>Em várias situações é necessário separar os dados em grupos mas com a mesma estética.
@@ -402,8 +402,8 @@ Em uma camada pode mostrar valores não grupados enquanto que outra camada mostr
 <a class="sourceLine" id="cb163-9" title="9"><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Grupo aplicado na </span><span class="ch">\n</span><span class="st">camada line&quot;</span>)</a>
 <a class="sourceLine" id="cb163-10" title="10"></a>
 <a class="sourceLine" id="cb163-11" title="11">p1 <span class="op">+</span><span class="st"> </span>p2</a></code></pre></div>
-<pre><code>`geom_smooth()` using formula &#39;y ~ x&#39;
-`geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<pre><code>R&gt; `geom_smooth()` using formula &#39;y ~ x&#39;
+R&gt; `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-28-1.png" width="2100" style="display: block; margin: auto;" /></p>
 <p>No lado direito, como o agrupamento foi feito na camada do <code>geom_line()</code> apenas estes dados estão agrupados enquanto que na camada <code>geom_smooth()</code> não foi feito nenhum agrupamento portanto a linha de regressão renderizada é em função de todos os dados.</p>
 </div>
@@ -554,7 +554,7 @@ Para distribuição em uma dimensão o geom mais importante é o <code>geom_hist
 <a class="sourceLine" id="cb174-8" title="8"><span class="st">    </span><span class="kw">xlim</span>(<span class="kw">c</span>(<span class="dv">55</span>,<span class="dv">70</span>)) <span class="co"># definindo limites no eixo x</span></a>
 <a class="sourceLine" id="cb174-9" title="9"></a>
 <a class="sourceLine" id="cb174-10" title="10">p1 <span class="op">+</span><span class="st"> </span>p2</a></code></pre></div>
-<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<pre><code>R&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-38-1.png" width="2100" style="display: block; margin: auto;" /></p>
 <p>Histograma é uma vizualização que mostra a frequência de valores dentro de um intervalo especificado na forma de retângulo.
 A base do retângulo representa o intervalo dos dados (por exemplo 5–10 anos) e a altura é o número de indivíduos que se adequam a esta faixa de idade.
@@ -637,7 +637,7 @@ Abaixo exemplos dos 3:</p>
 <a class="sourceLine" id="cb178-11" title="11"><span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;geom_dotplot()&quot;</span>)</a>
 <a class="sourceLine" id="cb178-12" title="12"></a>
 <a class="sourceLine" id="cb178-13" title="13">p1 <span class="op">+</span><span class="st"> </span>p2 <span class="op">+</span><span class="st"> </span>p3</a></code></pre></div>
-<pre><code>`stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<pre><code>R&gt; `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-39-1.png" width="2100" style="display: block; margin: auto;" /></p>
 </div>
 <div id="anotações" class="section level3">
