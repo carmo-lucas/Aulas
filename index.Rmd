@@ -11,7 +11,8 @@ output:
       toolbar:
         position: static
     lib_dir: assets
-    split_by: section
+    split_by: rmd
+    split_bib: FALSE
 bibliography: ["library.bib","packages.bib"]
 biblio-style: "apalike"
 
@@ -23,10 +24,10 @@ biblio-style: "apalike"
 library(knitr)
 library(tidyverse)
 library(patchwork)
+library(tidyquant)
 
 knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'tidyverse', 'ggplot2'
-), 'packages.bib')
+  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'tidyverse', 'ggplot2', "gganimate", "tidyquant", "patchwork"), 'packages.bib')
 
 knitr::opts_chunk$set(error = FALSE, warning = FALSE, fig.align = "center", tidy = FALSE, comment = "",
                       dpi = 300, cache = FALSE, fig.show = "hold", fig.height = 3)

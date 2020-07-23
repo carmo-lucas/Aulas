@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Aula 2 Tipos de objetos | Aulas de R</title>
+  <meta name="description" content="Aula 2 Tipos de objetos | Aulas de R" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Aula 2 Tipos de objetos | Aulas de R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Aula 2 Tipos de objetos | Aulas de R" />
+  
+  
+  
+
+<meta name="author" content="Lucas Chagas Lima do Carmo" />
+
+
+<meta name="date" content="2020-07-22" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="01-tipos-de-dados.html"/>
+<link rel="next" href="03-operadores.html"/>
+<script src="assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introdução</a></li>
+<li class="chapter" data-level="1" data-path="01-tipos-de-dados.html"><a href="01-tipos-de-dados.html"><i class="fa fa-check"></i><b>1</b> Tipos de Dados</a></li>
+<li class="chapter" data-level="2" data-path="02-tipos-de-objetos.html"><a href="02-tipos-de-objetos.html"><i class="fa fa-check"></i><b>2</b> Tipos de objetos</a><ul>
+<li class="chapter" data-level="2.1" data-path="02-tipos-de-objetos.html"><a href="02-tipos-de-objetos.html#vetores"><i class="fa fa-check"></i><b>2.1</b> Vetores</a></li>
+<li class="chapter" data-level="2.2" data-path="02-tipos-de-objetos.html"><a href="02-tipos-de-objetos.html#matrizes"><i class="fa fa-check"></i><b>2.2</b> Matrizes</a></li>
+<li class="chapter" data-level="2.3" data-path="02-tipos-de-objetos.html"><a href="02-tipos-de-objetos.html#índices"><i class="fa fa-check"></i><b>2.3</b> Índices</a></li>
+<li class="chapter" data-level="2.4" data-path="02-tipos-de-objetos.html"><a href="02-tipos-de-objetos.html#dataframes"><i class="fa fa-check"></i><b>2.4</b> Dataframes</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="02-tipos-de-objetos.html"><a href="02-tipos-de-objetos.html#índices-de-dataframes"><i class="fa fa-check"></i><b>2.4.1</b> Índices de dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="02-tipos-de-objetos.html"><a href="02-tipos-de-objetos.html#listas"><i class="fa fa-check"></i><b>2.5</b> Listas</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="02-tipos-de-objetos.html"><a href="02-tipos-de-objetos.html#índices-de-listas"><i class="fa fa-check"></i><b>2.5.1</b> Índices de listas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="03-operadores.html"><a href="03-operadores.html"><i class="fa fa-check"></i><b>3</b> Operadores</a><ul>
+<li class="chapter" data-level="3.1" data-path="03-operadores.html"><a href="03-operadores.html#operadores-aritméticos"><i class="fa fa-check"></i><b>3.1</b> Operadores aritméticos</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="03-operadores.html"><a href="03-operadores.html#exemplos"><i class="fa fa-check"></i><b>3.1.1</b> Exemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="03-operadores.html"><a href="03-operadores.html#operadores-lógicos"><i class="fa fa-check"></i><b>3.2</b> Operadores Lógicos</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="03-operadores.html"><a href="03-operadores.html#exemplos-1"><i class="fa fa-check"></i><b>3.2.1</b> Exemplos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="04-extensoes.html"><a href="04-extensoes.html"><i class="fa fa-check"></i><b>4</b> Extensões</a><ul>
+<li class="chapter" data-level="4.1" data-path="04-extensoes.html"><a href="04-extensoes.html#tidyverse"><i class="fa fa-check"></i><b>4.1</b> <code>tidyverse</code></a><ul>
+<li class="chapter" data-level="4.1.1" data-path="04-extensoes.html"><a href="04-extensoes.html#dplyr"><i class="fa fa-check"></i><b>4.1.1</b> <code>dplyr</code></a></li>
+<li class="chapter" data-level="4.1.2" data-path="04-extensoes.html"><a href="04-extensoes.html#tidyr"><i class="fa fa-check"></i><b>4.1.2</b> <code>tidyr</code></a></li>
+<li class="chapter" data-level="4.1.3" data-path="04-extensoes.html"><a href="04-extensoes.html#readr"><i class="fa fa-check"></i><b>4.1.3</b> <code>readr</code></a></li>
+<li class="chapter" data-level="4.1.4" data-path="04-extensoes.html"><a href="04-extensoes.html#stringr"><i class="fa fa-check"></i><b>4.1.4</b> <code>stringr</code></a></li>
+<li class="chapter" data-level="4.1.5" data-path="04-extensoes.html"><a href="04-extensoes.html#tibble"><i class="fa fa-check"></i><b>4.1.5</b> <code>tibble</code></a></li>
+<li class="chapter" data-level="4.1.6" data-path="04-extensoes.html"><a href="04-extensoes.html#purrr"><i class="fa fa-check"></i><b>4.1.6</b> <code>purrr</code></a></li>
+<li class="chapter" data-level="4.1.7" data-path="04-extensoes.html"><a href="04-extensoes.html#forcats"><i class="fa fa-check"></i><b>4.1.7</b> <code>forcats</code></a></li>
+<li class="chapter" data-level="4.1.8" data-path="04-extensoes.html"><a href="04-extensoes.html#magrittr"><i class="fa fa-check"></i><b>4.1.8</b> <code>magrittr</code></a></li>
+<li class="chapter" data-level="4.1.9" data-path="04-extensoes.html"><a href="04-extensoes.html#ggplot2"><i class="fa fa-check"></i><b>4.1.9</b> <code>ggplot2</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="05-ggplot2.html"><a href="05-ggplot2.html"><i class="fa fa-check"></i><b>5</b> <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="5.1" data-path="05-ggplot2.html"><a href="05-ggplot2.html#gramática-de-gráficos"><i class="fa fa-check"></i><b>5.1</b> Gramática de Gráficos</a></li>
+<li class="chapter" data-level="5.2" data-path="05-ggplot2.html"><a href="05-ggplot2.html#instalação"><i class="fa fa-check"></i><b>5.2</b> Instalação</a></li>
+<li class="chapter" data-level="5.3" data-path="05-ggplot2.html"><a href="05-ggplot2.html#componentes-principais-dos-gráficos"><i class="fa fa-check"></i><b>5.3</b> Componentes principais dos gráficos</a></li>
+<li class="chapter" data-level="5.4" data-path="05-ggplot2.html"><a href="05-ggplot2.html#cores-tamanhos-formas-e-outros-atributos-estéticos"><i class="fa fa-check"></i><b>5.4</b> Cores, tamanhos, formas e outros atributos estéticos</a></li>
+<li class="chapter" data-level="5.5" data-path="05-ggplot2.html"><a href="05-ggplot2.html#geoms"><i class="fa fa-check"></i><b>5.5</b> Geoms</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="05-ggplot2.html"><a href="05-ggplot2.html#geoms-individuais"><i class="fa fa-check"></i><b>5.5.1</b> Geoms individuais</a></li>
+<li class="chapter" data-level="5.5.2" data-path="05-ggplot2.html"><a href="05-ggplot2.html#geoms-coletivos"><i class="fa fa-check"></i><b>5.5.2</b> Geoms coletivos</a></li>
+<li class="chapter" data-level="5.5.3" data-path="05-ggplot2.html"><a href="05-ggplot2.html#resumos-estatísticos"><i class="fa fa-check"></i><b>5.5.3</b> Resumos estatísticos</a></li>
+<li class="chapter" data-level="5.5.4" data-path="05-ggplot2.html"><a href="05-ggplot2.html#plotando-distribuições"><i class="fa fa-check"></i><b>5.5.4</b> Plotando distribuições</a></li>
+<li class="chapter" data-level="5.5.5" data-path="05-ggplot2.html"><a href="05-ggplot2.html#anotações"><i class="fa fa-check"></i><b>5.5.5</b> Anotações</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="05-ggplot2.html"><a href="05-ggplot2.html#legendas"><i class="fa fa-check"></i><b>5.6</b> Legendas</a></li>
+<li class="chapter" data-level="5.7" data-path="05-ggplot2.html"><a href="05-ggplot2.html#escalas"><i class="fa fa-check"></i><b>5.7</b> Escalas</a></li>
+<li class="chapter" data-level="5.8" data-path="05-ggplot2.html"><a href="05-ggplot2.html#facets"><i class="fa fa-check"></i><b>5.8</b> Facets</a></li>
+<li class="chapter" data-level="5.9" data-path="05-ggplot2.html"><a href="05-ggplot2.html#temas"><i class="fa fa-check"></i><b>5.9</b> Temas</a></li>
+<li class="chapter" data-level="5.10" data-path="05-ggplot2.html"><a href="05-ggplot2.html#organizando-os-plots"><i class="fa fa-check"></i><b>5.10</b> Organizando os <em>plots</em></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="99-references.html"><a href="99-references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Aulas de R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="tipos-de-objetos" class="section level1">
+<h1><span class="header-section-number">Aula 2</span> Tipos de objetos</h1>
+<p>Na aula anterior foi discutido alguns tipos de dados que existem no <code>R</code> e como criar alguns objetos simples como vetores.
+Dados numéricos, lógicos e de texto podem ser usados para diversos objetivos porém é necessário que estejam devidamente organizados para facilitar operações.
+Agora iremos explorar como que estes dados podem estar organizados dentro dos objetos e quais são os tipos de obetos mais comuns no <code>R</code>.</p>
+<div id="vetores" class="section level2">
+<h2><span class="header-section-number">2.1</span> Vetores</h2>
+<p>Vetores são os objetos mais comuns no <code>R</code>.
+Vetores suportam todos os tipos de dados do <code>R</code> sendo eles, decimais, inteiros, lógicos, complexos e texto (caracter).
+Um vetor é um tipo de objeto unidimensional que pode conter apenas um tipo de dado por exemplo:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">vetor &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">1.45</span>, <span class="dv">4</span>, 1L, <span class="st">&quot;a&quot;</span>, <span class="st">&quot;99&quot;</span>, <span class="ot">TRUE</span>, 2i<span class="op">+</span><span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb10-2" title="2"></a>
+<a class="sourceLine" id="cb10-3" title="3"><span class="kw">print</span>(vetor)</a></code></pre></div>
+<pre><code>[1] &quot;1.45&quot; &quot;4&quot;    &quot;1&quot;    &quot;a&quot;    &quot;99&quot;   &quot;TRUE&quot; &quot;4+2i&quot;</code></pre>
+<p>Por mais que se especifique números com decimal e números inteiros (representado por <code>1L</code>), o vetor deve conter apenas um tipo de dado.
+Neste caso, todos os valores são convertidos para texto (<code>character</code>) porque todos os elementos do vetor podem ser convertidos, relativamente sem problema, para este tipo de dado.</p>
+<p>Pode-se verificar a classe deste vetor usando a função <code>class()</code> e observa-se que o resultado deve ser <code>character</code>.</p>
+<p>Vetores podem conter apenas um elemento ou podem ter número de elementos tão grande que extrapole a configuração de memória do seu computador.</p>
+<p>Pode-se fazer operações aritméticas entre vetores usando os operadores descritos no capítulo <a href="03-operadores.html#operadores">3</a> e sua utilidade pode ser variada mas aqui será explicado as regras gerais das operações entre vetores.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="co"># Criando vetores</span></a>
+<a class="sourceLine" id="cb12-2" title="2"></a>
+<a class="sourceLine" id="cb12-3" title="3">v1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">407</span>, <span class="dv">1</span>, <span class="dv">5</span>) </a>
+<a class="sourceLine" id="cb12-4" title="4">v2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">9</span>, <span class="dv">12</span>, <span class="dv">23</span>, <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb12-5" title="5"></a>
+<a class="sourceLine" id="cb12-6" title="6"><span class="co"># Adição de vetores</span></a>
+<a class="sourceLine" id="cb12-7" title="7">v1 <span class="op">+</span><span class="st"> </span>v2</a></code></pre></div>
+<pre><code>[1]   9 419  24   7</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="co"># Subtração de vetores</span></a>
+<a class="sourceLine" id="cb14-2" title="2">v1 <span class="op">-</span><span class="st"> </span>v2</a></code></pre></div>
+<pre><code>[1]  -9 395 -22   3</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="co"># Multiplicação de vetores</span></a>
+<a class="sourceLine" id="cb16-2" title="2">v1 <span class="op">*</span><span class="st"> </span>v2</a></code></pre></div>
+<pre><code>[1]    0 4884   23   10</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="co"># Divisão de vetores</span></a>
+<a class="sourceLine" id="cb18-2" title="2">v1 <span class="op">/</span><span class="st"> </span>v2</a></code></pre></div>
+<pre><code>[1]  0.00000000 33.91666667  0.04347826  2.50000000</code></pre>
+<p>Em todos estes exemplos os vetores possuem o mesmo número de elementos, porém quando vetores possuem diferentes números de elementos, para operações aritméticas o vetor com menor número de elementos pode sofrer reciclagem de alguns elementos para que a operação seja completa.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1">v3 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="fl">5.6</span>)</a>
+<a class="sourceLine" id="cb20-2" title="2"></a>
+<a class="sourceLine" id="cb20-3" title="3"><span class="co"># neste caso v3 age como se fosse c(4, 5.6, 4, 5.6)</span></a>
+<a class="sourceLine" id="cb20-4" title="4">v1 <span class="op">+</span><span class="st"> </span>v3</a></code></pre></div>
+<pre><code>[1]   4.0 412.6   5.0  10.6</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">v1 <span class="op">*</span><span class="st"> </span>v3</a></code></pre></div>
+<pre><code>[1]    0.0 2279.2    4.0   28.0</code></pre>
+<p>Para organizar os elementos de vetores pode ser usado a função <code>sort()</code> que rearranja os elementos de um vetor na ordem crescente ou descrescente.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1">v1</a></code></pre></div>
+<pre><code>[1]   0 407   1   5</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1"><span class="co"># Crescente</span></a>
+<a class="sourceLine" id="cb26-2" title="2"><span class="kw">sort</span>(v1)</a></code></pre></div>
+<pre><code>[1]   0   1   5 407</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1"><span class="co"># Decrescente</span></a>
+<a class="sourceLine" id="cb28-2" title="2"><span class="kw">sort</span>(v1, <span class="dt">decreasing =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>[1] 407   5   1   0</code></pre>
+</div>
+<div id="matrizes" class="section level2">
+<h2><span class="header-section-number">2.2</span> Matrizes</h2>
+<p>Matrizes no <code>R</code> são equivalmentes a matrizes matemáticas e os mesmos tipos de operações podem aritméticas podem ser usadas nelas.
+São objetos bidimensionais que funcionam de forma parecida aos vetores.
+Porém além de possuírem propriedades de matrizes matemáticas nas matrizes do <code>R</code> todos os tipos de dados podem estar contidos, não apenas números.</p>
+<p><span class="math display">\[ 
+matriz = 
+\begin{bmatrix}
+0.4 &amp; 9 &amp; 24 \\
+e &amp; \pi &amp; 5^4 \\
+C &amp; 6.023\cdot10^{23} &amp; 0
+\end{bmatrix}
+\]</span></p>
+<p>A matriz acima é equivalente ao objeto abaixo:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1">matriz &lt;-<span class="st"> </span><span class="kw">matrix</span>(</a>
+<a class="sourceLine" id="cb30-2" title="2">    <span class="kw">c</span>(<span class="fl">0.4</span>, <span class="dv">9</span>, <span class="dv">24</span>, <span class="st">&quot;e&quot;</span>, pi, <span class="dv">5</span><span class="op">^</span><span class="dv">4</span>, <span class="st">&quot;C&quot;</span>, <span class="fl">6.023</span><span class="op">*</span><span class="dv">10</span><span class="op">^</span><span class="dv">23</span>, <span class="dv">0</span>),</a>
+<a class="sourceLine" id="cb30-3" title="3">    <span class="dt">nrow =</span> <span class="dv">3</span>,</a>
+<a class="sourceLine" id="cb30-4" title="4">    <span class="dt">byrow =</span> <span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb30-5" title="5">)</a>
+<a class="sourceLine" id="cb30-6" title="6"></a>
+<a class="sourceLine" id="cb30-7" title="7">matriz</a></code></pre></div>
+<pre><code>     [,1]  [,2]               [,3] 
+[1,] &quot;0.4&quot; &quot;9&quot;                &quot;24&quot; 
+[2,] &quot;e&quot;   &quot;3.14159265358979&quot; &quot;625&quot;
+[3,] &quot;C&quot;   &quot;6.023e+23&quot;        &quot;0&quot;  </code></pre>
+<p>Observa-se que assim como vetores, matrizes não suportam vários tipos de dados diferentes, então, quando elementos são incompatíveis, a priridade será a classe de texto, os caracteres.
+Todos os elementos da matriz serão convertidos para caracter se houver apenas um elemento deste tipo.</p>
+<p>Como matrizes são objetos bidimensionais os elementos podem ser específicados através do seu número de coluna e de linha, indicados quando se imprime a matriz usando <code>print()</code>.</p>
+</div>
+<div id="índices" class="section level2">
+<h2><span class="header-section-number">2.3</span> Índices</h2>
+<p>O mesmo é válido para vetores, cada elemento de um vetor tem um número, ou seja um índice.
+O índice de matrizes e vetores pode ser acessado usando o operador <code>[]</code>.
+Em vetores o primeiro elemento sempre terá índice 1 então para acessar o primeiro elemento do vetor <code>v1</code> escreve-se <code>v1[1]</code> e o retorno é o valor do primeiro elemento de <code>v1</code>, neste caso 0.</p>
+<p>Dentro do [ ] podem ser usados vários operadores.
+Outro exemplo simples é querer extrair os 3 primeiros valores do vetor v1.
+Para fazer isso pode se usar <code>v1[1:3]</code> ou então excluir o quarto valor usando <code>v[-4]</code> que deve ser equivalente.
+Como é possível extrair o último valor do vetor sem saber quantos valores ele tem?
+No caso de vários vetores terem tamanhos diferentes como garantir que uma função sempre irá extrair o último valor?
+Podem ser usadas funções dentro do [ ] para se garantir isso, por exemplo:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1">v1[(<span class="kw">length</span>(v1))]</a></code></pre></div>
+<pre><code>[1] 5</code></pre>
+<p>A função <code>length()</code> retorna o comprimento do vetor, como o último elemento deve ter o mesmo número do comprimento do vetor inteiro, desta forma se garante que o último elemento será extraído, neste caso o valor é de 5.</p>
+<hr />
+<p>Para matrizes os índices funcionam da mesma forma porém como matrizs são bidimensionais, cada elemento contém dois índices, um para a linha e um para a coluna.
+Por exemplo, para extrair o valor da primeira linha e primeira coluna da matriz criada anteriormente, escrevemos <code>matriz[1, 1]</code>, dessa forma, tudo que vem antes da vírgula dentro do [ ] é o índice de qual linha e depois da vírgula o índice da coluna, escrevendo em termos gerais: <code>matriz[row, col]</code>.
+Portanto para se extrair o valor 9 da matriz de exemplo, se escreve: <code>matriz[1,2]</code>.</p>
+<p>Assim como em vetores, é possível usar funções dentro do <code>[]</code> para se retornar índices específicos porém pode ser que o comportamento não seja o esperado para vetores.
+Para extraír o último elemento de vetores usamos a função <code>length()</code> porém, em matrizes é neessário especificar qual coluna e qual linha deseja-se extrair o valor e <code>length()</code> funciona melhor com uma dimensão.
+Portanto é melhor usar outras funções como <code>nrow()</code> e <code>ncol()</code>.
+Logo, para escolher o elemento da última linha e última coluna pode-se escrever:
+<code>matriz[nrow(matriz), ncol(matriz)]</code> que é igual a 0.</p>
+<p>Em alguns alguns casos é necessário extrair todos os valores de uma linha ou todos os valores de uma coluna de uma matriz.
+Um atalho para se fazer isso é não especificar a coluna ou a linha, logo para selecionar apenas a segunda linha da matriz de exemplo, escreve-se: <code>matriz[2, ]</code>.
+Perceba que o espaço depois da vírgula fica vazio, dessa forma <code>R</code> entende que nenhuma coluna está sendo selecionada.
+Para selecionar todos os valores de uma coluna deixa-se o espaço em branco antes da vírgula, por exemplo <code>matriz[ ,1]</code>.
+Adicionalmente, para escolher a segunda <strong>e</strong> terceira coluna pode-se escrever <code>matriz[ ,2:3]</code>.
+O mesmo vale para escolher linhas.</p>
+</div>
+<div id="dataframes" class="section level2">
+<h2><span class="header-section-number">2.4</span> Dataframes</h2>
+<p>Dataframes são objetos bidimensionais que apesar de se parecerem com matrizes, são bastante diferentes, em primeiro lugar, as colunas de dataframes devem ser nomeadas; em segundo lugar colunas diferentes podem conter tipos de dados diferentes.</p>
+<p>Dataframes são mais flexíveis que matrizes principalmente por poderem conter vários tipos de dados em suas colunas.
+Enquanto que matrizes convertem todos os dados para o tipo <code>character</code> quando há um elemento deste tipo, em dataframes podemos ter uma coluna com o tipo <code>character</code> ou tra com o tipo <code>logical</code> e outra com o tipo <code>numeric</code> sem problema nenhum.</p>
+<p>Para criar dataframes usa-se a função <code>data.frame()</code> que contém diversos vetores dentro, por exemplo:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1"><span class="co"># df é abreviação para dataframe</span></a>
+<a class="sourceLine" id="cb34-2" title="2"></a>
+<a class="sourceLine" id="cb34-3" title="3">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb34-4" title="4">    <span class="dt">Idade =</span> <span class="kw">c</span>(<span class="kw">round</span>(<span class="kw">runif</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">min =</span> <span class="dv">20</span>, <span class="dt">max =</span> <span class="dv">30</span>))), <span class="co"># aleatorio entre 20 e 30</span></a>
+<a class="sourceLine" id="cb34-5" title="5">    <span class="dt">Nome =</span> <span class="kw">c</span>(<span class="st">&quot;Luc&quot;</span>,<span class="st">&quot;Jon&quot;</span>,<span class="st">&quot;Jean&quot;</span>,<span class="st">&quot;Brie&quot;</span>,<span class="st">&quot;Mary&quot;</span>,<span class="st">&quot;Dave&quot;</span>,<span class="st">&quot;Lee&quot;</span>,<span class="st">&quot;Nat&quot;</span>,<span class="st">&quot;Dani&quot;</span>,<span class="st">&quot;Rob&quot;</span>), <span class="co"># nomes</span></a>
+<a class="sourceLine" id="cb34-6" title="6">    <span class="dt">Sexo =</span> <span class="kw">c</span>(F,F,T,T,T,F,F,T,T,F) <span class="co"># vetor contendo valores lógicos que indicam sexo</span></a>
+<a class="sourceLine" id="cb34-7" title="7">)</a>
+<a class="sourceLine" id="cb34-8" title="8"></a>
+<a class="sourceLine" id="cb34-9" title="9">df</a></code></pre></div>
+<pre><code>   Idade Nome  Sexo
+1     28  Luc FALSE
+2     26  Jon FALSE
+3     25 Jean  TRUE
+4     27 Brie  TRUE
+5     23 Mary  TRUE
+6     29 Dave FALSE
+7     27  Lee FALSE
+8     23  Nat  TRUE
+9     22 Dani  TRUE
+10    23  Rob FALSE</code></pre>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1"><span class="co"># classe</span></a>
+<a class="sourceLine" id="cb36-2" title="2"><span class="kw">class</span>(df)</a></code></pre></div>
+<pre><code>[1] &quot;data.frame&quot;</code></pre>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1"><span class="co"># Estrutura</span></a>
+<a class="sourceLine" id="cb38-2" title="2"><span class="kw">str</span>(df)</a></code></pre></div>
+<pre><code>&#39;data.frame&#39;:   10 obs. of  3 variables:
+ $ Idade: num  28 26 25 27 23 29 27 23 22 23
+ $ Nome : Factor w/ 10 levels &quot;Brie&quot;,&quot;Dani&quot;,..: 7 5 4 1 8 3 6 9 2 10
+ $ Sexo : logi  FALSE FALSE TRUE TRUE TRUE FALSE ...</code></pre>
+<p>A limitação de dataframes é que todas as colunas devem conter o mesmo número de linhas mas em geral funcionam como tabelas.
+Este tipo de objeto que contém dados em um quadro é denominado de retângular.
+Dados no formato retângular são usados para construção de gráficos usando várias extensões do <code>R</code> e é o formato de dados que a maioria das pessoas está acostumado a trabalhar por causa do que já aprendeu em programas como o Excell.</p>
+<p>É possível adicionar novas colunas e linhas a dataframes apesar de adicionar colunas ser mais direto.</p>
+<p>Os índices de um dataframe funcionam exatamente como funcionam em matrizes porém como em dataframes todas as colunas são nomeadas, podemos usar seus nomes invés de seus números, então para escolher os dados da coluna usa-se o operador <code>$</code>, por exemplo: <code>df$Idade</code> retorna os valores da coluna Idade no formato de um vetor, portanto para adicionar uma coluna, é possível atribuir ao dataframe uma nova coluna da seguinte forma:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1"><span class="co"># cria a variável Peso e adiciona ao objeto df</span></a>
+<a class="sourceLine" id="cb40-2" title="2">df<span class="op">$</span>Peso &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">runif</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">min =</span> <span class="dv">55</span>, <span class="dt">max =</span> <span class="dv">100</span>))</a>
+<a class="sourceLine" id="cb40-3" title="3"></a>
+<a class="sourceLine" id="cb40-4" title="4">df</a></code></pre></div>
+<pre><code>   Idade Nome  Sexo     Peso
+1     28  Luc FALSE 76.84227
+2     26  Jon FALSE 81.15088
+3     25 Jean  TRUE 86.13529
+4     27 Brie  TRUE 77.35799
+5     23 Mary  TRUE 56.91704
+6     29 Dave FALSE 98.91925
+7     27  Lee FALSE 56.64458
+8     23  Nat  TRUE 85.23860
+9     22 Dani  TRUE 87.80380
+10    23  Rob FALSE 83.61137</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1"><span class="co"># cria variável altura</span></a>
+<a class="sourceLine" id="cb42-2" title="2">df<span class="op">$</span>Altura &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">runif</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">min =</span> <span class="dv">159</span>, <span class="dt">max =</span> <span class="dv">210</span>))</a>
+<a class="sourceLine" id="cb42-3" title="3"></a>
+<a class="sourceLine" id="cb42-4" title="4">df</a></code></pre></div>
+<pre><code>   Idade Nome  Sexo     Peso   Altura
+1     28  Luc FALSE 76.84227 193.7245
+2     26  Jon FALSE 81.15088 207.5649
+3     25 Jean  TRUE 86.13529 201.9661
+4     27 Brie  TRUE 77.35799 181.8499
+5     23 Mary  TRUE 56.91704 171.8034
+6     29 Dave FALSE 98.91925 202.2315
+7     27  Lee FALSE 56.64458 163.2273
+8     23  Nat  TRUE 85.23860 191.4949
+9     22 Dani  TRUE 87.80380 165.6812
+10    23  Rob FALSE 83.61137 179.7086</code></pre>
+<p>Agora que temos as variáveis <code>Altura</code> e <code>Peso</code> (geradas aleatoriamente pela função <code>ruinf()</code>) podemos calcular o IMC de cada indivíduo com uma nova coluna chamada <code>IMC</code>:</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1"><span class="co"># cria coluna IMC usando valores de outras colunas</span></a>
+<a class="sourceLine" id="cb44-2" title="2">df<span class="op">$</span>IMC &lt;-<span class="st"> </span>df<span class="op">$</span>Peso <span class="op">/</span><span class="st"> </span>(df<span class="op">$</span>Altura<span class="op">/</span><span class="dv">100</span>)<span class="op">^</span><span class="dv">2</span> <span class="co"># altura deve estar em metros</span></a>
+<a class="sourceLine" id="cb44-3" title="3"></a>
+<a class="sourceLine" id="cb44-4" title="4">df</a></code></pre></div>
+<pre><code>   Idade Nome  Sexo     Peso   Altura      IMC
+1     28  Luc FALSE 76.84227 193.7245 20.47534
+2     26  Jon FALSE 81.15088 207.5649 18.83587
+3     25 Jean  TRUE 86.13529 201.9661 21.11660
+4     27 Brie  TRUE 77.35799 181.8499 23.39263
+5     23 Mary  TRUE 56.91704 171.8034 19.28317
+6     29 Dave FALSE 98.91925 202.2315 24.18706
+7     27  Lee FALSE 56.64458 163.2273 21.26046
+8     23  Nat  TRUE 85.23860 191.4949 23.24458
+9     22 Dani  TRUE 87.80380 165.6812 31.98652
+10    23  Rob FALSE 83.61137 179.7086 25.88973</code></pre>
+<p>Para adicionar linhas é necessário ter outro dataframe com colunas com os mesmos nomes que o dataframe original e usar a função <code>rbind()</code>.
+Abaixo o exemplo:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1">df2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb46-2" title="2">    <span class="dt">Idade =</span> <span class="kw">c</span>(<span class="dv">34</span>, <span class="dv">99</span>),</a>
+<a class="sourceLine" id="cb46-3" title="3">    <span class="dt">Nome =</span> <span class="kw">c</span>(<span class="st">&quot;Huey&quot;</span>,<span class="st">&quot;Zé&quot;</span>),</a>
+<a class="sourceLine" id="cb46-4" title="4">    <span class="dt">Sexo =</span> <span class="kw">c</span>(<span class="ot">FALSE</span>, <span class="ot">FALSE</span>),</a>
+<a class="sourceLine" id="cb46-5" title="5">    <span class="dt">Peso =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="fl">100.49993</span>),</a>
+<a class="sourceLine" id="cb46-6" title="6">    <span class="dt">Altura =</span> <span class="kw">c</span>(<span class="dv">187</span>, <span class="dv">176</span>),</a>
+<a class="sourceLine" id="cb46-7" title="7">    <span class="dt">IMC =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="ot">NA</span>)</a>
+<a class="sourceLine" id="cb46-8" title="8">)</a>
+<a class="sourceLine" id="cb46-9" title="9"></a>
+<a class="sourceLine" id="cb46-10" title="10">df2</a></code></pre></div>
+<pre><code>  Idade Nome  Sexo     Peso Altura IMC
+1    34 Huey FALSE       NA    187  NA
+2    99   Zé FALSE 100.4999    176  NA</code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1">df_nova &lt;-<span class="st"> </span><span class="kw">rbind</span>(df, df2)</a>
+<a class="sourceLine" id="cb48-2" title="2"></a>
+<a class="sourceLine" id="cb48-3" title="3">df_nova</a></code></pre></div>
+<pre><code>   Idade Nome  Sexo      Peso   Altura      IMC
+1     28  Luc FALSE  76.84227 193.7245 20.47534
+2     26  Jon FALSE  81.15088 207.5649 18.83587
+3     25 Jean  TRUE  86.13529 201.9661 21.11660
+4     27 Brie  TRUE  77.35799 181.8499 23.39263
+5     23 Mary  TRUE  56.91704 171.8034 19.28317
+6     29 Dave FALSE  98.91925 202.2315 24.18706
+7     27  Lee FALSE  56.64458 163.2273 21.26046
+8     23  Nat  TRUE  85.23860 191.4949 23.24458
+9     22 Dani  TRUE  87.80380 165.6812 31.98652
+10    23  Rob FALSE  83.61137 179.7086 25.88973
+11    34 Huey FALSE        NA 187.0000       NA
+12    99   Zé FALSE 100.49993 176.0000       NA</code></pre>
+<div id="índices-de-dataframes" class="section level3">
+<h3><span class="header-section-number">2.4.1</span> Índices de dataframes</h3>
+<p>Assim como matrizes os índices funcionam da mesma forma para dataframes com a diferença de que como as colunas possuem nomes, é possível usá-los para selecionar colunas então <code>df[ ,"Idade"]</code> é a mesma coisa que <code>df[ ,1]</code>.</p>
+<p>Outros operadores para seleção de linhas e colunas que não foi explorado anteriormente é o operador <code>-</code>.
+Por exemplo quando se quer selecionar todas as colunas <strong>exceto</strong> a coluna 2, é possível escrever <code>df[ ,c(1,3,4,5,6)]</code> ou muito mais fácil e rápido e simples <code>df[ ,-2]</code>.
+O mesmo vale para linhas de um dataframe e de uma matriz.
+O operador <code>-</code> indica subtração logo neste caso estou subtraindo a coluna 2 da minha seleção.</p>
+<p>Como nos casos anteriores, podem ser usadas funções para selecionar colunas e linhas específicas e um exercício para o leitor é descobrir como selecionar as linhas com número ímpar.</p>
+<hr />
+<p>Solução:</p>
+<p><code>df[c(TRUE,FALSE), ]</code></p>
+<p>Agora explique como isso funciona.</p>
+</div>
+</div>
+<div id="listas" class="section level2">
+<h2><span class="header-section-number">2.5</span> Listas</h2>
+<p>Listas são o tipo de objeto genéricos do <code>R</code>.
+Listas podem ter elementos que são vetores, matrizes e dataframes e não possuem formato retangular.
+Para explicar listas é mais fácil criar uma e deixar o leitor contemplar sua estrutura:</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1">lista &lt;-<span class="st"> </span><span class="kw">list</span>(</a>
+<a class="sourceLine" id="cb50-2" title="2">    <span class="dt">vetor_A =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="fl">5.6</span>, <span class="dv">8</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="fl">4.45</span>), <span class="co"># vetor com números</span></a>
+<a class="sourceLine" id="cb50-3" title="3">    <span class="dt">vetor_B =</span> <span class="kw">c</span>(<span class="st">&quot;Frases com várias palavras&quot;</span>, <span class="st">&quot;texto&quot;</span>), <span class="co"># vetor com caracteres</span></a>
+<a class="sourceLine" id="cb50-4" title="4">    <span class="dt">matriz_A =</span> <span class="kw">matrix</span>(</a>
+<a class="sourceLine" id="cb50-5" title="5">            <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">10</span>), <span class="co"># valores da matriz</span></a>
+<a class="sourceLine" id="cb50-6" title="6">            <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="co"># número de colunas</span></a>
+<a class="sourceLine" id="cb50-7" title="7">            <span class="dt">byrow =</span> <span class="ot">FALSE</span> <span class="co"># preencher valores por linha? FALSE</span></a>
+<a class="sourceLine" id="cb50-8" title="8">        ),</a>
+<a class="sourceLine" id="cb50-9" title="9">    <span class="dt">matriz_B =</span> <span class="kw">matrix</span>(</a>
+<a class="sourceLine" id="cb50-10" title="10">        <span class="kw">c</span>(letters), <span class="co"># valores da matriz</span></a>
+<a class="sourceLine" id="cb50-11" title="11">        <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="co"># número de colunas</span></a>
+<a class="sourceLine" id="cb50-12" title="12">        <span class="dt">byrow =</span> <span class="ot">TRUE</span> <span class="co"># preencher por linha? TRUE</span></a>
+<a class="sourceLine" id="cb50-13" title="13">    ),</a>
+<a class="sourceLine" id="cb50-14" title="14">    <span class="dt">dataframe_A =</span> <span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb50-15" title="15">        <span class="dt">Nome =</span> <span class="kw">c</span>(<span class="st">&quot;Jack&quot;</span>, <span class="st">&quot;Natalie&quot;</span>, <span class="st">&quot;Margot&quot;</span>), <span class="co"># coluna com nomes</span></a>
+<a class="sourceLine" id="cb50-16" title="16">        <span class="dt">Sobrenome =</span> <span class="kw">c</span>(<span class="st">&quot;Black&quot;</span>, <span class="st">&quot;Portmann&quot;</span>, <span class="st">&quot;Robbie&quot;</span>), <span class="co"># coluna com sobrenome</span></a>
+<a class="sourceLine" id="cb50-17" title="17">        <span class="dt">Nascimento =</span> <span class="kw">as.Date</span>(<span class="kw">c</span>(<span class="st">&quot;1969-08-28&quot;</span>,<span class="st">&quot;1981-06-09&quot;</span>,<span class="st">&quot;1990-07-02&quot;</span>)) <span class="co"># data de nascimento</span></a>
+<a class="sourceLine" id="cb50-18" title="18">    )</a>
+<a class="sourceLine" id="cb50-19" title="19">)</a>
+<a class="sourceLine" id="cb50-20" title="20"></a>
+<a class="sourceLine" id="cb50-21" title="21">lista</a></code></pre></div>
+<pre><code>$vetor_A
+[1] 1.00 4.00 5.60 8.00 3.00 1.00 4.45
+
+$vetor_B
+[1] &quot;Frases com várias palavras&quot; &quot;texto&quot;                     
+
+$matriz_A
+     [,1] [,2]
+[1,]    0    5
+[2,]    2   10
+
+$matriz_B
+      [,1] [,2] [,3]
+ [1,] &quot;a&quot;  &quot;b&quot;  &quot;c&quot; 
+ [2,] &quot;d&quot;  &quot;e&quot;  &quot;f&quot; 
+ [3,] &quot;g&quot;  &quot;h&quot;  &quot;i&quot; 
+ [4,] &quot;j&quot;  &quot;k&quot;  &quot;l&quot; 
+ [5,] &quot;m&quot;  &quot;n&quot;  &quot;o&quot; 
+ [6,] &quot;p&quot;  &quot;q&quot;  &quot;r&quot; 
+ [7,] &quot;s&quot;  &quot;t&quot;  &quot;u&quot; 
+ [8,] &quot;v&quot;  &quot;w&quot;  &quot;x&quot; 
+ [9,] &quot;y&quot;  &quot;z&quot;  &quot;a&quot; 
+
+$dataframe_A
+     Nome Sobrenome Nascimento
+1    Jack     Black 1969-08-28
+2 Natalie  Portmann 1981-06-09
+3  Margot    Robbie 1990-07-02</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" title="1"><span class="co"># estrutura da lista</span></a>
+<a class="sourceLine" id="cb52-2" title="2"><span class="kw">str</span>(lista)</a></code></pre></div>
+<pre><code>List of 5
+ $ vetor_A    : num [1:7] 1 4 5.6 8 3 1 4.45
+ $ vetor_B    : chr [1:2] &quot;Frases com várias palavras&quot; &quot;texto&quot;
+ $ matriz_A   : num [1:2, 1:2] 0 2 5 10
+ $ matriz_B   : chr [1:9, 1:3] &quot;a&quot; &quot;d&quot; &quot;g&quot; &quot;j&quot; ...
+ $ dataframe_A:&#39;data.frame&#39;:    3 obs. of  3 variables:
+  ..$ Nome      : Factor w/ 3 levels &quot;Jack&quot;,&quot;Margot&quot;,..: 1 3 2
+  ..$ Sobrenome : Factor w/ 3 levels &quot;Black&quot;,&quot;Portmann&quot;,..: 1 2 3
+  ..$ Nascimento: Date[1:3], format: &quot;1969-08-28&quot; &quot;1981-06-09&quot; &quot;1990-07-02&quot;</code></pre>
+<p>Nesta lista temos então, vetores com números, vetores com texto, matrix com números e matrix com texto e um dataframe com 3 variáveis.
+Bastante complexo.</p>
+<div id="índices-de-listas" class="section level3">
+<h3><span class="header-section-number">2.5.1</span> Índices de listas</h3>
+<p>Listas tem estrutura com vários níveis, inclusive é possível criar uma lista dentro de outra lista com vários outros vetores matrizes, dataframes etc porém será focado em listas com apenas um nível.
+Como usar os índices?</p>
+<p>Fácil, usa-se os mesmos operadores que os de dataframe.
+Por exemplo:</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" title="1"><span class="co"># selecionando o vetor_A</span></a>
+<a class="sourceLine" id="cb54-2" title="2">lista<span class="op">$</span>vetor_A</a></code></pre></div>
+<pre><code>[1] 1.00 4.00 5.60 8.00 3.00 1.00 4.45</code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" title="1"><span class="co"># selecionando matriz_A</span></a>
+<a class="sourceLine" id="cb56-2" title="2">lista<span class="op">$</span>matriz_A</a></code></pre></div>
+<pre><code>     [,1] [,2]
+[1,]    0    5
+[2,]    2   10</code></pre>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" title="1"><span class="co"># selecionando dataframe_A</span></a>
+<a class="sourceLine" id="cb58-2" title="2">lista<span class="op">$</span>dataframe_A</a></code></pre></div>
+<pre><code>     Nome Sobrenome Nascimento
+1    Jack     Black 1969-08-28
+2 Natalie  Portmann 1981-06-09
+3  Margot    Robbie 1990-07-02</code></pre>
+<p>Mas como selecionar os elementos individuais do vetor_B, matriz_B e dataframe_A?
+Fácil, da mesma forma que se selecionada quando não estavam dentro da lista.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" title="1"><span class="co"># elemento 3 do vetor_B</span></a>
+<a class="sourceLine" id="cb60-2" title="2">lista<span class="op">$</span>vetor_A[<span class="dv">3</span>]</a></code></pre></div>
+<pre><code>[1] 5.6</code></pre>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" title="1"><span class="co"># elemento na linha 6 e coluna 2 da matriz_B</span></a>
+<a class="sourceLine" id="cb62-2" title="2">lista<span class="op">$</span>matriz_B[<span class="dv">6</span>,<span class="dv">2</span>]</a></code></pre></div>
+<pre><code>[1] &quot;q&quot;</code></pre>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1"><span class="co"># Nascimento da Margot Robbie</span></a>
+<a class="sourceLine" id="cb64-2" title="2">lista<span class="op">$</span>dataframe_A<span class="op">$</span>Nascimento[<span class="dv">3</span>]</a></code></pre></div>
+<pre><code>[1] &quot;1990-07-02&quot;</code></pre>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1"><span class="co"># ou</span></a>
+<a class="sourceLine" id="cb66-2" title="2">lista<span class="op">$</span>dataframe_A[<span class="dv">3</span>,<span class="dv">3</span>]</a></code></pre></div>
+<pre><code>[1] &quot;1990-07-02&quot;</code></pre>
+<p>Listas são tipos de objetos muito úteis para o <strong>armazenamento</strong> de dados de forma legível tanto para computadores quanto para humanos.
+Este tipo de estrutura de dados é similar aos usados em bancos de dados não-tabulares.
+Essa estrutura é similar a arquivos <a href="https://www.json.org/json-en.html"><code>JSON</code></a> e <a href="https://www.w3schools.com/python/python_dictionaries.asp"><code>dictionaries</code></a> da linguagem python.</p>
+<p>É bastante útil para se armazenar vários dados de natureza diferente para amostras, por exemplo:</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1">Polimero_A &lt;-<span class="st"> </span><span class="kw">list</span>(</a>
+<a class="sourceLine" id="cb68-2" title="2">    <span class="dt">Nome =</span> <span class="st">&quot;Polímero A&quot;</span>,</a>
+<a class="sourceLine" id="cb68-3" title="3">    <span class="dt">Fabricacao =</span> <span class="kw">as.Date</span>(<span class="st">&quot;2019-09-24&quot;</span>),</a>
+<a class="sourceLine" id="cb68-4" title="4">    <span class="dt">Validade =</span> <span class="st">&quot;3 meses&quot;</span>,</a>
+<a class="sourceLine" id="cb68-5" title="5">    <span class="dt">Curva_calibracao_HPLC =</span> <span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb68-6" title="6">        <span class="dt">Conc_Padrao =</span> <span class="kw">c</span>(<span class="fl">0.01</span>, <span class="fl">0.05</span>, <span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="fl">0.9</span>, <span class="fl">1.0</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">30</span>, <span class="dv">100</span>, <span class="dv">500</span>),</a>
+<a class="sourceLine" id="cb68-7" title="7">        <span class="dt">Abs =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.1</span>, <span class="fl">0.3</span>, <span class="fl">0.9</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">29</span>, <span class="dv">39</span>, <span class="dv">50</span>, <span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb68-8" title="8">    ),</a>
+<a class="sourceLine" id="cb68-9" title="9">    <span class="dt">Descricao =</span> <span class="kw">list</span>(<span class="dt">Visual =</span> <span class="st">&quot;pó amarelado&quot;</span>, </a>
+<a class="sourceLine" id="cb68-10" title="10">                                     <span class="dt">Odor =</span> <span class="st">&quot;sem odor&quot;</span>,</a>
+<a class="sourceLine" id="cb68-11" title="11">                                     <span class="dt">Outros =</span> <span class="st">&quot;higroscópico&quot;),</span></a>
+<a class="sourceLine" id="cb68-12" title="12"><span class="st">    Tratamento = c(&quot;</span>Secagem por liofilização<span class="st">&quot;, &quot;</span>Filtração com filtro n. <span class="dv">2</span><span class="st">&quot;),</span></a>
+<a class="sourceLine" id="cb68-13" title="13"><span class="st">    Estabilidade = data.frame(</span></a>
+<a class="sourceLine" id="cb68-14" title="14"><span class="st">        Dia = c(1:10),</span></a>
+<a class="sourceLine" id="cb68-15" title="15"><span class="st">        Separacao_fase = c(F, F, F, F, F, F, F, T, T, T),</span></a>
+<a class="sourceLine" id="cb68-16" title="16"><span class="st">        FaseO_por_FaseA = c(0, 0, 0, 0, 0, 0, 0, 0.4, 0.6, 0.9)</span></a>
+<a class="sourceLine" id="cb68-17" title="17"><span class="st">    )</span></a>
+<a class="sourceLine" id="cb68-18" title="18"><span class="st">)</span></a>
+<a class="sourceLine" id="cb68-19" title="19"></a>
+<a class="sourceLine" id="cb68-20" title="20"><span class="st">Polimero_A</span></a></code></pre></div>
+<pre><code>$Nome
+[1] &quot;Polímero A&quot;
+
+$Fabricacao
+[1] &quot;2019-09-24&quot;
+
+$Validade
+[1] &quot;3 meses&quot;
+
+$Curva_calibracao_HPLC
+   Conc_Padrao   Abs
+1        1e-02   0.0
+2        5e-02   0.0
+3        1e-01   0.0
+4        5e-01   0.1
+5        9e-01   0.3
+6        1e+00   0.9
+7        2e+00   2.0
+8        3e+00   4.0
+9        5e+00   6.0
+10       1e+01  29.0
+11       3e+01  39.0
+12       1e+02  50.0
+13       5e+02 100.0
+
+$Descricao
+$Descricao$Visual
+[1] &quot;pó amarelado&quot;
+
+$Descricao$Odor
+[1] &quot;sem odor&quot;
+
+$Descricao$Outros
+[1] &quot;higroscópico&quot;
+
+
+$Tratamento
+[1] &quot;Secagem por liofilização&quot;  &quot;Filtração com filtro n. 2&quot;
+
+$Estabilidade
+   Dia Separacao_fase FaseO_por_FaseA
+1    1          FALSE             0.0
+2    2          FALSE             0.0
+3    3          FALSE             0.0
+4    4          FALSE             0.0
+5    5          FALSE             0.0
+6    6          FALSE             0.0
+7    7          FALSE             0.0
+8    8           TRUE             0.4
+9    9           TRUE             0.6
+10  10           TRUE             0.9</code></pre>
+<p>Este objeto contém todas as informações sobre a amostra desejadas e para acessar essas informações é apenas necessário usar os índices corretos.
+Para criar objetos <code>JSON</code> a partir de objetos em <code>R</code> a forma mais prática é usando o pacote <a href="https://github.com/jeroen/jsonlite"><code>jsonlite</code></a>.</p>
+<p>Assim se encerra a aula de tipos de objetos e índices.
+Esses exemplos são muito simples mas podem ajudar a enfrentar tarefas de extração de objetos muito mais complexos criados pelas funções do <code>R</code>.</p>
+<hr />
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="01-tipos-de-dados.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="03-operadores.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"toolbar": {
+"position": "static"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

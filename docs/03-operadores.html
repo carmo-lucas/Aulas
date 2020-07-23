@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Aula 3 Operadores | Aulas de R</title>
+  <meta name="description" content="Aula 3 Operadores | Aulas de R" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Aula 3 Operadores | Aulas de R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Aula 3 Operadores | Aulas de R" />
+  
+  
+  
+
+<meta name="author" content="Lucas Chagas Lima do Carmo" />
+
+
+<meta name="date" content="2020-07-22" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="02-tipos-de-objetos.html"/>
+<link rel="next" href="04-extensoes.html"/>
+<script src="assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introdução</a></li>
+<li class="chapter" data-level="1" data-path="01-tipos-de-dados.html"><a href="01-tipos-de-dados.html"><i class="fa fa-check"></i><b>1</b> Tipos de Dados</a></li>
+<li class="chapter" data-level="2" data-path="02-tipos-de-objetos.html"><a href="02-tipos-de-objetos.html"><i class="fa fa-check"></i><b>2</b> Tipos de objetos</a><ul>
+<li class="chapter" data-level="2.1" data-path="02-tipos-de-objetos.html"><a href="02-tipos-de-objetos.html#vetores"><i class="fa fa-check"></i><b>2.1</b> Vetores</a></li>
+<li class="chapter" data-level="2.2" data-path="02-tipos-de-objetos.html"><a href="02-tipos-de-objetos.html#matrizes"><i class="fa fa-check"></i><b>2.2</b> Matrizes</a></li>
+<li class="chapter" data-level="2.3" data-path="02-tipos-de-objetos.html"><a href="02-tipos-de-objetos.html#índices"><i class="fa fa-check"></i><b>2.3</b> Índices</a></li>
+<li class="chapter" data-level="2.4" data-path="02-tipos-de-objetos.html"><a href="02-tipos-de-objetos.html#dataframes"><i class="fa fa-check"></i><b>2.4</b> Dataframes</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="02-tipos-de-objetos.html"><a href="02-tipos-de-objetos.html#índices-de-dataframes"><i class="fa fa-check"></i><b>2.4.1</b> Índices de dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="02-tipos-de-objetos.html"><a href="02-tipos-de-objetos.html#listas"><i class="fa fa-check"></i><b>2.5</b> Listas</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="02-tipos-de-objetos.html"><a href="02-tipos-de-objetos.html#índices-de-listas"><i class="fa fa-check"></i><b>2.5.1</b> Índices de listas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="03-operadores.html"><a href="03-operadores.html"><i class="fa fa-check"></i><b>3</b> Operadores</a><ul>
+<li class="chapter" data-level="3.1" data-path="03-operadores.html"><a href="03-operadores.html#operadores-aritméticos"><i class="fa fa-check"></i><b>3.1</b> Operadores aritméticos</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="03-operadores.html"><a href="03-operadores.html#exemplos"><i class="fa fa-check"></i><b>3.1.1</b> Exemplos</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="03-operadores.html"><a href="03-operadores.html#operadores-lógicos"><i class="fa fa-check"></i><b>3.2</b> Operadores Lógicos</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="03-operadores.html"><a href="03-operadores.html#exemplos-1"><i class="fa fa-check"></i><b>3.2.1</b> Exemplos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="04-extensoes.html"><a href="04-extensoes.html"><i class="fa fa-check"></i><b>4</b> Extensões</a><ul>
+<li class="chapter" data-level="4.1" data-path="04-extensoes.html"><a href="04-extensoes.html#tidyverse"><i class="fa fa-check"></i><b>4.1</b> <code>tidyverse</code></a><ul>
+<li class="chapter" data-level="4.1.1" data-path="04-extensoes.html"><a href="04-extensoes.html#dplyr"><i class="fa fa-check"></i><b>4.1.1</b> <code>dplyr</code></a></li>
+<li class="chapter" data-level="4.1.2" data-path="04-extensoes.html"><a href="04-extensoes.html#tidyr"><i class="fa fa-check"></i><b>4.1.2</b> <code>tidyr</code></a></li>
+<li class="chapter" data-level="4.1.3" data-path="04-extensoes.html"><a href="04-extensoes.html#readr"><i class="fa fa-check"></i><b>4.1.3</b> <code>readr</code></a></li>
+<li class="chapter" data-level="4.1.4" data-path="04-extensoes.html"><a href="04-extensoes.html#stringr"><i class="fa fa-check"></i><b>4.1.4</b> <code>stringr</code></a></li>
+<li class="chapter" data-level="4.1.5" data-path="04-extensoes.html"><a href="04-extensoes.html#tibble"><i class="fa fa-check"></i><b>4.1.5</b> <code>tibble</code></a></li>
+<li class="chapter" data-level="4.1.6" data-path="04-extensoes.html"><a href="04-extensoes.html#purrr"><i class="fa fa-check"></i><b>4.1.6</b> <code>purrr</code></a></li>
+<li class="chapter" data-level="4.1.7" data-path="04-extensoes.html"><a href="04-extensoes.html#forcats"><i class="fa fa-check"></i><b>4.1.7</b> <code>forcats</code></a></li>
+<li class="chapter" data-level="4.1.8" data-path="04-extensoes.html"><a href="04-extensoes.html#magrittr"><i class="fa fa-check"></i><b>4.1.8</b> <code>magrittr</code></a></li>
+<li class="chapter" data-level="4.1.9" data-path="04-extensoes.html"><a href="04-extensoes.html#ggplot2"><i class="fa fa-check"></i><b>4.1.9</b> <code>ggplot2</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="05-ggplot2.html"><a href="05-ggplot2.html"><i class="fa fa-check"></i><b>5</b> <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="5.1" data-path="05-ggplot2.html"><a href="05-ggplot2.html#gramática-de-gráficos"><i class="fa fa-check"></i><b>5.1</b> Gramática de Gráficos</a></li>
+<li class="chapter" data-level="5.2" data-path="05-ggplot2.html"><a href="05-ggplot2.html#instalação"><i class="fa fa-check"></i><b>5.2</b> Instalação</a></li>
+<li class="chapter" data-level="5.3" data-path="05-ggplot2.html"><a href="05-ggplot2.html#componentes-principais-dos-gráficos"><i class="fa fa-check"></i><b>5.3</b> Componentes principais dos gráficos</a></li>
+<li class="chapter" data-level="5.4" data-path="05-ggplot2.html"><a href="05-ggplot2.html#cores-tamanhos-formas-e-outros-atributos-estéticos"><i class="fa fa-check"></i><b>5.4</b> Cores, tamanhos, formas e outros atributos estéticos</a></li>
+<li class="chapter" data-level="5.5" data-path="05-ggplot2.html"><a href="05-ggplot2.html#geoms"><i class="fa fa-check"></i><b>5.5</b> Geoms</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="05-ggplot2.html"><a href="05-ggplot2.html#geoms-individuais"><i class="fa fa-check"></i><b>5.5.1</b> Geoms individuais</a></li>
+<li class="chapter" data-level="5.5.2" data-path="05-ggplot2.html"><a href="05-ggplot2.html#geoms-coletivos"><i class="fa fa-check"></i><b>5.5.2</b> Geoms coletivos</a></li>
+<li class="chapter" data-level="5.5.3" data-path="05-ggplot2.html"><a href="05-ggplot2.html#resumos-estatísticos"><i class="fa fa-check"></i><b>5.5.3</b> Resumos estatísticos</a></li>
+<li class="chapter" data-level="5.5.4" data-path="05-ggplot2.html"><a href="05-ggplot2.html#plotando-distribuições"><i class="fa fa-check"></i><b>5.5.4</b> Plotando distribuições</a></li>
+<li class="chapter" data-level="5.5.5" data-path="05-ggplot2.html"><a href="05-ggplot2.html#anotações"><i class="fa fa-check"></i><b>5.5.5</b> Anotações</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="05-ggplot2.html"><a href="05-ggplot2.html#legendas"><i class="fa fa-check"></i><b>5.6</b> Legendas</a></li>
+<li class="chapter" data-level="5.7" data-path="05-ggplot2.html"><a href="05-ggplot2.html#escalas"><i class="fa fa-check"></i><b>5.7</b> Escalas</a></li>
+<li class="chapter" data-level="5.8" data-path="05-ggplot2.html"><a href="05-ggplot2.html#facets"><i class="fa fa-check"></i><b>5.8</b> Facets</a></li>
+<li class="chapter" data-level="5.9" data-path="05-ggplot2.html"><a href="05-ggplot2.html#temas"><i class="fa fa-check"></i><b>5.9</b> Temas</a></li>
+<li class="chapter" data-level="5.10" data-path="05-ggplot2.html"><a href="05-ggplot2.html#organizando-os-plots"><i class="fa fa-check"></i><b>5.10</b> Organizando os <em>plots</em></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="99-references.html"><a href="99-references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Aulas de R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="operadores" class="section level1">
+<h1><span class="header-section-number">Aula 3</span> Operadores</h1>
+<p>A grande maioria de linguagens de programação possui os mesmos operadores matemáticos porém com uma sintaxe diferente.
+No <code>R</code> temos operadores aritméticos e lógicos.
+Em <code>R</code> os operadores são vetorizados, o que significa que as operações serão feitas em todos os elementos de um vetor.
+Veja os exemplos.</p>
+<div id="operadores-aritméticos" class="section level2">
+<h2><span class="header-section-number">3.1</span> Operadores aritméticos</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Operador</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>+</code></td>
+<td>Adição</td>
+</tr>
+<tr class="even">
+<td><code>-</code></td>
+<td>Subtração</td>
+</tr>
+<tr class="odd">
+<td><code>*</code></td>
+<td>Multiplicação</td>
+</tr>
+<tr class="even">
+<td><code>/</code></td>
+<td>Divisão</td>
+</tr>
+<tr class="odd">
+<td><code>^</code> ou <code>**</code></td>
+<td>Exponenciação</td>
+</tr>
+<tr class="even">
+<td><code>x %% y</code></td>
+<td>Modulus (restante inteiro da divisão de x por y)</td>
+</tr>
+<tr class="odd">
+<td><code>x %/% y</code></td>
+<td>Divisão de número inteiro (<code>5 %/% 2 = 2</code>)</td>
+</tr>
+</tbody>
+</table>
+<div id="exemplos" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> Exemplos</h3>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb70-2" title="2"></a>
+<a class="sourceLine" id="cb70-3" title="3"><span class="co"># adição</span></a>
+<a class="sourceLine" id="cb70-4" title="4"><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span></a></code></pre></div>
+<pre><code>[1] 9</code></pre>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1">x <span class="op">+</span><span class="st"> </span><span class="dv">5</span></a></code></pre></div>
+<pre><code> [1]  6  7  8  9 10 11 12 13 14 15</code></pre>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1"><span class="co"># subtração</span></a>
+<a class="sourceLine" id="cb74-2" title="2"><span class="dv">99</span> <span class="op">-</span><span class="st"> </span><span class="dv">98</span></a></code></pre></div>
+<pre><code>[1] 1</code></pre>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" title="1">x <span class="op">-</span><span class="st"> </span><span class="dv">99</span></a></code></pre></div>
+<pre><code> [1] -98 -97 -96 -95 -94 -93 -92 -91 -90 -89</code></pre>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" title="1"><span class="co"># multiplicação</span></a>
+<a class="sourceLine" id="cb78-2" title="2"><span class="dv">3</span> <span class="op">*</span><span class="st"> </span><span class="dv">3</span></a></code></pre></div>
+<pre><code>[1] 9</code></pre>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" title="1"><span class="dv">3</span> <span class="op">*</span><span class="st"> </span>x</a></code></pre></div>
+<pre><code> [1]  3  6  9 12 15 18 21 24 27 30</code></pre>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" title="1"><span class="co"># divisão</span></a>
+<a class="sourceLine" id="cb82-2" title="2"><span class="dv">11</span> <span class="op">/</span><span class="st"> </span><span class="dv">4</span></a></code></pre></div>
+<pre><code>[1] 2.75</code></pre>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" title="1"><span class="dv">11</span> <span class="op">/</span><span class="st"> </span>x</a></code></pre></div>
+<pre><code> [1] 11.000000  5.500000  3.666667  2.750000  2.200000  1.833333  1.571429  1.375000  1.222222  1.100000</code></pre>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" title="1"><span class="co"># exponenciação</span></a>
+<a class="sourceLine" id="cb86-2" title="2"><span class="dv">2</span> <span class="op">^</span><span class="st"> </span><span class="dv">3</span></a></code></pre></div>
+<pre><code>[1] 8</code></pre>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" title="1"><span class="dv">2</span> <span class="op">^</span><span class="st"> </span>x</a></code></pre></div>
+<pre><code> [1]    2    4    8   16   32   64  128  256  512 1024</code></pre>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" title="1"><span class="co"># modulus</span></a>
+<a class="sourceLine" id="cb90-2" title="2"><span class="dv">9</span> <span class="op">%%</span><span class="st"> </span><span class="dv">2</span></a></code></pre></div>
+<pre><code>[1] 1</code></pre>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" title="1"><span class="dv">9</span> <span class="op">%%</span><span class="st"> </span><span class="dv">4</span></a></code></pre></div>
+<pre><code>[1] 1</code></pre>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" title="1">x <span class="op">%%</span><span class="st"> </span><span class="dv">4</span></a></code></pre></div>
+<pre><code> [1] 1 2 3 0 1 2 3 0 1 2</code></pre>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" title="1"><span class="co"># divisão por número inteiro</span></a>
+<a class="sourceLine" id="cb96-2" title="2"><span class="dv">11</span> <span class="op">%/%</span><span class="st"> </span><span class="dv">4</span></a></code></pre></div>
+<pre><code>[1] 2</code></pre>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" title="1"><span class="dv">12</span> <span class="op">%/%</span><span class="st"> </span><span class="fl">1.3</span></a></code></pre></div>
+<pre><code>[1] 9</code></pre>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" title="1"><span class="dv">12</span> <span class="op">%/%</span><span class="st"> </span>x</a></code></pre></div>
+<pre><code> [1] 12  6  4  3  2  2  1  1  1  1</code></pre>
+</div>
+</div>
+<div id="operadores-lógicos" class="section level2">
+<h2><span class="header-section-number">3.2</span> Operadores Lógicos</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Operador</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>&gt;</code></td>
+<td>Maior que</td>
+</tr>
+<tr class="even">
+<td><code>&gt;=</code></td>
+<td>Maior ou igual a</td>
+</tr>
+<tr class="odd">
+<td><code>&lt;</code></td>
+<td>Menor que</td>
+</tr>
+<tr class="even">
+<td><code>&lt;=</code></td>
+<td>Menor ou igual a</td>
+</tr>
+<tr class="odd">
+<td><code>==</code></td>
+<td>Exatamente igual a</td>
+</tr>
+<tr class="even">
+<td><code>!=</code></td>
+<td>Não igual a</td>
+</tr>
+<tr class="odd">
+<td><code>!x</code></td>
+<td>Negação</td>
+</tr>
+<tr class="even">
+<td><code>x | y</code></td>
+<td><code>x</code> OU <code>y</code></td>
+</tr>
+<tr class="odd">
+<td><code>x &amp; y</code></td>
+<td><code>x</code> E <code>y</code></td>
+</tr>
+<tr class="even">
+<td><code>isTRUE(x)</code></td>
+<td>Testa se <code>x</code> é <code>TRUE</code></td>
+</tr>
+</tbody>
+</table>
+<p>Estes operadores irão sempre retornar valores lógicos do tipo <code>TRUE</code> ou <code>FALSE</code>.</p>
+<div id="exemplos-1" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Exemplos</h3>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" title="1"><span class="co"># &gt; maior que </span></a>
+<a class="sourceLine" id="cb102-2" title="2"><span class="dv">4</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span></a></code></pre></div>
+<pre><code>[1] FALSE</code></pre>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" title="1"><span class="dv">4</span> <span class="op">&gt;=</span><span class="st"> </span><span class="dv">5</span></a></code></pre></div>
+<pre><code>[1] FALSE</code></pre>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" title="1">x <span class="op">&gt;</span><span class="st"> </span><span class="dv">4</span></a></code></pre></div>
+<pre><code> [1] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" title="1"><span class="co"># &lt; menor que </span></a>
+<a class="sourceLine" id="cb108-2" title="2"><span class="dv">4</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">5</span></a></code></pre></div>
+<pre><code>[1] TRUE</code></pre>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" title="1"><span class="dv">4</span> <span class="op">&lt;=</span><span class="st"> </span><span class="dv">5</span></a></code></pre></div>
+<pre><code>[1] TRUE</code></pre>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" title="1">x <span class="op">&lt;</span><span class="st"> </span><span class="dv">4</span> </a></code></pre></div>
+<pre><code> [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" title="1"><span class="co"># == exatamente igual</span></a>
+<a class="sourceLine" id="cb114-2" title="2"><span class="dv">4</span> <span class="op">==</span><span class="st"> </span><span class="dv">5</span></a></code></pre></div>
+<pre><code>[1] FALSE</code></pre>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" title="1">x <span class="op">==</span><span class="st"> </span><span class="dv">4</span> </a></code></pre></div>
+<pre><code> [1] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" title="1"><span class="co"># != não igual</span></a>
+<a class="sourceLine" id="cb118-2" title="2"><span class="dv">4</span> <span class="op">!=</span><span class="st"> </span><span class="dv">5</span></a></code></pre></div>
+<pre><code>[1] TRUE</code></pre>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" title="1">x <span class="op">!=</span><span class="st"> </span><span class="dv">4</span></a></code></pre></div>
+<pre><code> [1]  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" title="1"><span class="co"># ! negação</span></a>
+<a class="sourceLine" id="cb122-2" title="2"><span class="dv">3</span> <span class="op">==</span><span class="st"> </span><span class="op">!</span>x</a></code></pre></div>
+<pre><code> [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" title="1"><span class="op">!</span><span class="dv">3</span> <span class="op">==</span><span class="st"> </span>x</a></code></pre></div>
+<pre><code> [1]  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" title="1"><span class="co"># | OU</span></a>
+<a class="sourceLine" id="cb126-2" title="2">x <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span> <span class="op">|</span><span class="st"> </span>x <span class="op">&gt;</span><span class="st"> </span><span class="dv">8</span></a></code></pre></div>
+<pre><code> [1] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" title="1"><span class="co"># &amp; E</span></a>
+<a class="sourceLine" id="cb128-2" title="2">x <span class="op">&lt;=</span><span class="st"> </span><span class="dv">8</span> <span class="op">&amp;</span><span class="st"> </span>x <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span> </a></code></pre></div>
+<pre><code> [1] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" title="1"><span class="co"># isTRUE()</span></a>
+<a class="sourceLine" id="cb130-2" title="2"><span class="kw">isTRUE</span>(x <span class="op">&lt;=</span><span class="st"> </span><span class="dv">8</span> <span class="op">&amp;</span><span class="st"> </span>x <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span>)</a></code></pre></div>
+<pre><code>[1] FALSE</code></pre>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" title="1"><span class="kw">isTRUE</span>(<span class="dv">4</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span>)</a></code></pre></div>
+<pre><code>[1] FALSE</code></pre>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" title="1"><span class="kw">isTRUE</span>(<span class="dv">4</span> <span class="op">==</span><span class="st"> </span><span class="dv">4</span>)</a></code></pre></div>
+<pre><code>[1] TRUE</code></pre>
+<hr />
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="02-tipos-de-objetos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="04-extensoes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"toolbar": {
+"position": "static"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
