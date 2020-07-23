@@ -29,7 +29,7 @@ library(tidyquant)
 knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown', 'tidyverse', 'ggplot2', "gganimate", "tidyquant", "patchwork"), 'packages.bib')
 
-knitr::opts_chunk$set(error = FALSE, warning = FALSE, fig.align = "center", tidy = FALSE, comment = "",
+knitr::opts_chunk$set(error = FALSE, warning = FALSE, fig.align = "center", tidy = FALSE, comment = "R>",
                       dpi = 300, cache = FALSE, fig.show = "hold", fig.height = 3)
 
 
